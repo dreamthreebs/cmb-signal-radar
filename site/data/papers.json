@@ -1,15 +1,15 @@
 {
   "meta": {
-    "generated_at": "2026-08-07T09:36:27Z",
-    "last_attempt_at": "2026-08-07T09:36:27Z",
+    "generated_at": "2026-08-07T09:42:33Z",
+    "last_attempt_at": "2026-08-07T09:42:33Z",
     "fetch_status": "ok",
     "fetch_errors": [],
     "source": "arXiv API",
     "source_url": "https://info.arxiv.org/help/api/",
     "analysis_status": "mixed",
-    "analysis_model": null,
-    "analysis_api_mode": null,
-    "analysis_endpoint": "openai",
+    "analysis_model": "gpt-5.5",
+    "analysis_api_mode": "responses",
+    "analysis_endpoint": "custom",
     "analysis_error": "",
     "analysis_basis": "title + abstract + categories",
     "lookback_days": 21,
@@ -86,8 +86,8 @@
       "2026-06",
       "2026-05"
     ],
-    "archive_ai_count": 18,
-    "archive_pending_count": 149,
+    "archive_ai_count": 36,
+    "archive_pending_count": 131,
     "current_focus_ids": [
       "2608.06343",
       "2608.04868",
@@ -323,19 +323,31 @@
       },
       "track": "discovery",
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T08:30:18Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：We compute and test analytic models for the plunging region dynamics, thermodynamics, and magnetic fields against dedicated 3D global general relativistic magnetohydrodynamics (MHD) simulations of thin accretion discs around black holes across the spin range, using the code {\\tt ATHENAK}.",
-        "why_it_matters_zh": "这项工作涉及黑洞、大型巡天、高能天体物理；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 OPENAI_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 3,
-        "confidence": 30
+        "generated_at": "2026-08-07T09:42:33Z",
+        "title_zh": "跨黑洞自旋范围的薄吸积盘下落区",
+        "summary_zh": "本文研究薄吸积盘在黑洞内区 plunging region 的动力学、热力学与磁场行为，并用 ATHENAK 进行的跨自旋 3D 全局 GRMHD 模拟检验解析模型。摘要称下落流体总体接近重力主导的测地线下落，热力学框架与模拟吻合较好，新磁通冻结模型也大体符合模拟，同时提示存在一定非理想 MHD 耗散，并发现顺行自旋越高 MHD 应力越强。",
+        "why_it_matters_zh": "这篇论文主要属于高能天体物理而非 CMB 研究；其宇宙学关联在于黑洞自旋和吸积盘内区辐射建模会影响高能源族群的物理解释，但与 CMB 各向异性、前景建模或参数推断没有直接关系。",
+        "key_points": [
+          "研究薄吸积盘在黑洞内稳圆轨道内侧的 plunging region。",
+          "用跨自旋范围的 3D GRMHD 模拟检验解析动力学、热力学和磁场模型。",
+          "摘要报告顺行自旋越高，plunging region 的 MHD 应力幅度越大。"
+        ],
+        "methods": [
+          "解析模型",
+          "3D 全局广义相对论磁流体力学模拟",
+          "ATHENAK 代码",
+          "薄吸积盘黑洞自旋序列",
+          "测地线下落模型",
+          "磁通冻结模型",
+          "M33 X-7 个例检验"
+        ],
+        "reading_note_zh": "精读时应核对模拟的薄盘厚度、磁场初始条件和自旋采样如何影响应力-自旋关系，以及将该关系用于 X 射线自旋测量时的模型依赖性。",
+        "audience": "快速浏览",
+        "novelty_score": 7,
+        "confidence": 88
       },
       "first_selected_at": "2026-08-07T08:30:18Z",
       "last_selected_at": "2026-08-07T08:32:32Z"
@@ -375,19 +387,30 @@
       },
       "track": "discovery",
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T08:30:18Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：The inspiral and merger of two supermassive black holes (SMBHs) releases immense energy in low-frequency gravitational waves (GWs).",
-        "why_it_matters_zh": "这项工作涉及引力波、黑洞、高能天体物理；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 OPENAI_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 4,
-        "confidence": 30
+        "generated_at": "2026-08-07T09:42:33Z",
+        "title_zh": "一种用于超大质量双黑洞内旋建模的“由内向外”方法",
+        "summary_zh": "本文针对超大质量双黑洞并合前的复杂天体物理演化，提出一种“inside-out”解析建模方法，把进入引力波主导内旋的轨道半长轴 a_GW 作为 PTA 随机引力波背景分析中的关键自由参数。摘要报告 GWB 的谱形和振幅最敏感于 a_GW，而对内区幂律指数、外层延迟时间以及若干标度假设的依赖较弱。",
+        "why_it_matters_zh": "该文与 CMB 的联系是宇宙学背景信号和参数推断层面的：PTA 探测的纳赫兹随机引力波背景是另一类宇宙学/天体物理背景场，其源模型会影响对黑洞并合史和星系演化的解释；但它不直接处理 CMB 温度、偏振或透镜数据。",
+        "key_points": [
+          "提出从小尺度向外建模 SMBH 双黑洞内旋的 inside-out 框架。",
+          "主张将从天体物理驱动转入引力波主导的半长轴 a_GW 作为 PTA 随机背景分析的自由参数。",
+          "摘要称 GWB 谱形和振幅对 a_GW 最敏感，对若干外层演化假设较不敏感。"
+        ],
+        "methods": [
+          "解析建模框架",
+          "PTA 纳赫兹随机引力波背景建模",
+          "a_GW 自由参数化",
+          "天体物理内旋时标的幂律标度",
+          "外层延迟时间模型",
+          "与气体驱动和恒星驱动内旋模型比较"
+        ],
+        "reading_note_zh": "精读时应核对 a_GW 参数化与 SMBH 质量、质量比、红移分布之间的退化关系，以及该简化框架在 PTA 数据和未来 LISA 推断中是否足够灵活。",
+        "audience": "领域相关",
+        "novelty_score": 7,
+        "confidence": 86
       },
       "first_selected_at": "2026-08-07T08:30:18Z",
       "last_selected_at": "2026-08-07T08:32:32Z"
@@ -435,19 +458,30 @@
         "dark-sector"
       ],
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T08:30:18Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：Megamaser distances can be measured without using the traditional distance ladder.",
-        "why_it_matters_zh": "这项工作涉及CMB、张力与反常、暗能量；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 OPENAI_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 4,
-        "confidence": 30
+        "generated_at": "2026-08-07T09:42:33Z",
+        "title_zh": "重新分析兆脉泽：来自本地探针的低 H0 值改变了我们对哈勃张力的看法",
+        "summary_zh": "本文重新分析 megamaser 距离和红移数据，以获得独立于传统距离阶梯的本地 H0 估计，主要改进是使用结合受约束宇宙学模拟和红移巡天数据的新速度场重建来修正本动速度。摘要称新结果与 CMB 推断的 H0 一致，并与本地距离阶梯结果存在超过 2σ 的张力，从而将解释指向距离阶梯中的未知系统误差而非新物理。",
+        "why_it_matters_zh": "这篇与 CMB 宇宙学高度相关，因为它直接比较本地、非距离阶梯的 H0 测量与 CMB 推断值，并改变了 megamaser 在哈勃张力讨论中的方向。若摘要结论稳健，它会削弱“CMB 与本地宇宙之间需要新物理”的解释压力，并把重点转向本动速度校正和距离阶梯系统误差。",
+        "key_points": [
+          "重新分析不依赖传统距离阶梯的 megamaser 距离和红移数据。",
+          "关键改进是用新的速度场重建修正本动速度。",
+          "摘要称得到的 H0 与 CMB 值一致，并与本地距离阶梯值存在超过 2σ 的张力。"
+        ],
+        "methods": [
+          "megamaser 距离和红移数据再分析",
+          "新的速度场重建",
+          "受约束宇宙学模拟",
+          "红移巡天数据",
+          "本动速度修正",
+          "与 CMB 和本地距离阶梯 H0 比较"
+        ],
+        "reading_note_zh": "精读时最应核对速度场重建和本动速度误差模型是否会主导 H0 后验，包括受约束模拟、红移巡天选择函数、非高斯个体星系运动处理，以及与既有 megamaser 分析的差异是否足以支撑系统误差解释。",
+        "audience": "建议精读",
+        "novelty_score": 8,
+        "confidence": 92
       },
       "first_selected_at": "2026-08-07T08:30:18Z",
       "last_selected_at": "2026-08-07T09:36:27Z"
@@ -632,19 +666,32 @@
       },
       "track": "discovery",
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T08:30:18Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：We construct a novel Kerr-like black hole solution embedded in a general double power law dark matter environment by applying the Newman--Janis algorithm to a Schwarzschild-like seed geometry.",
-        "why_it_matters_zh": "这项工作涉及暗物质、黑洞、引力与相对论；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 OPENAI_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 4,
-        "confidence": 30
+        "generated_at": "2026-08-07T09:42:33Z",
+        "title_zh": "一般双幂律暗物质环境中的新型类 Kerr 黑洞：几何、光谱学与能量提取",
+        "summary_zh": "论文构造了一个嵌入一般双幂律暗物质环境的 Kerr-like 黑洞解，并研究暗物质对视界结构、极端自旋、曲率性质及标量扰动谱的影响。摘要报告称，在 Dehnen 型剖面中旋转-晕相互作用可在 γ≤2 时消除本质曲率奇点，且晕密度和尖 cusp 会改变准束缚态、标量云阈值、超辐射放大以及热标量场能量提取效率。",
+        "why_it_matters_zh": "这篇工作主要属于强引力和暗物质晕中的黑洞物理，与 CMB 的联系较间接；其宇宙学意义在于探索暗物质密度剖面对紧致天体时空和粒子场信号的影响，可作为暗物质天体物理模型的补充背景，但不是直接的 CMB 观测或参数推断论文。",
+        "key_points": [
+          "构造了嵌入一般双幂律暗物质环境的 Kerr-like 旋转黑洞解。",
+          "摘要称 Dehnen 型剖面在 γ≤2 时，旋转与晕的相互作用可消除本质曲率奇点。",
+          "暗物质晕参数会影响标量准束缚态、标量云阈值、超辐射放大和热标量场能量提取效率。"
+        ],
+        "methods": [
+          "Newman--Janis 算法",
+          "Schwarzschild-like seed geometry",
+          "一般双幂律暗物质密度剖面",
+          "Dehnen (1,4,γ) halo",
+          " massive scalar perturbations",
+          "解析低频匹配方法",
+          "准束缚态谱、标量云形成条件、超辐射放大因子分析",
+          "热标量场的旋转能量提取分析"
+        ],
+        "reading_note_zh": "精读时应重点核对 Newman--Janis 算法在含暗物质晕种子度规上的适用性、所得 Kerr-like 解的物理一致性，以及“消除本质曲率奇点”和超辐射抑制结论是否依赖特定剖面或近似条件。",
+        "audience": "快速浏览",
+        "novelty_score": 8,
+        "confidence": 86
       },
       "first_selected_at": "2026-08-07T08:30:18Z",
       "last_selected_at": "2026-08-07T08:32:32Z"
@@ -718,19 +765,30 @@
         "instruments"
       ],
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T08:30:18Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：This work reports on a test campaign conducted at the IRAM 30m telescope to validate the COSMOCal instrument, a novel concept for absolute calibration of polarization angle, beam properties, and instrumental efficiency.",
-        "why_it_matters_zh": "这项工作涉及CMB、暴胀、大型巡天；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 OPENAI_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 3,
-        "confidence": 30
+        "generated_at": "2026-08-07T09:42:33Z",
+        "title_zh": "COSMOCal 项目在 IRAM 30 米望远镜上的概念验证",
+        "summary_zh": "论文报告 COSMOCal 项目在 IRAM 30m 望远镜上的概念验证测试，目标是验证一种用于偏振角、波束性质和仪器效率绝对定标的新型仪器。摘要称该地面原型已在真实观测条件下与天线和毫米波偏振仪耦合，并测试了其重建偏振观测量的能力。",
+        "why_it_matters_zh": "这篇论文与 CMB 偏振实验直接相关。未来 CMB B 模式和宇宙暴胀信号搜索高度依赖偏振角、波束和效率的绝对定标；稳定、可由多个大口径地面台站同时观测的偏振参考源若可行，将有助于降低仪器系统误差。",
+        "key_points": [
+          "COSMOCal 旨在提供偏振角、波束性质和仪器效率的绝对定标。",
+          "摘要报告了 2024 年 9 月在 IRAM 30m 望远镜上的首次天线耦合验证。",
+          "测试目标包括在真实观测条件下重建偏振观测量，并与毫米波偏振仪接口。"
+        ],
+        "methods": [
+          "IRAM 30m telescope 测试观测",
+          "COSMOCal 地面原型",
+          "实验室表征结果基础上进行天线耦合验证",
+          "毫米波偏振仪接口测试",
+          "偏振观测量重建",
+          "偏振角、波束性质和仪器效率绝对定标概念"
+        ],
+        "reading_note_zh": "精读时应重点核对测试中偏振角、波束和效率定标的误差预算、系统误差控制、与实验室表征的一致性，以及该地面验证能否外推到未来空间定标参考源。",
+        "audience": "建议精读",
+        "novelty_score": 8,
+        "confidence": 93
       },
       "first_selected_at": "2026-08-07T08:30:18Z",
       "last_selected_at": "2026-08-07T09:36:27Z"
@@ -854,19 +912,33 @@
       },
       "track": "discovery",
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T08:30:18Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：Large-volume neutrino telescopes offer a unique opportunity to search for decaying dark matter through events containing a pair of energetic, highly non-collimated muon tracks emerging from a common vertex.",
-        "why_it_matters_zh": "这项工作涉及暗物质、中微子、粒子宇宙学；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 OPENAI_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 4,
-        "confidence": 30
+        "generated_at": "2026-08-07T09:42:33Z",
+        "title_zh": "大体积中微子望远镜中物质诱导暗物质衰变的新颖信号",
+        "summary_zh": "论文研究大体积中微子望远镜中由物质诱导暗物质衰变产生的双 μ 径迹信号，提出两种机制使激发态暗物质在普通物质附近快速衰变。摘要报告称，计算得到的 μ 子能量和张角分布显示，某些参数空间可在 IceCube、KM3NeT 等实验中给出可观测事件率且与现有约束相容。",
+        "why_it_matters_zh": "该工作属于粒子宇宙学和多信使暗物质搜索，与 CMB 的联系主要体现在暗物质性质约束的互补性。CMB 对暗物质衰变、湮灭和能量注入有强约束，而这里关注在物质丰富环境中增强的衰变信号；精读时可比较其参数空间是否避开或补充 CMB 限制。",
+        "key_points": [
+          "提出在大体积中微子望远镜中寻找共顶点、双高能 μ 径迹的暗物质衰变信号。",
+          "机制核心是激发态暗物质在真空中极长寿命，但在普通物质环境中衰变显著加快。",
+          "摘要称某些可行参数空间可在 IceCube、KM3NeT 等实验中产生可观测事件率，并满足既有限制。"
+        ],
+        "methods": [
+          "大体积中微子望远镜事件率估计",
+          "IceCube 和 KM3NeT 灵敏度讨论",
+          "物质诱导暗物质衰变模型",
+          "普通物质源长程标量场",
+          "暗区质量谱改变并开启 χ2→χ1 Z′ 衰变",
+          "标量背景诱导 Z′-光子动能混合",
+          "三体衰变 χ2→χ1 μ+ μ−",
+          "μ 子能量与张角分布计算",
+          "宇宙学长寿命带电粒子多 μ 事件灵敏度简述"
+        ],
+        "reading_note_zh": "精读时应重点核对物质诱导机制与现有暗物质、第五力、动能混合和天体物理约束之间的相容性，以及“标准模型背景可忽略”和可观测事件率的实验选择效率假设。",
+        "audience": "领域相关",
+        "novelty_score": 8,
+        "confidence": 88
       },
       "first_selected_at": "2026-08-07T08:30:18Z",
       "last_selected_at": "2026-08-07T08:32:32Z"
@@ -993,19 +1065,29 @@
         "surveys"
       ],
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T09:36:27Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：Recent observational data arising from the DESI collaboration has hinted at a possible departure from the standard $Λ$CDM cosmological model, preferring instead the presence of a dynamical dark energy component.",
-        "why_it_matters_zh": "这项工作涉及观测项目、暗能量、暗物质；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 GPT_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 4,
-        "confidence": 30
+        "generated_at": "2026-08-07T09:42:33Z",
+        "title_zh": "来自轴子暗部门的耦合 quintessence",
+        "summary_zh": "本文针对 DESI 等近期数据暗示的动态暗能量和表观 phantom crossing，提出用两个相互作用的类轴子场构成暗部门：暗能量本身不跨越 phantom divide，而由暗物质演化偏离标准 CDM 产生等效行为。摘要报告，在合适质量层级下该体系可归入耦合 quintessence，并且用当前数据统计分析时，亚普朗克暗能量轴子衰变常数可处于观测允许范围内，且相对 ΛCDM 给出更好拟合并在贝叶斯比较中保持竞争力。",
+        "why_it_matters_zh": "这篇论文直接关系到晚期宇宙学参数推断中对 ΛCDM 的扩展，尤其是暗能量状态方程、暗物质连续性方程和几何距离观测之间的退化。对 CMB 研究者而言，任何暗部门相互作用都会影响从早期宇宙锚定到晚期距离尺度、结构增长和综合数据联合拟合的解释，需要关注其是否与 CMB 约束兼容。",
+        "key_points": [
+          "用两个相互作用的类轴子场分别描述暗能量和暗物质。",
+          "在质量层级满足角色要求时，动力学可等效为耦合 quintessence 流体框架。",
+          "摘要称当前数据下该模型拟合优于 ΛCDM，贝叶斯角度仍具竞争力。"
+        ],
+        "methods": [
+          "耦合 quintessence 框架",
+          "流体描述中的含源连续性方程",
+          "当前观测数据的统计分析",
+          "与 ΛCDM 的模型比较",
+          "轴子/类轴子暗部门模型"
+        ],
+        "reading_note_zh": "精读时应重点核对所用“当前数据”的具体组合、DESI 信息如何进入似然分析、耦合项与轴子势的参数化是否导致等效暗物质演化退化，以及所谓贝叶斯竞争力依赖何种先验。",
+        "audience": "建议精读",
+        "novelty_score": 8,
+        "confidence": 86
       },
       "first_selected_at": "2026-08-07T09:36:27Z",
       "last_selected_at": "2026-08-07T09:36:27Z"
@@ -1208,19 +1290,30 @@
         "gravity"
       ],
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T09:36:27Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：We study a static, circularly symmetric deformation of the non-rotating BTZ black hole obtained by inserting a smooth transition function into the \\emph{inverse} radial metric component, $g^{rr}=S_δ(r)F(r)$ with $S_δ=\\tanh[(r-r_h)/δ]$, leaving $g_{tt}=-F$ untouched.",
-        "why_it_matters_zh": "这项工作涉及张力与反常、黑洞、大型巡天；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 GPT_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 4,
-        "confidence": 30
+        "generated_at": "2026-08-07T09:42:33Z",
+        "title_zh": "具有极端零测地喉部的平滑 BTZ 黑洞反弹",
+        "summary_zh": "本文研究一种对非旋转 BTZ 黑洞的平滑形变，作者指出该构造并不实现地平线处的洛伦兹-黎曼签名改变，而是在适当坐标中可实解析延拓为洛伦兹几何。摘要报告其结果是具有极端零测地喉部的 black bounce，并给出有效源、能量条件、近喉部几何、熵估计和 Aretakis 型不稳定性等分析。",
+        "why_it_matters_zh": "该文主要属于经典引力和低维黑洞几何，并非直接面向 CMB 数据分析。它与宇宙学的联系更多在理论引力层面，例如时空正则化、地平线结构和有效能量条件，这些主题可为量子引力或早期宇宙奇点替代理论提供背景，但摘要未显示其对 CMB 可观测量有直接影响。",
+        "key_points": [
+          "研究的是非旋转 BTZ 黑洞的静态圆对称形变。",
+          "作者认为该构造不是洛伦兹到黎曼的签名改变，而是可解析延拓的洛伦兹黑洞反弹几何。",
+          "摘要讨论能量条件、近喉部 AdS2×S1、熵估计和 Aretakis 型不稳定性。"
+        ],
+        "methods": [
+          "在逆径向度规分量中引入平滑过渡函数 S_δ=tanh[(r-r_h)/δ]",
+          "坐标变换 r-r_h=q^2 与先进时间坐标",
+          "有效源的闭式表达",
+          "能量条件的不变量分析",
+          "标量有效势分析",
+          "Wald-Noether 荷、Brown-York 质量和 Cardy 估计"
+        ],
+        "reading_note_zh": "精读时最应核对的是地平线处解析延拓与正则性的推导、有效应力能量张量是否物理可接受，以及熵和 Cardy 估计在零表面引力且无第一定律时的适用范围。",
+        "audience": "快速浏览",
+        "novelty_score": 7,
+        "confidence": 78
       },
       "first_selected_at": "2026-08-07T09:36:27Z",
       "last_selected_at": "2026-08-07T09:36:27Z"
@@ -1510,19 +1603,33 @@
         "ai-computation"
       ],
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T09:36:27Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：Fast radio bursts (FRBs) are intense millisecond-duration radio transients of extragalactic origin whose physical nature remains under active investigation, and which also serve as probes of the intergalactic medium.",
-        "why_it_matters_zh": "这项工作涉及新探测、张力与反常、引力波；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 GPT_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
+        "generated_at": "2026-08-07T09:42:33Z",
+        "title_zh": "阿根廷射电天文研究所的首次快速射电暴搜索项目",
+        "summary_zh": "本文报告阿根廷射电天文研究所首次 FRB 搜索项目，使用 IAR 30 m 天线对南天邻近超星系团区域进行 212 小时观测，并用 PRESTO 与 FETCH 筛选色散单脉冲。摘要称识别出一个指向 Phoenix 超星系团 A2870 附近的 FRB 候选体 FRB 20251018，并验证了 IAR 天线开展 FRB 搜索的能力。",
+        "why_it_matters_zh": "FRB 通过色散量可作为星系际介质和重子分布探针，因此与大尺度结构和宇宙学重子预算有关；不过它不是 CMB 论文。对 CMB 读者的相关性主要在于独立低红移物质分布探针、瞬变源前景和未来与引力波或电磁暂现源交叉匹配的多信使宇宙学潜力。",
+        "key_points": [
+          "报告 IAR 首次 FRB 搜索观测，目标为南天邻近星系超星系团区域。",
+          "使用 PRESTO 搜索色散单脉冲，并用 FETCH 机器学习分类候选体。",
+          "发现一个 FRB 候选体 FRB 20251018，并展示若干边缘候选体。"
+        ],
+        "methods": [
+          "IAR 一台 30 m 天线观测",
+          "ROACH-based backend",
+          "中心频率 1400 MHz、带宽 400 MHz",
+          "41--82 μs 时间分辨率",
+          "总净观测时间 212 h",
+          "PRESTO 色散单脉冲搜索",
+          "FETCH 机器学习分类器",
+          "Parkes 已知 FRB 档案数据验证",
+          "向 IAR 观测中注入合成爆发进行验证"
+        ],
+        "reading_note_zh": "精读时应核对 FRB 20251018 的射频干扰排除、波束和定位不确定性、DM 搜索范围选择、FETCH 分类阈值，以及候选体是否有多天线或多波段复核。",
+        "audience": "领域相关",
         "novelty_score": 6,
-        "confidence": 30
+        "confidence": 90
       },
       "first_selected_at": "2026-08-07T09:36:27Z",
       "last_selected_at": "2026-08-07T09:36:27Z"
@@ -1655,19 +1762,29 @@
         "gravity"
       ],
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T09:36:27Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：Departures from standard slow-roll (SR) inflation have attracted increasing interest in recent years.",
-        "why_it_matters_zh": "这项工作涉及CMB、暴胀、暗物质；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 GPT_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 3,
-        "confidence": 30
+        "generated_at": "2026-08-07T09:42:33Z",
+        "title_zh": "膨胀不变性如何抑制 CMB 尺度曲率扰动的环修正",
+        "summary_zh": "本文讨论非标准慢滚暴胀中，小尺度曲率扰动增强所导致的非线性环修正是否会影响 CMB 尺度功率谱。作者在忽略空间梯度项的非线性超哈勃框架中，利用空间微分同胚不变性尤其是膨胀不变性，摘要称证明了只要 CMB 模式在慢滚阶段出视界，CMB 功率谱的环修正在任意势形、平滑或尖锐跃迁及任意环阶下受到抑制。",
+        "why_it_matters_zh": "这篇论文直接针对 CMB 尺度扰动的理论稳健性：若产生原初黑洞的模型在小尺度显著增强功率谱，环修正是否污染 CMB 功率谱会影响这类暴胀模型与 CMB 观测约束之间的连接。摘要给出的对称性论证若成立，可为使用 CMB 功率谱约束含小尺度增强的暴胀模型提供重要理论依据。",
+        "key_points": [
+          "研究小尺度增强曲率扰动模型中环修正是否会反作用到 CMB 尺度。",
+          "强调空间微分同胚不变性，特别是膨胀不变性，对 CMB 功率谱环修正的抑制作用。",
+          "摘要称结果适用于任意暴胀势、平滑或尖锐跃迁、任意环阶，条件是 CMB 尺度在慢滚阶段出视界。"
+        ],
+        "methods": [
+          "忽略空间梯度项的非线性框架",
+          "超哈勃尺度环修正分析",
+          "空间微分同胚不变性与膨胀不变性分析",
+          "共动规范与空间平直规范比较",
+          "三次与四次相互作用项的抵消分析"
+        ],
+        "reading_note_zh": "精读时最应核对其“忽略空间梯度项”的适用范围，以及从膨胀不变性推出任意环阶抑制的推导是否依赖边界项、规范选择或慢滚出视界条件；还要检查尖锐跃迁极限中三次发散项与四次项精确抵消的具体机制。",
+        "audience": "建议精读",
+        "novelty_score": 8,
+        "confidence": 88
       },
       "first_selected_at": "2026-08-07T09:36:27Z",
       "last_selected_at": "2026-08-07T09:36:27Z"
@@ -1792,19 +1909,31 @@
         "dark-sector"
       ],
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T09:36:27Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：We study the phenomenology of the complex scoto-singlet model, an extension of the scotogenic framework that simultaneously accounts for radiative neutrino masses and fermionic dark matter.",
-        "why_it_matters_zh": "这项工作涉及张力与反常、暗物质、中微子；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 GPT_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 4,
-        "confidence": 30
+        "generated_at": "2026-08-07T09:42:33Z",
+        "title_zh": "含复标量单重态的 Scotogenic 模型中的费米子暗物质",
+        "summary_zh": "本文研究复 scoto-singlet 模型中的费米子暗物质，该模型同时解释辐射产生的中微子质量和暗物质。作者通过 MCMC 扫描并加入理论一致性、中微子振荡、轻子味破坏、对撞机搜索和暗物质遗迹丰度等约束，摘要报告可行解出现在 Higgs 共振附近及共湮灭区域，且多数参数空间的直接和间接探测信号很弱。",
+        "why_it_matters_zh": "这篇论文不直接处理 CMB 各向异性或早期宇宙扰动，但与宇宙学暗物质组成有关；其暗物质遗迹丰度约束与 CMB 推断的宇宙暗物质密度背景相关。对 CMB 读者而言，它主要提供粒子暗物质模型层面的候选机制和实验可检验性，而不是 CMB 数据分析方法。",
+        "key_points": [
+          "研究带复标量单重态的 scoto-singlet 模型。",
+          "用 MCMC 扫描并联合中微子、轻子味破坏、对撞机和暗物质遗迹丰度约束。",
+          "可行暗物质区域主要出现在 Higgs 共振附近和共湮灭区域，直接与间接探测信号被强烈压低。"
+        ],
+        "methods": [
+          "Markov Chain Monte Carlo 参数空间扫描",
+          "理论一致性约束",
+          "中微子振荡数据约束",
+          "轻子味破坏约束",
+          "对撞机搜索约束",
+          "观测暗物质遗迹丰度约束",
+          "直接探测、间接探测与 monojet/长寿命带电标量信号讨论"
+        ],
+        "reading_note_zh": "精读时应核对参数扫描的先验、似然实现和约束组合方式，特别是遗迹丰度、轻子味破坏与压缩谱对撞机限制如何共同决定可行区域；还需确认“当前实验难以覆盖”的结论是否依赖特定参数选择。",
+        "audience": "领域相关",
+        "novelty_score": 6,
+        "confidence": 82
       },
       "first_selected_at": "2026-08-07T09:36:27Z",
       "last_selected_at": "2026-08-07T09:36:27Z"
@@ -1867,19 +1996,29 @@
         "surveys"
       ],
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T09:36:27Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：We present the discovery of Aquarius IV (Rubin J2201$-$0234) -- the first ultra-faint Milky Way satellite to be identified using data from the Vera C.",
-        "why_it_matters_zh": "这项工作涉及新探测、暗能量、大型巡天；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 GPT_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 4,
-        "confidence": 30
+        "generated_at": "2026-08-07T09:42:33Z",
+        "title_zh": "利用 Vera C. Rubin 天文台早期数据预览 2 发现遥远的超暗弱银河系卫星 Aquarius IV",
+        "summary_zh": "本文报告利用 Vera C. Rubin Observatory Early Data Preview 2 发现新的遥远超暗弱银河系卫星 Aquarius IV，并用 Dark Energy Camera 档案成像独立确认。摘要称联合拟合显示它是外银河晕中低光度、致密、古老且贫金属的恒星系统，性质接近最小最暗的超暗弱矮星系，但尚不能排除球状星团解释。",
+        "why_it_matters_zh": "该工作主要属于近场宇宙学和星系天体物理，对 CMB 研究是间接相关：银河系卫星数量和性质可检验暗物质小尺度结构，与 CMB 所约束的宇宙学模型在小尺度上的延伸有关。它不直接影响 CMB 初级各向异性，但有助于连接早期宇宙参数与晚期结构形成。",
+        "key_points": [
+          "报告 Rubin Observatory 早期数据中发现一个新的超暗弱银河系卫星候选体 Aquarius IV。",
+          "用 Rubin EDP2 测光发现，并由 DECam 档案成像独立确认。",
+          "其性质类似最小、最暗的超暗弱矮星系，但摘要称球状星团分类尚不能排除。"
+        ],
+        "methods": [
+          "Vera C. Rubin Observatory Early Data Preview 2 测光数据",
+          "Dark Energy Camera 档案成像独立确认",
+          "形态与距离联合拟合",
+          "恒星等龄线匹配",
+          "更深成像和光谱作为后续需求"
+        ],
+        "reading_note_zh": "精读时应重点核对成员星选择、背景建模、显著性估计和形态-距离联合拟合的假设；分类上尤其要看是否有动力学或金属丰度证据足以区分超暗弱矮星系与球状星团。",
+        "audience": "快速浏览",
+        "novelty_score": 7,
+        "confidence": 90
       },
       "first_selected_at": "2026-08-07T09:36:27Z",
       "last_selected_at": "2026-08-07T09:36:27Z"
@@ -1926,19 +2065,30 @@
         "early-universe"
       ],
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T09:36:27Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：We study effective reheating in a scalar--Gauss--Bonnet inflationary model with a phase-space-dependent coupling $μ(φ,X)$, in which a compact field-space feature is combined with a bounded kinetic gate.",
-        "why_it_matters_zh": "这项工作涉及CMB、暴胀、宇宙学；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 GPT_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 2,
-        "confidence": 30
+        "generated_at": "2026-08-07T09:42:33Z",
+        "title_zh": "具有 μ(φ,X) 耦合的 Gauss--Bonnet 暴胀中的有效再加热",
+        "summary_zh": "本文研究带有相空间依赖耦合 μ(φ,X) 的标量--Gauss--Bonnet 暴胀模型中有效再加热的持续时间和温度。摘要称，作者用修正后的暴胀背景和热史匹配关系扫描 λ_GB 与 g_X，发现参考情形下增大任一参数会增加 N_re、降低 T_re，但在更局域耦合、动能饱和或较弱 Gauss--Bonnet 相互作用时该趋势可被压低、反转或变得近乎可忽略。",
+        "why_it_matters_zh": "再加热连接暴胀末期与热大爆炸初始条件，并影响把 CMB pivot 尺度观测量映射到暴胀模型参数的方式。该文把 Gauss--Bonnet 修正和动能门控对再加热量的影响与 CMB 约束比较，因此对用 CMB 检验修正引力或非标准暴胀模型的读者有直接关联。",
+        "key_points": [
+          "研究带相空间依赖 Gauss--Bonnet 耦合 μ(φ,X) 的暴胀模型中的有效再加热。",
+          "通过热史匹配关系推导再加热持续时间 N_re 与温度 T_re。",
+          "摘要报告不同 λ_GB、g_X 扫描下 N_re 与 T_re 的变化，并与 CMB 约束比较。"
+        ],
+        "methods": [
+          "标量--Gauss--Bonnet 暴胀模型",
+          "相空间依赖耦合 μ(φ,X)",
+          "固定 pivot 参考扫描",
+          "热史匹配关系",
+          "四个有效再加热状态方程参数：-1/3、0、2/3、1",
+          "与 CMB 约束比较"
+        ],
+        "reading_note_zh": "精读时应核对热史匹配中使用的 pivot 量、暴胀末有效能量密度和状态方程假设是否自洽，以及所谓“固定 pivot”预测与 CMB 约束比较时采用了哪些观测量和先验。",
+        "audience": "领域相关",
+        "novelty_score": 6,
+        "confidence": 86
       },
       "first_selected_at": "2026-08-07T09:36:27Z",
       "last_selected_at": "2026-08-07T09:36:27Z"
@@ -1988,19 +2138,30 @@
         "dark-sector"
       ],
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T09:36:27Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：We study the strong backreaction regime in axion inflation, in which the friction from Abelian gauge fields generated via the pseudo-scalar interaction $\\fracβ{4 M_p} φF {\\tilde F}$ is comparable to Hubble friction.",
-        "why_it_matters_zh": "这项工作涉及CMB、暴胀、暗物质；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 GPT_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 2,
-        "confidence": 30
+        "generated_at": "2026-08-07T09:42:33Z",
+        "title_zh": "轴子暴胀：强反作用区域中的微扰可控性",
+        "summary_zh": "本文研究轴子暴胀中由赝标量耦合产生的 Abelian 规范场在强反作用区域对微扰可控性的影响。摘要称，作者用含轴子梯度的一阶梯度展开和 one-loop in-in 计算量化谱反作用，发现大耦合 β 下存在扩展的温和反作用区域，并指出 CMB 非高斯性界限给出与轴子势选择无关的 βH/M_p < 1.4×10^{-3}。",
+        "why_it_matters_zh": "轴子--规范场耦合可产生非平庸的标量、张量扰动和非高斯性，是 CMB 对暴胀相互作用进行约束的重要场景。该文直接讨论 CMB 非高斯性对耦合强度和 Hubble 尺度组合的限制，因此与 CMB 暴胀模型判别高度相关。",
+        "key_points": [
+          "研究轴子暴胀中 Abelian 规范场强反作用接近 Hubble 摩擦的区域。",
+          "用梯度展开和 one-loop in-in 计算评估微扰控制。",
+          "摘要给出一个由 CMB 非高斯性约束导出的 βH/M_p 上限。"
+        ],
+        "methods": [
+          "轴子暴胀模型",
+          "赝标量相互作用 β φ F \\tilde F /(4 M_p)",
+          "含轴子梯度的一阶梯度展开形式主义",
+          "one-loop in-in 计算",
+          "谱反作用评估",
+          "CMB 非高斯性约束"
+        ],
+        "reading_note_zh": "精读时最应核对“温和反作用区域”的判据、梯度展开与 one-loop in-in 结果如何相互验证，以及 CMB 非高斯性上限 βH/M_p < 1.4×10^{-3} 的推导假设和适用范围。",
+        "audience": "建议精读",
+        "novelty_score": 8,
+        "confidence": 88
       },
       "first_selected_at": "2026-08-07T09:36:27Z",
       "last_selected_at": "2026-08-07T09:36:27Z"
@@ -2049,19 +2210,28 @@
         "dark-sector"
       ],
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T09:36:27Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：Ray et al.",
-        "why_it_matters_zh": "这项工作涉及CMB、暗能量、宇宙学；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 GPT_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 2,
-        "confidence": 30
+        "generated_at": "2026-08-07T09:42:33Z",
+        "title_zh": "回应：“Pantheon+ 超新星中的各向同性减速与近零基线加速：暗能量争论中的新论据”",
+        "summary_zh": "本文回应 Ray 等人关于 Pantheon+ 超新星中 Hubble 膨胀加速在 CMB 偶极和反偶极半球同样强的主张。摘要称，作者认为对方混淆赤道坐标和银道坐标，导致 CMB 偶极方向取错，因此其反驳 SRS26 各向异性论点的结论没有依据。",
+        "why_it_matters_zh": "Ia 型超新星对暗能量和晚期宇宙加速的证据与 CMB 定义的参考方向、偶极和大尺度运动密切相关。若 CMB 偶极方向或坐标系统使用错误，会直接影响对宇宙加速各向同性、局域 bulk flow 以及暗能量解释的讨论。",
+        "key_points": [
+          "这是一篇针对 Pantheon+ 超新星各向异性加速争议的回应。",
+          "作者称对方混淆了赤道坐标与银道坐标，从而误用 CMB 偶极方向。",
+          "摘要结论是对方关于反驳 SRS26 各向异性论点的说法没有依据。"
+        ],
+        "methods": [
+          "Pantheon+ Ia 型超新星目录相关分析的批评性回应",
+          "CMB 偶极方向",
+          "赤道坐标与银道坐标的坐标检查",
+          "与 SRS26 分析结论对照"
+        ],
+        "reading_note_zh": "精读时应核对坐标转换和 CMB 偶极方向使用是否确有错误，并检查双方对半球划分、q0 或 qm 定义、距离截断和 bulk flow 对齐的处理是否一致。",
+        "audience": "领域相关",
+        "novelty_score": 4,
+        "confidence": 90
       },
       "first_selected_at": "2026-08-07T09:36:27Z",
       "last_selected_at": "2026-08-07T09:36:27Z"
@@ -2342,19 +2512,31 @@
         "early-universe"
       ],
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T09:36:27Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：Considering the mass parameters as free phenomenological parameters, we investigate inflation driven by a canonical scalar field with different potentials in LQC.",
-        "why_it_matters_zh": "这项工作涉及原初引力波、暴胀、观测项目；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 GPT_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 2,
-        "confidence": 30
+        "generated_at": "2026-08-07T09:42:33Z",
+        "title_zh": "环量子宇宙学中 inflaton 质量对暴胀前动力学和原初功率谱的影响",
+        "summary_zh": "本文把 inflaton 质量作为自由现象学参数，研究环量子宇宙学中二次势和 Starobinsky 势的暴胀前动力学、慢滚概率和原初功率谱。摘要报告称，三种扰动处理方法得到相似的谱形态：小 k 抑制、中间尺度放大并振荡、大 k 近尺度不变；经 CAMB 与 Planck 2018 比较后，高多极均与数据一致，低多极处 hybrid 方法最接近。",
+        "why_it_matters_zh": "这篇论文直接连接 LQC 反弹物理、原初标量/张量扰动和 CMB 角功率谱，尤其关注低多极异常可能对暴胀前历史和量子引力修正的敏感性。对 CMB 研究者而言，关键价值在于它把不同 LQC 扰动方案的原初谱差异传递到 Planck 可观测量中进行比较。",
+        "key_points": [
+          "研究 LQC 中不同 inflaton 质量对暴胀前动力学和原初功率谱的影响。",
+          "比较 dressed metric、hybrid 与 alternative mass function 三种方法。",
+          "摘要称低多极处 hybrid 方法与 Planck 2018 更接近，dressed metric 偏离最大。"
+        ],
+        "methods": [
+          "环量子宇宙学中正则标量场模型",
+          "二次势与 Starobinsky 势",
+          "慢滚暴胀概率估计",
+          "dressed metric、hybrid、alternative mass function 三种原初谱计算方法",
+          "动能主导反弹情形",
+          "CAMB 计算角功率谱",
+          "Planck 2018 数据与最佳拟合 ΛCDM 比较"
+        ],
+        "reading_note_zh": "精读时应重点核对 inflaton 质量与枢轴尺度 k_star 的定义和标定方式、三种 LQC 扰动处理的初始条件是否完全一致，以及与 Planck 低多极比较时是否使用了相同的归一化和似然设置。",
+        "audience": "建议精读",
+        "novelty_score": 8,
+        "confidence": 86
       },
       "first_selected_at": "2026-08-07T09:36:27Z",
       "last_selected_at": "2026-08-07T09:36:27Z"
@@ -2405,19 +2587,33 @@
         "surveys"
       ],
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T09:36:27Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：We introduce a density-level pivot construction for the Chevallier-Polarski-Linder (CPL) parameterization by defining the normalized dark energy density $f_p\\equiv f_{\\rm DE}(a_p)$ and the equation of state $ω_p\\equiv ω(a_p)$ at an optimized pivot scale factor $a_p$.",
-        "why_it_matters_zh": "这项工作涉及CMB、暗能量、大型巡天；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 GPT_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 3,
-        "confidence": 30
+        "generated_at": "2026-08-07T09:42:33Z",
+        "title_zh": "DESI DR2 之后，我们真的需要替代 ω0ωaCDM 参数化吗？",
+        "summary_zh": "本文针对 DESI DR2 后是否需要替代标准 w0waCDM 参数化的问题，提出 CPL 模型的密度层面 pivot 重参数化，并与基于暗能量密度二阶 Taylor 展开的 f_a f_b CDM 比较。摘要称，pivot 后的 CPL 降低了暗能量参数相关性、约束更稳定，并在统计比较和对 quintessence 背景演化的复现方面优于 f_a f_b CDM。",
+        "why_it_matters_zh": "暗能量参数化会影响 CMB 距离先验与低红移 BAO、超新星、H0 数据的联合解释，进而影响对 ΛCDM 张力和动态暗能量迹象的判断。该文使用压缩 CMB 与 DESI DR2 等数据比较参数基选择，对 CMB 约束如何进入暗能量模型选择具有直接相关性。",
+        "key_points": [
+          "提出 CPL 暗能量参数化的密度层面 pivot 重参数化。",
+          "使用压缩 CMB、DESI DR2 BAO、CC、Pantheon+ 与 SH0ES 先验约束模型。",
+          "摘要称 pivoted CPL 相比 f_a f_b CDM 更受统计比较支持。"
+        ],
+        "methods": [
+          "Chevallier-Polarski-Linder 参数化",
+          "密度层面 pivot 构造",
+          "f_a f_b CDM 二阶 Taylor 暗能量密度展开",
+          "压缩 CMB 数据",
+          "DESI DR2 BAO 数据",
+          "cosmic chronometers 数据",
+          "Pantheon+ Ia 型超新星数据",
+          "SH0ES H0 先验",
+          "与 quintessence 背景演化比较"
+        ],
+        "reading_note_zh": "精读时应核对压缩 CMB 信息的具体选择、pivot 标度因子的优化准则、模型比较指标，以及 SH0ES 先验是否主导了暗能量参数和 H0 相关结论。",
+        "audience": "建议精读",
+        "novelty_score": 7,
+        "confidence": 88
       },
       "first_selected_at": "2026-08-07T09:36:27Z",
       "last_selected_at": "2026-08-07T09:36:27Z"
@@ -2463,19 +2659,30 @@
         "early-universe"
       ],
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T09:36:27Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：The tracking condition $\\dotφ^2=γH^{-m}$ for single scalar field theory leads to analytic inflationary solutions, which are compatible with the current cosmic microwave background radiation experiments.",
-        "why_it_matters_zh": "这项工作涉及CMB、暴胀、引力与相对论；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 GPT_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 2,
-        "confidence": 30
+        "generated_at": "2026-08-07T09:42:33Z",
+        "title_zh": "从量子关联到暴胀 tracking 标量场演化",
+        "summary_zh": "本文讨论单标量场暴胀中 tracking 条件 dotφ^2=γH^{-m} 的理论来源，认为暴胀前宇宙可视作量子统计系统，标量场可作为量子自由度的集体凝聚出现。摘要称，通过量子到经典转变中的二点函数、信息论动机和 Wilsonian 场论论证，可以得到该 tracking 条件。",
+        "why_it_matters_zh": "该工作关注暴胀动力学条件的微观或统计起源，而暴胀模型的可行性最终需通过 CMB 标量谱、张量谱等观测量检验。它对 CMB 读者的意义主要在于提供一种可能生成与观测相容解析暴胀解的理论框架，但摘要未给出新的 CMB 数据分析。",
+        "key_points": [
+          "尝试为单标量场 tracking 条件提供量子统计和场论动机。",
+          "tracking 条件可导出解析暴胀解，摘要称其与当前 CMB 实验相容。",
+          "论证依赖量子到经典转变、二点函数、 susceptibility 和相关长度。"
+        ],
+        "methods": [
+          "单标量场理论",
+          "tracking 条件 dotφ^2=γH^{-m}",
+          "量子统计系统图像",
+          "标量场二点函数与 susceptibility",
+          "信息论动机",
+          "Wilsonian 量子场论论证"
+        ],
+        "reading_note_zh": "精读时应核对所谓“与当前 CMB 实验相容”的具体观测量和参数范围，以及从量子相关、susceptibility 到 tracking 条件的推导是否依赖额外假设或近似。",
+        "audience": "领域相关",
+        "novelty_score": 6,
+        "confidence": 75
       },
       "first_selected_at": "2026-08-07T09:36:27Z",
       "last_selected_at": "2026-08-07T09:36:27Z"
