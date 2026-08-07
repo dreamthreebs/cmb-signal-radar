@@ -130,7 +130,8 @@ python scripts/update_papers.py --max-results 15 --require-ai --force-ai
 - `schedule`：每天北京时间 12:35 检查一次。无新论文时不调用 GPT、不提交、不部署。
 - `workflow_dispatch`：在 Actions 页面手动启动；可选择强制刷新。
 - `push`：代码或页面发生修改时，只运行测试并部署已有数据，不调用 GPT。
-- GPT 鉴权失败、超时、返回结构不完整时，任务不覆盖 `papers.json`，线上继续展示上一次成功版本。
+- GPT Key 缺失、鉴权失败、超时、返回结构不完整或 arXiv 暂时不可用时，任务不覆盖 `papers.json`、不部署新页面，并以失败状态结束。
+- 故障时工作流会自动创建并指派 `⚠️ CMB Signal 自动更新异常` Issue；连续故障只更新同一条，API 恢复且成功更新后自动关闭。
 
 ## 调整选题范围
 

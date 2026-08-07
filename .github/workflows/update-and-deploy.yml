@@ -32,6 +32,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
   pages: write
   id-token: write
 
@@ -107,6 +108,7 @@ jobs:
           python scripts/update_papers.py --config config/radar.json --output site/data/papers.json "${args[@]}"
 
       - name: Test the data pipeline
+        id: tests
         if: steps.gate.outputs.should_test == 'true'
         run: python -m unittest discover -s tests -v
 
@@ -126,17 +128,43 @@ jobs:
           EVENT_NAME: ${{ github.event_name }}
           DATA_CHANGED: ${{ steps.update_papers.outputs.changed || 'false' }}
           UPDATE_REASON: ${{ steps.update_papers.outputs.reason || steps.gate.outputs.gate_reason }}
+          UPDATE_OUTCOME: ${{ steps.update_papers.outcome }}
+          TEST_OUTCOME: ${{ steps.tests.outcome }}
         run: |
-          if [[ "$EVENT_NAME" == "push" || "$DATA_CHANGED" == "true" ]]; then
+          incident="false"
+          incident_reason=""
+
+          if [[ "$UPDATE_OUTCOME" == "failure" ]]; then
+            incident="true"
+            incident_reason="update_step_failed"
+          elif [[ "$TEST_OUTCOME" == "failure" ]]; then
+            incident="true"
+            incident_reason="tests_failed"
+          elif [[ "$UPDATE_REASON" =~ ^(missing_api_key|ai_error|arxiv_unavailable)$ ]]; then
+            incident="true"
+            incident_reason="$UPDATE_REASON"
+          fi
+
+          if [[ "$incident" == "false" && ( "$EVENT_NAME" == "push" || "$DATA_CHANGED" == "true" ) ]]; then
             echo "should_deploy=true" >> "$GITHUB_OUTPUT"
             deploy_label="yes"
           else
             echo "should_deploy=false" >> "$GITHUB_OUTPUT"
             deploy_label="no"
           fi
+
+          echo "incident=$incident" >> "$GITHUB_OUTPUT"
+          echo "incident_reason=$incident_reason" >> "$GITHUB_OUTPUT"
+          if [[ "$incident" == "false" && "$EVENT_NAME" != "push" && "$UPDATE_REASON" == "updated" ]]; then
+            echo "recovered=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "recovered=false" >> "$GITHUB_OUTPUT"
+          fi
+
           echo "### CMB Signal automation" >> "$GITHUB_STEP_SUMMARY"
           echo "- Result: $UPDATE_REASON" >> "$GITHUB_STEP_SUMMARY"
           echo "- Deploy: $deploy_label" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Incident: $incident" >> "$GITHUB_STEP_SUMMARY"
 
       - name: Configure Pages
         if: steps.finalize.outputs.should_deploy == 'true'
@@ -147,6 +175,92 @@ jobs:
         uses: actions/upload-pages-artifact@v4
         with:
           path: site
+
+      - name: Notify repository owner about automation failure
+        if: always() && steps.finalize.outputs.incident == 'true'
+        uses: actions/github-script@v8
+        env:
+          INCIDENT_REASON: ${{ steps.finalize.outputs.incident_reason }}
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const title = "⚠️ CMB Signal 自动更新异常";
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const body = [
+              "CMB Signal 已进入失败关闭状态：本次没有覆盖历史数据，也没有部署新页面。",
+              "",
+              `- 原因：\`${process.env.INCIDENT_REASON}\``,
+              `- 触发方式：\`${context.eventName}\``,
+              `- 时间：${new Date().toISOString()}`,
+              `- [查看 Actions 日志](${runUrl})`,
+              "",
+              "修复 API Key、接口地址或服务状态后，请手动重新运行工作流；成功恢复时此 Issue 会自动关闭。",
+            ].join("\n");
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: "open",
+              per_page: 100,
+            });
+            const existing = issues.find((issue) => !issue.pull_request && issue.title === title);
+            if (existing) {
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existing.number,
+                body,
+              });
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existing.number,
+                body: `故障仍未恢复：[查看本次运行](${runUrl})（\`${process.env.INCIDENT_REASON}\`）。`,
+              });
+            } else {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title,
+                body,
+                assignees: [context.repo.owner],
+              });
+            }
+
+      - name: Close automation alert after recovery
+        if: always() && steps.finalize.outputs.recovered == 'true'
+        uses: actions/github-script@v8
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const title = "⚠️ CMB Signal 自动更新异常";
+            const { data: issues } = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: "open",
+              per_page: 100,
+            });
+            const existing = issues.find((issue) => !issue.pull_request && issue.title === title);
+            if (existing) {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existing.number,
+                body: "API 调用与数据更新已经恢复，告警自动关闭。",
+              });
+              await github.rest.issues.update({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: existing.number,
+                state: "closed",
+                state_reason: "completed",
+              });
+            }
+
+      - name: Fail closed after automation incident
+        if: always() && steps.finalize.outputs.incident == 'true'
+        run: |
+          echo "Automation incident: ${{ steps.finalize.outputs.incident_reason }}"
+          exit 1
 
   deploy:
     environment:
