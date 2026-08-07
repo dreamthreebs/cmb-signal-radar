@@ -49,6 +49,8 @@ GitHub Free 的项目 Pages 通常需要公开仓库；如果你的套餐支持�
 | `GPT_MODEL` | Variable | 模型名，默认 `gpt-5.6`；第三方需填写其模型标识 |
 | `GPT_API_MODE` | Variable | `responses`（默认）或 `chat_completions` |
 | `GPT_USER_AGENT` | Variable | 可选；第三方服务要求特定客户端标识时设置 |
+| `GPT_BATCH_SIZE` | Variable | 可选；每次分析的论文数，慢速第三方接口建议设为 `3` |
+| `GPT_REASONING_EFFORT` | Variable | 可选；Responses API 的推理强度，如 `low` |
 | `ARXIV_CONTACT_EMAIL` | Variable | 可选，让 arXiv User-Agent 带维护者联系方式 |
 
 官方 OpenAI 推荐使用：
@@ -74,6 +76,8 @@ gh secret set GPT_BASE_URL --repo dreamthreebs/cmb-signal-radar
 gh variable set GPT_MODEL --body "gpt-5.6" --repo dreamthreebs/cmb-signal-radar
 gh variable set GPT_API_MODE --body "responses" --repo dreamthreebs/cmb-signal-radar
 gh variable set GPT_USER_AGENT --body "provider-required-client-id" --repo dreamthreebs/cmb-signal-radar
+gh variable set GPT_BATCH_SIZE --body "3" --repo dreamthreebs/cmb-signal-radar
+gh variable set GPT_REASONING_EFFORT --body "low" --repo dreamthreebs/cmb-signal-radar
 ```
 
 未配置 Key 时，定时工作流会立即安全结束；已经发布的网站仍保持可访问。

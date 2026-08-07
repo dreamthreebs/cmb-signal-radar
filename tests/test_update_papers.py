@@ -4,10 +4,19 @@ import json
 import os
 from pathlib import Path
 import tempfile
+from types import SimpleNamespace
 import unittest
 from unittest.mock import patch
 
-from scripts.update_papers import find_new_or_updated, parse_atom_feed, score_paper, update_data
+from scripts.update_papers import (
+    AnalysisBatch,
+    PaperAnalysis,
+    analyze_with_openai,
+    find_new_or_updated,
+    parse_atom_feed,
+    score_paper,
+    update_data,
+)
 
 
 ATOM_SAMPLE = """<?xml version="1.0" encoding="UTF-8"?>
@@ -29,6 +38,65 @@ ATOM_SAMPLE = """<?xml version="1.0" encoding="UTF-8"?>
 
 
 class UpdatePapersTests(unittest.TestCase):
+    def test_gpt_analysis_batches_requests_and_sets_provider_options(self):
+        papers = [
+            {
+                "id": f"paper-{index}",
+                "title": f"Paper {index}",
+                "abstract": "CMB abstract",
+                "categories": ["astro-ph.CO"],
+                "tags": ["CMB"],
+            }
+            for index in range(4)
+        ]
+
+        def analysis_for(paper_id):
+            return PaperAnalysis(
+                paper_id=paper_id,
+                title_zh="标题",
+                summary_zh="摘要",
+                why_it_matters_zh="意义",
+                key_points=["要点"],
+                methods=["方法"],
+                reading_note_zh="精读提示",
+                audience="领域相关",
+                novelty_score=7,
+                confidence=80,
+            )
+
+        batches = [
+            AnalysisBatch(analyses=[analysis_for("paper-0"), analysis_for("paper-1")]),
+            AnalysisBatch(analyses=[analysis_for("paper-2"), analysis_for("paper-3")]),
+        ]
+        with patch("openai.OpenAI") as openai_class:
+            client = openai_class.return_value
+            client.responses.parse.side_effect = [
+                SimpleNamespace(output_parsed=batch) for batch in batches
+            ]
+            result = analyze_with_openai(
+                papers,
+                "gpt-test",
+                "test-key",
+                base_url="https://provider.example/v1",
+                user_agent="provider-client",
+                batch_size=2,
+                reasoning_effort="low",
+            )
+
+        self.assertEqual(set(result), {paper["id"] for paper in papers})
+        self.assertEqual(client.responses.parse.call_count, 2)
+        self.assertEqual(
+            client.responses.parse.call_args_list[0].kwargs["reasoning"],
+            {"effort": "low"},
+        )
+        openai_class.assert_called_once_with(
+            api_key="test-key",
+            timeout=120.0,
+            max_retries=0,
+            base_url="https://provider.example/v1",
+            default_headers={"User-Agent": "provider-client"},
+        )
+
     def test_atom_parsing_normalizes_identifier_and_links(self):
         papers = parse_atom_feed(ATOM_SAMPLE, "test")
         self.assertEqual(len(papers), 1)

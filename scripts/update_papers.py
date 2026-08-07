@@ -306,6 +306,8 @@ def gpt_settings(args: argparse.Namespace) -> dict[str, str]:
         ).strip(),
         "api_mode": (os.getenv("GPT_API_MODE") or "responses").strip().lower(),
         "user_agent": (os.getenv("GPT_USER_AGENT") or "").strip(),
+        "batch_size": (os.getenv("GPT_BATCH_SIZE") or "3").strip(),
+        "reasoning_effort": (os.getenv("GPT_REASONING_EFFORT") or "").strip().lower(),
     }
 
 
@@ -316,10 +318,12 @@ def analyze_with_openai(
     base_url: str = "",
     api_mode: str = "responses",
     user_agent: str = "",
+    batch_size: int = 3,
+    reasoning_effort: str = "",
 ) -> dict[str, dict[str, Any]]:
     from openai import OpenAI
 
-    client_options: dict[str, Any] = {"api_key": api_key, "timeout": 120.0, "max_retries": 1}
+    client_options: dict[str, Any] = {"api_key": api_key, "timeout": 120.0, "max_retries": 0}
     if base_url:
         client_options["base_url"] = base_url
     if user_agent:
@@ -343,50 +347,67 @@ def analyze_with_openai(
         "methods 提取摘要明确出现的方法或数据；reading_note_zh 指出精读时最该核对的问题。"
         "audience 使用“快速浏览”“领域相关”或“建议精读”。confidence 表示仅凭摘要作此解读的信心。"
     )
-    messages = [
-        {"role": "system", "content": system_prompt},
-        {
-            "role": "user",
-            "content": "请逐篇分析以下论文，并保持 paper_id 完全不变：\n"
-            + json.dumps(paper_payload, ensure_ascii=False),
-        },
-    ]
-    if api_mode == "responses":
-        response = client.responses.parse(
-            model=model,
-            input=messages,
-            text_format=AnalysisBatch,
-        )
-        parsed = response.output_parsed
-    elif api_mode == "chat_completions":
-        schema_prompt = (
-            "\n必须只返回一个 JSON 对象，不要使用 Markdown。JSON 必须严格符合此 schema：\n"
-            + json.dumps(AnalysisBatch.model_json_schema(), ensure_ascii=False)
-        )
-        chat_messages = [
-            {"role": "system", "content": system_prompt},
-            {
-                "role": "user",
-                "content": "请逐篇分析以下论文，并保持 paper_id 完全不变：\n"
-                + json.dumps(paper_payload, ensure_ascii=False)
-                + schema_prompt,
-            },
-        ]
-        response = client.chat.completions.create(
-            model=model,
-            messages=chat_messages,
-            response_format={"type": "json_object"},
-        )
-        content = response.choices[0].message.content or ""
-        parsed = AnalysisBatch.model_validate_json(content)
-    else:
+    if api_mode not in {"responses", "chat_completions"}:
         raise ValueError("GPT_API_MODE must be 'responses' or 'chat_completions'")
-    if parsed is None:
-        raise RuntimeError("GPT endpoint returned no parsed analysis")
+
+    batch_size = max(1, batch_size)
+    batch_total = (len(paper_payload) + batch_size - 1) // batch_size
+    parsed_items: list[PaperAnalysis] = []
+    for batch_index, start in enumerate(range(0, len(paper_payload), batch_size), start=1):
+        batch_payload = paper_payload[start : start + batch_size]
+        LOGGER.info(
+            "Requesting GPT batch %s/%s (%s papers)",
+            batch_index,
+            batch_total,
+            len(batch_payload),
+        )
+        user_content = (
+            "请逐篇分析以下论文，并保持 paper_id 完全不变：\n"
+            + json.dumps(batch_payload, ensure_ascii=False)
+        )
+        if api_mode == "responses":
+            response_options: dict[str, Any] = {
+                "model": model,
+                "input": [
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_content},
+                ],
+                "text_format": AnalysisBatch,
+            }
+            if reasoning_effort:
+                response_options["reasoning"] = {"effort": reasoning_effort}
+            response = client.responses.parse(**response_options)
+            parsed = response.output_parsed
+        else:
+            schema_prompt = (
+                "\n必须只返回一个 JSON 对象，不要使用 Markdown。JSON 必须严格符合此 schema：\n"
+                + json.dumps(AnalysisBatch.model_json_schema(), ensure_ascii=False)
+            )
+            response = client.chat.completions.create(
+                model=model,
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_content + schema_prompt},
+                ],
+                response_format={"type": "json_object"},
+            )
+            content = response.choices[0].message.content or ""
+            parsed = AnalysisBatch.model_validate_json(content)
+        if parsed is None:
+            raise RuntimeError(f"GPT endpoint returned no parsed analysis for batch {batch_index}")
+        requested_ids = {paper["paper_id"] for paper in batch_payload}
+        returned_ids = {item.paper_id for item in parsed.analyses}
+        missing_ids = requested_ids - returned_ids
+        if missing_ids:
+            raise RuntimeError(
+                f"GPT response omitted {len(missing_ids)} requested papers in batch {batch_index}"
+            )
+        parsed_items.extend(parsed.analyses)
+
     now = iso_now()
     result: dict[str, dict[str, Any]] = {}
     valid_ids = {paper["id"] for paper in papers}
-    for item in parsed.analyses:
+    for item in parsed_items:
         if item.paper_id not in valid_ids:
             continue
         payload = item.model_dump(exclude={"paper_id"})
@@ -537,6 +558,8 @@ def update_data(args: argparse.Namespace) -> UpdateOutcome:
                 base_url=settings["base_url"],
                 api_mode=settings["api_mode"],
                 user_agent=settings["user_agent"],
+                batch_size=int(settings["batch_size"]),
+                reasoning_effort=settings["reasoning_effort"],
             )
             missing_ids = {paper["id"] for paper in needs_analysis} - set(analyses)
             if missing_ids:
