@@ -19,8 +19,7 @@
   "lookback_days": 21,
   "focus_limit": 12,
   "discovery_limit": 6,
-  "analysis_limit": 12,
+  "analysis_limit": 18,
   "max_history": 180,
   "history_days": 120
 }
-

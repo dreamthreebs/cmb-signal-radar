@@ -1,15 +1,17 @@
 # CMB Signal：自动文献雷达
 
-一个无需日常维护的 GitHub Pages 文献站：每天自动抓取 arXiv 上的 CMB、宇宙学及相邻方向论文，进行规则筛选，并可调用 OpenAI 生成中文摘要、研究价值、关键点和精读提示。
+一个无需日常维护的 GitHub Pages 文献站：每天自动检查 arXiv 上的 CMB、宇宙学及相邻方向论文，并调用 GPT 或第三方 OpenAI 兼容接口生成中文摘要、研究价值、关键点和精读提示。
 
 ## 它会自动做什么
 
 - 每天北京时间 12:35 运行 GitHub Actions。
 - 从 arXiv Atom API 抓取 `astro-ph.CO`、CMB 仪器方法及跨方向发现候选。
 - 对同一 arXiv ID 去重，按 CMB 相关性、趣味度与时效性选出本期内容。
-- 有 `OPENAI_API_KEY` 时，一次批量调用生成结构化中文解读；没有 Key 或接口失败时，仍会发布元数据和规则评分。
+- 只有同时满足“API Key 已配置、接口调用成功、发现新论文”时，定时任务才更新数据并部署。
+- Key 缺失、Key 失效、第三方接口报错或没有新论文时，保留上一版网站，不提交空更新。
 - 保存最近 120 天、最多 180 篇入选历史，并自动部署到 GitHub Pages。
 - API Key 只存在于 GitHub Actions 的服务端环境，不会进入网页或数据文件。
+- 支持在 Actions 页面手动运行，并可强制重新分析当前精选。
 
 ## 一次性上线步骤
 
@@ -36,19 +38,46 @@ GitHub Free 的项目 Pages 通常需要公开仓库；如果你的套餐支持�
 
 工作流已经包含官方 Pages 部署所需的 `pages: write` 与 `id-token: write` 权限。
 
-### 3. 配置大模型（推荐）
+### 3. 配置 GPT API
 
 进入 `Settings → Secrets and variables → Actions`：
 
-- 在 `Secrets` 新增 `OPENAI_API_KEY`。
-- 可在 `Variables` 新增 `OPENAI_MODEL`；默认使用 `gpt-5.6`。
-- 可在 `Variables` 新增 `ARXIV_CONTACT_EMAIL`，让 arXiv 请求的 User-Agent 带有维护者联系方式。
+| 名称 | 放置位置 | 用途 |
+| --- | --- | --- |
+| `GPT_API_KEY` | **Secret** | 必需。官方 OpenAI 或第三方接口的密钥 |
+| `GPT_BASE_URL` | **Secret** 或 Variable | 第三方接口地址，例如 `https://provider.example/v1`；官方 OpenAI 留空 |
+| `GPT_MODEL` | Variable | 模型名，默认 `gpt-5.6`；第三方需填写其模型标识 |
+| `GPT_API_MODE` | Variable | `responses`（默认）或 `chat_completions` |
+| `ARXIV_CONTACT_EMAIL` | Variable | 可选，让 arXiv User-Agent 带维护者联系方式 |
 
-如果暂时不配置 `OPENAI_API_KEY`，站点也会每天自动更新，只是显示“规则模式”；之后添加 Key，自动任务会逐步补全近期论文解读。
+官方 OpenAI 推荐使用：
+
+- `GPT_API_KEY`：你的 OpenAI API Key
+- `GPT_BASE_URL`：不设置
+- `GPT_MODEL`：`gpt-5.6`
+- `GPT_API_MODE`：`responses`
+
+第三方 OpenAI 兼容接口：
+
+- 把 Key 存为 `GPT_API_KEY`，不要写入代码或仓库。
+- 把兼容接口的 `/v1` 地址存为 `GPT_BASE_URL`。
+- 如果服务支持 `/responses` 和结构化输出，使用 `responses`。
+- 如果只支持 `/chat/completions`，使用 `chat_completions`；该服务还需要支持 JSON Object 输出。
+
+也可以使用命令行添加 Secret（输入内容不会写进仓库）：
+
+```bash
+gh secret set GPT_API_KEY --repo dreamthreebs/cmb-signal-radar
+gh secret set GPT_BASE_URL --repo dreamthreebs/cmb-signal-radar
+gh variable set GPT_MODEL --body "gpt-5.6" --repo dreamthreebs/cmb-signal-radar
+gh variable set GPT_API_MODE --body "responses" --repo dreamthreebs/cmb-signal-radar
+```
+
+未配置 Key 时，定时工作流会立即安全结束；已经发布的网站仍保持可访问。
 
 ### 4. 触发第一次更新
 
-进入 `Actions → Update papers and deploy Pages → Run workflow`。完成后，访问 `Settings → Pages` 中显示的网址。
+进入 `Actions → Update papers and deploy Pages → Run workflow`。`force_refresh` 默认为开启，因此即使当天没有新论文，也会重新分析当前精选；关闭后则使用与定时任务相同的“无新论文即跳过”规则。
 
 仓库需要允许 Actions 写入内容，才能每天把历史数据提交回 `main`。如组织策略限制了写权限，请在 `Settings → Actions → General → Workflow permissions` 中允许 Read and write permissions。
 
@@ -62,15 +91,25 @@ python scripts/update_papers.py --no-ai --max-results 15
 python -m http.server 8000 --directory site
 ```
 
-然后打开 `http://localhost:8000`。如果想在本地测试 AI 解读：
+然后打开 `http://localhost:8000`。如果想在本地测试官方 OpenAI：
 
 ```bash
-export OPENAI_API_KEY="your-key"
-export OPENAI_MODEL="gpt-5.6"
-python scripts/update_papers.py --max-results 15
+export GPT_API_KEY="your-key"
+export GPT_MODEL="gpt-5.6"
+export GPT_API_MODE="responses"
+python scripts/update_papers.py --max-results 15 --require-ai --force-ai
 ```
 
+第三方接口再设置 `GPT_BASE_URL`，并按其兼容能力选择 `GPT_API_MODE`。
+
 不要把 `.env` 或 API Key 提交到仓库。
+
+## 自动运行规则
+
+- `schedule`：每天北京时间 12:35 检查一次。无新论文时不调用 GPT、不提交、不部署。
+- `workflow_dispatch`：在 Actions 页面手动启动；可选择强制刷新。
+- `push`：代码或页面发生修改时，只运行测试并部署已有数据，不调用 GPT。
+- GPT 鉴权失败、超时、返回结构不完整时，任务不覆盖 `papers.json`，线上继续展示上一次成功版本。
 
 ## 调整选题范围
 
@@ -89,4 +128,3 @@ python scripts/update_papers.py --max-results 15
 Thank you to arXiv for use of its open access interoperability.
 
 本项目与 arXiv 无隶属或背书关系。大模型只接收论文题目、摘要和分类；其输出适合做每日筛选，不替代全文阅读、同行评议或作者原意。
-

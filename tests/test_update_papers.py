@@ -1,7 +1,13 @@
+import argparse
 from datetime import datetime, timezone
+import json
+import os
+from pathlib import Path
+import tempfile
 import unittest
+from unittest.mock import patch
 
-from scripts.update_papers import parse_atom_feed, score_paper
+from scripts.update_papers import find_new_or_updated, parse_atom_feed, score_paper, update_data
 
 
 ATOM_SAMPLE = """<?xml version="1.0" encoding="UTF-8"?>
@@ -37,6 +43,71 @@ class UpdatePapersTests(unittest.TestCase):
         self.assertEqual(scored["track"], "focus")
         self.assertGreaterEqual(scored["scores"]["cmb"], 30)
         self.assertIn("CMB", scored["tags"])
+
+    def test_new_paper_detection_uses_id_and_content_hash(self):
+        paper = parse_atom_feed(ATOM_SAMPLE, "test")[0]
+        existing = {"papers": [dict(paper)]}
+        self.assertEqual(find_new_or_updated([paper], existing), [])
+        revised = dict(paper, content_hash="changed")
+        self.assertEqual(find_new_or_updated([revised], existing), [revised])
+
+    def test_strict_mode_skips_before_fetch_when_key_is_missing(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            config_path = Path(temp_dir) / "config.json"
+            output_path = Path(temp_dir) / "papers.json"
+            config_path.write_text(json.dumps({"queries": [{"name": "test", "query": "all:CMB"}]}))
+            output_path.write_text(json.dumps({"meta": {}, "papers": [{"id": "existing"}]}))
+            args = argparse.Namespace(
+                config=str(config_path),
+                output=str(output_path),
+                model="",
+                max_results=None,
+                no_ai=False,
+                require_ai=True,
+                skip_if_no_new=True,
+                force_ai=False,
+            )
+            with patch.dict(os.environ, {"GPT_API_KEY": "", "OPENAI_API_KEY": ""}):
+                outcome = update_data(args)
+            self.assertFalse(outcome.changed)
+            self.assertEqual(outcome.reason, "missing_api_key")
+
+    def test_strict_mode_keeps_existing_data_when_gpt_rejects_key(self):
+        paper = parse_atom_feed(ATOM_SAMPLE, "test")[0]
+        with tempfile.TemporaryDirectory() as temp_dir:
+            config_path = Path(temp_dir) / "config.json"
+            output_path = Path(temp_dir) / "papers.json"
+            config_path.write_text(
+                json.dumps(
+                    {
+                        "queries": [{"name": "test", "query": "all:CMB"}],
+                        "focus_limit": 12,
+                        "discovery_limit": 6,
+                        "analysis_limit": 18,
+                    }
+                )
+            )
+            existing = {"meta": {"sentinel": "keep"}, "papers": []}
+            output_path.write_text(json.dumps(existing))
+            args = argparse.Namespace(
+                config=str(config_path),
+                output=str(output_path),
+                model="",
+                max_results=None,
+                no_ai=False,
+                require_ai=True,
+                skip_if_no_new=True,
+                force_ai=False,
+            )
+            with (
+                patch.dict(os.environ, {"GPT_API_KEY": "invalid", "OPENAI_API_KEY": ""}),
+                patch("scripts.update_papers.fetch_all", return_value=([paper], [])),
+                patch("scripts.update_papers.analyze_with_openai", side_effect=RuntimeError("401 invalid")),
+            ):
+                outcome = update_data(args)
+            self.assertFalse(outcome.changed)
+            self.assertEqual(outcome.reason, "ai_error")
+            self.assertEqual(outcome.data, existing)
 
 
 if __name__ == "__main__":

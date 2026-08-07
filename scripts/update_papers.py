@@ -35,6 +35,14 @@ class WeightedTerm:
     weight: int
 
 
+@dataclass(frozen=True)
+class UpdateOutcome:
+    data: dict[str, Any]
+    changed: bool
+    reason: str
+    new_count: int = 0
+
+
 CMB_TERMS = (
     WeightedTerm("CMB", ("cosmic microwave background", r"\bcmb\b"), 18),
     WeightedTerm("B 模偏振", ("b-mode", "b mode", "b-modes", "b modes"), 12),
@@ -279,17 +287,40 @@ def fallback_analysis(paper: dict[str, Any]) -> dict[str, Any]:
         "why_it_matters_zh": f"这项工作涉及{topic_text}；建议结合原文确认结论、假设与统计显著性。",
         "key_points": [],
         "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 OPENAI_API_KEY 后会自动补全中文解读。",
+        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 GPT_API_KEY 后会自动补全中文解读。",
         "audience": "按需浏览",
         "novelty_score": max(1, min(10, round(paper["scores"]["interest"] / 10))),
         "confidence": 30,
     }
 
 
-def analyze_with_openai(papers: list[dict[str, Any]], model: str) -> dict[str, dict[str, Any]]:
+def gpt_settings(args: argparse.Namespace) -> dict[str, str]:
+    return {
+        "api_key": (os.getenv("GPT_API_KEY") or os.getenv("OPENAI_API_KEY") or "").strip(),
+        "base_url": (os.getenv("GPT_BASE_URL") or os.getenv("OPENAI_BASE_URL") or "").strip(),
+        "model": (
+            args.model
+            or os.getenv("GPT_MODEL")
+            or os.getenv("OPENAI_MODEL")
+            or DEFAULT_MODEL
+        ).strip(),
+        "api_mode": (os.getenv("GPT_API_MODE") or "responses").strip().lower(),
+    }
+
+
+def analyze_with_openai(
+    papers: list[dict[str, Any]],
+    model: str,
+    api_key: str,
+    base_url: str = "",
+    api_mode: str = "responses",
+) -> dict[str, dict[str, Any]]:
     from openai import OpenAI
 
-    client = OpenAI()
+    client_options: dict[str, Any] = {"api_key": api_key, "timeout": 120.0, "max_retries": 1}
+    if base_url:
+        client_options["base_url"] = base_url
+    client = OpenAI(**client_options)
     paper_payload = [
         {
             "paper_id": paper["id"],
@@ -308,24 +339,50 @@ def analyze_with_openai(papers: list[dict[str, Any]], model: str) -> dict[str, d
         "methods 提取摘要明确出现的方法或数据；reading_note_zh 指出精读时最该核对的问题。"
         "audience 使用“快速浏览”“领域相关”或“建议精读”。confidence 表示仅凭摘要作此解读的信心。"
     )
-    response = client.responses.parse(
-        model=model,
-        input=[
+    messages = [
+        {"role": "system", "content": system_prompt},
+        {
+            "role": "user",
+            "content": "请逐篇分析以下论文，并保持 paper_id 完全不变：\n"
+            + json.dumps(paper_payload, ensure_ascii=False),
+        },
+    ]
+    if api_mode == "responses":
+        response = client.responses.parse(
+            model=model,
+            input=messages,
+            text_format=AnalysisBatch,
+        )
+        parsed = response.output_parsed
+    elif api_mode == "chat_completions":
+        schema_prompt = (
+            "\n必须只返回一个 JSON 对象，不要使用 Markdown。JSON 必须严格符合此 schema：\n"
+            + json.dumps(AnalysisBatch.model_json_schema(), ensure_ascii=False)
+        )
+        chat_messages = [
             {"role": "system", "content": system_prompt},
             {
                 "role": "user",
                 "content": "请逐篇分析以下论文，并保持 paper_id 完全不变：\n"
-                + json.dumps(paper_payload, ensure_ascii=False),
+                + json.dumps(paper_payload, ensure_ascii=False)
+                + schema_prompt,
             },
-        ],
-        text_format=AnalysisBatch,
-    )
-    if response.output_parsed is None:
-        raise RuntimeError("OpenAI returned no parsed analysis")
+        ]
+        response = client.chat.completions.create(
+            model=model,
+            messages=chat_messages,
+            response_format={"type": "json_object"},
+        )
+        content = response.choices[0].message.content or ""
+        parsed = AnalysisBatch.model_validate_json(content)
+    else:
+        raise ValueError("GPT_API_MODE must be 'responses' or 'chat_completions'")
+    if parsed is None:
+        raise RuntimeError("GPT endpoint returned no parsed analysis")
     now = iso_now()
     result: dict[str, dict[str, Any]] = {}
     valid_ids = {paper["id"] for paper in papers}
-    for item in response.output_parsed.analyses:
+    for item in parsed.analyses:
         if item.paper_id not in valid_ids:
             continue
         payload = item.model_dump(exclude={"paper_id"})
@@ -370,6 +427,19 @@ def select_current(
     return focus + discovery, [paper["id"] for paper in focus], [paper["id"] for paper in discovery]
 
 
+def find_new_or_updated(
+    selected: list[dict[str, Any]],
+    existing: dict[str, Any],
+) -> list[dict[str, Any]]:
+    previous = {paper["id"]: paper for paper in existing.get("papers", []) if paper.get("id")}
+    return [
+        paper
+        for paper in selected
+        if paper["id"] not in previous
+        or paper.get("content_hash") != previous[paper["id"]].get("content_hash")
+    ]
+
+
 def merge_history(
     selected: list[dict[str, Any]],
     existing: dict[str, Any],
@@ -400,25 +470,34 @@ def merge_history(
     return retained[: int(config.get("max_history", 180))]
 
 
-def update_data(args: argparse.Namespace) -> dict[str, Any]:
+def update_data(args: argparse.Namespace) -> UpdateOutcome:
     config_path = Path(args.config)
     output_path = Path(args.output)
     config = read_json(config_path, {})
     if not config.get("queries"):
         raise ValueError(f"No queries configured in {config_path}")
     existing = read_json(output_path, {"meta": {}, "papers": []})
+    settings = gpt_settings(args)
+    if args.require_ai and not settings["api_key"]:
+        LOGGER.info("Skipping update: GPT API key is not configured")
+        return UpdateOutcome(existing, False, "missing_api_key")
+
     now = datetime.now(timezone.utc)
 
     fetched, errors = fetch_all(config, args.max_results)
-    if not fetched and existing.get("papers"):
-        LOGGER.warning("All arXiv requests failed; keeping the last successful dataset")
-        existing.setdefault("meta", {})["last_attempt_at"] = iso_now()
-        existing["meta"]["fetch_status"] = "stale"
-        existing["meta"]["fetch_errors"] = errors
-        return existing
+    if not fetched:
+        if existing.get("papers"):
+            LOGGER.warning("All arXiv requests failed; keeping the last successful dataset unchanged")
+            return UpdateOutcome(existing, False, "arxiv_unavailable")
+        raise RuntimeError("All arXiv requests failed and no previous dataset is available")
 
     scored = [score_paper(paper, now) for paper in fetched]
     selected, focus_ids, discovery_ids = select_current(scored, config, now)
+    new_or_updated = find_new_or_updated(selected, existing)
+    if args.skip_if_no_new and not new_or_updated:
+        LOGGER.info("Skipping update: no new or revised selected papers")
+        return UpdateOutcome(existing, False, "no_new_papers")
+
     papers = merge_history(selected, existing, config, now)
 
     selected_order = {paper_id: index for index, paper_id in enumerate(focus_ids + discovery_ids)}
@@ -426,26 +505,49 @@ def update_data(args: argparse.Namespace) -> dict[str, Any]:
         (paper for paper in papers if paper["id"] in selected_order),
         key=lambda paper: selected_order[paper["id"]],
     )
-    ai_key_present = bool(os.getenv("OPENAI_API_KEY", "").strip()) and not args.no_ai
+    ai_key_present = bool(settings["api_key"]) and not args.no_ai
     analysis_limit = int(config.get("analysis_limit", 12))
-    needs_analysis = [
-        paper
-        for paper in selected_papers
-        if paper.get("analysis", {}).get("provider") != "openai"
-    ][:analysis_limit]
+    if args.force_ai:
+        needs_analysis = selected_papers[:analysis_limit]
+    else:
+        needs_analysis = [
+            paper
+            for paper in selected_papers
+            if paper.get("analysis", {}).get("provider") != "openai"
+        ][:analysis_limit]
 
-    model = args.model or os.getenv("OPENAI_MODEL", DEFAULT_MODEL)
+    model = settings["model"]
     ai_error = ""
     if ai_key_present and needs_analysis:
-        LOGGER.info("Requesting structured OpenAI analysis for %s papers with %s", len(needs_analysis), model)
+        LOGGER.info(
+            "Requesting GPT analysis for %s papers with %s via %s",
+            len(needs_analysis),
+            model,
+            settings["api_mode"],
+        )
         try:
-            analyses = analyze_with_openai(needs_analysis, model)
+            analyses = analyze_with_openai(
+                needs_analysis,
+                model,
+                api_key=settings["api_key"],
+                base_url=settings["base_url"],
+                api_mode=settings["api_mode"],
+            )
+            missing_ids = {paper["id"] for paper in needs_analysis} - set(analyses)
+            if missing_ids:
+                raise RuntimeError(f"GPT response omitted {len(missing_ids)} requested papers")
             for paper in papers:
                 if paper["id"] in analyses:
                     paper["analysis"] = analyses[paper["id"]]
-        except Exception as exc:  # The data refresh must survive an optional AI outage.
+        except Exception as exc:
             ai_error = str(exc)
-            LOGGER.exception("OpenAI analysis failed; publishing metadata-only fallback")
+            if args.require_ai:
+                LOGGER.exception("GPT analysis failed; keeping the published dataset unchanged")
+                return UpdateOutcome(existing, False, "ai_error", len(new_or_updated))
+            LOGGER.exception("GPT analysis failed; using metadata-only fallback")
+    elif args.require_ai:
+        LOGGER.info("Skipping update: strict AI mode found nothing to analyze")
+        return UpdateOutcome(existing, False, "nothing_to_analyze", len(new_or_updated))
 
     current_ai_count = sum(
         1
@@ -459,7 +561,7 @@ def update_data(args: argparse.Namespace) -> dict[str, Any]:
     if current_ai_count and current_ai_count < len(selected_papers):
         analysis_status = "mixed"
 
-    return {
+    data = {
         "meta": {
             "generated_at": iso_now(),
             "last_attempt_at": iso_now(),
@@ -469,6 +571,8 @@ def update_data(args: argparse.Namespace) -> dict[str, Any]:
             "source_url": "https://info.arxiv.org/help/api/",
             "analysis_status": analysis_status,
             "analysis_model": model if ai_key_present else None,
+            "analysis_api_mode": settings["api_mode"] if ai_key_present else None,
+            "analysis_endpoint": "custom" if settings["base_url"] else "openai",
             "analysis_error": ai_error,
             "analysis_basis": "title + abstract + categories",
             "lookback_days": int(config.get("lookback_days", 21)),
@@ -479,6 +583,17 @@ def update_data(args: argparse.Namespace) -> dict[str, Any]:
         },
         "papers": papers,
     }
+    return UpdateOutcome(data, True, "updated", len(new_or_updated))
+
+
+def write_github_outputs(outcome: UpdateOutcome) -> None:
+    output_path = os.getenv("GITHUB_OUTPUT", "").strip()
+    if not output_path:
+        return
+    with Path(output_path).open("a", encoding="utf-8") as handle:
+        handle.write(f"changed={'true' if outcome.changed else 'false'}\n")
+        handle.write(f"reason={outcome.reason}\n")
+        handle.write(f"new_count={outcome.new_count}\n")
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -487,7 +602,10 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--output", default="site/data/papers.json")
     parser.add_argument("--model", default="")
     parser.add_argument("--max-results", type=int, default=None, help="Override each query size for local testing")
-    parser.add_argument("--no-ai", action="store_true", help="Skip OpenAI even when OPENAI_API_KEY is set")
+    parser.add_argument("--no-ai", action="store_true", help="Skip GPT even when an API key is set")
+    parser.add_argument("--require-ai", action="store_true", help="Keep the current dataset if GPT is unavailable")
+    parser.add_argument("--skip-if-no-new", action="store_true", help="Do not write data when no selected paper is new or revised")
+    parser.add_argument("--force-ai", action="store_true", help="Reanalyze current selections even when analysis already exists")
     parser.add_argument("--verbose", action="store_true")
     return parser
 
@@ -499,18 +617,24 @@ def main() -> int:
         format="%(levelname)s %(message)s",
     )
     try:
-        data = update_data(args)
-        output_path = Path(args.output)
-        output_path.parent.mkdir(parents=True, exist_ok=True)
-        output_path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        outcome = update_data(args)
+        write_github_outputs(outcome)
+        if outcome.changed:
+            output_path = Path(args.output)
+            output_path.parent.mkdir(parents=True, exist_ok=True)
+            output_path.write_text(json.dumps(outcome.data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     except Exception as exc:
         LOGGER.exception("Update failed: %s", exc)
         return 1
+    if not outcome.changed:
+        LOGGER.info("No files changed (%s)", outcome.reason)
+        return 0
     LOGGER.info(
-        "Wrote %s papers to %s (%s)",
-        len(data.get("papers", [])),
+        "Wrote %s papers to %s (%s; %s new or revised)",
+        len(outcome.data.get("papers", [])),
         args.output,
-        data.get("meta", {}).get("analysis_status", "unknown"),
+        outcome.data.get("meta", {}).get("analysis_status", "unknown"),
+        outcome.new_count,
     )
     return 0
 
