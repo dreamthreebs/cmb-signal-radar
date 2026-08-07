@@ -82,11 +82,25 @@ gh variable set GPT_REASONING_EFFORT --body "low" --repo dreamthreebs/cmb-signal
 
 未配置 Key 时，定时工作流会立即安全结束；已经发布的网站仍保持可访问。
 
+当前仓库的实际放置位置：
+
+- Key：`Settings → Secrets and variables → Actions → Secrets → GPT_API_KEY`
+- 第三方 URL：`Settings → Secrets and variables → Actions → Variables → GPT_BASE_URL`
+- 模型与协议：同一页面的 Variables 中修改 `GPT_MODEL` 与 `GPT_API_MODE`
+
+更新 Key 时也可以执行 `gh secret set GPT_API_KEY --repo dreamthreebs/cmb-signal-radar`，命令会安全提示输入新值；不要把 Key 作为命令参数或写入文件。
+
 ### 4. 触发第一次更新
 
 进入 `Actions → Update papers and deploy Pages → Run workflow`。`force_refresh` 默认为开启，因此即使当天没有新论文，也会重新分析当前精选；关闭后则使用与定时任务相同的“无新论文即跳过”规则。
 
 仓库需要允许 Actions 写入内容，才能每天把历史数据提交回 `main`。如组织策略限制了写权限，请在 `Settings → Actions → General → Workflow permissions` 中允许 Read and write permissions。
+
+### 5. 回填历史文献
+
+手动运行工作流时，把 `backfill_days` 设为 `90`，即可建立过去三个月的按月均衡档案。`analysis_cap` 控制单次最多生成多少篇 AI 解读；重复运行相同的 90 天回填会从上次未完成的位置继续，不会重新分析已经完成的论文。
+
+网页文献库提供“按日 / 按月 / 全部历史”三种时间视图，并可继续叠加主题、关键词和排序条件。
 
 ## 本地运行
 

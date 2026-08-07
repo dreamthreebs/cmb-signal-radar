@@ -128,12 +128,40 @@
           <p>保留近期入选记录；可以按方向筛选、搜索作者和主题，或按推荐度、日期与 CMB 相关性排序。</p>
         </div>
 
+        <div class="archive-scope" aria-label="历史时间视图">
+          <div>
+            <span class="control-label">时间视图</span>
+            <div class="scope-tabs" role="group" aria-label="按日、按月或全部历史查看">
+              <button class="scope-tab" type="button" data-time-mode="day">按日</button>
+              <button class="scope-tab" type="button" data-time-mode="month">按月</button>
+              <button class="scope-tab is-active" type="button" data-time-mode="all">全部历史</button>
+            </div>
+          </div>
+          <label class="period-picker" id="period-picker" hidden>
+            <span id="period-picker-label">选择日期</span>
+            <select id="period-select" aria-label="选择日期或月份"></select>
+          </label>
+          <p id="archive-range">正在读取历史覆盖范围…</p>
+        </div>
+
         <div class="library-controls" aria-label="论文筛选工具">
-          <div class="filter-pills" role="group" aria-label="方向筛选">
-            <button class="filter-pill is-active" type="button" data-filter="all">全部</button>
-            <button class="filter-pill" type="button" data-filter="focus">CMB 核心</button>
-            <button class="filter-pill" type="button" data-filter="discovery">宇宙漫游</button>
-            <button class="filter-pill" type="button" data-filter="deep">建议精读</button>
+          <div class="filter-block">
+            <span class="control-label">主题分类</span>
+            <div class="filter-pills" role="group" aria-label="主题分类筛选">
+              <button class="filter-pill is-active" type="button" data-filter="all">全部</button>
+              <button class="filter-pill" type="button" data-filter="focus">CMB 核心</button>
+              <button class="filter-pill" type="button" data-filter="polarization">偏振 / B 模</button>
+              <button class="filter-pill" type="button" data-filter="lensing-lss">透镜 / LSS</button>
+              <button class="filter-pill" type="button" data-filter="early-universe">早期宇宙</button>
+              <button class="filter-pill" type="button" data-filter="instruments">观测与仪器</button>
+              <button class="filter-pill" type="button" data-filter="foregrounds-methods">前景与方法</button>
+              <button class="filter-pill" type="button" data-filter="dark-sector">暗物质 / 暗能量</button>
+              <button class="filter-pill" type="button" data-filter="gravity">引力波 / 黑洞</button>
+              <button class="filter-pill" type="button" data-filter="surveys">大型巡天</button>
+              <button class="filter-pill" type="button" data-filter="ai-computation">AI / 计算</button>
+              <button class="filter-pill" type="button" data-filter="discovery">宇宙漫游</button>
+              <button class="filter-pill" type="button" data-filter="deep">建议精读</button>
+            </div>
           </div>
           <label class="search-box">
             <span aria-hidden="true">⌕</span>
@@ -199,4 +227,3 @@
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
   </body>
 </html>
-

@@ -19,6 +19,16 @@ on:
         required: false
         type: boolean
         default: true
+      backfill_days:
+        description: "历史回填天数；日常运行填 0"
+        required: false
+        type: string
+        default: "0"
+      analysis_cap:
+        description: "本次最多分析多少篇历史论文"
+        required: false
+        type: string
+        default: "18"
 
 permissions:
   contents: write
@@ -83,9 +93,13 @@ jobs:
           ARXIV_CONTACT_EMAIL: ${{ vars.ARXIV_CONTACT_EMAIL }}
           EVENT_NAME: ${{ github.event_name }}
           FORCE_REFRESH: ${{ inputs.force_refresh || 'false' }}
+          BACKFILL_DAYS: ${{ inputs.backfill_days || '0' }}
+          ANALYSIS_CAP: ${{ inputs.analysis_cap || '18' }}
         run: |
           args=(--require-ai)
-          if [[ "$EVENT_NAME" == "schedule" || "$FORCE_REFRESH" != "true" ]]; then
+          if [[ "$BACKFILL_DAYS" =~ ^[1-9][0-9]*$ ]]; then
+            args+=(--backfill-days "$BACKFILL_DAYS" --analysis-cap "$ANALYSIS_CAP")
+          elif [[ "$EVENT_NAME" == "schedule" || "$FORCE_REFRESH" != "true" ]]; then
             args+=(--skip-if-no-new)
           else
             args+=(--force-ai)

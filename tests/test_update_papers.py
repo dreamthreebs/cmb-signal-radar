@@ -11,10 +11,12 @@ from unittest.mock import patch
 from scripts.update_papers import (
     AnalysisBatch,
     PaperAnalysis,
+    add_submitted_date_window,
     analyze_with_openai,
     find_new_or_updated,
     parse_atom_feed,
     score_paper,
+    select_archive,
     update_data,
 )
 
@@ -111,6 +113,32 @@ class UpdatePapersTests(unittest.TestCase):
         self.assertEqual(scored["track"], "focus")
         self.assertGreaterEqual(scored["scores"]["cmb"], 30)
         self.assertIn("CMB", scored["tags"])
+        self.assertIn("cmb-core", scored["topics"])
+        self.assertIn("polarization", scored["topics"])
+
+    def test_submitted_date_window_and_monthly_archive_balance(self):
+        now = datetime(2026, 8, 7, tzinfo=timezone.utc)
+        query = add_submitted_date_window("cat:astro-ph.CO", 90, now)
+        self.assertIn("submittedDate:[202605090000 TO 202608070000]", query)
+
+        candidates = []
+        for month, score in (("2026-08", 90), ("2026-07", 80)):
+            for index in range(2):
+                candidates.append(
+                    {
+                        "id": f"{month}-{index}",
+                        "published": f"{month}-0{index + 1}T00:00:00Z",
+                        "track": "focus",
+                        "scores": {"editorial": score - index, "interest": 20},
+                    }
+                )
+        selected = select_archive(
+            candidates,
+            {"archive_focus_per_month": 1, "archive_discovery_per_month": 0},
+            now,
+            90,
+        )
+        self.assertEqual({paper["id"] for paper in selected}, {"2026-08-0", "2026-07-0"})
 
     def test_new_paper_detection_uses_id_and_content_hash(self):
         paper = parse_atom_feed(ATOM_SAMPLE, "test")[0]

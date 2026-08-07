@@ -3,6 +3,8 @@ const state = {
   filter: "all",
   query: "",
   sort: "recommended",
+  timeMode: "all",
+  timeValue: "",
 };
 
 const dom = {
@@ -19,6 +21,10 @@ const dom = {
   updated: document.querySelector("#last-updated"),
   search: document.querySelector("#paper-search"),
   sort: document.querySelector("#paper-sort"),
+  periodPicker: document.querySelector("#period-picker"),
+  periodPickerLabel: document.querySelector("#period-picker-label"),
+  periodSelect: document.querySelector("#period-select"),
+  archiveRange: document.querySelector("#archive-range"),
   dialog: document.querySelector("#paper-dialog"),
   dialogContent: document.querySelector("#dialog-content"),
   toast: document.querySelector("#toast"),
@@ -42,6 +48,59 @@ const formatDate = (value, withTime = false) => {
     ...(withTime ? { hour: "2-digit", minute: "2-digit", hour12: false } : {}),
   }).format(date);
 };
+
+const dateKey = (paper) => String(paper.published || "").slice(0, 10);
+const monthKey = (paper) => dateKey(paper).slice(0, 7);
+
+const formatMonth = (value) => {
+  const [year, month] = String(value).split("-");
+  return year && month ? `${year} 年 ${Number(month)} 月` : value;
+};
+
+function periodValues(mode) {
+  const meta = state.data?.meta || {};
+  if (mode === "day") {
+    return meta.archive_dates?.length
+      ? meta.archive_dates
+      : [...new Set(state.data.papers.map(dateKey).filter(Boolean))].sort().reverse();
+  }
+  if (mode === "month") {
+    return meta.archive_months?.length
+      ? meta.archive_months
+      : [...new Set(state.data.papers.map(monthKey).filter(Boolean))].sort().reverse();
+  }
+  return [];
+}
+
+function updatePeriodPicker(resetValue = false) {
+  const values = periodValues(state.timeMode);
+  dom.periodPicker.hidden = state.timeMode === "all";
+  if (state.timeMode === "all") {
+    state.timeValue = "";
+    return;
+  }
+  if (resetValue || !values.includes(state.timeValue)) state.timeValue = values[0] || "";
+  dom.periodPickerLabel.textContent = state.timeMode === "day" ? "选择日期" : "选择月份";
+  dom.periodSelect.replaceChildren(
+    ...values.map((value) => {
+      const option = el("option", "", state.timeMode === "day" ? formatDate(value) : formatMonth(value));
+      option.value = value;
+      option.selected = value === state.timeValue;
+      return option;
+    }),
+  );
+}
+
+function renderArchiveRange() {
+  const meta = state.data.meta || {};
+  if (!meta.archive_start || !meta.archive_end) {
+    dom.archiveRange.textContent = "等待历史数据";
+    return;
+  }
+  const aiCount = Number(meta.archive_ai_count || 0);
+  const pending = Number(meta.archive_pending_count || 0);
+  dom.archiveRange.textContent = `${formatDate(meta.archive_start)} — ${formatDate(meta.archive_end)} · ${state.data.papers.length} 篇 · ${aiCount} 篇 AI 解读${pending ? ` · ${pending} 篇待补` : ""}`;
+}
 
 const truncateAuthors = (authors = [], limit = 5) => {
   if (!authors.length) return "作者信息暂缺";
@@ -198,12 +257,31 @@ function renderSpectrum() {
   });
 }
 
+const topicFilterKeys = new Set([
+  "polarization",
+  "lensing-lss",
+  "early-universe",
+  "instruments",
+  "foregrounds-methods",
+  "dark-sector",
+  "gravity",
+  "surveys",
+  "ai-computation",
+]);
+
 function matchesFilter(paper) {
   if (state.filter === "focus" || state.filter === "discovery") return paper.track === state.filter;
   if (state.filter === "deep") {
     const analysis = getAnalysis(paper);
     return String(analysis.audience || "").includes("精读") || (analysis.novelty_score || 0) >= 8;
   }
+  if (topicFilterKeys.has(state.filter)) return (paper.topics || []).includes(state.filter);
+  return true;
+}
+
+function matchesTime(paper) {
+  if (state.timeMode === "day") return dateKey(paper) === state.timeValue;
+  if (state.timeMode === "month") return monthKey(paper) === state.timeValue;
   return true;
 }
 
@@ -224,7 +302,7 @@ function matchesQuery(paper) {
 
 function sortedPapers() {
   const ranked = new Map(currentIds().map((id, index) => [id, index]));
-  const papers = state.data.papers.filter(matchesFilter).filter(matchesQuery);
+  const papers = state.data.papers.filter(matchesTime).filter(matchesFilter).filter(matchesQuery);
   return papers.sort((a, b) => {
     if (state.sort === "date") return String(b.published).localeCompare(String(a.published));
     if (state.sort === "cmb") return (b.scores?.cmb || 0) - (a.scores?.cmb || 0);
@@ -333,6 +411,14 @@ function showToast(message) {
 }
 
 function bindControls() {
+  document.querySelectorAll(".scope-tab").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.timeMode = button.dataset.timeMode;
+      document.querySelectorAll(".scope-tab").forEach((item) => item.classList.toggle("is-active", item === button));
+      updatePeriodPicker(true);
+      renderGrid();
+    });
+  });
   document.querySelectorAll(".filter-pill").forEach((button) => {
     button.addEventListener("click", () => {
       state.filter = button.dataset.filter;
@@ -348,6 +434,10 @@ function bindControls() {
     state.sort = dom.sort.value;
     renderGrid();
   });
+  dom.periodSelect.addEventListener("change", () => {
+    state.timeValue = dom.periodSelect.value;
+    renderGrid();
+  });
   document.querySelector(".dialog-close").addEventListener("click", () => dom.dialog.close());
   dom.dialog.addEventListener("click", (event) => {
     if (event.target === dom.dialog) dom.dialog.close();
@@ -360,6 +450,8 @@ async function loadData() {
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const data = await response.json();
     state.data = { meta: data.meta || {}, papers: Array.isArray(data.papers) ? data.papers : [] };
+    updatePeriodPicker(true);
+    renderArchiveRange();
     renderStatus();
     renderFeatured();
     renderSpectrum();
@@ -368,6 +460,8 @@ async function loadData() {
   } catch (error) {
     console.error(error);
     state.data = { meta: {}, papers: [] };
+    updatePeriodPicker(true);
+    renderArchiveRange();
     renderStatus();
     featuredEmpty();
     renderSpectrum();

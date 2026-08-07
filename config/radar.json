@@ -3,23 +3,52 @@
     {
       "name": "cmb-and-cosmology",
       "query": "cat:astro-ph.CO",
-      "max_results": 90
+      "max_results": 110
     },
     {
       "name": "cmb-instrumentation",
       "query": "cat:astro-ph.IM AND (all:CMB OR all:\"cosmic microwave background\")",
-      "max_results": 35
+      "max_results": 45
+    },
+    {
+      "name": "early-universe",
+      "query": "(cat:hep-ph OR cat:hep-th OR cat:gr-qc) AND (all:inflation OR all:\"early universe\" OR all:axion OR all:neutrino OR all:\"primordial black hole\")",
+      "max_results": 60
     },
     {
       "name": "cosmic-discovery",
       "query": "cat:astro-ph.GA OR cat:astro-ph.HE OR cat:gr-qc",
-      "max_results": 75
+      "max_results": 85
+    }
+  ],
+  "backfill_queries": [
+    {
+      "name": "cmb-archive",
+      "query": "(cat:astro-ph.CO OR cat:astro-ph.IM) AND (all:CMB OR all:\"cosmic microwave background\" OR all:\"B-mode\" OR all:reionization OR all:\"Sunyaev-Zeldovich\" OR all:\"component separation\")",
+      "max_results": 520
+    },
+    {
+      "name": "early-universe-archive",
+      "query": "(cat:astro-ph.CO OR cat:hep-ph OR cat:hep-th OR cat:gr-qc) AND (all:inflation OR all:\"primordial power spectrum\" OR all:\"early universe\" OR all:neutrino OR all:axion OR all:\"primordial black hole\")",
+      "max_results": 480
+    },
+    {
+      "name": "lensing-survey-archive",
+      "query": "cat:astro-ph.CO AND (all:lensing OR all:\"large-scale structure\" OR all:DESI OR all:Euclid OR all:\"dark energy\" OR all:\"Hubble tension\")",
+      "max_results": 480
+    },
+    {
+      "name": "discovery-archive",
+      "query": "(cat:astro-ph.GA OR cat:astro-ph.HE OR cat:gr-qc) AND (all:\"first detection\" OR all:discovery OR all:anomaly OR all:\"new constraint\" OR all:\"gravitational wave\" OR all:\"black hole\" OR all:JWST)",
+      "max_results": 520
     }
   ],
   "lookback_days": 21,
   "focus_limit": 12,
   "discovery_limit": 6,
   "analysis_limit": 18,
-  "max_history": 180,
+  "archive_focus_per_month": 30,
+  "archive_discovery_per_month": 12,
+  "max_history": 240,
   "history_days": 120
 }

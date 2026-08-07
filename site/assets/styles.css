@@ -899,6 +899,87 @@ sup {
   border-top: 1px solid var(--line);
 }
 
+.archive-scope {
+  display: grid;
+  grid-template-columns: auto minmax(190px, 260px) 1fr;
+  gap: 18px;
+  align-items: end;
+  padding: 18px 0;
+  border-top: 1px solid var(--line);
+}
+
+.control-label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--faint);
+  font-size: 0.55rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.scope-tabs {
+  display: flex;
+  gap: 1px;
+  background: var(--line);
+}
+
+.scope-tab,
+.period-picker {
+  min-height: 42px;
+  border: 1px solid var(--line);
+  background: rgba(9, 20, 18, 0.72);
+}
+
+.scope-tab {
+  padding: 0 18px;
+  color: var(--muted);
+  font-size: 0.67rem;
+}
+
+.scope-tab:hover,
+.scope-tab:focus-visible,
+.scope-tab.is-active {
+  color: var(--night);
+  border-color: var(--mint);
+  background: var(--mint);
+}
+
+.period-picker {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  padding-left: 13px;
+  color: var(--faint);
+  font-size: 0.61rem;
+}
+
+.period-picker[hidden] {
+  display: none;
+}
+
+.period-picker select {
+  height: 40px;
+  min-width: 0;
+  padding: 0 28px 0 10px;
+  color: var(--ink);
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-size: 0.67rem;
+}
+
+.period-picker option {
+  color: var(--ink);
+  background: var(--night-soft);
+}
+
+.archive-scope > p {
+  justify-self: end;
+  margin: 0 0 11px;
+  color: var(--faint);
+  font-size: 0.61rem;
+}
+
 .library-controls {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(230px, 330px) auto;
@@ -906,6 +987,10 @@ sup {
   padding: 18px 0;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
+}
+
+.filter-block {
+  min-width: 0;
 }
 
 .filter-pills {
@@ -1372,7 +1457,7 @@ dialog::backdrop {
     grid-template-columns: 1fr auto;
   }
 
-  .filter-pills {
+  .filter-block {
     grid-column: 1 / -1;
   }
 
@@ -1517,7 +1602,17 @@ dialog::backdrop {
     grid-template-columns: 1fr;
   }
 
-  .filter-pills,
+  .archive-scope {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+
+  .archive-scope > p {
+    justify-self: start;
+    margin-bottom: 0;
+  }
+
+  .filter-block,
   .search-box,
   .sort-control {
     grid-column: 1;

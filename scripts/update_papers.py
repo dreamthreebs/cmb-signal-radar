@@ -78,6 +78,82 @@ CATEGORY_TAGS = {
     "hep-th": "高能理论",
 }
 
+TOPIC_RULES: dict[str, tuple[str, ...]] = {
+    "polarization": (
+        r"\bpolarization\b",
+        r"\bpolarisation\b",
+        r"\bb[- ]?modes?\b",
+        r"\be[- ]?modes?\b",
+        "tensor-to-scalar",
+    ),
+    "lensing-lss": (
+        "cmb lensing",
+        "gravitational lensing",
+        "lensing reconstruction",
+        "large-scale structure",
+        r"\blss\b",
+        "galaxy clustering",
+    ),
+    "early-universe": (
+        r"\binflation\b",
+        "primordial power spectrum",
+        "primordial gravitational wave",
+        "early universe",
+        "reionization",
+        "non-gaussianity",
+    ),
+    "instruments": (
+        "simons observatory",
+        "litebird",
+        "spt-3g",
+        "bicep",
+        "cmb-s4",
+        "telescope",
+        "detector",
+        "instrument",
+        "calibration",
+    ),
+    "foregrounds-methods": (
+        "foreground",
+        "component separation",
+        "map-making",
+        "power spectrum estimation",
+        "likelihood",
+        "simulation",
+    ),
+    "dark-sector": (
+        "dark matter",
+        "dark energy",
+        "axion",
+        "primordial black hole",
+        "hubble constant",
+        "hubble tension",
+    ),
+    "gravity": (
+        "gravitational wave",
+        "gravitational-wave",
+        "black hole",
+        "modified gravity",
+        "general relativity",
+    ),
+    "surveys": (
+        r"\bdesi\b",
+        r"\beuclid\b",
+        r"\bjwst\b",
+        r"\brubin\b",
+        "roman space telescope",
+        "large survey",
+    ),
+    "ai-computation": (
+        "machine learning",
+        "neural network",
+        "deep learning",
+        "foundation model",
+        "emulator",
+        "simulation-based inference",
+    ),
+}
+
 
 class PaperAnalysis(BaseModel):
     paper_id: str
@@ -196,7 +272,18 @@ def request_feed(
     raise RuntimeError("unreachable")
 
 
-def fetch_all(config: dict[str, Any], max_results_override: int | None = None) -> tuple[list[dict[str, Any]], list[str]]:
+def add_submitted_date_window(query: str, days: int, now: datetime) -> str:
+    start = (now - timedelta(days=days)).strftime("%Y%m%d%H%M")
+    end = now.strftime("%Y%m%d%H%M")
+    return f"({query}) AND submittedDate:[{start} TO {end}]"
+
+
+def fetch_all(
+    config: dict[str, Any],
+    max_results_override: int | None = None,
+    backfill_days: int = 0,
+    now: datetime | None = None,
+) -> tuple[list[dict[str, Any]], list[str]]:
     contact = os.getenv("ARXIV_CONTACT_EMAIL", "").strip()
     user_agent = "cmb-signal-radar/1.0"
     if contact:
@@ -206,7 +293,10 @@ def fetch_all(config: dict[str, Any], max_results_override: int | None = None) -
 
     merged: dict[str, dict[str, Any]] = {}
     errors: list[str] = []
-    queries = config.get("queries", [])
+    queries = config.get("backfill_queries", []) if backfill_days else config.get("queries", [])
+    if not queries:
+        queries = config.get("queries", [])
+    query_now = now or datetime.now(timezone.utc)
     for index, query_config in enumerate(queries):
         if index:
             time.sleep(3)
@@ -214,7 +304,10 @@ def fetch_all(config: dict[str, Any], max_results_override: int | None = None) -
         max_results = max_results_override or int(query_config.get("max_results", 50))
         LOGGER.info("Fetching %s (%s results max)", name, max_results)
         try:
-            xml_text = request_feed(session, query_config["query"], max_results)
+            query = query_config["query"]
+            if backfill_days:
+                query = add_submitted_date_window(query, backfill_days, query_now)
+            xml_text = request_feed(session, query, max_results)
             parsed = parse_atom_feed(xml_text, name)
         except (requests.RequestException, ET.ParseError) as exc:
             message = f"{name}: {exc}"
@@ -245,6 +338,21 @@ def matched_terms(text: str, terms: Iterable[WeightedTerm]) -> list[WeightedTerm
     return matches
 
 
+def classify_topics(paper: dict[str, Any], cmb_score: int) -> list[str]:
+    searchable = f"{paper.get('title', '')} {paper.get('abstract', '')}"
+    topics: list[str] = []
+    if cmb_score >= 18:
+        topics.append("cmb-core")
+    for topic, patterns in TOPIC_RULES.items():
+        if any(re.search(pattern, searchable, re.IGNORECASE) for pattern in patterns):
+            topics.append(topic)
+    if paper.get("primary_category") == "astro-ph.IM" and "instruments" not in topics:
+        topics.append("instruments")
+    if not topics:
+        topics.append("cosmic-discovery")
+    return topics
+
+
 def score_paper(paper: dict[str, Any], now: datetime) -> dict[str, Any]:
     searchable = f"{paper['title']} {paper['abstract']}"
     cmb_matches = matched_terms(searchable, CMB_TERMS)
@@ -270,6 +378,7 @@ def score_paper(paper: dict[str, Any], now: datetime) -> dict[str, Any]:
         "editorial": min(100, round(cmb_score * 0.62 + interest_score * 0.38)),
     }
     paper["track"] = "focus" if cmb_score >= 18 else "discovery"
+    paper["topics"] = classify_topics(paper, cmb_score)
     return paper
 
 
@@ -452,6 +561,45 @@ def select_current(
     return focus + discovery, [paper["id"] for paper in focus], [paper["id"] for paper in discovery]
 
 
+def select_archive(
+    candidates: list[dict[str, Any]],
+    config: dict[str, Any],
+    now: datetime,
+    days: int,
+) -> list[dict[str, Any]]:
+    cutoff = now - timedelta(days=days)
+    by_month: dict[str, list[dict[str, Any]]] = {}
+    for paper in candidates:
+        try:
+            published = parse_datetime(paper["published"])
+        except (KeyError, ValueError):
+            continue
+        if published < cutoff:
+            continue
+        by_month.setdefault(published.strftime("%Y-%m"), []).append(paper)
+
+    focus_limit = int(config.get("archive_focus_per_month", 32))
+    discovery_limit = int(config.get("archive_discovery_per_month", 12))
+    selected: list[dict[str, Any]] = []
+    for month in sorted(by_month, reverse=True):
+        monthly = by_month[month]
+        focus = sorted(
+            (paper for paper in monthly if paper["track"] == "focus"),
+            key=lambda paper: (paper["scores"]["editorial"], paper["published"]),
+            reverse=True,
+        )[:focus_limit]
+        focus_ids = {paper["id"] for paper in focus}
+        discovery = sorted(
+            (paper for paper in monthly if paper["id"] not in focus_ids),
+            key=lambda paper: (paper["scores"]["interest"], paper["scores"]["editorial"], paper["published"]),
+            reverse=True,
+        )[:discovery_limit]
+        selected.extend(focus + discovery)
+
+    deduplicated = {paper["id"]: paper for paper in selected}
+    return sorted(deduplicated.values(), key=lambda paper: paper["published"], reverse=True)
+
+
 def find_new_or_updated(
     selected: list[dict[str, Any]],
     existing: dict[str, Any],
@@ -508,22 +656,44 @@ def update_data(args: argparse.Namespace) -> UpdateOutcome:
         return UpdateOutcome(existing, False, "missing_api_key")
 
     now = datetime.now(timezone.utc)
+    backfill_days = max(0, int(getattr(args, "backfill_days", 0) or 0))
 
-    fetched, errors = fetch_all(config, args.max_results)
-    if not fetched:
-        if existing.get("papers"):
-            LOGGER.warning("All arXiv requests failed; keeping the last successful dataset unchanged")
-            return UpdateOutcome(existing, False, "arxiv_unavailable")
-        raise RuntimeError("All arXiv requests failed and no previous dataset is available")
+    existing_meta = existing.get("meta", {})
+    reuse_existing_archive = bool(
+        backfill_days
+        and existing.get("papers")
+        and int(existing_meta.get("archive_days", 0) or 0) >= backfill_days
+        and int(existing_meta.get("archive_pending_count", 0) or 0) > 0
+    )
+    if reuse_existing_archive:
+        LOGGER.info("Continuing GPT analysis for the existing %s-day archive", backfill_days)
+        fetched = []
+        errors = list(existing_meta.get("fetch_errors", []))
+        papers = existing["papers"]
+        focus_ids = list(existing_meta.get("current_focus_ids", []))
+        discovery_ids = list(existing_meta.get("current_discovery_ids", []))
+        new_or_updated: list[dict[str, Any]] = []
+    else:
+        fetched, errors = fetch_all(
+            config,
+            args.max_results,
+            backfill_days=backfill_days,
+            now=now,
+        )
+        if not fetched:
+            if existing.get("papers"):
+                LOGGER.warning("All arXiv requests failed; keeping the last successful dataset unchanged")
+                return UpdateOutcome(existing, False, "arxiv_unavailable")
+            raise RuntimeError("All arXiv requests failed and no previous dataset is available")
 
-    scored = [score_paper(paper, now) for paper in fetched]
-    selected, focus_ids, discovery_ids = select_current(scored, config, now)
-    new_or_updated = find_new_or_updated(selected, existing)
-    if args.skip_if_no_new and not new_or_updated:
-        LOGGER.info("Skipping update: no new or revised selected papers")
-        return UpdateOutcome(existing, False, "no_new_papers")
-
-    papers = merge_history(selected, existing, config, now)
+        scored = [score_paper(paper, now) for paper in fetched]
+        current_selected, focus_ids, discovery_ids = select_current(scored, config, now)
+        selected = select_archive(scored, config, now, backfill_days) if backfill_days else current_selected
+        new_or_updated = find_new_or_updated(selected, existing)
+        if args.skip_if_no_new and not new_or_updated:
+            LOGGER.info("Skipping update: no new or revised selected papers")
+            return UpdateOutcome(existing, False, "no_new_papers")
+        papers = merge_history(selected, existing, config, now)
 
     selected_order = {paper_id: index for index, paper_id in enumerate(focus_ids + discovery_ids)}
     selected_papers = sorted(
@@ -531,8 +701,16 @@ def update_data(args: argparse.Namespace) -> UpdateOutcome:
         key=lambda paper: selected_order[paper["id"]],
     )
     ai_key_present = bool(settings["api_key"]) and not args.no_ai
-    analysis_limit = int(config.get("analysis_limit", 12))
-    if args.force_ai:
+    configured_limit = int(config.get("analysis_limit", 12))
+    analysis_cap = getattr(args, "analysis_cap", None)
+    analysis_limit = configured_limit if analysis_cap is None else max(1, int(analysis_cap))
+    if backfill_days:
+        needs_analysis = [
+            paper
+            for paper in papers
+            if paper.get("analysis", {}).get("provider") != "openai"
+        ][:analysis_limit]
+    elif args.force_ai:
         needs_analysis = selected_papers[:analysis_limit]
     else:
         needs_analysis = [
@@ -588,6 +766,19 @@ def update_data(args: argparse.Namespace) -> UpdateOutcome:
     analysis_status = "openai" if current_ai_count else "fallback"
     if current_ai_count and current_ai_count < len(selected_papers):
         analysis_status = "mixed"
+    archive_ai_count = sum(
+        1 for paper in papers if paper.get("analysis", {}).get("provider") == "openai"
+    )
+    archive_pending_count = len(papers) - archive_ai_count
+    if archive_ai_count and archive_pending_count:
+        analysis_status = "mixed"
+    archive_dates = sorted(
+        {str(paper.get("published", ""))[:10] for paper in papers if paper.get("published")},
+        reverse=True,
+    )
+    archive_months = sorted({date[:7] for date in archive_dates}, reverse=True)
+    previous_archive_days = int(existing.get("meta", {}).get("archive_days", 0) or 0)
+    archive_days = backfill_days or previous_archive_days or int(config.get("history_days", 120))
 
     data = {
         "meta": {
@@ -604,8 +795,15 @@ def update_data(args: argparse.Namespace) -> UpdateOutcome:
             "analysis_error": ai_error,
             "analysis_basis": "title + abstract + categories",
             "lookback_days": int(config.get("lookback_days", 21)),
-            "candidate_count": len(fetched),
+            "candidate_count": len(fetched) or int(existing_meta.get("candidate_count", 0) or 0),
             "paper_count": len(papers),
+            "archive_days": archive_days,
+            "archive_start": archive_dates[-1] if archive_dates else None,
+            "archive_end": archive_dates[0] if archive_dates else None,
+            "archive_dates": archive_dates,
+            "archive_months": archive_months,
+            "archive_ai_count": archive_ai_count,
+            "archive_pending_count": archive_pending_count,
             "current_focus_ids": focus_ids,
             "current_discovery_ids": discovery_ids,
         },
@@ -630,6 +828,8 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--output", default="site/data/papers.json")
     parser.add_argument("--model", default="")
     parser.add_argument("--max-results", type=int, default=None, help="Override each query size for local testing")
+    parser.add_argument("--backfill-days", type=int, default=0, help="Build a balanced archive covering this many days")
+    parser.add_argument("--analysis-cap", type=int, default=None, help="Maximum GPT analyses in this run")
     parser.add_argument("--no-ai", action="store_true", help="Skip GPT even when an API key is set")
     parser.add_argument("--require-ai", action="store_true", help="Keep the current dataset if GPT is unavailable")
     parser.add_argument("--skip-if-no-new", action="store_true", help="Do not write data when no selected paper is new or revised")
