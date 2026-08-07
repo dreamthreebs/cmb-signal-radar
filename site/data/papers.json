@@ -1,7 +1,7 @@
 {
   "meta": {
-    "generated_at": "2026-08-07T09:46:43Z",
-    "last_attempt_at": "2026-08-07T09:46:43Z",
+    "generated_at": "2026-08-07T09:50:28Z",
+    "last_attempt_at": "2026-08-07T09:50:28Z",
     "fetch_status": "ok",
     "fetch_errors": [],
     "source": "arXiv API",
@@ -86,8 +86,8 @@
       "2026-06",
       "2026-05"
     ],
-    "archive_ai_count": 54,
-    "archive_pending_count": 113,
+    "archive_ai_count": 72,
+    "archive_pending_count": 95,
     "current_focus_ids": [
       "2608.06343",
       "2608.04868",
@@ -4323,19 +4323,28 @@
         "gravity"
       ],
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T09:36:27Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：We study the impact of light spectator axions on the seeding of primordial black holes (PBHs) during inflation in string theory.",
-        "why_it_matters_zh": "这项工作涉及CMB、暴胀、观测项目；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 GPT_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 2,
-        "confidence": 30
+        "generated_at": "2026-08-07T09:50:28Z",
+        "title_zh": "弦暴胀中的旁观者轴子与原初黑洞",
+        "summary_zh": "本文研究弦论 Fibre Inflation 中轻旁观者轴子是否会改变暴胀期间原初黑洞的播种机制。摘要称，多数参数空间下轴子对曲率扰动功率谱影响很小，但当轴子衰变常数较大但仍亚普朗克且非微扰势前因子指数小时时，可增强扰动增长，从而更易达到播种 PBH 所需的放大。",
+        "why_it_matters_zh": "该工作直接连接 CMB 约束下的暴胀模型、小尺度曲率扰动放大、PBH 暗物质候选以及弦论紫外完备性。对 CMB 研究者而言，关键在于模型是否在保持 CMB 尺度功率谱可接受的同时，在小尺度产生足够增强。",
+        "key_points": [
+          "研究弦论 Fibre Inflation 中轻旁观者轴子对 PBH 播种的影响。",
+          "多数参数空间，尤其远小于普朗克尺度的衰变常数，对曲率扰动功率谱影响可忽略。",
+          "较大的亚普朗克衰变常数并伴随非微扰势的指数小前因子时，可增强扰动增长。"
+        ],
+        "methods": [
+          "弦论中的 Fibre Inflation 模型",
+          "轻旁观者轴子动力学分析",
+          "场空间转弯与曲率扰动功率谱增强分析",
+          "参数空间扫描或比较"
+        ],
+        "reading_note_zh": "精读时应核对轴子势参数、衰变常数范围与非微扰前因子的假设如何进入功率谱增强计算，以及这些增强是否同时满足 CMB 约束和 PBH 丰度相关约束。",
+        "audience": "建议精读",
+        "novelty_score": 7,
+        "confidence": 88
       },
       "first_selected_at": "2026-08-07T09:36:27Z",
       "last_selected_at": "2026-08-07T09:36:27Z"
@@ -4386,19 +4395,28 @@
         "gravity"
       ],
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T09:36:27Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：A stochastic gravitational wave (GW) background sources a shear in the flow of cosmic fluid which, through non-linear mode coupling, generates large-scale white noise (LSWN) in the kurvature density field.",
-        "why_it_matters_zh": "这项工作涉及新探测、新约束、引力波；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 GPT_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 4,
-        "confidence": 30
+        "generated_at": "2026-08-07T09:50:28Z",
+        "title_zh": "引力波作为大尺度白噪声来源：新的约束",
+        "summary_zh": "本文研究随机引力波背景如何通过宇宙流体剪切和非线性模耦合，在曲率密度场中产生大尺度白噪声，并把 LSWN 的观测非探测转化为对引力波产生红移和能量密度的限制。摘要给出一个最小约束，并指出这会限制 PTA 近期探测到的纳赫兹引力波在很早期宇宙中已存在的可能性。",
+        "why_it_matters_zh": "虽然主题不是 CMB 各向异性本身，但它涉及原初扰动、随机引力波背景和大尺度结构统计量之间的联系。对宇宙学读者而言，这类约束可与 CMB、PTA 和未来引力波观测共同限定早期宇宙相变或其他引力波产生机制。",
+        "key_points": [
+          "随机引力波背景可通过非线性模耦合在曲率密度场中产生大尺度白噪声。",
+          "利用 LSWN 的非探测给出引力波产生红移和能量密度的约束。",
+          "摘要称该约束可限制 PTA 探测到的纳赫兹引力波若在早期宇宙中已存在的情形。"
+        ],
+        "methods": [
+          "大尺度白噪声 LSWN 框架",
+          "随机引力波背景诱导剪切的非线性模耦合计算",
+          "将 LSWN 观测非探测转化为引力波产生红移与密度约束",
+          "脉冲星计时阵列相关纳赫兹频段引力波作为示例"
+        ],
+        "reading_note_zh": "精读时应核对 LSWN 振幅推导中关于非线性模耦合、引力波源连续性或颗粒性、以及观测非探测阈值的假设；还需确认摘要中给出的约束适用的频段、红移定义和密度参数定义。",
+        "audience": "领域相关",
+        "novelty_score": 8,
+        "confidence": 86
       },
       "first_selected_at": "2026-08-07T09:36:27Z",
       "last_selected_at": "2026-08-07T09:36:27Z"
@@ -4455,19 +4473,29 @@
         "gravity"
       ],
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T09:36:27Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：Chain inflation offers an alternative to standard slow-roll dynamics, with accelerated expansion proceeding through a sequence of rapid quantum tunneling events between metastable vacua.",
-        "why_it_matters_zh": "这项工作涉及CMB、暴胀、观测项目；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 GPT_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 2,
-        "confidence": 30
+        "generated_at": "2026-08-07T09:50:28Z",
+        "title_zh": "高能标下的非最小耦合链式暴胀",
+        "summary_zh": "本文研究高尺度链式暴胀中 ξRφ² 型非最小引力耦合对隧穿动力学和观测量的影响。摘要称该耦合会在 Einstein frame 中引入场依赖的 Euclidean bounce action 放大，打破最小耦合模型中标量倾斜与暴胀能标的刚性关系，使高尺度链式暴胀可行，并产生可由未来 CMB 与引力波观测检验的信号。",
+        "why_it_matters_zh": "这篇与 CMB 暴胀检验高度相关，因为它直接讨论标量谱指数、running、原初曲率功率谱以及 CMB 相关模出视界时的暴胀能标。摘要还把 Simons Observatory 对 running 的检验与未来引力波干涉仪信号结合起来，属于多信使早期宇宙模型。",
+        "key_points": [
+          "研究高能标链式暴胀中标量场与引力的非最小耦合。",
+          "非最小耦合在 Einstein frame 中改变 Euclidean bounce action，从而改变隧穿率。",
+          "模型可允许高尺度链式暴胀，并预言可由 Simons Observatory 检验的谱指数 running 以及未来干涉仪可探测的随机引力波信号。"
+        ],
+        "methods": [
+          "非最小耦合项 ξRφ²",
+          "Einstein frame 变换",
+          "Euclidean bounce action 与量子隧穿率分析",
+          "解析框架连接隧穿动力学、标量谱指数、running、原初曲率功率谱和泡碰撞随机引力波背景",
+          "Simons Observatory、Einstein Telescope、Cosmic Explorer 可检验性讨论"
+        ],
+        "reading_note_zh": "精读时应核对从非最小耦合到 bounce action 放大的推导、隧穿率与标量谱指数及 running 的解析关系，以及高尺度可行区域是否真正满足 CMB 约束、泡碰撞引力波限制和链式暴胀的完成条件。",
+        "audience": "建议精读",
+        "novelty_score": 8,
+        "confidence": 89
       },
       "first_selected_at": "2026-08-07T09:36:27Z",
       "last_selected_at": "2026-08-07T09:36:27Z"
@@ -4518,19 +4546,33 @@
         "surveys"
       ],
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T09:36:27Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：We propose a new estimator for the ionized gas--matter power spectrum, which correlates the kinematic Sunyaev--Zel'dovich (kSZ) field with the line-of-sight velocity field and the weak-lensing convergence map.",
-        "why_it_matters_zh": "这项工作涉及CMB、前景去除、次级各向异性；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 GPT_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 3,
-        "confidence": 30
+        "generated_at": "2026-08-07T09:50:28Z",
+        "title_zh": "Shear-kSZ：一种由 kSZ 层析和弱透镜测量物质-电子功率谱的新估计量",
+        "summary_zh": "论文提出一种“shear-kSZ”估计量，把 kSZ 场、视线速度场和弱透镜会聚图相关起来，以测量电离气体-物质功率谱 P_me(k)。摘要称解析表达式经模拟验证达到百分比级一致，并在 SO-like、DESI-like LRG 与 LSST-like 源样本组合下预期可高信噪测量重子抑制 S(k)。",
+        "why_it_matters_zh": "这篇工作直接连接 CMB 次级各向异性中的 kSZ 信号与弱透镜宇宙学，目标是校准 Stage-IV cosmic shear 的主要天体物理系统误差之一，即重子反馈对物质功率谱的抑制。若摘要中的前景抵消和测量预测成立，它可成为 CMB-S4/Simons Observatory 与 LSST、Euclid、DESI 联合分析中的重要交叉探针。",
+        "key_points": [
+          "提出将 kSZ 场、视线速度场与弱透镜会聚图相关的新估计量。",
+          "摘要称该估计量可直接访问全物质分布的物质-电子交叉功率谱，并用于约束重子反馈导致的物质功率谱抑制。",
+          "由于宇称结构，摘要报告 CMB 前景贡献会抵消，并给出对 SO、DESI、LSST 等巡天组合的可测性预测。"
+        ],
+        "methods": [
+          "kSZ tomography",
+          "weak-lensing convergence map",
+          "line-of-sight velocity field",
+          "analytical expression for the estimator",
+          "simulations validation",
+          "Simons Observatory-like CMB temperature map with noise and beam",
+          "linear velocity reconstruction applied to DESI-like LRGs",
+          "LSST-like high-redshift source samples",
+          "forecast over f_sky=0.2"
+        ],
+        "reading_note_zh": "精读时应重点核对估计量中速度核的可校准性、前景抵消依赖的宇称假设是否在真实掩膜和系统误差下成立，以及从 P_me(k) 推断 S(k) 时对重子物理和透镜系统误差的建模。",
+        "audience": "建议精读",
+        "novelty_score": 9,
+        "confidence": 92
       },
       "first_selected_at": "2026-08-07T09:36:27Z",
       "last_selected_at": "2026-08-07T09:36:27Z"
@@ -4583,19 +4625,34 @@
         "surveys"
       ],
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T09:36:27Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：We present an extension of \\texttt{PyBird} for one-loop large-scale structure analyses of modified gravity models.",
-        "why_it_matters_zh": "这项工作涉及CMB、观测项目、张力与反常；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 GPT_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 3,
-        "confidence": 30
+        "generated_at": "2026-08-07T09:50:28Z",
+        "title_zh": "用于 Vainshtein 筛选 Horndeski 引力的一种高效一环 EFTofLSS 框架",
+        "summary_zh": "论文介绍了 PyBird 的扩展框架，用于 Vainshtein 筛选的 Horndeski 与 nDGP 等修改引力模型的一环大尺度结构分析，并以直接 ODE 方法保留精确时间依赖。摘要报告该实现提高效率、与标准方法数值一致，并用 Planck CMB、BOSS full-shape 和 DESI DR2 BAO 数据展示参数约束，其中全形状信息显著收紧约束。",
+        "why_it_matters_zh": "该工作主要服务于大尺度结构和修改引力检验，但使用 Planck CMB 与 BAO/full-shape 数据联合约束，因而与 CMB 给出的早期宇宙基准和引力理论一致性检验相关。对 CMB 读者而言，它提供了把 CMB 约束与晚期结构增长、修改引力参数化相结合的分析工具背景。",
+        "key_points": [
+          "扩展 PyBird，使其支持一环 EFTofLSS 下的若干修改引力模型。",
+          "用直接 ODE 方法替代 Green 函数方法来计算扰动核中的精确时间依赖函数。",
+          "结合 Planck CMB、BOSS full-shape 和 DESI DR2 BAO 数据约束 Horndeski 参数化，并展示 cubic Galileon 与 nDGP 应用。"
+        ],
+        "methods": [
+          "PyBird extension",
+          "one-loop EFTofLSS large-scale structure analysis",
+          "quasi-static Vainshtein-screened luminal Horndeski models",
+          "EFTofDE and covariant formalisms",
+          "nDGP",
+          "direct ODE method",
+          "validation against N-body simulations",
+          "Planck CMB data",
+          "BOSS full-shape data",
+          "DESI DR2 BAO data"
+        ],
+        "reading_note_zh": "精读时应核对一环功率谱与 N 体模拟比较的尺度范围和误差标准、准静态与 Vainshtein 筛选假设的适用域，以及 Planck+BOSS+DESI 组合中先验、协方差和全形状信息如何收紧约束。",
+        "audience": "领域相关",
+        "novelty_score": 8,
+        "confidence": 88
       },
       "first_selected_at": "2026-08-07T09:36:27Z",
       "last_selected_at": "2026-08-07T09:36:27Z"
@@ -4641,19 +4698,28 @@
         "cosmic-discovery"
       ],
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T09:36:27Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：We show how signals of heavy neutrinos with displaced decays can be detected at the Large Hadron Collider in two theoretical setups, both exploiting extended gauge sectors as portals to such new physics, the Left-Right Symmetric Model and $U(1)_{B-L}$.",
-        "why_it_matters_zh": "这项工作涉及新探测、张力与反常、中微子；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 GPT_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 4,
-        "confidence": 30
+        "generated_at": "2026-08-07T09:50:28Z",
+        "title_zh": "在标准模型规范扩展中于 HL-LHC 表征长寿命重中微子",
+        "summary_zh": "论文讨论在标准模型规范扩展中，通过扩展规范扇区产生的长寿命重中微子如何在 HL-LHC 以位移衰变信号被探测。摘要称在 Left-Right Symmetric Model 与 U(1)_{B-L} 两类模型中，低背景的位移顶点可帮助测定重中微子的质量、宽度和量子数。",
+        "why_it_matters_zh": "这篇论文主要属于对撞机唯象学，不直接使用或预测 CMB 观测量。它与宇宙学的联系在于重中微子和规范扩展可能关联早期宇宙粒子物理、轻子数生成或中微子质量起源，但这些联系在摘要中没有展开。",
+        "key_points": [
+          "研究 HL-LHC 中长寿命重中微子的位移衰变信号。",
+          "理论场景包括 Left-Right Symmetric Model 和 U(1)_{B-L}。",
+          "摘要称远离相互作用点的背景污染较低，有助于获取重中微子的质量、宽度和量子数。"
+        ],
+        "methods": [
+          "Large Hadron Collider displaced-decay searches",
+          "High-Luminosity LHC projections/characterisation",
+          "Left-Right Symmetric Model",
+          "U(1)_{B-L} gauge extension"
+        ],
+        "reading_note_zh": "若从宇宙学角度精读，应核对这些重中微子参数空间是否与轻子数生成、暗辐射或宇宙学中微子质量约束发生直接联系；摘要本身未给出与 CMB 数据的明确交叉。",
+        "audience": "快速浏览",
+        "novelty_score": 5,
+        "confidence": 90
       },
       "first_selected_at": "2026-08-07T09:36:27Z",
       "last_selected_at": "2026-08-07T09:36:27Z"
@@ -4703,19 +4769,30 @@
         "dark-sector"
       ],
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T09:36:27Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：Recent cosmological analyses combining high-redshift cosmic microwave background (CMB) measurements with low-redshift baryon acoustic oscillation (BAO) data have reported a preference for dynamical dark energy, with the cosmological constant scenario ($Λ$CDM) disfavored at the $\\sim 3σ$ level.",
-        "why_it_matters_zh": "这项工作涉及CMB、再电离、张力与反常；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 GPT_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 3,
-        "confidence": 30
+        "generated_at": "2026-08-07T09:50:28Z",
+        "title_zh": "没有出路 τ：再电离时代观测并不支持较大的再电离光深度",
+        "summary_zh": "本文检验大尺度 CMB 偏振系统误差是否可能通过改变再电离光深度 τ_reio 来影响对动力学暗能量的偏好。作者在排除大尺度偏振的 CMB+BAO 基础上加入类星体阻尼翼和 dark pixel 的中性氢分数约束，摘要报告 τ_reio=0.067±0.011，并恢复了约大于 2σ 的动力学暗能量偏好。",
+        "why_it_matters_zh": "τ_reio 是 CMB 温度、偏振与物质涨落幅度推断中的关键退化参数，尤其影响大尺度 E 模偏振和 A_s 的约束。该工作用非 CMB 大尺度偏振的再电离天体物理观测交叉检验 τ_reio，有助于判断近期 CMB+BAO 暗能量结论是否由偏振系统误差驱动。",
+        "key_points": [
+          "讨论去掉大尺度 CMB 偏振后，较高再电离光深度是否会影响动力学暗能量偏好。",
+          "用独立再电离观测约束后，摘要报告的光深度与包含大尺度偏振的 CMB 分析相符。",
+          "结果认为大尺度偏振系统误差不太可能单独解释动力学暗能量偏好。"
+        ],
+        "methods": [
+          "Gompertzian 再电离框架",
+          "自洽贝叶斯分析",
+          "CMB 数据但排除大尺度偏振",
+          "BAO 数据",
+          "类星体阻尼翼中性氢分数观测",
+          "dark pixel 约束"
+        ],
+        "reading_note_zh": "精读时应核对 Gompertzian 再电离参数化对 τ_reio 后验的先验依赖，以及排除大尺度偏振后 CMB+BAO 与中性氢观测之间是否存在数据集张力。",
+        "audience": "建议精读",
+        "novelty_score": 8,
+        "confidence": 88
       },
       "first_selected_at": "2026-08-07T09:36:27Z",
       "last_selected_at": "2026-08-07T09:36:27Z"
@@ -4774,19 +4851,30 @@
         "gravity"
       ],
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T09:36:27Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：We explore the potential of cross-correlation between gravitational wave (GW) events and neutral hydrogen (HI) intensity mapping surveys to serve as an independent cosmological probe.",
-        "why_it_matters_zh": "这项工作涉及再电离、暗能量、暗物质；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 GPT_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 4,
-        "confidence": 30
+        "generated_at": "2026-08-07T09:50:28Z",
+        "title_zh": "超越标准汽笛的宇宙学：引力波与中性氢强度映射的互相关",
+        "summary_zh": "本文研究引力波事件与中性氢强度映射巡天的互相关能否作为独立宇宙学探针。基于 ET、SKAO 以及 Cosmic Explorer 的未来配置，作者使用角向自相关和互相关谱，摘要报告可给出亚百分比级 H0 精度，并约束后再电离时期膨胀史、Ωm 与 σ8。",
+        "why_it_matters_zh": "这篇文章不直接分析 CMB，但其目标参数 H0、Ωm 和 σ8 与 CMB 推断及晚期宇宙张力密切相关。HI 强度映射覆盖后再电离宇宙，若与引力波互相关成熟，可为 CMB 约束提供独立的低红移大尺度结构和膨胀史交叉检验。",
+        "key_points": [
+          "提出用引力波事件与 HI 强度映射的角向自相关和互相关作为宇宙学探针。",
+          "聚焦 ET、SKAO，并比较 ET 单独及与 Cosmic Explorer 联合的探测器网络。",
+          "摘要称该方法可同时约束 H0、Ωm、σ8 和后再电离时期的膨胀历史。"
+        ],
+        "methods": [
+          "引力波事件与中性氢强度映射巡天的互相关",
+          "角向自相关谱和互相关谱",
+          "ET 的 Δ 与 2L 构型",
+          "ET-2L 与 Cosmic Explorer 联合网络",
+          "SKAO HI 强度映射",
+          "假设双黑洞并合与 HI 发射是暗物质分布的有偏示踪体"
+        ],
+        "reading_note_zh": "精读时应重点核对引力波事件红移分布、定位误差、选择函数、HI 系统噪声和偏置模型如何进入角功率谱预测，以及所谓缓解示踪体特有系统误差的稳健性是否经过充分边际化检验。",
+        "audience": "领域相关",
+        "novelty_score": 7,
+        "confidence": 82
       },
       "first_selected_at": "2026-08-07T09:36:27Z",
       "last_selected_at": "2026-08-07T09:36:27Z"
@@ -4840,19 +4928,32 @@
         "surveys"
       ],
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T09:36:27Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：Composite dynamical dark energy (DDE) has recently been explored as an efficient way to help cure cosmological tensions through the so-called $w$XCDM model (Gomez-Valent & Solà Peracaula 2024; 2025), a toy-model version of the $Λ$XCDM model (Grande et al., 2006).",
-        "why_it_matters_zh": "这项工作涉及CMB、观测项目、张力与反常；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 GPT_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 3,
-        "confidence": 30
+        "generated_at": "2026-08-07T09:50:28Z",
+        "title_zh": "ΛXCDM：一种跨越幻影分界线的运行真空策略",
+        "summary_zh": "本文分析复合运行真空模型 ΛXCDM 的有效状态方程，并用超新星、DESI DR2 BAO 与 Planck PR4 CMB 数据拟合，讨论其跨越 phantom divide 的能力。摘要称 ΛXCDM 可自然再现 DESI 在 z≈0.4 附近暗能量状态方程跨越的特征，拟合优于 w0waCDM，并在理论上引入具有负能量密度和正压强的 cosmon 组分。",
+        "why_it_matters_zh": "Planck PR4 CMB 为该模型提供早期宇宙锚点，并与 BAO、超新星共同约束暗能量动力学。若运行真空模型能解释 DESI 暗能量迹象，它将直接影响 CMB+低红移数据联合分析中对 ΛCDM、H0 张力和晚期膨胀史的解释。",
+        "key_points": [
+          "研究 ΛXCDM 运行真空模型是否能自然跨越 phantom divide。",
+          "使用 Pantheon+ 或 DES-Dovekie 超新星、DESI DR2 BAO 与 Planck PR4 CMB 数据拟合。",
+          "摘要称该模型优于 w0waCDM，并可缓解宇宙巧合问题，但未使用大尺度结构形成数据或 SH0ES H0 标定。"
+        ],
+        "methods": [
+          "ΛXCDM 复合运行真空模型",
+          "有效状态方程计算",
+          "与 w0waCDM 参数化比较",
+          "Pantheon+ SNIa",
+          "DES-Dovekie SNIa",
+          "DESI DR2 BAO",
+          "Planck PR4 CMB",
+          "未使用大尺度结构形成数据和 SH0ES H0 标定"
+        ],
+        "reading_note_zh": "精读时应核对 ΛXCDM 相比 w0waCDM 的模型复杂度惩罚、参数先验、Planck PR4 CMB 压缩或全似然的使用方式，以及负能量密度 cosmon 组分在扰动层面是否自洽且不与未使用的结构形成数据冲突。",
+        "audience": "领域相关",
+        "novelty_score": 7,
+        "confidence": 78
       },
       "first_selected_at": "2026-08-07T09:36:27Z",
       "last_selected_at": "2026-08-07T09:36:27Z"
@@ -4907,19 +5008,29 @@
         "surveys"
       ],
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T09:36:27Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：In this work, we revisit the generalized emergent dark energy model by confronting it with DESI DR2 baryon acoustic oscillation measurements, in combination with joint CMB data from ACT, SPT, and Planck, as well as Type Ia supernova samples including Pantheon$^+$, DES-Dovekie, and Union3.",
-        "why_it_matters_zh": "这项工作涉及CMB、观测项目、张力与反常；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 GPT_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 3,
-        "confidence": 30
+        "generated_at": "2026-08-07T09:50:28Z",
+        "title_zh": "当前宇宙学数据不偏好广义涌现暗能量",
+        "summary_zh": "本文用 DESI DR2 BAO、ACT/SPT/Planck CMB 和多组 Ia 型超新星数据重新检验广义涌现暗能量（GEDE）模型。摘要报告称，合并数据后 GEDE 与 ΛCDM 相容，关键参数 Δ 在加入超新星后于 2σ 内包含 ΛCDM 值，且高斯显著性和贝叶斯证据均不支持 GEDE 优于 ΛCDM。",
+        "why_it_matters_zh": "该工作直接使用 Planck、ACT、SPT 的 CMB 数据，并结合 BAO 与超新星检验晚期暗能量动力学。对 CMB 研究者而言，它说明当前 CMB 联合低红移探针并未要求 GEDE 这类暗能量扩展，也未改善 H0、S8 等由 CMB 推断与低红移观测之间的张力。",
+        "key_points": [
+          "联合 DESI DR2 BAO、ACT/SPT/Planck CMB 与多组 Ia 型超新星数据检验 GEDE。",
+          "摘要称所有数据合并后，GEDE 相对 ΛCDM 无统计显著偏好。",
+          "GEDE 未缓解 H0 与 S8 张力，也未支持 DESI DR2 暗示的 Quintom-B 型行为。"
+        ],
+        "methods": [
+          "DESI DR2 重子声学振荡测量",
+          "ACT、SPT、Planck 联合 CMB 数据",
+          "Pantheon+、DES-Dovekie、Union3 Ia 型超新星样本",
+          "高斯显著性评估",
+          "贝叶斯证据比较"
+        ],
+        "reading_note_zh": "精读时应核对不同数据组合下 Δ 与 w(z) 的约束如何得到，尤其是超新星数据加入后为何压低偏离 ΛCDM 的空间，以及贝叶斯证据计算中采用的先验范围是否影响“无偏好”的结论。",
+        "audience": "领域相关",
+        "novelty_score": 5,
+        "confidence": 88
       },
       "first_selected_at": "2026-08-07T09:36:27Z",
       "last_selected_at": "2026-08-07T09:36:27Z"
@@ -4977,19 +5088,32 @@
         "surveys"
       ],
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T09:36:27Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：The persistent $H_0$ and $S_8$ tensions motivate the search for new dark-energy mechanisms capable of modifying the late-time expansion history while preserving the successful early-Universe predictions of $Λ$CDM scenario.",
-        "why_it_matters_zh": "这项工作涉及CMB、观测项目、张力与反常；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 GPT_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 3,
-        "confidence": 30
+        "generated_at": "2026-08-07T09:50:28Z",
+        "title_zh": "Wald-Gauss-Bonnet 拓扑暗能量的早期与晚期约束及其对 H0 和 S8 张力的影响",
+        "summary_zh": "本文研究 Wald-Gauss-Bonnet（WGB）拓扑暗能量在早期和晚期宇宙数据下的约束，将模型作为有效流体加入修改版 CLASS，并联合 Planck、ACT DR6、SPT-3G、DESI DR2 BAO 与 Pantheon+。摘要报告称，晚期数据单独与 ΛCDM 相容，而全数据集偏好非零 WGB 贡献，表现为 phantom-like 偏离，并可部分缓解 H0 张力但使 S8 略有增加。",
+        "why_it_matters_zh": "该论文把新的晚期暗能量机制直接放入 CMB 与低红移联合约束框架中，重点讨论其是否能改变由 CMB 标定的 H0 推断而不破坏早期宇宙成功。摘要还指出模型几乎不改变 primary CMB，但增强 CMB 透镜和小尺度聚类，这对解释 CMB 透镜、S8 与 H0 张力之间的耦合很相关。",
+        "key_points": [
+          "首次对 WGB 宇宙学进行早期与晚期宇宙联合分析。",
+          "模型以有效流体形式加入修改版 CLASS，并与 CMB、BAO、超新星数据比较。",
+          "摘要称全数据集偏好非零 WGB 贡献，部分降低 H0 张力，但伴随 S8 略升。"
+        ],
+        "methods": [
+          "修改版 CLASS 求解器",
+          "有效流体实现",
+          "Planck CMB 数据",
+          "ACT DR6 CMB 数据",
+          "SPT-3G CMB 数据",
+          "DESI DR2 BAO",
+          "Pantheon+ 超新星",
+          "重构宇宙学可观测量"
+        ],
+        "reading_note_zh": "精读时最该核对 WGB 有效流体实现与先验设定，以及“主 CMB 几乎不变但透镜和小尺度聚类增强”的诊断是否由数据真实驱动还是由模型参数退化造成。还需检查 H0 张力缓解与 S8 增加之间的权衡是否在不同 CMB 数据组合下稳定。",
+        "audience": "建议精读",
+        "novelty_score": 7,
+        "confidence": 84
       },
       "first_selected_at": "2026-08-07T09:36:27Z",
       "last_selected_at": "2026-08-07T09:36:27Z"
@@ -5290,19 +5414,31 @@
         "dark-sector"
       ],
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T09:36:27Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：We present CLASSIER-DDM, an extension of the Boltzmann solver CLASSIER that implements the decaying dark matter (DDM) model via its integral-equation approach.",
-        "why_it_matters_zh": "这项工作涉及CMB、CMB 透镜、张力与反常；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 GPT_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 3,
-        "confidence": 30
+        "generated_at": "2026-08-07T09:50:28Z",
+        "title_zh": "含衰变暗物质的宇宙学演化：一种积分方程方法",
+        "summary_zh": "本文介绍 CLASSIER-DDM，这是 Boltzmann 求解器 CLASSIER 的扩展，用积分方程方法处理衰变暗物质的背景和扰动演化。摘要报告称，该实现可处理任意质量两体衰变产物，并在观测相关参数空间内以较少迭代达到物质功率谱和 CMB 透镜功率谱的高精度收敛，计算代价适合参数估计。",
+        "why_it_matters_zh": "衰变暗物质会改变结构增长、物质功率谱和 CMB 透镜信号，因此与 CMB 透镜和 S8 张力研究直接相关。该工作主要贡献是数值工具和计算框架，可帮助在 CMB 与大尺度结构数据中系统检验非冷暗物质或暗辐射类衰变情形。",
+        "key_points": [
+          "发布 CLASSIER-DDM，用积分方程方法实现衰变暗物质。",
+          "支持两体衰变到任意质量的较轻产物，包括暗辐射和温暖质量产物。",
+          "摘要称该方法无需 Boltzmann 层级或流体近似，运行时间适合参数估计。"
+        ],
+        "methods": [
+          "CLASSIER-DDM 代码",
+          "Boltzmann 求解器 CLASSIER 扩展",
+          "积分方程方法",
+          "迭代求解扰动演化",
+          "小尺度解析近似",
+          "物质功率谱与 CMB 透镜功率谱收敛测试",
+          "衰变产物动量分箱"
+        ],
+        "reading_note_zh": "精读时应核对积分方程形式与传统 Boltzmann 层级计算的一致性，特别是 CMB 透镜功率谱和小尺度物质功率谱的收敛标准、动量分箱需求，以及两体衰变质量参数空间中近似是否始终可靠。",
+        "audience": "领域相关",
+        "novelty_score": 8,
+        "confidence": 90
       },
       "first_selected_at": "2026-08-07T09:36:27Z",
       "last_selected_at": "2026-08-07T09:36:27Z"
@@ -5362,19 +5498,32 @@
         "surveys"
       ],
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T09:36:27Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：Neutrino oscillations establish that neutrinos are massive, providing the only laboratory detection of physics beyond the Standard Model.",
-        "why_it_matters_zh": "这项工作涉及CMB、CMB 透镜、观测项目；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 GPT_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 4,
-        "confidence": 30
+        "generated_at": "2026-08-07T09:50:28Z",
+        "title_zh": "独立于暗能量测量宇宙中微子质量",
+        "summary_zh": "本文讨论宇宙学中微子质量约束对暗能量模型的依赖，拆分各探针对晚期物理的敏感性，并比较暗能量边缘化与不依赖晚期宇宙膨胀的两类约束路线。摘要报告，保留全部数据并边缘化暗能量历史可得较强但模型相关较少的约束，而 primary CMB 结合重建 CMB 透镜谱的路线牺牲统计精度以换取更强的模型独立性。",
+        "why_it_matters_zh": "中微子质量和是 CMB、CMB 透镜、BAO 与晚期结构增长联合分析中的核心参数；若暗能量并非 \\(Λ\\)CDM，常规强约束可能被模型假设驱动。该工作直接关系到 CMB 透镜在提供较稳健中微子质量信息方面的作用，以及未来 Simons Observatory 等实验与地面实验室中微子测量的互补性。",
+        "key_points": [
+          "目标是在暗能量模型依赖尽量小的条件下约束宇宙中微子质量和。",
+          "比较两条路线：暗能量边缘化约束，以及不依赖晚期宇宙膨胀的 primary CMB + 重建透镜谱路线。",
+          "摘要报告模型独立性增强会放宽当前约束，但与未来实验室中微子质量灵敏度形成互补。"
+        ],
+        "methods": [
+          "Planck CMB",
+          "CMB lensing",
+          "DESI DR2 BAO",
+          "对 \\((w_0,w_a)\\) 暗能量参数边缘化",
+          "分箱和三次形式的 \\(w(a)\\) 历史检验",
+          "primary CMB 中对 \\(A_{\\rm lens}\\) 边缘化",
+          "重建透镜谱 \\(C_L^{κκ}\\)",
+          "Simons Observatory lensing 与 Spec-S5 BAO 预期"
+        ],
+        "reading_note_zh": "精读时应核对“late-Universe-free”路线如何从 primary CMB 与重建 \\(C_L^{κκ}\\) 中剥离晚期膨胀依赖，尤其是对 \\(A_{\\rm lens}\\)、透镜重建归一化、暗能量模型族和其他参数退化的处理是否充分。",
+        "audience": "建议精读",
+        "novelty_score": 8,
+        "confidence": 88
       },
       "first_selected_at": "2026-08-07T09:36:27Z",
       "last_selected_at": "2026-08-07T09:36:27Z"
@@ -5418,19 +5567,31 @@
       },
       "track": "focus",
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T08:30:18Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：Cosmic microwave background (CMB) experiments use simulations of instrumental systematic effects to ensure high-fidelity measurements of cosmological parameters.",
-        "why_it_matters_zh": "这项工作涉及CMB、大型巡天、仪器与方法；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 OPENAI_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 1,
-        "confidence": 30
+        "generated_at": "2026-08-07T09:50:28Z",
+        "title_zh": "Map Multi-Tool：一种基于地图的宇宙微波背景实验波束系统误差建模方法",
+        "summary_zh": "本文提出 Map Multi-Tool，一种面向 CMB 实验的地图域波束系统误差模拟框架，通过将模拟天空与非理想强度和偏振波束卷积来生成地图和功率谱。摘要用电学读出串扰和探测器时间常数响应示例说明，不同硬件非理想性会导致不同程度的角功率谱泄漏，并可能影响高多极谱和宇宙学参数。",
+        "why_it_matters_zh": "下一代 CMB 实验的统计误差不断降低，波束畸变、偏振泄漏、读出串扰和时间响应等仪器系统误差会直接影响温度/偏振功率谱、透镜重建和参数估计。该工具若可靠，可用于实验设计、性能指标制定和标定策略评估。",
+        "key_points": [
+          "提出 MMT：用地图域模拟 CMB 仪器束相关系统误差。",
+          "框架可处理畸变强度束、偏振束和泄漏效应，并输出地图和功率谱。",
+          "示例显示读出串扰和探测器时间常数可造成谱泄漏或参数偏差。"
+        ],
+        "methods": [
+          "Map Multi-Tool，地图域模拟框架",
+          "模拟天空实现与畸变强度/偏振波束卷积",
+          "包含 leakage effects 的天空图与功率谱生成",
+          "电学读出 crosstalk 示例",
+          "time-division multiplexed readout architecture 的八种方案",
+          "探测器 time constant response 示例",
+          "功率谱与宇宙学参数估计器输入"
+        ],
+        "reading_note_zh": "精读时应核对地图域近似与真实扫描策略、噪声、偏振角覆盖和束测量误差之间的对应关系，以及示例中的功率谱泄漏如何传播到具体宇宙学参数偏差。",
+        "audience": "建议精读",
+        "novelty_score": 7,
+        "confidence": 86
       },
       "first_selected_at": "2026-08-07T08:30:18Z",
       "last_selected_at": "2026-08-07T08:32:32Z"
@@ -5478,19 +5639,29 @@
       },
       "track": "focus",
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T08:30:18Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：CMB observations from ground-based observatories are limited in sensitivity by the fluctuating emission from the Earth's atmosphere, mostly due to water vapor inhomogeneities.",
-        "why_it_matters_zh": "这项工作涉及CMB、前景去除、仪器与方法；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 OPENAI_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 1,
-        "confidence": 30
+        "generated_at": "2026-08-07T09:50:28Z",
+        "title_zh": "利用多频时间域成分分离缓解 CMB 观测中的大气污染",
+        "summary_zh": "本文针对地基 CMB 观测中的大气涨落污染，提出用多频焦平面在时间域估计大气发射模板并进行成分分离的分析框架。摘要报告，引入的大气去污染因子随观测时间反比缩放，并且按该指标在 \\(30\\le \\ell \\le 300\\) 范围内可明显优于经典滤波-分箱制图流程。",
+        "why_it_matters_zh": "地基 CMB 温度和偏振观测在大角尺度到中等多极范围常受水汽大气发射限制，而过滤会同时损失宇宙学信号。若时间域多频大气模板法有效，它可能改善大尺度偏振、透镜相关分析和其他依赖低/中多极保真度的 CMB 科学目标。",
+        "key_points": [
+          "提出利用多频焦平面在时间域估计大气发射模板。",
+          "引入多极依赖的大气去污染因子 \\(A^\\mathrm{atm}_\\ell\\)。",
+          "摘要称在 \\(30\\le \\ell \\le 300\\) 上，该流程按所定义指标可显著优于传统 filter-bin map-making。"
+        ],
+        "methods": [
+          "多频时间域成分分离",
+          "专用于大气监测的探测器",
+          "大气发射模板估计",
+          "多极依赖大气去污染因子 \\(A^\\mathrm{atm}_\\ell\\)",
+          "与 classical filter-bin map-making pipeline 比较"
+        ],
+        "reading_note_zh": "精读时应重点核对大气模板与 CMB/前景信号的可分性假设、专用大气监测探测器的频段和噪声设定、\\(A^\\mathrm{atm}_\\ell\\) 的定义，以及“优于 4000 倍”这一指标与实际参数约束或地图保真度之间的关系。",
+        "audience": "建议精读",
+        "novelty_score": 8,
+        "confidence": 85
       },
       "first_selected_at": "2026-08-07T08:30:18Z",
       "last_selected_at": "2026-08-07T08:32:32Z"
@@ -5542,19 +5713,32 @@
         "dark-sector"
       ],
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T09:36:27Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：The physical origin of cosmic acceleration remains one of the central questions in modern cosmology.",
-        "why_it_matters_zh": "这项工作涉及CMB、前景去除、观测项目；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 GPT_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 2,
-        "confidence": 30
+        "generated_at": "2026-08-07T09:50:28Z",
+        "title_zh": "宇宙加速的动力学检验：宇宙微波背景与宇宙红外背景的 k 近邻互相关",
+        "summary_zh": "本文用 kNN-CDF 测量 Planck CMB 温度图与去前景 100 μm CIB 图的互相关，以 ISW/RS 效应作为宇宙加速的动力学检验。摘要报告存在正互相关证据，给出相对 ΛCDM mock 的 A_kNN=0.95±0.20，并称层析 CIB 结果与 ΛCDM 一致。",
+        "why_it_matters_zh": "ISW/RS 信号直接关联晚期引力势演化，是 CMB 与大尺度结构交叉相关中检验暗能量和引力增长史的重要通道。若 kNN-CDF 确实比传统二点统计更有效，它可能为未来 CIB/星系巡天与 CMB 的交叉分析提供更高灵敏度的非传统统计量。",
+        "key_points": [
+          "用 kNN-CDF 测量 Planck CMB 温度图与去前景 100 μm CIB 图的互相关。",
+          "摘要报告正互相关证据，并称相对二点相关函数探测显著性提高约 20%。",
+          "利用 CIB 的两个层析图初步检验演化暗能量，结果与 ΛCDM 一致。"
+        ],
+        "methods": [
+          "Planck CMB temperature map",
+          "Y.-K. Chiang (2023) foreground-free 100 μm CIB map",
+          "约 6 亿个 WISE 星系重建的 CIB 图，延伸至 z≈2.5",
+          "k-nearest neighbor cumulative distribution function (kNN-CDF)",
+          "χ² test",
+          "ΛCDM mock data including ISW and RS effects",
+          "two-point correlation function comparison",
+          "two tomographic CIB maps"
+        ],
+        "reading_note_zh": "精读时应重点核对 kNN-CDF 振幅 A_kNN 对所假定 ΛCDM mock、CIB 去前景质量、掩膜/系统误差和协方差估计的依赖；还要确认所谓 20% 提升是否来自相同数据、相同尺度范围和相同试验因子处理。",
+        "audience": "建议精读",
+        "novelty_score": 8,
+        "confidence": 92
       },
       "first_selected_at": "2026-08-07T09:36:27Z",
       "last_selected_at": "2026-08-07T09:36:27Z"
@@ -5607,19 +5791,31 @@
         "surveys"
       ],
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T09:36:27Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：We constrain the class of modified cosmologies derived in Paper I [1] from a generalized mass-to-horizon relation (MHR) that enforces thermodynamic consistency between the Cai-Kim horizon temperature and generalized horizon entropies.",
-        "why_it_matters_zh": "这项工作涉及CMB、观测项目、新探测；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 GPT_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 4,
-        "confidence": 30
+        "generated_at": "2026-08-07T09:50:28Z",
+        "title_zh": "来自质量-视界关系的修正宇宙学：观测约束",
+        "summary_zh": "本文约束一类由广义质量-视界关系和广义视界熵热力学一致性导出的修正宇宙学，并用 SNe、宇宙钟、DESI DR2 BAO 与 Planck 2018 CMB distance priors 做 MCMC 和贝叶斯证据比较。摘要报告熵指数被强烈限制在接近标准情形，部分扩展可提高推断的 H0 并缓和 CMB-SH0ES 张力，但贝叶斯证据在所有数据组合中都不支持这些扩展相对 ΛCDM。",
+        "why_it_matters_zh": "该工作把 CMB distance priors 与低红移距离探针结合，用来检验修改 Friedmann 方程是否能解释 H0 张力和暗能量背景演化。对 CMB 研究者而言，关键在于这种模型是否只是在压缩后的 CMB 距离信息层面缓和张力，而非真正改善与完整 CMB 各向异性数据的一致性。",
+        "key_points": [
+          "研究由广义质量-视界关系和广义视界熵导出的修正 Friedmann 宇宙学。",
+          "联合 SNe、宇宙钟、DESI BAO 和 Planck 2018 CMB distance priors 做 MCMC 约束与贝叶斯证据比较。",
+          "摘要称扩展参数可缓和 Hubble tension，但所有扩展相对 ΛCDM 均被贝叶斯证据不支持。"
+        ],
+        "methods": [
+          "Pantheon+/SH0ES Type Ia supernovae",
+          "cosmic chronometers",
+          "DESI DR2 baryon acoustic oscillations",
+          "Planck 2018 CMB distance priors",
+          "Markov chain Monte Carlo",
+          "Bayesian log-evidence",
+          "eight physically motivated sub-cases"
+        ],
+        "reading_note_zh": "精读时应核对 Planck distance priors 是否足以代表完整 CMB 约束、各子模型先验和贝叶斯证据对先验体积的敏感性，以及 H0 提升是否伴随对 BAO/SNe 或早期宇宙物理的一致性代价。",
+        "audience": "领域相关",
+        "novelty_score": 6,
+        "confidence": 90
       },
       "first_selected_at": "2026-08-07T09:36:27Z",
       "last_selected_at": "2026-08-07T09:36:27Z"
@@ -5670,19 +5866,31 @@
         "surveys"
       ],
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T09:36:27Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：Recent DESI results exhibit preference for a Null Energy Condition violating dynamical dark energy, with early phantom behaviour.",
-        "why_it_matters_zh": "这项工作涉及CMB、观测项目、张力与反常；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 GPT_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 3,
-        "confidence": 30
+        "generated_at": "2026-08-07T09:50:28Z",
+        "title_zh": "DESI DR2 测量背景下动力学暗物质的宇宙学后果",
+        "summary_zh": "本文提出一种暗物质状态方程随尺度因子平滑转变的动力学暗物质模型，用它替代动力学暗能量来解释 DESI DR2 相关偏好，并联合 CMB、BAO、SNeIa 与增长率数据进行检验。摘要报告早期状态方程与零一致，晚期状态方程在若干数据组合中偏负，模型可降低 σ8/S8、但不缓解 H0 张力，且相对 CPL 暗能量参数化仍较不受偏好。",
+        "why_it_matters_zh": "CMB 对暗物质背景密度和扰动演化高度敏感，因此任何非冷暗物质状态方程都会影响声学峰、距离标尺以及与 BAO/SNe 的联合约束。该模型还涉及 S8 张力和 DESI 暗能量迹象的解释，对用 CMB 联合低红移巡天区分暗能量与暗物质新物理很相关。",
+        "key_points": [
+          "提出非零暗物质状态方程的动力学暗物质模型，作为 DESI 所提示动力学暗能量偏好的替代解释。",
+          "联合 CMB、DESI DR2 BAO、多套 SNeIa 和增长率数据检验模型。",
+          "摘要称晚期暗物质状态方程可能为负，S8/σ8 低于 ΛCDM，但 H0 张力仍未解决。"
+        ],
+        "methods": [
+          "CMB datasets",
+          "DESI DR2 BAO",
+          "SNeIa compilations: PantheonPlus, Union3, DESY5",
+          "growth rate data",
+          "dynamical dark matter model with interpolating equation of state",
+          "comparison with ΛCDM and CPL parameterization",
+          "MAP χ² and DIC model comparison"
+        ],
+        "reading_note_zh": "精读时应核对暗物质非零状态方程的扰动处理、早期宇宙/CMB 初始条件一致性、与标准冷暗物质物理的可区分性，以及模型比较中相对 ΛCDM 与 CPL 的结论是否受数据组合和参数先验驱动。",
+        "audience": "建议精读",
+        "novelty_score": 7,
+        "confidence": 88
       },
       "first_selected_at": "2026-08-07T09:36:27Z",
       "last_selected_at": "2026-08-07T09:36:27Z"
