@@ -90,6 +90,7 @@ jobs:
           GPT_API_MODE: ${{ vars.GPT_API_MODE || 'responses' }}
           GPT_USER_AGENT: ${{ vars.GPT_USER_AGENT }}
           GPT_BATCH_SIZE: ${{ vars.GPT_BATCH_SIZE || '3' }}
+          GPT_MAX_RETRIES: ${{ vars.GPT_MAX_RETRIES || '3' }}
           GPT_REASONING_EFFORT: ${{ vars.GPT_REASONING_EFFORT }}
           ARXIV_CONTACT_EMAIL: ${{ vars.ARXIV_CONTACT_EMAIL }}
           EVENT_NAME: ${{ github.event_name }}

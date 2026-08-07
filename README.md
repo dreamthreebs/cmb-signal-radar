@@ -50,6 +50,7 @@ GitHub Free 的项目 Pages 通常需要公开仓库；如果你的套餐支持�
 | `GPT_API_MODE` | Variable | `responses`（默认）或 `chat_completions` |
 | `GPT_USER_AGENT` | Variable | 可选；第三方服务要求特定客户端标识时设置 |
 | `GPT_BATCH_SIZE` | Variable | 可选；每次分析的论文数，慢速第三方接口建议设为 `3` |
+| `GPT_MAX_RETRIES` | Variable | 可选；连接、超时、限流和服务端错误的最大自动重试次数，默认 `3` |
 | `GPT_REASONING_EFFORT` | Variable | 可选；Responses API 的推理强度，如 `low` |
 | `ARXIV_CONTACT_EMAIL` | Variable | 可选，让 arXiv User-Agent 带维护者联系方式 |
 
@@ -131,6 +132,7 @@ python scripts/update_papers.py --max-results 15 --require-ai --force-ai
 - `workflow_dispatch`：在 Actions 页面手动启动；可选择强制刷新。
 - `push`：代码或页面发生修改时，只运行测试并部署已有数据，不调用 GPT。
 - GPT Key 缺失、鉴权失败、超时、返回结构不完整或 arXiv 暂时不可用时，任务不覆盖 `papers.json`、不部署新页面，并以失败状态结束。
+- GPT 遇到短暂的连接错误、超时、限流或服务端错误时会先自动退避重试 3 次；只有最终仍失败才进入告警流程。
 - 故障时工作流会自动创建并指派 `⚠️ CMB Signal 自动更新异常` Issue；连续故障只更新同一条，API 恢复且成功更新后自动关闭。
 
 ## 调整选题范围

@@ -416,6 +416,7 @@ def gpt_settings(args: argparse.Namespace) -> dict[str, str]:
         "api_mode": (os.getenv("GPT_API_MODE") or "responses").strip().lower(),
         "user_agent": (os.getenv("GPT_USER_AGENT") or "").strip(),
         "batch_size": (os.getenv("GPT_BATCH_SIZE") or "3").strip(),
+        "max_retries": (os.getenv("GPT_MAX_RETRIES") or "3").strip(),
         "reasoning_effort": (os.getenv("GPT_REASONING_EFFORT") or "").strip().lower(),
     }
 
@@ -428,11 +429,16 @@ def analyze_with_openai(
     api_mode: str = "responses",
     user_agent: str = "",
     batch_size: int = 3,
+    max_retries: int = 3,
     reasoning_effort: str = "",
 ) -> dict[str, dict[str, Any]]:
     from openai import OpenAI
 
-    client_options: dict[str, Any] = {"api_key": api_key, "timeout": 120.0, "max_retries": 0}
+    client_options: dict[str, Any] = {
+        "api_key": api_key,
+        "timeout": 120.0,
+        "max_retries": max(0, max_retries),
+    }
     if base_url:
         client_options["base_url"] = base_url
     if user_agent:
@@ -737,6 +743,7 @@ def update_data(args: argparse.Namespace) -> UpdateOutcome:
                 api_mode=settings["api_mode"],
                 user_agent=settings["user_agent"],
                 batch_size=int(settings["batch_size"]),
+                max_retries=int(settings["max_retries"]),
                 reasoning_effort=settings["reasoning_effort"],
             )
             missing_ids = {paper["id"] for paper in needs_analysis} - set(analyses)

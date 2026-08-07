@@ -82,6 +82,7 @@ class UpdatePapersTests(unittest.TestCase):
                 base_url="https://provider.example/v1",
                 user_agent="provider-client",
                 batch_size=2,
+                max_retries=3,
                 reasoning_effort="low",
             )
 
@@ -94,7 +95,7 @@ class UpdatePapersTests(unittest.TestCase):
         openai_class.assert_called_once_with(
             api_key="test-key",
             timeout=120.0,
-            max_retries=0,
+            max_retries=3,
             base_url="https://provider.example/v1",
             default_headers={"User-Agent": "provider-client"},
         )
