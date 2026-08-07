@@ -1,12 +1,12 @@
 {
   "meta": {
-    "generated_at": "2026-08-07T10:10:36Z",
-    "last_attempt_at": "2026-08-07T10:10:36Z",
+    "generated_at": "2026-08-07T10:12:59Z",
+    "last_attempt_at": "2026-08-07T10:12:59Z",
     "fetch_status": "ok",
     "fetch_errors": [],
     "source": "arXiv API",
     "source_url": "https://info.arxiv.org/help/api/",
-    "analysis_status": "mixed",
+    "analysis_status": "openai",
     "analysis_model": "gpt-5.5",
     "analysis_api_mode": "responses",
     "analysis_endpoint": "custom",
@@ -86,8 +86,8 @@
       "2026-06",
       "2026-05"
     ],
-    "archive_ai_count": 162,
-    "archive_pending_count": 5,
+    "archive_ai_count": 167,
+    "archive_pending_count": 0,
     "current_focus_ids": [
       "2608.06343",
       "2608.04868",
@@ -13337,19 +13337,30 @@
         "surveys"
       ],
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T09:36:27Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：We study how constraints on the abundance of ultralight axions (ULAs) from cosmic microwave background (CMB) data depend on their nonlinear modelling.",
-        "why_it_matters_zh": "这项工作涉及CMB、CMB 透镜、观测项目；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 GPT_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 1,
-        "confidence": 30
+        "generated_at": "2026-08-07T10:12:59Z",
+        "title_zh": "来自 Planck 和 ACT 的超轻轴子约束：非线性建模的作用",
+        "summary_zh": "本文研究 CMB 数据对超轻轴子暗物质丰度的约束如何依赖非线性结构形成建模，聚焦质量区间 10^-25 至 10^-23 eV，其中轴子 Jeans 标度进入 CMB 透镜敏感的准线性尺度。摘要报告，使用 Planck 2018、ACT DR6 与 DESI DR2 BAO 的 MCMC 分析发现，非冷物质的朴素非线性建模可能因类似透镜的 CMB 功率谱增强而产生对 m≈10^-24 eV 次主导 ULA 成分的人为偏好。",
+        "why_it_matters_zh": "这篇论文直接关系到用 CMB 温度、偏振及尤其 CMB 透镜来约束暗物质微物理时的理论系统误差。若非线性处方会制造或消除对超轻轴子的偏好，那么 CMB 透镜与 BAO 联合分析中的暗物质约束需要把小尺度建模不确定性作为核心误差源处理。",
+        "key_points": [
+          "研究超轻轴子丰度约束对非线性建模的依赖。",
+          "轴子 Jeans 标度落在 CMB 透镜探测的准线性区间。",
+          "朴素非线性处理可能产生次主导 ULA 暗物质成分的人为偏好。"
+        ],
+        "methods": [
+          "Planck 2018 CMB 数据",
+          "ACT DR6 数据",
+          "DESI DR2 BAO 数据",
+          "CMB lensing",
+          "Markov Chain Monte Carlo (MCMC) 分析",
+          "不同非线性模型/非线性 prescription 比较"
+        ],
+        "reading_note_zh": "精读时应重点核对不同非线性 prescription 如何实现、哪些模型被称为“naive”，以及人工偏好是否来自透镜功率谱增强的具体链路和参数退化。",
+        "audience": "建议精读",
+        "novelty_score": 8,
+        "confidence": 88
       },
       "first_selected_at": "2026-08-07T09:36:27Z",
       "last_selected_at": "2026-08-07T09:36:27Z"
@@ -13399,19 +13410,32 @@
         "surveys"
       ],
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T09:36:27Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：We constrain uncorrelated primordial isocurvature perturbations using a combination of large- and small-scale cosmological probes, with the small-scale data provided by the ultraviolet luminosity function (UVLF) -- a measure of number density of galaxies as a function of UV brightness.",
-        "why_it_matters_zh": "这项工作涉及CMB、暗物质、中微子；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 GPT_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 2,
-        "confidence": 30
+        "generated_at": "2026-08-07T10:12:59Z",
+        "title_zh": "来自 JWST 紫外光度函数的新等曲率约束",
+        "summary_zh": "本文结合大尺度 CMB、BAO、Ia 型超新星与小尺度 HST/JWST 紫外光度函数，约束多种非相关原初等曲率扰动，并用 broken power law 与 running power law 两种参数化避免预设谱指数。摘要报告其构造了 k 空间中允许等曲率功率的 68% 和 95% 可信包络，且 95% 包络在宽尺度范围内对所选幂律形式大体不敏感。",
+        "why_it_matters_zh": "原初等曲率扰动是 CMB 初始条件检验的核心对象，但 CMB 主要约束大尺度；JWST/HST UVLF 将约束延伸到 k≈0.5–10 Mpc^-1 的中小尺度和 z≈4–13 的结构形成时期。它因此为检验早期宇宙、暗物质/中微子/暗辐射扰动的尺度依赖提供了与 CMB 互补的窗口。",
+        "key_points": [
+          "用 CMB、BAO、Ia 型超新星与 HST/JWST UVLF 联合约束非相关原初等曲率扰动。",
+          "考虑 CDM、重子、中微子密度、中微子速度和暗辐射等多种等曲率模式。",
+          "摘要称这是首个基于 UVLF 的模型无关多成分等曲率约束。"
+        ],
+        "methods": [
+          "CMB 数据",
+          "重子声学振荡 BAO",
+          "Ia 型超新星",
+          "HST UV luminosity function",
+          "JWST UV luminosity function",
+          "broken power law 参数化",
+          "running power law 参数化",
+          "68% 和 95% k 空间 credible envelopes"
+        ],
+        "reading_note_zh": "精读时应核对 UVLF 到物质涨落约束的天体物理建模假设，特别是星系形成、尘埃、选择函数和高红移系统误差如何与等曲率谱形退化。",
+        "audience": "领域相关",
+        "novelty_score": 8,
+        "confidence": 84
       },
       "first_selected_at": "2026-08-07T09:36:27Z",
       "last_selected_at": "2026-08-07T09:36:27Z"
@@ -13463,19 +13487,29 @@
         "dark-sector"
       ],
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T09:36:27Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：Realizing controlled, single-clock inflation in string theory is fundamentally obstructed by the backreaction of heavy moduli.",
-        "why_it_matters_zh": "这项工作涉及CMB、暴胀、观测项目；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 GPT_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 1,
-        "confidence": 30
+        "generated_at": "2026-08-07T10:12:59Z",
+        "title_zh": "来自单值化谷的受控半影暴胀",
+        "summary_zh": "本文讨论弦论中重模量反作用对受控单钟暴胀的阻碍，并在复结构模空间近边界的 penumbra 区域给出定量判据，判断 monodromic valley 是否支持受控暴胀平台。摘要报告其得到首个受控 penumbral inflation window，并在 d=q=1 benchmark 下给出 r∼10^-3 且 α_s≈-r/2 的相关预言，作为 LiteBIRD/CMB-S4 的可检验目标。",
+        "why_it_matters_zh": "该工作与 CMB 的联系主要在暴胀可观测量：张量标量比 r 和标量谱指数 running α_s。若模型预言的 r∼10^-3 稳健，它落在未来 LiteBIRD 和 CMB-S4 追踪原初 B 模与暴胀参数的科学目标附近，但摘要层面还不能判断其弦论构造的全局完备性或预言稳健性。",
+        "key_points": [
+          "提出弦论复结构模空间 penumbra 区域中的受控单钟暴胀判据。",
+          "给出单钟控制条件与平台形成条件，并分类 penumbral valleys。",
+          "给出 LiteBIRD/CMB-S4 可检验的 r 与 running 目标。"
+        ],
+        "methods": [
+          "弦论复结构模空间分析",
+          "协变控制定理",
+          "axion-saxion 有效理论",
+          "解析可解模型族",
+          "双场动力学的不变量吸引子方程"
+        ],
+        "reading_note_zh": "精读时应核对“受控”条件在观测窗口内的适用性、从双场动力学到单钟有效描述的推导，以及 r∼10^-3、α_s≈-r/2 是否依赖 d=q=1 benchmark 的特殊选择。",
+        "audience": "快速浏览",
+        "novelty_score": 7,
+        "confidence": 76
       },
       "first_selected_at": "2026-08-07T09:36:27Z",
       "last_selected_at": "2026-08-07T09:36:27Z"
@@ -13524,19 +13558,30 @@
         "early-universe"
       ],
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T09:36:27Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：Recent baryon acoustic oscillation (BAO) distance measurements, when combined with Cosmic Microwave Background (CMB) observations in the $Λ$CDM framework, lead to a preference for negative neutrino masses.",
-        "why_it_matters_zh": "这项工作涉及CMB、再电离、张力与反常；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 GPT_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 2,
-        "confidence": 30
+        "generated_at": "2026-08-07T10:12:59Z",
+        "title_zh": "再电离历史与中微子质量",
+        "summary_zh": "本文研究 CMB 与 BAO 在 ΛCDM 框架下出现的负中微子质量偏好，检验天体物理动机的再电离历史能否缓解这一反常。摘要报告称，频率学派分析中某些再电离历史可使 ∑mν 最佳拟合转为正值，并让 ∑mν≈0.06 eV 进入 95% 置信区间；与相同 τ 的两步 tanh 型历史比较显示，主要影响来自总光学深度 τ。",
+        "why_it_matters_zh": "CMB 对中微子质量的约束与再电离光学深度 τ 强相关，而 τ 又由大尺度偏振和再电离建模决定。若改变再电离历史可影响 CMB+BAO 对 ∑mν 的偏好，这直接关系到中微子质量反常是否是数据、模型参数化或天体物理假设共同作用的结果。",
+        "key_points": [
+          "BAO 与 CMB 在 ΛCDM 下给出负中微子质量偏好的问题。",
+          "某些再电离历史可把 ∑mν 的最佳拟合移到正值，并使约 0.06 eV 落入 95% 置信区间。",
+          "摘要称这一效应主要由总光学深度 τ 驱动，再电离历史细节作用较小。"
+        ],
+        "methods": [
+          "BAO 距离测量与 CMB 观测的联合分析",
+          "ΛCDM 框架",
+          "频率学派分析",
+          "天体物理动机的再电离历史",
+          "高 τ 再电离历史与相同 τ 的两步 tanh 型再电离历史比较",
+          "Δχ²(∑mν) 剖面"
+        ],
+        "reading_note_zh": "精读时应重点核对：所采用的 CMB/BAO 数据组合、τ 先验或再电离模型参数化如何改变 ∑mν 的似然剖面，以及“细节作用较小”的结论是否依赖特定再电离历史族。",
+        "audience": "建议精读",
+        "novelty_score": 7,
+        "confidence": 86
       },
       "first_selected_at": "2026-08-07T09:36:27Z",
       "last_selected_at": "2026-08-07T09:36:27Z"
@@ -13589,19 +13634,30 @@
         "early-universe"
       ],
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "gpt-5.5",
         "basis": "abstract",
-        "generated_at": "2026-08-07T09:36:27Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：We study the postinflationary dynamics of an Einstein-Cartan-Holst gravity-motivated inflationary scenario, known as Einstein-Cartan pseudoscalaron inflation, coupled to a type-I seesaw extension of the Standard Model with three heavy right-handed Majorana neutrinos.",
-        "why_it_matters_zh": "这项工作涉及CMB、原初引力波、暴胀；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 GPT_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 2,
-        "confidence": 30
+        "generated_at": "2026-08-07T10:12:59Z",
+        "title_zh": "Einstein-Cartan 赝标量子暴胀、再加热与非热轻子生成",
+        "summary_zh": "本文研究 Einstein-Cartan-Holst 引力启发的 pseudoscalaron 暴胀模型在暴胀后的动力学，并将其耦合到含三个重右手 Majorana 中微子的 I 型 seesaw 扩展。摘要称，由于暴胀子与额外重 Majorana 费米子的普适耦合，非热轻子生成成为产生宇宙重子不对称的必要且自洽机制，并且模型预言可与 CMB、BAO、BBN 和中微子振荡约束相容。",
+        "why_it_matters_zh": "这篇论文与 CMB 的联系主要在原初扰动约束：标量谱指数和张量标量比是 CMB 检验暴胀模型的核心观测量。它还把暴胀、再加热、重子不对称和重中微子物理放在同一框架中，因此对利用 CMB 约束早期宇宙粒子物理模型的读者有参考价值。",
+        "key_points": [
+          "研究 Einstein-Cartan pseudoscalaron 暴胀的暴胀后动力学。",
+          "模型耦合到含三个重右手 Majorana 中微子的 I 型 seesaw 标准模型扩展。",
+          "摘要称非热轻子生成可自洽地产生观测到的宇宙重子不对称，并与 CMB、BAO、BBN 和中微子振荡约束相容。"
+        ],
+        "methods": [
+          "Einstein-Cartan-Holst 引力动机的 pseudoscalaron 暴胀模型",
+          "I 型 seesaw 标准模型扩展",
+          "三个重右手 Majorana 中微子",
+          "暴胀后动力学与再加热分析",
+          "非热轻子生成机制",
+          "与 CMB、BAO、BBN 及中微子振荡实验约束比较"
+        ],
+        "reading_note_zh": "精读时应核对：暴胀子与重 Majorana 费米子的“普适耦合”如何推出非热轻子生成的必然性，参数 γ 与最轻 Majorana 质量的可行范围是否需要调参，以及给出的 ns、r 和重子不对称是否来自同一组自洽的再加热动力学。",
+        "audience": "领域相关",
+        "novelty_score": 6,
+        "confidence": 80
       },
       "first_selected_at": "2026-08-07T09:36:27Z",
       "last_selected_at": "2026-08-07T09:36:27Z"
