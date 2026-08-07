@@ -1,0 +1,26 @@
+{
+  "queries": [
+    {
+      "name": "cmb-and-cosmology",
+      "query": "cat:astro-ph.CO",
+      "max_results": 90
+    },
+    {
+      "name": "cmb-instrumentation",
+      "query": "cat:astro-ph.IM AND (all:CMB OR all:\"cosmic microwave background\")",
+      "max_results": 35
+    },
+    {
+      "name": "cosmic-discovery",
+      "query": "cat:astro-ph.GA OR cat:astro-ph.HE OR cat:gr-qc",
+      "max_results": 75
+    }
+  ],
+  "lookback_days": 21,
+  "focus_limit": 12,
+  "discovery_limit": 6,
+  "analysis_limit": 12,
+  "max_history": 180,
+  "history_days": 120
+}
+

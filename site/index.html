@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="自动追踪 CMB 与宇宙学新论文，并用大模型生成中文摘要、价值判断和精读提示。"
+    />
+    <meta name="theme-color" content="#07100f" />
+    <title>CMB Signal · 宇宙微波背景文献雷达</title>
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <script src="./assets/app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#paper-library">跳到论文列表</a>
+    <div class="ambient" aria-hidden="true">
+      <div class="ambient__orb ambient__orb--one"></div>
+      <div class="ambient__orb ambient__orb--two"></div>
+      <div class="ambient__grid"></div>
+    </div>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="CMB Signal 首页">
+        <span class="brand__mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span>
+          <strong>CMB SIGNAL</strong>
+          <small>MICROWAVE BACKGROUND RADAR</small>
+        </span>
+      </a>
+      <nav aria-label="主导航">
+        <a href="#today">今日信号</a>
+        <a href="#paper-library">文献库</a>
+        <a href="#about">关于</a>
+      </nav>
+      <div class="live-badge" title="由 GitHub Actions 每日自动更新">
+        <span></span> AUTO DAILY
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__copy">
+          <p class="eyebrow"><span>08—COSMOLOGY FEED</span><i></i><span id="issue-date">正在校准信号</span></p>
+          <h1 id="hero-title">从宇宙最古老的光里，<br /><em>筛出今天值得读的信号。</em></h1>
+          <p class="hero__lede">
+            每日扫描最新宇宙学预印本，聚焦 CMB、偏振、透镜与早期宇宙；再用大模型把摘要压缩成可判断、可行动的中文研究简报。
+          </p>
+          <div class="hero__actions">
+            <a class="button button--primary" href="#today">查看今日精选 <span>↘</span></a>
+            <a class="button button--ghost" href="#paper-library">浏览全部文献</a>
+          </div>
+        </div>
+
+        <div class="hero__visual" aria-label="抽象的宇宙微波背景温度图">
+          <div class="cmb-map">
+            <div class="cmb-map__rings"></div>
+            <div class="cmb-map__scan"></div>
+            <span class="coordinate coordinate--top">+90°</span>
+            <span class="coordinate coordinate--right">l = 180°</span>
+            <span class="coordinate coordinate--bottom">−90°</span>
+            <div class="cmb-map__label">
+              <small>TEMPERATURE ANISOTROPY</small>
+              <strong>ΔT / T</strong>
+              <span>10<sup>−5</sup></span>
+            </div>
+          </div>
+          <div class="frequency-card">
+            <span>OBSERVATION BAND</span>
+            <strong>30—857 <small>GHz</small></strong>
+            <i></i>
+          </div>
+        </div>
+      </section>
+
+      <section class="status-strip" aria-label="今日数据状态">
+        <article>
+          <span class="status-strip__index">01</span>
+          <div><strong id="stat-focus">—</strong><small>CMB 核心信号</small></div>
+        </article>
+        <article>
+          <span class="status-strip__index">02</span>
+          <div><strong id="stat-discovery">—</strong><small>跨域发现</small></div>
+        </article>
+        <article>
+          <span class="status-strip__index">03</span>
+          <div><strong id="stat-total">—</strong><small>历史文献库</small></div>
+        </article>
+        <article>
+          <span class="status-strip__index">04</span>
+          <div><strong id="stat-ai">校准中</strong><small>解读引擎</small></div>
+        </article>
+      </section>
+
+      <section class="today section-shell" id="today" aria-labelledby="today-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow"><span>EDITOR'S PICK</span><i></i></p>
+            <h2 id="today-title">今日主信号</h2>
+          </div>
+          <p>综合 CMB 相关性、新颖度与时效性选出的第一篇。所有 AI 解读仅基于题目与摘要，精读前请回到原文核验。</p>
+        </div>
+        <div id="featured-paper" class="featured-paper loading-card" aria-live="polite">
+          <div class="skeleton skeleton--wide"></div>
+          <div class="skeleton"></div>
+          <div class="skeleton skeleton--short"></div>
+        </div>
+      </section>
+
+      <section class="spectrum section-shell" aria-labelledby="spectrum-title">
+        <div class="section-heading section-heading--compact">
+          <div>
+            <p class="eyebrow"><span>TOPIC SPECTRUM</span><i></i></p>
+            <h2 id="spectrum-title">本期主题频谱</h2>
+          </div>
+          <span class="section-note">按入选论文标签统计</span>
+        </div>
+        <div class="spectrum__chart" id="topic-spectrum" aria-live="polite"></div>
+      </section>
+
+      <section class="library section-shell" id="paper-library" aria-labelledby="library-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow"><span>LITERATURE ARCHIVE</span><i></i></p>
+            <h2 id="library-title">信号档案</h2>
+          </div>
+          <p>保留近期入选记录；可以按方向筛选、搜索作者和主题，或按推荐度、日期与 CMB 相关性排序。</p>
+        </div>
+
+        <div class="library-controls" aria-label="论文筛选工具">
+          <div class="filter-pills" role="group" aria-label="方向筛选">
+            <button class="filter-pill is-active" type="button" data-filter="all">全部</button>
+            <button class="filter-pill" type="button" data-filter="focus">CMB 核心</button>
+            <button class="filter-pill" type="button" data-filter="discovery">宇宙漫游</button>
+            <button class="filter-pill" type="button" data-filter="deep">建议精读</button>
+          </div>
+          <label class="search-box">
+            <span aria-hidden="true">⌕</span>
+            <span class="sr-only">搜索论文</span>
+            <input id="paper-search" type="search" placeholder="搜索标题、作者或主题…" autocomplete="off" />
+          </label>
+          <label class="sort-control">
+            <span>排序</span>
+            <select id="paper-sort">
+              <option value="recommended">推荐度</option>
+              <option value="date">最新发表</option>
+              <option value="cmb">CMB 相关性</option>
+              <option value="novelty">新颖度</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="results-meta">
+          <span><strong id="result-count">0</strong> 篇信号</span>
+          <span id="last-updated">等待数据</span>
+        </div>
+        <div class="paper-grid" id="paper-grid" aria-live="polite" aria-busy="true">
+          <div class="paper-card loading-card"><div class="skeleton"></div><div class="skeleton skeleton--short"></div></div>
+          <div class="paper-card loading-card"><div class="skeleton"></div><div class="skeleton skeleton--short"></div></div>
+        </div>
+        <div class="empty-state" id="empty-state" hidden>
+          <span>∅</span>
+          <h3>没有捕捉到匹配信号</h3>
+          <p>换一个关键词或清除筛选条件试试。</p>
+        </div>
+      </section>
+
+      <section class="about section-shell" id="about" aria-labelledby="about-title">
+        <div>
+          <p class="eyebrow"><span>HOW IT WORKS</span><i></i></p>
+          <h2 id="about-title">一套不用每天照看的<br />文献雷达。</h2>
+        </div>
+        <ol>
+          <li><span>01</span><div><strong>抓取</strong><p>每天从 arXiv API 获取 CMB、宇宙学与邻近方向的新预印本。</p></div></li>
+          <li><span>02</span><div><strong>筛选</strong><p>用领域词表与时效性评分，区分核心 CMB 信号和跨方向发现。</p></div></li>
+          <li><span>03</span><div><strong>解读</strong><p>大模型基于摘要生成中文概要、研究价值、关键点与精读提示。</p></div></li>
+          <li><span>04</span><div><strong>发布</strong><p>GitHub Actions 保存历史数据并把最新静态页面自动发布到 Pages。</p></div></li>
+        </ol>
+      </section>
+    </main>
+
+    <footer>
+      <div class="brand brand--footer">
+        <span class="brand__mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span><strong>CMB SIGNAL</strong><small>AUTOMATED LITERATURE RADAR</small></span>
+      </div>
+      <p>
+        独立、非官方研究工具。Thank you to arXiv for use of its open access interoperability.<br />
+        AI 内容仅作快速筛选，不替代论文原文与同行评议。
+      </p>
+      <a href="https://info.arxiv.org/help/api/" target="_blank" rel="noreferrer">DATA: arXiv API ↗</a>
+    </footer>
+
+    <dialog id="paper-dialog" aria-labelledby="dialog-title">
+      <button class="dialog-close" type="button" aria-label="关闭详情">×</button>
+      <div id="dialog-content"></div>
+    </dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
+

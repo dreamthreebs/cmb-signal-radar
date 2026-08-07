@@ -1,0 +1,94 @@
+name: Update papers and deploy Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "site/**"
+      - "scripts/**"
+      - "config/**"
+      - "requirements.txt"
+      - ".github/workflows/update-and-deploy.yml"
+  schedule:
+    # 12:35 in Beijing (UTC+8). arXiv only needs to be queried once per day.
+    - cron: "35 4 * * *"
+  workflow_dispatch:
+    inputs:
+      skip_ai:
+        description: "只抓取，不调用 OpenAI"
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: cmb-signal-pages
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: python -m pip install --requirement requirements.txt
+
+      - name: Fetch and analyze recent papers
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-5.6' }}
+          ARXIV_CONTACT_EMAIL: ${{ vars.ARXIV_CONTACT_EMAIL }}
+          SKIP_AI: ${{ inputs.skip_ai || 'false' }}
+        run: |
+          args=()
+          if [[ "$SKIP_AI" == "true" ]]; then
+            args+=(--no-ai)
+          fi
+          python scripts/update_papers.py --config config/radar.json --output site/data/papers.json "${args[@]}"
+
+      - name: Test the data pipeline
+        run: python -m unittest discover -s tests -v
+
+      - name: Preserve daily history
+        if: github.event_name != 'push'
+        run: |
+          if git diff --quiet -- site/data/papers.json; then
+            exit 0
+          fi
+          git config user.name "cmb-signal-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add site/data/papers.json
+          git commit -m "data: refresh paper radar"
+          git push origin HEAD:main
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload static site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: update
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
