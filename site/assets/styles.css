@@ -705,11 +705,11 @@ sup {
   line-height: 1.12;
 }
 
-.paper-title-en {
+.paper-title-zh {
   margin: 13px 0 0;
   color: var(--faint);
-  font-size: 0.7rem;
-  line-height: 1.55;
+  font-size: 0.78rem;
+  line-height: 1.65;
 }
 
 .paper-authors {
@@ -1137,7 +1137,7 @@ sup {
   line-height: 1.22;
 }
 
-.paper-card .paper-title-en {
+.paper-card .paper-title-zh {
   display: -webkit-box;
   overflow: hidden;
   -webkit-box-orient: vertical;

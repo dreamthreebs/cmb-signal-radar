@@ -114,7 +114,7 @@ const currentIds = () => {
 };
 
 const getAnalysis = (paper) => paper.analysis || {};
-const titleFor = (paper) => getAnalysis(paper).title_zh || paper.title;
+const titleFor = (paper) => paper.title || getAnalysis(paper).title_zh || "Untitled";
 
 function trackChip(paper) {
   const discovery = paper.track === "discovery";
@@ -208,7 +208,7 @@ function renderFeatured() {
   const title = el("h3", "", titleFor(paper));
   title.id = "featured-title";
   content.append(kicker, title);
-  if (analysis.title_zh) content.append(el("p", "paper-title-en", paper.title));
+  if (analysis.title_zh) content.append(el("p", "paper-title-zh", analysis.title_zh));
   content.append(
     el("p", "paper-authors", truncateAuthors(paper.authors)),
     el("p", "featured-summary", analysis.summary_zh || paper.abstract),
@@ -329,7 +329,7 @@ function paperCard(paper, index) {
 
   const title = el("h3", "", titleFor(paper));
   card.append(title);
-  if (analysis.title_zh) card.append(el("p", "paper-title-en", paper.title));
+  if (analysis.title_zh) card.append(el("p", "paper-title-zh", analysis.title_zh));
   card.append(el("p", "paper-authors", truncateAuthors(paper.authors, 4)));
 
   const insight = el("div", "paper-insight");
@@ -374,7 +374,7 @@ function openDialog(paper) {
   const title = el("h2", "dialog-paper-title", titleFor(paper));
   title.id = "dialog-title";
   dom.dialogContent.append(kicker, title);
-  if (analysis.title_zh) dom.dialogContent.append(el("p", "paper-title-en", paper.title));
+  if (analysis.title_zh) dom.dialogContent.append(el("p", "paper-title-zh", analysis.title_zh));
   dom.dialogContent.append(el("p", "dialog-meta", truncateAuthors(paper.authors, 12)));
   dom.dialogContent.append(dialogSection("一句话概要", analysis.summary_zh || paper.abstract));
 
