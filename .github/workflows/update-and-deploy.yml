@@ -77,6 +77,7 @@ jobs:
           GPT_BASE_URL: ${{ secrets.GPT_BASE_URL || vars.GPT_BASE_URL || secrets.OPENAI_BASE_URL }}
           GPT_MODEL: ${{ vars.GPT_MODEL || vars.OPENAI_MODEL || 'gpt-5.6' }}
           GPT_API_MODE: ${{ vars.GPT_API_MODE || 'responses' }}
+          GPT_USER_AGENT: ${{ vars.GPT_USER_AGENT }}
           ARXIV_CONTACT_EMAIL: ${{ vars.ARXIV_CONTACT_EMAIL }}
           EVENT_NAME: ${{ github.event_name }}
           FORCE_REFRESH: ${{ inputs.force_refresh || 'false' }}

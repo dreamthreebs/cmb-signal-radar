@@ -48,6 +48,7 @@ GitHub Free 的项目 Pages 通常需要公开仓库；如果你的套餐支持�
 | `GPT_BASE_URL` | **Secret** 或 Variable | 第三方接口地址，例如 `https://provider.example/v1`；官方 OpenAI 留空 |
 | `GPT_MODEL` | Variable | 模型名，默认 `gpt-5.6`；第三方需填写其模型标识 |
 | `GPT_API_MODE` | Variable | `responses`（默认）或 `chat_completions` |
+| `GPT_USER_AGENT` | Variable | 可选；第三方服务要求特定客户端标识时设置 |
 | `ARXIV_CONTACT_EMAIL` | Variable | 可选，让 arXiv User-Agent 带维护者联系方式 |
 
 官方 OpenAI 推荐使用：
@@ -63,6 +64,7 @@ GitHub Free 的项目 Pages 通常需要公开仓库；如果你的套餐支持�
 - 把兼容接口的 `/v1` 地址存为 `GPT_BASE_URL`。
 - 如果服务支持 `/responses` 和结构化输出，使用 `responses`。
 - 如果只支持 `/chat/completions`，使用 `chat_completions`；该服务还需要支持 JSON Object 输出。
+- 如果服务商要求特定 `User-Agent`，将其存为 `GPT_USER_AGENT` Variable。
 
 也可以使用命令行添加 Secret（输入内容不会写进仓库）：
 
@@ -71,6 +73,7 @@ gh secret set GPT_API_KEY --repo dreamthreebs/cmb-signal-radar
 gh secret set GPT_BASE_URL --repo dreamthreebs/cmb-signal-radar
 gh variable set GPT_MODEL --body "gpt-5.6" --repo dreamthreebs/cmb-signal-radar
 gh variable set GPT_API_MODE --body "responses" --repo dreamthreebs/cmb-signal-radar
+gh variable set GPT_USER_AGENT --body "provider-required-client-id" --repo dreamthreebs/cmb-signal-radar
 ```
 
 未配置 Key 时，定时工作流会立即安全结束；已经发布的网站仍保持可访问。

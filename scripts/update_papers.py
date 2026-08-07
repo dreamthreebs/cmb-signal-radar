@@ -305,6 +305,7 @@ def gpt_settings(args: argparse.Namespace) -> dict[str, str]:
             or DEFAULT_MODEL
         ).strip(),
         "api_mode": (os.getenv("GPT_API_MODE") or "responses").strip().lower(),
+        "user_agent": (os.getenv("GPT_USER_AGENT") or "").strip(),
     }
 
 
@@ -314,12 +315,15 @@ def analyze_with_openai(
     api_key: str,
     base_url: str = "",
     api_mode: str = "responses",
+    user_agent: str = "",
 ) -> dict[str, dict[str, Any]]:
     from openai import OpenAI
 
     client_options: dict[str, Any] = {"api_key": api_key, "timeout": 120.0, "max_retries": 1}
     if base_url:
         client_options["base_url"] = base_url
+    if user_agent:
+        client_options["default_headers"] = {"User-Agent": user_agent}
     client = OpenAI(**client_options)
     paper_payload = [
         {
@@ -532,6 +536,7 @@ def update_data(args: argparse.Namespace) -> UpdateOutcome:
                 api_key=settings["api_key"],
                 base_url=settings["base_url"],
                 api_mode=settings["api_mode"],
+                user_agent=settings["user_agent"],
             )
             missing_ids = {paper["id"] for paper in needs_analysis} - set(analyses)
             if missing_ids:
