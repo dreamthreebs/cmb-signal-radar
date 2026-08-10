@@ -52,7 +52,7 @@ CMB_TERMS = (
     WeightedTerm("前景去除", ("foreground", "component separation"), 7),
     WeightedTerm("次级各向异性", ("sunyaev", "kinetic sz", "thermal sz", "cmb anisotrop"), 6),
     WeightedTerm("暴胀", ("inflation", "primordial power spectrum"), 6),
-    WeightedTerm("观测项目", ("simons observatory", "litebird", "spt-3g", "act dr", "planck"), 7),
+    WeightedTerm("观测项目", ("simons observatory", "litebird", "cmb-s4", "spt-3g", "act dr", "planck"), 7),
 )
 
 INTEREST_TERMS = (
@@ -555,13 +555,21 @@ def select_current(
     recent = [paper for paper in candidates if parse_datetime(paper["published"]) >= lookback]
     focus = sorted(
         (paper for paper in recent if paper["track"] == "focus"),
-        key=lambda paper: (paper["scores"]["editorial"], paper["published"]),
+        key=lambda paper: (
+            str(paper["published"])[:10],
+            paper["scores"]["editorial"],
+            paper["published"],
+        ),
         reverse=True,
     )[: int(config.get("focus_limit", 12))]
     focus_ids = {paper["id"] for paper in focus}
     discovery = sorted(
         (paper for paper in recent if paper["id"] not in focus_ids),
-        key=lambda paper: (paper["scores"]["interest"], paper["published"]),
+        key=lambda paper: (
+            str(paper["published"])[:10],
+            paper["scores"]["interest"],
+            paper["published"],
+        ),
         reverse=True,
     )[: int(config.get("discovery_limit", 6))]
     return focus + discovery, [paper["id"] for paper in focus], [paper["id"] for paper in discovery]

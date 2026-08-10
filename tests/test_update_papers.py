@@ -17,6 +17,7 @@ from scripts.update_papers import (
     parse_atom_feed,
     score_paper,
     select_archive,
+    select_current,
     update_data,
 )
 
@@ -116,6 +117,39 @@ class UpdatePapersTests(unittest.TestCase):
         self.assertIn("CMB", scored["tags"])
         self.assertIn("cmb-core", scored["topics"])
         self.assertIn("polarization", scored["topics"])
+
+    def test_cmb_s4_is_tagged_as_an_observing_project(self):
+        paper = parse_atom_feed(ATOM_SAMPLE, "test")[0]
+        paper["title"] = "Sensitivity of Next-Generation CMB Surveys to Light Relics"
+        paper["abstract"] = "CMB-S4 forecasts constraints on neutrinos and light relics."
+        scored = score_paper(paper, datetime(2026, 8, 7, tzinfo=timezone.utc))
+        self.assertEqual(scored["track"], "focus")
+        self.assertIn("观测项目", scored["tags"])
+
+    def test_current_selection_prioritizes_new_release_date(self):
+        candidates = [
+            {
+                "id": f"older-{index}",
+                "published": f"2026-08-06T{index:02d}:00:00Z",
+                "track": "focus",
+                "scores": {"editorial": 100 - index, "interest": 100 - index},
+            }
+            for index in range(13)
+        ]
+        candidates.append(
+            {
+                "id": "new-cmb-paper",
+                "published": "2026-08-07T17:46:01Z",
+                "track": "focus",
+                "scores": {"editorial": 25, "interest": 25},
+            }
+        )
+        _, focus_ids, _ = select_current(
+            candidates,
+            {"lookback_days": 21, "focus_limit": 12, "discovery_limit": 0},
+            datetime(2026, 8, 10, tzinfo=timezone.utc),
+        )
+        self.assertEqual(focus_ids[0], "new-cmb-paper")
 
     def test_submitted_date_window_and_monthly_archive_balance(self):
         now = datetime(2026, 8, 7, tzinfo=timezone.utc)
