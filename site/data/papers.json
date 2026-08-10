@@ -1,7 +1,7 @@
 {
   "meta": {
-    "generated_at": "2026-08-07T10:12:59Z",
-    "last_attempt_at": "2026-08-07T10:12:59Z",
+    "generated_at": "2026-08-10T05:56:57Z",
+    "last_attempt_at": "2026-08-10T05:56:57Z",
     "fetch_status": "ok",
     "fetch_errors": [],
     "source": "arXiv API",
@@ -13,12 +13,13 @@
     "analysis_error": "",
     "analysis_basis": "title + abstract + categories",
     "lookback_days": 21,
-    "candidate_count": 1528,
-    "paper_count": 167,
+    "candidate_count": 254,
+    "paper_count": 171,
     "archive_days": 90,
     "archive_start": "2026-05-10",
-    "archive_end": "2026-08-06",
+    "archive_end": "2026-08-07",
     "archive_dates": [
+      "2026-08-07",
       "2026-08-06",
       "2026-08-05",
       "2026-08-04",
@@ -86,32 +87,336 @@
       "2026-06",
       "2026-05"
     ],
-    "archive_ai_count": 167,
+    "archive_ai_count": 171,
     "archive_pending_count": 0,
     "current_focus_ids": [
       "2608.06343",
-      "2608.04868",
+      "2608.07313",
       "2608.01919",
       "2607.25285",
-      "2607.24742",
+      "2608.04868",
       "2608.01844",
+      "2608.07386",
       "2608.03470",
+      "2608.04353",
       "2608.03981",
-      "2607.28712",
-      "2607.28445",
-      "2607.27149",
-      "2608.04353"
+      "2608.02175",
+      "2608.04763"
     ],
     "current_discovery_ids": [
       "2608.04005",
-      "2608.03914",
-      "2608.04763",
-      "2608.00250",
+      "2608.07095",
+      "2608.06944",
       "2607.28918",
-      "2608.06224"
+      "2608.06224",
+      "2608.06114"
     ]
   },
   "papers": [
+    {
+      "id": "2608.07386",
+      "versioned_id": "2608.07386v1",
+      "title": "Inflation with Nieh-Yan-like terms in metric-affine gravity",
+      "authors": [
+        "Ilaria Andrei",
+        "Christian Dioguardi",
+        "Damianos Iosifidis",
+        "Laur Järv",
+        "Antonio Racioppi",
+        "Margus Saal"
+      ],
+      "abstract": "We study single-field slow-roll inflation in metric-affine gravity with a scalar field non-minimally coupled to the non-Riemannian Ricci scalar and to the divergences of the torsion and nonmetricity vectors, a structure that generalizes the well-known Nieh-Yan term. By imposing projective coherence of the matter sector and solving the connection field equations, we integrate out torsion and nonmetricity and obtain an equivalent Einstein-frame formulation in which the metric-affine couplings are encoded in a modified kinetic function and potential. For the choice of coupling functions $\\mathcal{A}(φ) = M_P^2 + ξφ^2$ to the non-Riemannian Ricci scalar, $\\mathcal{C}_i(φ) = ξ_i φ$ to the Nieh-Yan-like terms and a monomial Jordan-frame potential $\\mathcal{V} \\propto φ^k$, we show that in the limit of a large positive effective Nieh-Yan-like coupling $\\barξ$ the canonical field satisfies $χ\\sim φ^2$, the Jordan-frame field values during inflation become sub-Planckian, and the Einstein-frame potential reduces to $U \\sim χ^{k/2}$. We compute the slow-roll predictions numerically for quartic and quadratic Jordan-frame potentials and compare them with the current CMB constraints from Planck, BICEP/Keck, ACT, and SPT. We find that intermediate values of $\\barξ$ can restore the compatibility of non-minimally coupled Palatini inflation with observations: in the quartic case, the model predicts a tensor-to-scalar ratio within reach of next-generation CMB experiments for $\\barξ\\lesssim10^4$, while in the quadratic case the coupling cures the $η$-problem arising for $ξ\\gtrsim 10^{-2}$ and yields viable predictions for $10^{-2}\\lesssim\\barξ\\lesssim 10^2$. In the negative $\\barξ$ regime, the model does not improve upon standard Palatini inflation, though it can still produce distinct, testable predictions.",
+      "published": "2026-08-07T16:32:33Z",
+      "updated": "2026-08-07T16:32:33Z",
+      "abs_url": "https://arxiv.org/abs/2608.07386v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.07386v1",
+      "categories": [
+        "astro-ph.CO",
+        "gr-qc",
+        "hep-ph"
+      ],
+      "primary_category": "gr-qc",
+      "comment": "16 pages, 4 figures",
+      "journal_ref": "",
+      "doi": "",
+      "source_groups": [
+        "cmb-and-cosmology",
+        "cosmic-discovery",
+        "early-universe"
+      ],
+      "content_hash": "eb1cb8a0d014ab2d",
+      "tags": [
+        "CMB",
+        "原初引力波",
+        "暴胀",
+        "观测项目",
+        "宇宙学",
+        "引力与相对论"
+      ],
+      "scores": {
+        "cmb": 41,
+        "interest": 18,
+        "editorial": 32
+      },
+      "track": "focus",
+      "topics": [
+        "cmb-core",
+        "polarization",
+        "early-universe",
+        "instruments"
+      ],
+      "analysis": {
+        "provider": "openai",
+        "model": "gpt-5.5",
+        "basis": "abstract",
+        "generated_at": "2026-08-10T05:56:57Z",
+        "title_zh": "度规-仿射引力中含 Nieh-Yan-like 项的暴胀",
+        "summary_zh": "本文在度规-仿射引力中研究标量场非最小耦合到非黎曼 Ricci 标量以及挠率、非度量性矢量散度的 Nieh-Yan-like 项的单场慢滚暴胀。摘要称，在特定耦合函数和单项式 Jordan-frame 势下，中等有效 Nieh-Yan-like 耦合可改善非最小耦合 Palatini 暴胀与 Planck、BICEP/Keck、ACT、SPT 等 CMB 约束的一致性。",
+        "why_it_matters_zh": "该工作直接面向 CMB 对暴胀的限制，尤其是标量谱指数和张量-标量比等可观测量，并讨论下一代 CMB 实验可能触及的原初引力波信号。对 CMB 研究者而言，它提供了修改引力几何结构如何改变暴胀预言的一个具体模型。",
+        "key_points": [
+          "研究度规-仿射引力中带 Nieh-Yan-like 项的单场慢滚暴胀。",
+          "通过解联络场方程并积掉挠率与非度量性，得到等效 Einstein-frame 描述。",
+          "摘要称中等有效耦合可使若干 Palatini 暴胀情形重新符合当前 CMB 约束，并给出可检验的张标比预期。"
+        ],
+        "methods": [
+          "单场慢滚暴胀计算",
+          "度规-仿射引力框架",
+          "projective coherence 条件",
+          "求解 connection field equations",
+          "积分消去 torsion 与 nonmetricity",
+          "Einstein-frame 等效形式",
+          "对四次与二次 Jordan-frame 势进行数值慢滚预言计算",
+          "与 Planck、BICEP/Keck、ACT、SPT 的 CMB 约束比较"
+        ],
+        "reading_note_zh": "精读时应核对有效 Nieh-Yan-like 耦合 \\barξ 的定义、允许参数区间与稳定性条件，以及与 Planck/BICEP/Keck/ACT/SPT 约束比较时采用的 n_s、r、重加热或 e-fold 假设。",
+        "audience": "建议精读",
+        "novelty_score": 8,
+        "confidence": 86
+      },
+      "first_selected_at": "2026-08-10T05:56:16Z",
+      "last_selected_at": "2026-08-10T05:56:16Z"
+    },
+    {
+      "id": "2608.07313",
+      "versioned_id": "2608.07313v1",
+      "title": "Conformal Killing Gravity: New Constraints from DESI DR2 BAO datasets",
+      "authors": [
+        "Himanshu Chaudhary",
+        "Salvatore Capozziello",
+        "Carlo Alberto Mantica",
+        "Luca Guido Molinari",
+        "Dhruba Jyoti Gogoi",
+        "Ghulam Mustafa"
+      ],
+      "abstract": "We investigate a geometric approach referred to as the Conformal Killing Gravity (CKG), in which the dark energy sector emerges naturally from the conformal Killing symmetry of the Robertson--Walker space-time. Within this framework, the divergence-free conformal Killing tensor behaves as an effective perfect fluid, giving rise to a dynamical dark-energy component whose density, pressure, and equation of state are uniquely determined by the underlying geometry, without introducing any empirical dark-energy parametrization. The resulting CKG model extends the standard $Λ$CDM cosmology through a single additional parameter while recovering the $Λ$CDM limit in the absence of the geometric contribution. We constrain the model using Planck PR4 (NPIPE) CMB temperature, polarization, and lensing observations, ACT DR6 CMB lensing, DESI DR2 baryon acoustic oscillation measurements, and the Pantheon$+$, DES-Dovekie, and Union3 Type Ia supernova compilations. The analysis shows that the CKG favors a quintessence-like dark-energy evolution with no evidence for phantom crossing, while the reconstructed equation of state rapidly approaches the cosmological constant at earlier cosmic times. Furthermore, the model predicts a future critical redshift in the range $-0.8 \\lesssim z_c \\lesssim -0.7$, indicating that the present cosmic expansion eventually reaches a turning point before the formal singular limit at $z=-1$. Since the geometric contribution modifies only the post-recombination expansion history, the sound horizon remains essentially unchanged and the model does not provide a complete solution to the $H_0$ tension. Our results demonstrate that the CKG provides a simple, physically motivated, and observationally favored framework for describing the late-time accelerated expansion of the Universe.",
+      "published": "2026-08-07T15:09:10Z",
+      "updated": "2026-08-07T15:09:10Z",
+      "abs_url": "https://arxiv.org/abs/2608.07313v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.07313v1",
+      "categories": [
+        "astro-ph.CO",
+        "gr-qc",
+        "hep-th"
+      ],
+      "primary_category": "astro-ph.CO",
+      "comment": "14 pages, 4 figures",
+      "journal_ref": "",
+      "doi": "",
+      "source_groups": [
+        "cmb-and-cosmology",
+        "cosmic-discovery"
+      ],
+      "content_hash": "92479cf85b1f6157",
+      "tags": [
+        "CMB",
+        "CMB 透镜",
+        "观测项目",
+        "新探测",
+        "张力与反常",
+        "新约束"
+      ],
+      "scores": {
+        "cmb": 36,
+        "interest": 66,
+        "editorial": 47
+      },
+      "track": "focus",
+      "topics": [
+        "cmb-core",
+        "polarization",
+        "lensing-lss",
+        "dark-sector",
+        "surveys"
+      ],
+      "analysis": {
+        "provider": "openai",
+        "model": "gpt-5.5",
+        "basis": "abstract",
+        "generated_at": "2026-08-10T05:56:57Z",
+        "title_zh": "共形 Killing 引力：来自 DESI DR2 BAO 数据集的新约束",
+        "summary_zh": "本文研究 Conformal Killing Gravity 中由 Robertson-Walker 时空共形 Killing 对称性自然产生的几何暗能量，并用 Planck PR4、ACT DR6 透镜、DESI DR2 BAO 和多套 Ia 型超新星数据约束其单额外参数扩展。摘要报告该模型偏好类 quintessence 的暗能量演化、无 phantom crossing，早期趋近宇宙学常数，但因只改变复合后膨胀史而不能完整解决 H0 张力。",
+        "why_it_matters_zh": "这篇论文直接使用 CMB 温度、偏振和透镜数据来约束晚期暗能量模型，并讨论声学视界基本不变，因此与 CMB 推断的 H0 张力和 BAO 标准尺解释密切相关。对 CMB 读者而言，关键在于该模型是否只改变低红移背景而保持早期物理与声学尺度不变。",
+        "key_points": [
+          "CKG 将暗能量解释为 Robertson-Walker 时空共形 Killing 对称性产生的有效完美流体。",
+          "模型在 ΛCDM 基础上增加一个参数，并用 CMB、BAO 与超新星数据联合约束。",
+          "摘要称其偏好类 quintessence 演化、不发生 phantom crossing，但不完整解决 H0 张力。"
+        ],
+        "methods": [
+          "Planck PR4/NPIPE CMB 温度、偏振与透镜观测",
+          "ACT DR6 CMB lensing",
+          "DESI DR2 BAO 测量",
+          "Pantheon+、DES-Dovekie、Union3 Ia 型超新星汇编",
+          "CKG 模型参数约束与暗能量状态方程重构"
+        ],
+        "reading_note_zh": "精读时应重点核对 CKG 额外参数如何进入背景演化、与 ΛCDM 极限的关系、联合数据集之间是否存在张力，以及“observationally favored”的模型比较指标是否足以支持该表述。",
+        "audience": "建议精读",
+        "novelty_score": 7,
+        "confidence": 88
+      },
+      "first_selected_at": "2026-08-10T05:56:16Z",
+      "last_selected_at": "2026-08-10T05:56:16Z"
+    },
+    {
+      "id": "2608.07095",
+      "versioned_id": "2608.07095v1",
+      "title": "Full analytic expressions of overlap reduction functions for anisotropies of the stochastic gravitational-wave background with pulsar timing arrays",
+      "authors": [
+        "Kun Zhou",
+        "Jin Li"
+      ],
+      "abstract": "Pulsar timing arrays (PTAs) have detected a stochastic gravitational-wave background (SGWB) in the nanohertz band, enabling tests of gravity and cosmology, as well as studies of supermassive black holes and early Universe physics. PTA data analysis relies on cross-correlating timing residuals, where overlap reduction functions (ORFs) critically determine sensitivity. Conventional ORF calculations using the short-wavelength approximation break down for the scalar longitudinal mode and cannot handle frequency dependence or anisotropies. This work rigorously derives the full response functions within an analytical cross-correlation framework. We reveal, for the first time, intrinsic symmetries and relations among anisotropic ORF integrals for all polarizations. By variable substitutions and coordinate rotations, we transform complex integrals into tractable forms, resolving divergences in vector and scalar longitudinal modes. Building on this, we establish a universal framework yielding fully analytical expressions for anisotropic ORFs to arbitrary order for all six modes. As a direct application, we give complete expressions up to l <= 5. This framework is free of approximations; its (0,0) component recovers the isotropic Hellings--Downs curve. Compared with numerical integration, our results offer broader applicability, faster computation, and higher precision, providing a valuable foundation for anisotropic sky mapping, polarization-mode separation, and new-physics searches with PTA data.",
+      "published": "2026-08-07T10:43:56Z",
+      "updated": "2026-08-07T10:43:56Z",
+      "abs_url": "https://arxiv.org/abs/2608.07095v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.07095v1",
+      "categories": [
+        "astro-ph.IM",
+        "gr-qc"
+      ],
+      "primary_category": "gr-qc",
+      "comment": "22 pages, 13 figures,",
+      "journal_ref": "Phys. Rev. D 114, 044003 (2026)",
+      "doi": "10.1103/34y2-pn7d",
+      "source_groups": [
+        "cosmic-discovery",
+        "early-universe"
+      ],
+      "content_hash": "ea34554db57bb34c",
+      "tags": [
+        "新探测",
+        "引力波",
+        "黑洞",
+        "仪器与方法",
+        "引力与相对论"
+      ],
+      "scores": {
+        "cmb": 0,
+        "interest": 46,
+        "editorial": 17
+      },
+      "track": "discovery",
+      "topics": [
+        "polarization",
+        "early-universe",
+        "gravity"
+      ],
+      "analysis": {
+        "provider": "openai",
+        "model": "gpt-5.5",
+        "basis": "abstract",
+        "generated_at": "2026-08-10T05:56:57Z",
+        "title_zh": "脉冲星计时阵列随机引力波背景各向异性重叠约化函数的完整解析表达式",
+        "summary_zh": "本文针对 PTA 纳赫兹随机引力波背景分析中各向异性 overlap reduction functions 的计算问题，推导了适用于六种偏振模式、任意阶各向异性的全解析表达式框架。摘要称该方法不依赖短波近似，处理了矢量和标量纵向模式发散，并在 l=0,m=0 时恢复各向同性 Hellings-Downs 曲线。",
+        "why_it_matters_zh": "这篇论文不直接研究 CMB，但与早期宇宙随机引力波背景和引力理论检验相关；PTA 对纳赫兹背景的各向异性和偏振分离可与 CMB B 模、原初张量扰动和宇宙学相变等方向形成互补。对 CMB 读者而言，它主要是多信使宇宙学和随机背景统计方法上的相关工作。",
+        "key_points": [
+          "为 PTA 随机引力波背景各向异性 ORF 给出全解析框架。",
+          "覆盖六种偏振模式，并处理矢量与标量纵向模式中的发散问题。",
+          "各向同性的 l=0, m=0 分量恢复 Hellings-Downs 曲线。"
+        ],
+        "methods": [
+          "PTA timing residuals 互相关分析框架",
+          "overlap reduction functions 解析推导",
+          "变量代换与坐标旋转",
+          "各向异性 ORF 积分的对称性与关系推导",
+          "六种偏振模式的任意阶解析表达式",
+          "给出 l <= 5 的完整表达式",
+          "与数值积分比较"
+        ],
+        "reading_note_zh": "精读时应重点检查解析 ORF 推导中的坐标约定、归一化、纵向模式发散的处理方式，以及 l<=5 表达式如何接入实际 PTA 各向异性成图和偏振分离管线。",
+        "audience": "领域相关",
+        "novelty_score": 8,
+        "confidence": 84
+      },
+      "first_selected_at": "2026-08-10T05:56:16Z",
+      "last_selected_at": "2026-08-10T05:56:16Z"
+    },
+    {
+      "id": "2608.06944",
+      "versioned_id": "2608.06944v1",
+      "title": "Parameter Estimation for Eccentric Supermassive Black Hole Binaries with Pulsar Timing Arrays",
+      "authors": [
+        "Sara Manzini",
+        "Stanislav Babak"
+      ],
+      "abstract": "Pulsar timing array (PTA) experiments are searching for gravitational waves (GWs) in the nanohertz band. The primary GW sources targeted by PTAs include populations of inspiralling supermassive black hole binaries (SMBHBs) in the local Universe, some of which may emit detectable continuous gravitational-wave (CGW) signals. In this paper, we focus on the detection strategy for individual binaries on eccentric orbits. Using simulated datasets based on the EPTA DR2new configuration, we perform injection-recovery studies across the parameter space. We demonstrate that individual component masses can be measured when an eccentric SMBHB is detected at high GW frequencies. We further show a correlation between the CGW signal and the stochastic gravitational-wave background (SGWB) at low frequencies, which makes CGW identification challenging. Finally, the developed software is GPU-compatible, enabling efficient Bayesian inference. This work lays the groundwork for future applications to real PTA data.",
+      "published": "2026-08-07T08:22:23Z",
+      "updated": "2026-08-07T08:22:23Z",
+      "abs_url": "https://arxiv.org/abs/2608.06944v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.06944v1",
+      "categories": [
+        "astro-ph.HE"
+      ],
+      "primary_category": "astro-ph.HE",
+      "comment": "",
+      "journal_ref": "",
+      "doi": "",
+      "source_groups": [
+        "cosmic-discovery"
+      ],
+      "content_hash": "4b10db6793e38fbf",
+      "tags": [
+        "新探测",
+        "引力波",
+        "黑洞",
+        "高能天体物理"
+      ],
+      "scores": {
+        "cmb": 0,
+        "interest": 46,
+        "editorial": 17
+      },
+      "track": "discovery",
+      "topics": [
+        "gravity"
+      ],
+      "analysis": {
+        "provider": "openai",
+        "model": "gpt-5.5",
+        "basis": "abstract",
+        "generated_at": "2026-08-10T05:56:57Z",
+        "title_zh": "用脉冲星计时阵列估计偏心超大质量黑洞双星的参数",
+        "summary_zh": "本文研究PTA实验中偏心超大质量黑洞双星的个体连续引力波信号探测与参数估计，使用基于EPTA DR2new配置的模拟数据开展注入-恢复。摘要称，在较高引力波频率探测到偏心双星时可测量单个组分质量，而低频处连续波信号与随机引力波背景相关，使信号识别更困难。",
+        "why_it_matters_zh": "PTA纳赫兹引力波与CMB同属早期宇宙和大尺度宇宙学背景探测的重要互补窗口；其中SGWB的建模、前景分离和贝叶斯推断问题与CMB随机背景分析有方法学共通性。该文关于连续源与随机背景相关性的讨论，对理解未来多信使宇宙学中背景信号分离和系统误差控制有参考价值。",
+        "key_points": [
+          "面向PTA纳赫兹引力波中的偏心超大质量黑洞双星连续波信号。",
+          "基于EPTA DR2new配置的模拟数据进行注入-恢复研究。",
+          "摘要报告高频探测时可测量单个组分质量，低频处连续波信号与随机引力波背景相关而增加识别难度。"
+        ],
+        "methods": [
+          "脉冲星计时阵列（PTA）模拟数据",
+          "基于EPTA DR2new配置的数据集",
+          "注入-恢复研究",
+          "贝叶斯推断",
+          "GPU兼容软件"
+        ],
+        "reading_note_zh": "精读时应核对偏心轨道信号模型、参数先验和注入-恢复覆盖的参数空间，尤其是低频连续波与SGWB相关性如何影响检出判据和质量估计。",
+        "audience": "领域相关",
+        "novelty_score": 7,
+        "confidence": 86
+      },
+      "first_selected_at": "2026-08-10T05:56:16Z",
+      "last_selected_at": "2026-08-10T05:56:16Z"
+    },
     {
       "id": "2608.06343",
       "versioned_id": "2608.06343v1",
@@ -226,8 +531,7 @@
       "journal_ref": "",
       "doi": "",
       "source_groups": [
-        "cmb-archive",
-        "lensing-survey-archive"
+        "cmb-and-cosmology"
       ],
       "content_hash": "9a8e53ecd4eb6b26",
       "tags": [
@@ -240,8 +544,8 @@
       ],
       "scores": {
         "cmb": 65,
-        "interest": 42,
-        "editorial": 56
+        "interest": 38,
+        "editorial": 55
       },
       "track": "focus",
       "topics": [
@@ -282,7 +586,7 @@
         "confidence": 95
       },
       "first_selected_at": "2026-08-07T08:30:18Z",
-      "last_selected_at": "2026-08-07T09:36:27Z"
+      "last_selected_at": "2026-08-10T05:56:16Z"
     },
     {
       "id": "2608.06278",
@@ -509,7 +813,7 @@
       "journal_ref": "",
       "doi": "",
       "source_groups": [
-        "discovery-archive"
+        "cosmic-discovery"
       ],
       "content_hash": "a68f91c44d02e024",
       "tags": [
@@ -522,8 +826,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 49,
-        "editorial": 19
+        "interest": 45,
+        "editorial": 17
       },
       "track": "discovery",
       "topics": [
@@ -558,7 +862,7 @@
         "confidence": 82
       },
       "first_selected_at": "2026-08-07T08:30:18Z",
-      "last_selected_at": "2026-08-07T09:36:27Z"
+      "last_selected_at": "2026-08-10T05:56:16Z"
     },
     {
       "id": "2608.06114",
@@ -581,7 +885,7 @@
       "journal_ref": "",
       "doi": "",
       "source_groups": [
-        "discovery-archive"
+        "cosmic-discovery"
       ],
       "content_hash": "efa034424fb25ab8",
       "tags": [
@@ -592,8 +896,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 47,
-        "editorial": 18
+        "interest": 43,
+        "editorial": 16
       },
       "track": "discovery",
       "topics": [
@@ -626,7 +930,7 @@
         "confidence": 83
       },
       "first_selected_at": "2026-08-07T08:30:18Z",
-      "last_selected_at": "2026-08-07T09:36:27Z"
+      "last_selected_at": "2026-08-10T05:56:16Z"
     },
     {
       "id": "2608.05861",
@@ -1119,8 +1423,7 @@
       "journal_ref": "",
       "doi": "",
       "source_groups": [
-        "cmb-archive",
-        "lensing-survey-archive"
+        "cmb-and-cosmology"
       ],
       "content_hash": "b88625a1ee632e1a",
       "tags": [
@@ -1133,8 +1436,8 @@
       ],
       "scores": {
         "cmb": 49,
-        "interest": 32,
-        "editorial": 43
+        "interest": 28,
+        "editorial": 41
       },
       "track": "focus",
       "topics": [
@@ -1169,7 +1472,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-07T08:34:06Z",
-      "last_selected_at": "2026-08-07T09:36:27Z"
+      "last_selected_at": "2026-08-10T05:56:16Z"
     },
     {
       "id": "2608.04763",
@@ -1194,9 +1497,8 @@
       "journal_ref": "",
       "doi": "",
       "source_groups": [
-        "cmb-archive",
-        "early-universe-archive",
-        "lensing-survey-archive"
+        "cmb-and-cosmology",
+        "early-universe"
       ],
       "content_hash": "c28d5b862d88deef",
       "tags": [
@@ -1209,8 +1511,8 @@
       ],
       "scores": {
         "cmb": 18,
-        "interest": 52,
-        "editorial": 31
+        "interest": 48,
+        "editorial": 29
       },
       "track": "focus",
       "topics": [
@@ -1249,7 +1551,7 @@
         "confidence": 78
       },
       "first_selected_at": "2026-08-07T08:34:06Z",
-      "last_selected_at": "2026-08-07T09:36:27Z"
+      "last_selected_at": "2026-08-10T05:56:16Z"
     },
     {
       "id": "2608.04461",
@@ -1341,8 +1643,7 @@
       "journal_ref": "Eur. Phys. J. C 86, 924 (2026)",
       "doi": "10.1140/epjc/s10052-026-16187-w",
       "source_groups": [
-        "cmb-archive",
-        "lensing-survey-archive"
+        "cmb-and-cosmology"
       ],
       "content_hash": "3e15ca8bf5043ead",
       "tags": [
@@ -1355,8 +1656,8 @@
       ],
       "scores": {
         "cmb": 25,
-        "interest": 44,
-        "editorial": 32
+        "interest": 40,
+        "editorial": 31
       },
       "track": "focus",
       "topics": [
@@ -1393,7 +1694,7 @@
         "confidence": 91
       },
       "first_selected_at": "2026-08-07T08:34:06Z",
-      "last_selected_at": "2026-08-07T09:36:27Z"
+      "last_selected_at": "2026-08-10T05:56:16Z"
     },
     {
       "id": "2608.04005",
@@ -1420,7 +1721,7 @@
       "journal_ref": "",
       "doi": "",
       "source_groups": [
-        "discovery-archive"
+        "cmb-and-cosmology"
       ],
       "content_hash": "06e8cf45f122b5ad",
       "tags": [
@@ -1433,8 +1734,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 62,
-        "editorial": 24
+        "interest": 58,
+        "editorial": 22
       },
       "track": "discovery",
       "topics": [
@@ -1474,7 +1775,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-07T08:34:06Z",
-      "last_selected_at": "2026-08-07T09:36:27Z"
+      "last_selected_at": "2026-08-10T05:56:16Z"
     },
     {
       "id": "2608.03981",
@@ -1498,9 +1799,8 @@
       "journal_ref": "",
       "doi": "",
       "source_groups": [
-        "cmb-archive",
-        "early-universe-archive",
-        "lensing-survey-archive"
+        "cmb-and-cosmology",
+        "early-universe"
       ],
       "content_hash": "e01cb3d1f8101dfd",
       "tags": [
@@ -1513,8 +1813,8 @@
       ],
       "scores": {
         "cmb": 25,
-        "interest": 45,
-        "editorial": 33
+        "interest": 41,
+        "editorial": 31
       },
       "track": "focus",
       "topics": [
@@ -1549,7 +1849,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-07T08:34:06Z",
-      "last_selected_at": "2026-08-07T09:36:27Z"
+      "last_selected_at": "2026-08-10T05:56:16Z"
     },
     {
       "id": "2608.03914",
@@ -1811,8 +2111,7 @@
       "journal_ref": "",
       "doi": "",
       "source_groups": [
-        "cmb-archive",
-        "lensing-survey-archive"
+        "cmb-and-cosmology"
       ],
       "content_hash": "5bbaf3901b766b24",
       "tags": [
@@ -1825,8 +2124,8 @@
       ],
       "scores": {
         "cmb": 33,
-        "interest": 35,
-        "editorial": 34
+        "interest": 31,
+        "editorial": 32
       },
       "track": "focus",
       "topics": [
@@ -1864,7 +2163,7 @@
         "confidence": 84
       },
       "first_selected_at": "2026-08-07T08:34:06Z",
-      "last_selected_at": "2026-08-07T09:36:27Z"
+      "last_selected_at": "2026-08-10T05:56:16Z"
     },
     {
       "id": "2608.02794",
@@ -2260,8 +2559,7 @@
       "journal_ref": "",
       "doi": "10.1016/j.dark.2026.102410",
       "source_groups": [
-        "cmb-archive",
-        "lensing-survey-archive"
+        "cmb-and-cosmology"
       ],
       "content_hash": "48383276b8518360",
       "tags": [
@@ -2273,8 +2571,8 @@
       ],
       "scores": {
         "cmb": 25,
-        "interest": 41,
-        "editorial": 31
+        "interest": 37,
+        "editorial": 30
       },
       "track": "focus",
       "topics": [
@@ -2309,7 +2607,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-07T08:34:06Z",
-      "last_selected_at": "2026-08-07T09:36:27Z"
+      "last_selected_at": "2026-08-10T05:56:16Z"
     },
     {
       "id": "2608.01919",
@@ -2336,9 +2634,7 @@
       "journal_ref": "",
       "doi": "",
       "source_groups": [
-        "cmb-archive",
-        "early-universe-archive",
-        "lensing-survey-archive"
+        "cmb-and-cosmology"
       ],
       "content_hash": "f9f9c84c948b696a",
       "tags": [
@@ -2351,8 +2647,8 @@
       ],
       "scores": {
         "cmb": 44,
-        "interest": 42,
-        "editorial": 43
+        "interest": 38,
+        "editorial": 42
       },
       "track": "focus",
       "topics": [
@@ -2389,7 +2685,7 @@
         "confidence": 92
       },
       "first_selected_at": "2026-08-07T08:34:06Z",
-      "last_selected_at": "2026-08-07T09:36:27Z"
+      "last_selected_at": "2026-08-10T05:56:16Z"
     },
     {
       "id": "2608.01844",
@@ -2414,8 +2710,7 @@
       "journal_ref": "",
       "doi": "",
       "source_groups": [
-        "cmb-archive",
-        "lensing-survey-archive"
+        "cmb-and-cosmology"
       ],
       "content_hash": "b0a519651149b57a",
       "tags": [
@@ -2428,8 +2723,8 @@
       ],
       "scores": {
         "cmb": 25,
-        "interest": 51,
-        "editorial": 35
+        "interest": 47,
+        "editorial": 33
       },
       "track": "focus",
       "topics": [
@@ -2467,7 +2762,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-07T08:34:06Z",
-      "last_selected_at": "2026-08-07T09:36:27Z"
+      "last_selected_at": "2026-08-10T05:56:16Z"
     },
     {
       "id": "2608.01581",
@@ -3756,8 +4051,7 @@
       "journal_ref": "",
       "doi": "",
       "source_groups": [
-        "early-universe-archive",
-        "lensing-survey-archive"
+        "cmb-and-cosmology"
       ],
       "content_hash": "c8ebcfdc228921e9",
       "tags": [
@@ -3769,8 +4063,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 50,
-        "editorial": 19
+        "interest": 46,
+        "editorial": 17
       },
       "track": "discovery",
       "topics": [
@@ -3809,7 +4103,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-07T08:34:06Z",
-      "last_selected_at": "2026-08-07T09:36:27Z"
+      "last_selected_at": "2026-08-10T05:56:16Z"
     },
     {
       "id": "2607.28721",
@@ -5313,7 +5607,7 @@
       "journal_ref": "",
       "doi": "",
       "source_groups": [
-        "cmb-archive"
+        "cmb-instrumentation"
       ],
       "content_hash": "209533e9108e50d8",
       "tags": [
@@ -5326,8 +5620,8 @@
       ],
       "scores": {
         "cmb": 56,
-        "interest": 22,
-        "editorial": 43
+        "interest": 18,
+        "editorial": 42
       },
       "track": "focus",
       "topics": [
@@ -5366,7 +5660,7 @@
         "confidence": 92
       },
       "first_selected_at": "2026-08-07T08:30:18Z",
-      "last_selected_at": "2026-08-07T09:36:27Z"
+      "last_selected_at": "2026-08-10T05:56:16Z"
     },
     {
       "id": "2607.24910",
