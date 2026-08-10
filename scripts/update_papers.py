@@ -247,13 +247,15 @@ def request_feed(
     session: requests.Session,
     query: str,
     max_results: int,
+    sort_by: str = "submittedDate",
+    start: int = 0,
     retries: int = 3,
 ) -> str:
     params = {
         "search_query": query,
-        "start": 0,
+        "start": start,
         "max_results": max_results,
-        "sortBy": "submittedDate",
+        "sortBy": sort_by,
         "sortOrder": "descending",
     }
     for attempt in range(retries):
@@ -307,8 +309,24 @@ def fetch_all(
             query = query_config["query"]
             if backfill_days:
                 query = add_submitted_date_window(query, backfill_days, query_now)
-            xml_text = request_feed(session, query, max_results)
-            parsed = parse_atom_feed(xml_text, name)
+            sort_by = str(query_config.get("sort_by", "submittedDate"))
+            page_size = max(1, min(max_results, int(query_config.get("page_size", 500))))
+            parsed = []
+            for start in range(0, max_results, page_size):
+                if start:
+                    time.sleep(3)
+                result_count = min(page_size, max_results - start)
+                xml_text = request_feed(
+                    session,
+                    query,
+                    result_count,
+                    sort_by=sort_by,
+                    start=start,
+                )
+                page = parse_atom_feed(xml_text, name)
+                parsed.extend(page)
+                if len(page) < result_count:
+                    break
         except (requests.RequestException, ET.ParseError) as exc:
             message = f"{name}: {exc}"
             LOGGER.error("Fetch failed: %s", message)
@@ -575,6 +593,22 @@ def select_current(
     return focus + discovery, [paper["id"] for paper in focus], [paper["id"] for paper in discovery]
 
 
+def select_daily_archive(
+    candidates: list[dict[str, Any]],
+    current_selected: list[dict[str, Any]],
+    complete_category: str,
+) -> list[dict[str, Any]]:
+    """Archive the complete target category while retaining curated adjacent papers."""
+    archived = {
+        paper["id"]: paper
+        for paper in candidates
+        if complete_category in paper.get("categories", [])
+    }
+    for paper in current_selected:
+        archived[paper["id"]] = paper
+    return sorted(archived.values(), key=lambda paper: paper["published"], reverse=True)
+
+
 def select_archive(
     candidates: list[dict[str, Any]],
     config: dict[str, Any],
@@ -609,6 +643,19 @@ def select_archive(
             reverse=True,
         )[:discovery_limit]
         selected.extend(focus + discovery)
+
+    complete_category = str(config.get("complete_category", "")).strip()
+    if complete_category:
+        selected.extend(
+            paper
+            for paper in candidates
+            if complete_category in paper.get("categories", [])
+            and max(
+                parse_datetime(paper.get("published", "1970-01-01T00:00:00Z")),
+                parse_datetime(paper.get("updated", paper.get("published", "1970-01-01T00:00:00Z"))),
+            )
+            >= cutoff
+        )
 
     deduplicated = {paper["id"]: paper for paper in selected}
     return sorted(deduplicated.values(), key=lambda paper: paper["published"], reverse=True)
@@ -649,7 +696,11 @@ def merge_history(
     retained = []
     for paper in previous.values():
         try:
-            if parse_datetime(paper["published"]) >= cutoff:
+            newest_activity = max(
+                parse_datetime(paper["published"]),
+                parse_datetime(paper.get("updated", paper["published"])),
+            )
+            if newest_activity >= cutoff:
                 retained.append(paper)
         except (KeyError, ValueError):
             continue
@@ -673,10 +724,12 @@ def update_data(args: argparse.Namespace) -> UpdateOutcome:
     backfill_days = max(0, int(getattr(args, "backfill_days", 0) or 0))
 
     existing_meta = existing.get("meta", {})
+    configured_complete_category = str(config.get("complete_category", "astro-ph.CO")).strip()
     reuse_existing_archive = bool(
         backfill_days
         and existing.get("papers")
-        and int(existing_meta.get("archive_days", 0) or 0) >= backfill_days
+        and existing_meta.get("complete_category") == configured_complete_category
+        and int(existing_meta.get("complete_archive_days", 0) or 0) >= backfill_days
         and int(existing_meta.get("archive_pending_count", 0) or 0) > 0
     )
     if reuse_existing_archive:
@@ -702,7 +755,12 @@ def update_data(args: argparse.Namespace) -> UpdateOutcome:
 
         scored = [score_paper(paper, now) for paper in fetched]
         current_selected, focus_ids, discovery_ids = select_current(scored, config, now)
-        selected = select_archive(scored, config, now, backfill_days) if backfill_days else current_selected
+        complete_category = str(config.get("complete_category", "astro-ph.CO")).strip()
+        selected = (
+            select_archive(scored, config, now, backfill_days)
+            if backfill_days
+            else select_daily_archive(scored, current_selected, complete_category)
+        )
         new_or_updated = find_new_or_updated(selected, existing)
         if args.skip_if_no_new and not new_or_updated:
             LOGGER.info("Skipping update: no new or revised selected papers")
@@ -767,8 +825,7 @@ def update_data(args: argparse.Namespace) -> UpdateOutcome:
                 return UpdateOutcome(existing, False, "ai_error", len(new_or_updated))
             LOGGER.exception("GPT analysis failed; using metadata-only fallback")
     elif args.require_ai:
-        LOGGER.info("Skipping update: strict AI mode found nothing to analyze")
-        return UpdateOutcome(existing, False, "nothing_to_analyze", len(new_or_updated))
+        LOGGER.info("Strict AI mode found no selected paper requiring analysis; preserving metadata updates")
 
     current_ai_count = sum(
         1
@@ -785,6 +842,10 @@ def update_data(args: argparse.Namespace) -> UpdateOutcome:
         1 for paper in papers if paper.get("analysis", {}).get("provider") == "openai"
     )
     archive_pending_count = len(papers) - archive_ai_count
+    complete_category = str(config.get("complete_category", "astro-ph.CO")).strip()
+    complete_category_count = sum(
+        1 for paper in papers if complete_category in paper.get("categories", [])
+    )
     if archive_ai_count and archive_pending_count:
         analysis_status = "mixed"
     archive_dates = sorted(
@@ -794,6 +855,8 @@ def update_data(args: argparse.Namespace) -> UpdateOutcome:
     archive_months = sorted({date[:7] for date in archive_dates}, reverse=True)
     previous_archive_days = int(existing.get("meta", {}).get("archive_days", 0) or 0)
     archive_days = backfill_days or previous_archive_days or int(config.get("history_days", 120))
+    previous_complete_archive_days = int(existing_meta.get("complete_archive_days", 0) or 0)
+    complete_archive_days = backfill_days or previous_complete_archive_days
 
     data = {
         "meta": {
@@ -813,12 +876,15 @@ def update_data(args: argparse.Namespace) -> UpdateOutcome:
             "candidate_count": len(fetched) or int(existing_meta.get("candidate_count", 0) or 0),
             "paper_count": len(papers),
             "archive_days": archive_days,
+            "complete_archive_days": complete_archive_days,
             "archive_start": archive_dates[-1] if archive_dates else None,
             "archive_end": archive_dates[0] if archive_dates else None,
             "archive_dates": archive_dates,
             "archive_months": archive_months,
             "archive_ai_count": archive_ai_count,
             "archive_pending_count": archive_pending_count,
+            "complete_category": complete_category,
+            "complete_category_count": complete_category_count,
             "current_focus_ids": focus_ids,
             "current_discovery_ids": discovery_ids,
         },

@@ -3,7 +3,14 @@
     {
       "name": "cmb-and-cosmology",
       "query": "cat:astro-ph.CO",
-      "max_results": 110
+      "max_results": 250,
+      "sort_by": "submittedDate"
+    },
+    {
+      "name": "cosmology-revisions",
+      "query": "cat:astro-ph.CO",
+      "max_results": 250,
+      "sort_by": "lastUpdatedDate"
     },
     {
       "name": "cmb-instrumentation",
@@ -22,6 +29,11 @@
     }
   ],
   "backfill_queries": [
+    {
+      "name": "cosmology-complete-archive",
+      "query": "cat:astro-ph.CO",
+      "max_results": 5000
+    },
     {
       "name": "cmb-archive",
       "query": "(cat:astro-ph.CO OR cat:astro-ph.IM) AND (all:CMB OR all:\"cosmic microwave background\" OR all:\"B-mode\" OR all:reionization OR all:\"Sunyaev-Zeldovich\" OR all:\"component separation\")",
@@ -44,11 +56,12 @@
     }
   ],
   "lookback_days": 21,
+  "complete_category": "astro-ph.CO",
   "focus_limit": 12,
   "discovery_limit": 6,
   "analysis_limit": 18,
   "archive_focus_per_month": 30,
   "archive_discovery_per_month": 12,
-  "max_history": 240,
+  "max_history": 6000,
   "history_days": 120
 }

@@ -295,6 +295,7 @@ const topicFilterKeys = new Set([
 ]);
 
 function matchesFilter(paper) {
+  if (state.filter === "astro-ph.CO") return (paper.categories || []).includes("astro-ph.CO");
   if (state.filter === "focus" || state.filter === "discovery") return paper.track === state.filter;
   if (state.filter === "deep") {
     const analysis = getAnalysis(paper);

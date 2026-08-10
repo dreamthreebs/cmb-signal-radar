@@ -18,6 +18,7 @@ from scripts.update_papers import (
     score_paper,
     select_archive,
     select_current,
+    select_daily_archive,
     update_data,
 )
 
@@ -150,6 +151,53 @@ class UpdatePapersTests(unittest.TestCase):
             datetime(2026, 8, 10, tzinfo=timezone.utc),
         )
         self.assertEqual(focus_ids[0], "new-cmb-paper")
+
+    def test_daily_archive_keeps_every_target_category_paper(self):
+        candidates = [
+            {
+                "id": f"co-{index}",
+                "published": f"2026-08-07T{index:02d}:00:00Z",
+                "categories": ["astro-ph.CO"],
+            }
+            for index in range(25)
+        ]
+        adjacent = {
+            "id": "interesting-gravity",
+            "published": "2026-08-07T23:00:00Z",
+            "categories": ["gr-qc"],
+        }
+        selected = select_daily_archive(
+            candidates + [adjacent],
+            [candidates[0], adjacent],
+            "astro-ph.CO",
+        )
+        self.assertEqual(len(selected), 26)
+        self.assertTrue({paper["id"] for paper in candidates}.issubset({paper["id"] for paper in selected}))
+
+    def test_archive_keeps_complete_category_beyond_monthly_limits(self):
+        now = datetime(2026, 8, 10, tzinfo=timezone.utc)
+        candidates = [
+            {
+                "id": f"co-{index}",
+                "published": f"2026-08-{index + 1:02d}T00:00:00Z",
+                "updated": f"2026-08-{index + 1:02d}T00:00:00Z",
+                "categories": ["astro-ph.CO"],
+                "track": "discovery",
+                "scores": {"editorial": 1, "interest": 1},
+            }
+            for index in range(5)
+        ]
+        selected = select_archive(
+            candidates,
+            {
+                "archive_focus_per_month": 0,
+                "archive_discovery_per_month": 1,
+                "complete_category": "astro-ph.CO",
+            },
+            now,
+            90,
+        )
+        self.assertEqual({paper["id"] for paper in selected}, {paper["id"] for paper in candidates})
 
     def test_submitted_date_window_and_monthly_archive_balance(self):
         now = datetime(2026, 8, 7, tzinfo=timezone.utc)

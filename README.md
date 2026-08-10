@@ -99,7 +99,7 @@ gh variable set GPT_REASONING_EFFORT --body "low" --repo dreamthreebs/cmb-signal
 
 ### 5. 回填历史文献
 
-手动运行工作流时，把 `backfill_days` 设为 `90`，即可建立过去三个月的按月均衡档案。`analysis_cap` 控制单次最多生成多少篇 AI 解读；重复运行相同的 90 天回填会从上次未完成的位置继续，不会重新分析已经完成的论文。
+手动运行工作流时，把 `backfill_days` 设为 `90`，即可建立过去三个月的档案。`astro-ph.CO` 会完整保留元数据，邻近分类仍按月筛选；`analysis_cap` 控制单次最多生成多少篇 AI 解读。重复运行相同的 90 天回填会从上次未完成的位置继续，不会重新分析已经完成的论文。
 
 网页文献库提供“按日 / 按月 / 全部历史”三种时间视图，并可继续叠加主题、关键词和排序条件。
 
@@ -139,9 +139,10 @@ python scripts/update_papers.py --max-results 15 --require-ai --force-ai
 
 编辑 [`config/radar.json`](config/radar.json)：
 
-- `queries`：arXiv 搜索式及每次候选数量。
+- `queries`：arXiv 搜索式、排序方式及每次候选数量。`astro-ph.CO` 同时按投稿时间和更新时间抓取，以覆盖新投稿、交叉投稿与修订。
+- `complete_category`：不经过推荐限额、始终完整写入档案的 arXiv 分类。
 - `lookback_days`：本期候选时间窗口。
-- `focus_limit` / `discovery_limit`：CMB 核心与跨域发现的每日上限。
+- `focus_limit` / `discovery_limit`：CMB 核心与跨域发现的 GPT 精选上限，不再决定 `astro-ph.CO` 是否进入档案。
 - `analysis_limit`：每天最多交给大模型分析的论文数，用于控制成本。
 - `history_days` / `max_history`：网页保留的历史范围和数量。
 
