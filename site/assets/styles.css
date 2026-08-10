@@ -674,6 +674,14 @@ sup {
   text-transform: uppercase;
 }
 
+.intake-chip {
+  padding: 4px 7px;
+  border: 1px solid rgba(199, 255, 84, 0.55);
+  color: var(--acid);
+  background: rgba(199, 255, 84, 0.08);
+  font-weight: 700;
+}
+
 .track-chip {
   display: inline-flex;
   align-items: center;

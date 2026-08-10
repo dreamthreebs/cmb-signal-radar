@@ -42,11 +42,26 @@ const formatDate = (value, withTime = false) => {
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) return value;
   return new Intl.DateTimeFormat("zh-CN", {
+    timeZone: "Asia/Shanghai",
     year: "numeric",
     month: "2-digit",
     day: "2-digit",
     ...(withTime ? { hour: "2-digit", minute: "2-digit", hour12: false } : {}),
   }).format(date);
+};
+
+const localDateKey = (value) => {
+  if (!value) return "";
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return String(value).slice(0, 10);
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Shanghai",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(date);
+  const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+  return `${values.year}-${values.month}-${values.day}`;
 };
 
 const dateKey = (paper) => String(paper.published || "").slice(0, 10);
@@ -111,6 +126,11 @@ const truncateAuthors = (authors = [], limit = 5) => {
 const currentIds = () => {
   const meta = state.data?.meta || {};
   return [...(meta.current_focus_ids || []), ...(meta.current_discovery_ids || [])];
+};
+
+const isLatestAddition = (paper) => {
+  const generatedDate = localDateKey(state.data?.meta?.generated_at);
+  return Boolean(generatedDate && localDateKey(paper.first_selected_at) === generatedDate);
 };
 
 const getAnalysis = (paper) => paper.analysis || {};
@@ -190,7 +210,8 @@ function featuredEmpty() {
 
 function renderFeatured() {
   const papersById = new Map(state.data.papers.map((paper) => [paper.id, paper]));
-  const firstId = currentIds()[0];
+  const currentPapers = currentIds().map((id) => papersById.get(id)).filter(Boolean);
+  const firstId = currentPapers.find(isLatestAddition)?.id || currentIds()[0];
   const paper = papersById.get(firstId) || state.data.papers[0];
   if (!paper) {
     featuredEmpty();
@@ -204,7 +225,11 @@ function renderFeatured() {
 
   const content = el("article", "featured-paper__content");
   const kicker = el("div", "paper-kicker");
-  kicker.append(trackChip(paper), el("span", "", formatDate(paper.published)), el("span", "", `arXiv:${paper.id}`));
+  kicker.append(trackChip(paper));
+  if (isLatestAddition(paper)) {
+    kicker.append(el("span", "intake-chip", `今日收录 ${formatDate(paper.first_selected_at)}`));
+  }
+  kicker.append(el("span", "", `arXiv 提交 ${formatDate(paper.published)}`), el("span", "", `arXiv:${paper.id}`));
   const title = el("h3", "", titleFor(paper));
   title.id = "featured-title";
   content.append(kicker, title);
@@ -309,6 +334,9 @@ function sortedPapers() {
     if (state.sort === "novelty") {
       return (getAnalysis(b).novelty_score || 0) - (getAnalysis(a).novelty_score || 0);
     }
+    const aLatest = isLatestAddition(a);
+    const bLatest = isLatestAddition(b);
+    if (aLatest !== bLatest) return aLatest ? -1 : 1;
     const aRank = ranked.has(a.id) ? ranked.get(a.id) : 999;
     const bRank = ranked.has(b.id) ? ranked.get(b.id) : 999;
     if (aRank !== bRank) return aRank - bRank;
@@ -324,7 +352,10 @@ function paperCard(paper, index) {
   card.append(top);
 
   const kicker = el("div", "paper-kicker");
-  kicker.append(el("span", "", formatDate(paper.published)), el("span", "", `arXiv:${paper.id}`));
+  if (isLatestAddition(paper)) {
+    kicker.append(el("span", "intake-chip", `今日收录 ${formatDate(paper.first_selected_at)}`));
+  }
+  kicker.append(el("span", "", `arXiv 提交 ${formatDate(paper.published)}`), el("span", "", `arXiv:${paper.id}`));
   card.append(kicker);
 
   const title = el("h3", "", titleFor(paper));
@@ -370,7 +401,11 @@ function openDialog(paper) {
   const analysis = getAnalysis(paper);
   dom.dialogContent.replaceChildren();
   const kicker = el("div", "paper-kicker");
-  kicker.append(trackChip(paper), el("span", "", `arXiv:${paper.id}`), el("span", "", formatDate(paper.published)));
+  kicker.append(trackChip(paper));
+  if (isLatestAddition(paper)) {
+    kicker.append(el("span", "intake-chip", `今日收录 ${formatDate(paper.first_selected_at)}`));
+  }
+  kicker.append(el("span", "", `arXiv 提交 ${formatDate(paper.published)}`), el("span", "", `arXiv:${paper.id}`));
   const title = el("h2", "dialog-paper-title", titleFor(paper));
   title.id = "dialog-title";
   dom.dialogContent.append(kicker, title);
