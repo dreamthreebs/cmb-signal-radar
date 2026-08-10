@@ -1,7 +1,7 @@
 {
   "meta": {
-    "generated_at": "2026-08-10T05:56:57Z",
-    "last_attempt_at": "2026-08-10T05:56:57Z",
+    "generated_at": "2026-08-10T06:22:15Z",
+    "last_attempt_at": "2026-08-10T06:22:15Z",
     "fetch_status": "ok",
     "fetch_errors": [],
     "source": "arXiv API",
@@ -14,7 +14,7 @@
     "analysis_basis": "title + abstract + categories",
     "lookback_days": 21,
     "candidate_count": 254,
-    "paper_count": 171,
+    "paper_count": 182,
     "archive_days": 90,
     "archive_start": "2026-05-10",
     "archive_end": "2026-08-07",
@@ -87,32 +87,291 @@
       "2026-06",
       "2026-05"
     ],
-    "archive_ai_count": 171,
+    "archive_ai_count": 182,
     "archive_pending_count": 0,
     "current_focus_ids": [
-      "2608.06343",
       "2608.07313",
-      "2608.01919",
-      "2607.25285",
-      "2608.04868",
-      "2608.01844",
+      "2608.07453",
       "2608.07386",
-      "2608.03470",
-      "2608.04353",
-      "2608.03981",
-      "2608.02175",
-      "2608.04763"
+      "2608.07470",
+      "2608.07404",
+      "2608.07209",
+      "2608.06343",
+      "2608.06480",
+      "2608.06247",
+      "2608.06455",
+      "2608.06458",
+      "2608.04868"
     ],
     "current_discovery_ids": [
-      "2608.04005",
       "2608.07095",
       "2608.06944",
-      "2607.28918",
-      "2608.06224",
-      "2608.06114"
+      "2608.06716",
+      "2608.06709",
+      "2608.07142",
+      "2608.07312"
     ]
   },
   "papers": [
+    {
+      "id": "2608.07470",
+      "versioned_id": "2608.07470v1",
+      "title": "HST imaging, pipeline modeling, and time-delay predictions of 2 triply-imaged and 15 quadruply-imaged lensed quasars",
+      "authors": [
+        "William Sheu",
+        "Tommaso Treu",
+        "Adriano Agnello",
+        "Timo Anguita",
+        "Simon Birrer",
+        "Daniel Gilman",
+        "Xiaosheng Huang",
+        "Richard G. McMahon",
+        "Nicholas D. Morgan",
+        "Veronica Motta",
+        "Anna Nierenberg",
+        "Ioana Zelko"
+      ],
+      "abstract": "The Hubble-Lemaître tension remains a significant challenge in modern cosmology, exhibiting a discrepancy between early-Universe cosmic microwave background measurements and local distance ladder observations. Strong lensing time-delay cosmography provides an independent, geometric probe of $H_0$ that can help resolve this discrepancy. Although hundreds of lensed quasars have been discovered, only a handful have been analyzed due to the resource-intensive follow-up required to measure precise time delays and break degeneracies. We present uniform gravitational lens modeling of 17 recently discovered lensed quasar systems (2 triply-imaged and 15 quadruply-imaged) to identify and prioritize the most promising candidates for future cosmological study. Using high-resolution near-infrared Hubble Space Telescope WFC3/IR F160W imaging (PID: 17916, PI: T. Treu), we perform uniform pipeline modeling with Lenstronomy. We constrain the mass and light profiles of the deflector galaxies, and assuming a fiducial cosmology, we predict their Fermat potential differences and expected time delays. Our pipeline successfully yields models and time-delay predictions for all 17 systems. Assuming ideal monitoring conditions, we estimate the total contribution from time-delay and Fermat potential modeling errors to the time-delay distance. From this, we classify the systems by estimated time-delay distance uncertainties: six \"excellent\" ($\\leq 3\\%$), five \"good\" ($3\\%$--$7\\%$), three \"suitable\" ($7\\%$--$12\\%$), and three \"impractical\" ($>12\\%$). We recommend prioritizing follow-up campaigns on the 11 \"excellent\" and \"good\" systems, which have the potential to deliver high-precision, independent constraints on $H_0$ to help resolve the Hubble-Lemaître tension.",
+      "published": "2026-08-07T17:59:29Z",
+      "updated": "2026-08-07T17:59:29Z",
+      "abs_url": "https://arxiv.org/abs/2608.07470v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.07470v1",
+      "categories": [
+        "astro-ph.CO",
+        "astro-ph.GA"
+      ],
+      "primary_category": "astro-ph.CO",
+      "comment": "18 pages, 6 figures, submitted to Physical Review D",
+      "journal_ref": "",
+      "doi": "",
+      "source_groups": [
+        "cmb-and-cosmology",
+        "cosmic-discovery"
+      ],
+      "content_hash": "788d0d9b9adc329c",
+      "tags": [
+        "CMB",
+        "张力与反常",
+        "宇宙学",
+        "星系天体物理"
+      ],
+      "scores": {
+        "cmb": 18,
+        "interest": 29,
+        "editorial": 22
+      },
+      "track": "focus",
+      "topics": [
+        "cmb-core",
+        "instruments"
+      ],
+      "analysis": {
+        "provider": "openai",
+        "model": "gpt-5.5",
+        "basis": "abstract",
+        "generated_at": "2026-08-10T06:22:15Z",
+        "title_zh": "2 个三重成像和 15 个四重成像透镜类星体的 HST 成像、管线建模与时间延迟预测",
+        "summary_zh": "本文针对 Hubble-Lemaître 张力，使用 HST WFC3/IR F160W 成像和 Lenstronomy 对 17 个三像或四像透镜类星体系统进行统一强透镜建模。摘要报告所有系统均得到模型和时延预测，并按估计时延距离不确定度分为 excellent、good、suitable 和 impractical，建议优先跟进其中 11 个 excellent/good 系统以约束 H0。",
+        "why_it_matters_zh": "该论文不直接分析 CMB 数据，但其目标是提供独立的 H0 测量路径，用来检验早期宇宙 CMB 推断与本地距离阶梯之间的 Hubble-Lemaître 张力。对 CMB 宇宙学读者而言，它属于外部低红移几何探针，可用于比较或组合约束宇宙学模型。",
+        "key_points": [
+          "强透镜时延宇宙学提供独立的几何 H0 探针。",
+          "论文对 17 个新发现透镜类星体系统进行统一建模并预测时延。",
+          "摘要建议优先跟进 11 个被归为 excellent 或 good 的系统。"
+        ],
+        "methods": [
+          "HST WFC3/IR F160W 高分辨率近红外成像",
+          "Lenstronomy 统一管线建模",
+          "透镜星系质量和光分布建模",
+          "在基准宇宙学下预测 Fermat 势差和预期时间延迟",
+          "按估计的时延距离不确定度对系统分类"
+        ],
+        "reading_note_zh": "精读时应核对时延距离不确定度分类如何由监测条件、Fermat 势建模误差和质量分布退化假设得到，尤其是“理想监测条件”与真实跟进观测之间的差距。",
+        "audience": "领域相关",
+        "novelty_score": 6,
+        "confidence": 88
+      },
+      "first_selected_at": "2026-08-10T06:20:28Z",
+      "last_selected_at": "2026-08-10T06:20:28Z"
+    },
+    {
+      "id": "2608.07453",
+      "versioned_id": "2608.07453v1",
+      "title": "Sensitivity of Next-Generation CMB Surveys to Neutrinos and Other Light Relics",
+      "authors": [
+        "Cynthia Trendafilova",
+        "Srinivasan Raghunathan",
+        "Benjamin Wallisch",
+        "Joel Meyers",
+        "Kevork N. Abazajian",
+        "Edoardo Altamura",
+        "Carlo Baccigalupi",
+        "Kimberly K. Boddy",
+        "Thejs Brinckmann",
+        "Yuji Chinone",
+        "Gabriele Coppi",
+        "Francis-Yan Cyr-Racine",
+        "Jacques Delabrouille",
+        "Katherine Freese",
+        "Helena García Escudero",
+        "Martina Gerbino",
+        "Shamik Ghosh",
+        "Vera Gluscevic",
+        "Daniel Green",
+        "Daniel Grin",
+        "Kevin M. Huffenberger",
+        "Mudit Jain",
+        "Lloyd Knox",
+        "Anto I. Lonappan",
+        "Marilena Loverde",
+        "Philip Lubin",
+        "Gabriele Montefalcone",
+        "Valentine Novosad",
+        "Marco Raveri",
+        "Christian L. Reichardt",
+        "Sayan Saha",
+        "Murali M. Saravanan",
+        "Emmanuel Schaan",
+        "Sara M. Simon",
+        "Julien Tang",
+        "Scott Watson"
+      ],
+      "abstract": "Neutrinos and other light relics leave characteristic imprints in the cosmic microwave background anisotropies, making their observation a sensitive probe of the particle content and thermal history of the early universe. The energy density in these relativistic species is parameterized by their effective number $N_\\mathrm{eff}$. Measuring this parameter at the percent level, which is a long-standing science goal of CMB-S4 and other experiments, would test a wide range of well-motivated physics within and beyond the Standard Model of particle physics. In this paper, we present Fisher-matrix forecasts of the projected sensitivity to $N_\\mathrm{eff}$ of several CMB-S4 survey configurations considered during its extensive design phase. The conceptual design reaches $σ(N_\\mathrm{eff}) < 0.03$ over its seven-year observing period, while the revised configuration achieves the same precision over a longer timescale. We complement these results with a cosmic-variance-limited survey over the same multipole range to quantify the room for improvement accessible with additional instrumental, observational, and theoretical efforts. Finally, we discuss the broad implications of precise $N_\\mathrm{eff}$ measurements for the radiation sector, big bang nucleosynthesis, light thermal relics, and other early-universe physics. The forecasts presented in this work are performed with the publicly released DRAFT (Dark Radiation Anisotropy Flowdown Team) tool. It provides an end-to-end pipeline from simulated foreground maps and component separation to delensing and projected sensitivities for any cosmological parameter, and it can be directly applied to other cosmic microwave background survey designs.",
+      "published": "2026-08-07T17:46:01Z",
+      "updated": "2026-08-07T17:46:01Z",
+      "abs_url": "https://arxiv.org/abs/2608.07453v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.07453v1",
+      "categories": [
+        "astro-ph.CO",
+        "astro-ph.IM",
+        "hep-ph",
+        "hep-th"
+      ],
+      "primary_category": "astro-ph.CO",
+      "comment": "76 pages, 8 figures, 8 tables; DRAFT forecasting tool available at https://github.com/sriniraghunathan/DRAFT",
+      "journal_ref": "",
+      "doi": "",
+      "source_groups": [
+        "cmb-and-cosmology",
+        "cmb-instrumentation",
+        "early-universe"
+      ],
+      "content_hash": "cc96101c5d14652e",
+      "tags": [
+        "CMB",
+        "前景去除",
+        "观测项目",
+        "中微子",
+        "大型巡天",
+        "宇宙学"
+      ],
+      "scores": {
+        "cmb": 32,
+        "interest": 31,
+        "editorial": 32
+      },
+      "track": "focus",
+      "topics": [
+        "cmb-core",
+        "early-universe",
+        "instruments",
+        "foregrounds-methods"
+      ],
+      "analysis": {
+        "provider": "openai",
+        "model": "gpt-5.5",
+        "basis": "abstract",
+        "generated_at": "2026-08-10T06:22:15Z",
+        "title_zh": "下一代 CMB 巡天对中微子和其他轻遗迹粒子的灵敏度",
+        "summary_zh": "本文研究下一代 CMB 巡天对中微子和其他轻遗迹粒子有效数目 N_eff 的灵敏度，使用 Fisher 矩阵对多个 CMB-S4 设计阶段配置进行预报。摘要报告概念设计七年观测可达 σ(N_eff)<0.03，修订配置在更长时间尺度上达到同等精度，并以宇宙方差极限情形评估进一步改进空间。",
+        "why_it_matters_zh": "N_eff 是 CMB 对早期宇宙辐射组分和热史的核心观测量之一，直接关联标准模型中微子、暗辐射、轻热遗迹粒子和大爆炸核合成。该工作面向 CMB-S4 等实验的设计取舍，因而对 CMB 观测规划、前景处理和参数预报都具有直接参考价值。",
+        "key_points": [
+          "下一代 CMB 巡天可通过各向异性精确约束有效相对论自由度。",
+          "摘要报告 CMB-S4 概念设计在七年观测期内达到 σ(N_eff)<0.03，修订配置需更长时间达到同等精度。",
+          "DRAFT 工具链覆盖模拟前景图、成分分离、去透镜化和参数灵敏度预测。"
+        ],
+        "methods": [
+          "Fisher 矩阵预报",
+          "多个 CMB-S4 巡天配置",
+          "同一多极矩范围内的宇宙方差极限巡天比较",
+          "DRAFT 工具：模拟前景图、成分分离、去透镜化、宇宙学参数灵敏度预测"
+        ],
+        "reading_note_zh": "精读时应核对各 CMB-S4 配置的噪声、天空覆盖、多极矩范围、前景模型和去透镜化假设如何驱动 σ(N_eff)，以及与宇宙方差极限比较时是否包含一致的理论和系统误差预算。",
+        "audience": "建议精读",
+        "novelty_score": 8,
+        "confidence": 92
+      },
+      "first_selected_at": "2026-08-10T06:20:28Z",
+      "last_selected_at": "2026-08-10T06:20:28Z"
+    },
+    {
+      "id": "2608.07404",
+      "versioned_id": "2608.07404v1",
+      "title": "Simplified treatment of kinematic corrections to the SZ effect using the boost operator approach",
+      "authors": [
+        "Alex Hoey",
+        "Jacob Long",
+        "Jens Chluba"
+      ],
+      "abstract": "The scattering of cosmic microwave background (CMB) photons by free electrons gives rise to the Sunyaev-Zeldovich (SZ) effects. Random electron motions in the hot intracluster medium generate the thermal SZ (tSZ) effect, whose amplitude traces the integrated electron pressure, while the coherent motion of the scattering medium relative to the CMB produces the kinematic SZ (kSZ) effect, which probes its line-of-sight momentum. The absence of cosmological surface-brightness dimming makes the SZ effects particularly valuable for detecting and characterising galaxy clusters over a wide range of redshifts. They have consequently become important probes of cluster astrophysics, the distribution of ionised matter and the growth of large-scale structure.",
+      "published": "2026-08-07T16:49:58Z",
+      "updated": "2026-08-07T16:49:58Z",
+      "abs_url": "https://arxiv.org/abs/2608.07404v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.07404v1",
+      "categories": [
+        "astro-ph.CO",
+        "astro-ph.GA"
+      ],
+      "primary_category": "astro-ph.CO",
+      "comment": "20 pages, 0 figures",
+      "journal_ref": "",
+      "doi": "",
+      "source_groups": [
+        "cmb-and-cosmology",
+        "cosmic-discovery"
+      ],
+      "content_hash": "34d9511f3e9677e5",
+      "tags": [
+        "CMB",
+        "次级各向异性",
+        "宇宙学",
+        "星系天体物理"
+      ],
+      "scores": {
+        "cmb": 24,
+        "interest": 18,
+        "editorial": 22
+      },
+      "track": "focus",
+      "topics": [
+        "cmb-core",
+        "lensing-lss"
+      ],
+      "analysis": {
+        "provider": "openai",
+        "model": "gpt-5.5",
+        "basis": "abstract",
+        "generated_at": "2026-08-10T06:22:15Z",
+        "title_zh": "使用 boost operator 方法简化处理 SZ 效应的运动学修正",
+        "summary_zh": "本文题目表明将用 boost operator 方法简化处理 SZ 效应的运动学修正；摘要主要介绍 CMB 光子被自由电子散射产生 tSZ 和 kSZ，以及它们对星系团、离子化物质分布和大尺度结构增长的探针价值。摘要未给出具体公式、数值结果或与既有方法的定量比较。",
+        "why_it_matters_zh": "SZ 效应是 CMB 次级各向异性的重要组成部分，影响星系团宇宙学、重子分布测量和大尺度结构增长研究。若该方法能更简洁地处理 kSZ/运动学修正，将有助于下一代高精度 CMB 数据中的星系团和速度场建模，但仅凭摘要不能判断其实际精度收益。",
+        "key_points": [
+          "摘要回顾 tSZ 与 kSZ 分别追踪电子压力和视线动量。",
+          "SZ 效应不受宇宙学表面亮度变暗影响，适合高红移星系团探测。",
+          "题目指向用 boost operator 方法简化 kSZ 相关运动学修正，但摘要未给出具体推导或结果。"
+        ],
+        "methods": [
+          "boost operator approach（题目中出现）",
+          "SZ 效应物理描述：CMB 光子被自由电子散射",
+          "tSZ 与 kSZ 的运动学/热运动来源区分"
+        ],
+        "reading_note_zh": "精读时最应核对 boost operator 方法具体简化了哪些 kinematic correction、适用的速度或温度展开阶数，以及相对既有 SZ 计算在精度和实现复杂度上的差异；这些信息在摘要中尚未报告。",
+        "audience": "快速浏览",
+        "novelty_score": 5,
+        "confidence": 74
+      },
+      "first_selected_at": "2026-08-10T06:20:28Z",
+      "last_selected_at": "2026-08-10T06:20:28Z"
+    },
     {
       "id": "2608.07386",
       "versioned_id": "2608.07386v1",
@@ -194,7 +453,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-10T05:56:16Z",
-      "last_selected_at": "2026-08-10T05:56:16Z"
+      "last_selected_at": "2026-08-10T06:20:28Z"
     },
     {
       "id": "2608.07313",
@@ -274,7 +533,227 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-10T05:56:16Z",
-      "last_selected_at": "2026-08-10T05:56:16Z"
+      "last_selected_at": "2026-08-10T06:20:28Z"
+    },
+    {
+      "id": "2608.07312",
+      "versioned_id": "2608.07312v1",
+      "title": "Spotlight searches for continuous gravitational waves triggered on radiometer candidates in LIGO O4a data",
+      "authors": [
+        "Alan M. Knee",
+        "Keith Riles",
+        "Ling Sun"
+      ],
+      "abstract": "We report on a follow-up search for continuous gravitational waves (CWs) targeting sub-threshold candidates from the O4a LIGO-Virgo-KAGRA (LVK) all-sky all-frequency (ASAF) directed radiometer analysis. We analyze a total of $562$ ASAF candidates using Advanced LIGO data from the first part of the fourth LVK observing run. Each candidate comprises a narrow $1/32$ Hz frequency band paired with a ${\\sim}13$ deg$^2$ sky pixel, defining the search parameter space for our analysis. Our search pipeline leverages the $F$-statistic matched filter equipped with a hidden Markov model to enable tracking of a potentially frequency-wandering CW signal. Of the 562 initial candidates, we obtain $21$ outliers with false alarm probability less than $5\\%$ that survive all instrumental vetoes. None of the outliers are recovered at comparable statistical significance in the second part of the fourth observing run, from which we conclude that no convincing CW signals are detected. We estimate the sensitivity of our analysis by recovering simulated signals added to real detector data. Across the $20\\text{--}1726$ Hz frequency band, our search achieves $95\\%$ detection efficiency for strain amplitudes in the range of $h_0\\sim (0.63\\text{--}6.3)\\times10^{-25}$ with respect to isolated neutron stars (NSs), and $h_0\\sim (0.82\\text{--}7.1)\\times10^{-25}$ with respect to NSs in long-period ($>1$ yr) binary systems. The large range in sensitivity is due to the strong frequency dependence of detector noise, particularly at low frequencies.",
+      "published": "2026-08-07T15:07:41Z",
+      "updated": "2026-08-07T15:07:41Z",
+      "abs_url": "https://arxiv.org/abs/2608.07312v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.07312v1",
+      "categories": [
+        "gr-qc",
+        "astro-ph.IM"
+      ],
+      "primary_category": "gr-qc",
+      "comment": "17 pages, 10 figures",
+      "journal_ref": "",
+      "doi": "",
+      "source_groups": [
+        "cosmic-discovery"
+      ],
+      "content_hash": "14f84c04c2823245",
+      "tags": [
+        "新探测",
+        "引力波",
+        "引力与相对论",
+        "仪器与方法"
+      ],
+      "scores": {
+        "cmb": 0,
+        "interest": 39,
+        "editorial": 15
+      },
+      "track": "discovery",
+      "topics": [
+        "instruments",
+        "gravity"
+      ],
+      "analysis": {
+        "provider": "openai",
+        "model": "gpt-5.5",
+        "basis": "abstract",
+        "generated_at": "2026-08-10T06:22:15Z",
+        "title_zh": "基于 LIGO O4a 数据中 radiometer 候选体触发的连续引力波聚焦搜索",
+        "summary_zh": "本文对 LVK O4a 全天全天频 directed radiometer 分析中的 562 个亚阈值候选体开展连续引力波跟进搜索，使用 F-statistic 匹配滤波结合隐马尔可夫模型跟踪可能频率游走的信号。摘要报告 21 个通过仪器 veto 的低 false-alarm-probability 离群体未在 O4 后半段以相当统计显著性复现，因此未发现可信连续引力波信号，并通过向真实数据注入模拟信号估计了灵敏度。",
+        "why_it_matters_zh": "该工作不直接研究 CMB，但与多信使宇宙学和致密天体背景相关；连续引力波搜索约束中子星非轴对称性和双星系统等源族，可为理解宇宙中的致密天体群体和随机/各向异性背景建模提供补充信息。",
+        "key_points": [
+          "对 O4a ASAF radiometer 的 562 个亚阈值候选体进行连续引力波跟进搜索。",
+          "管线使用 F-statistic 匹配滤波和隐马尔可夫模型，以跟踪可能发生频率游走的信号。",
+          "21 个通过初筛和仪器 veto 的离群体未能在 O4 后半段以相当显著性复现，因此摘要结论为未发现可信连续引力波信号。"
+        ],
+        "methods": [
+          "O4a Advanced LIGO 数据",
+          "LIGO-Virgo-KAGRA all-sky all-frequency directed radiometer 候选体",
+          "F-statistic matched filter",
+          "hidden Markov model",
+          "仪器 veto",
+          "向真实探测器数据注入模拟信号以估计灵敏度"
+        ],
+        "reading_note_zh": "精读时应核对 ASAF 候选体选择、21 个离群体的 false alarm probability 与 veto 流程、O4 后半段复现检验的统计口径，以及注入恢复给出的灵敏度是否依赖孤立/双星中子星模型假设。",
+        "audience": "领域相关",
+        "novelty_score": 5,
+        "confidence": 95
+      },
+      "first_selected_at": "2026-08-10T06:20:28Z",
+      "last_selected_at": "2026-08-10T06:20:28Z"
+    },
+    {
+      "id": "2608.07209",
+      "versioned_id": "2608.07209v1",
+      "title": "Redshift Dependence of $H_0$ Dipole in Pantheon+ Supernovae",
+      "authors": [
+        "M. H. Jalali-Kanafi",
+        "E. Ó Colgáin",
+        "S. Pourojaghi",
+        "M. M. Sheikh-Jabbari"
+      ],
+      "abstract": "We examine the dipole structure in the local cosmic expansion rate $H_0$ using the Pantheon+ compilation of Type Ia supernovae. We reconstruct directional maps of $H_0$ across the sky within the low-redshift regime, $z_{\\rm min} < z < 0.2$, evaluated in the CMB rest frame. To perform a tomographic analysis, we choose 10 different values for $z_{\\rm min}\\in [0.015 , 0.045]$ range. We find a dipole amplitude $A_{\\rm dip}=1.16\\pm0.28\\ {\\rm km/s/Mpc}$ for the lowest bin, monotonically decreasing to $A_{\\rm dip} =0.35\\pm0.52\\ {\\rm km/s/Mpc}$, as we increase $z_{\\rm min}$. Since $A_{\\rm dip}$ is positive-definite, by construction $A_{\\rm dip} > 0$ even in an isotropic universe, thus to assess the statistical significance, we compare to $A_{\\rm dip}$ generated from 1000 Monte Carlo simulations based on the $Λ$CDM model and the same redshift ranges. Our results reveal a $2-3σ$ dipole pattern (depending on how the significance level is computed) for $z_{\\rm min}\\lesssim 0.032$. For redshift thresholds where the signal remains statistically significant ($>2σ$), the inferred dipole direction points close to Shapley supercluster and CMB dipole directions. As $z_{\\rm min}$ increases, the dipole amplitude diminishes in line with expectations of a higher redshift isotropic Universe, but the difference in maximal antipodal $H_0$ determinations, $Δ\\text{H}_0^{\\rm max}$, retain a signal of an anisotropy that disappears in the dipole ansatz. The decreasing statistical significance of all estimators with increasing $z_{\\rm min}$ suggests that any $H_0$ dipole is a low-redshift feature.",
+      "published": "2026-08-07T13:24:17Z",
+      "updated": "2026-08-07T13:24:17Z",
+      "abs_url": "https://arxiv.org/abs/2608.07209v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.07209v1",
+      "categories": [
+        "astro-ph.CO",
+        "astro-ph.GA",
+        "gr-qc"
+      ],
+      "primary_category": "astro-ph.CO",
+      "comment": "17pages, 8 Figures, 3 Tables",
+      "journal_ref": "",
+      "doi": "",
+      "source_groups": [
+        "cmb-and-cosmology",
+        "cosmic-discovery"
+      ],
+      "content_hash": "5d0667c1f421dd9a",
+      "tags": [
+        "CMB",
+        "宇宙学",
+        "星系天体物理",
+        "引力与相对论"
+      ],
+      "scores": {
+        "cmb": 18,
+        "interest": 18,
+        "editorial": 18
+      },
+      "track": "focus",
+      "topics": [
+        "cmb-core",
+        "foregrounds-methods"
+      ],
+      "analysis": {
+        "provider": "openai",
+        "model": "gpt-5.5",
+        "basis": "abstract",
+        "generated_at": "2026-08-10T06:22:15Z",
+        "title_zh": "Pantheon+ 超新星中 H0 偶极的红移依赖性",
+        "summary_zh": "该文用 Pantheon+ Ia 型超新星在 CMB 静止系中研究低红移 H0 的天空偶极结构，并通过改变 z_min 做层析检验。摘要报告偶极振幅随 z_min 增大而单调减小，低 z_min 区间相对 ΛCDM Monte Carlo 模拟有约 2-3σ 的偶极特征，方向接近 Shapley 超星系团和 CMB 偶极方向。",
+        "why_it_matters_zh": "该结果直接关系到本地宇宙膨胀是否各向同性，以及 CMB 静止系、CMB 偶极和局域大尺度结构之间的关系。若低红移 H0 偶极主要来自局域结构或速度场，它会影响用近邻超新星校准宇宙学距离阶梯和解释 H0 张力时对各向同性的假设。",
+        "key_points": [
+          "用 Pantheon+ Ia 型超新星在 CMB 静止系中重建低红移方向性 H0 图。",
+          "H0 偶极振幅随最低红移阈值升高而减小，显著性也下降。",
+          "显著红移范围内的偶极方向接近 Shapley 超星系团和 CMB 偶极方向。"
+        ],
+        "methods": [
+          "Pantheon+ Ia 型超新星汇编",
+          "CMB 静止系",
+          "低红移样本 z_min < z < 0.2",
+          "10 个 z_min 取值，范围为 0.015 到 0.045",
+          "方向性 H0 天图重建",
+          "层析分析",
+          "基于 ΛCDM 的 1000 次 Monte Carlo 模拟",
+          "偶极拟合与最大对跖 H0 差值 ΔH0^max"
+        ],
+        "reading_note_zh": "精读时应重点核对 H0 方向图重建、偶极振幅正定偏差校正、显著性定义以及超新星天空覆盖/选择效应如何影响低红移偶极结论。",
+        "audience": "建议精读",
+        "novelty_score": 7,
+        "confidence": 88
+      },
+      "first_selected_at": "2026-08-10T06:20:28Z",
+      "last_selected_at": "2026-08-10T06:20:28Z"
+    },
+    {
+      "id": "2608.07142",
+      "versioned_id": "2608.07142v1",
+      "title": "Enlightening dark moments of neutrino with superradiance",
+      "authors": [
+        "Indra Kumar Banerjee",
+        "Ujjal Kumar Dey",
+        "Anna John"
+      ],
+      "abstract": "Neutrinos can acquire electromagnetic moments either within the Standard Model through higher order radiative corrections or within the domain of new physics. In this study we focus on probing these beyond the standard model neutrino moments through quenched superradiance of black holes where fermionic pairs can be produced from the superradiant bosonic cloud. We consider the production of dark photons from black hole superradiance and quenching occurs through the production of neutrino-antineutrino pairs from the dark photons. The efficiency of the pair production depends on the effective coupling between the dark photons and neutrinos, i.e., the dark electromagnetic moments. We also discuss bounds on primordial black hole abundance from neutrino background arising from this quenched superradiance mechanism.",
+      "published": "2026-08-07T12:02:19Z",
+      "updated": "2026-08-07T12:02:19Z",
+      "abs_url": "https://arxiv.org/abs/2608.07142v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.07142v1",
+      "categories": [
+        "astro-ph.HE",
+        "gr-qc",
+        "hep-ph"
+      ],
+      "primary_category": "hep-ph",
+      "comment": "17 pages, 5 figures, 1 table",
+      "journal_ref": "",
+      "doi": "",
+      "source_groups": [
+        "cosmic-discovery",
+        "early-universe"
+      ],
+      "content_hash": "3405c9eb5efaaba8",
+      "tags": [
+        "暗物质",
+        "黑洞",
+        "中微子",
+        "高能天体物理",
+        "引力与相对论",
+        "粒子宇宙学"
+      ],
+      "scores": {
+        "cmb": 0,
+        "interest": 40,
+        "editorial": 15
+      },
+      "track": "discovery",
+      "topics": [
+        "dark-sector",
+        "gravity"
+      ],
+      "analysis": {
+        "provider": "openai",
+        "model": "gpt-5.5",
+        "basis": "abstract",
+        "generated_at": "2026-08-10T06:22:15Z",
+        "title_zh": "用超辐射照亮中微子的黑暗时刻",
+        "summary_zh": "本文研究用黑洞超辐射产生的暗光子来探测超出标准模型的中微子电磁矩；当暗光子通过有效耦合产生中微子-反中微子对时，会导致超辐射淬灭。摘要称作者还讨论了这种淬灭超辐射机制产生的中微子背景对原初黑洞丰度的约束。",
+        "why_it_matters_zh": "这篇论文与 CMB 的直接关联较弱，但属于粒子宇宙学和早期宇宙遗迹约束范畴。若原初黑洞丰度或额外暗辐射/中微子背景受到限制，其结论可能与 CMB 对辐射组分、早期能量注入和原初黑洞相关情景的约束形成互补。",
+        "key_points": [
+          "研究用黑洞超辐射产生的暗光子云来探测超出标准模型的中微子暗电磁矩。",
+          "暗光子可通过与中微子的有效耦合产生中微子-反中微子对，从而淬灭超辐射。",
+          "摘要还讨论由该机制产生的中微子背景对原初黑洞丰度的约束。"
+        ],
+        "methods": [
+          "黑洞超辐射机制",
+          "暗光子产生与超辐射淬灭",
+          "中微子-反中微子对产生",
+          "原初黑洞丰度约束讨论"
+        ],
+        "reading_note_zh": "精读时应核对暗光子-中微子有效耦合如何参数化为“暗电磁矩”、对产生率和淬灭效率的计算假设，以及由中微子背景转化为原初黑洞丰度约束时采用的宇宙学输入。",
+        "audience": "快速浏览",
+        "novelty_score": 7,
+        "confidence": 86
+      },
+      "first_selected_at": "2026-08-10T06:20:28Z",
+      "last_selected_at": "2026-08-10T06:20:28Z"
     },
     {
       "id": "2608.07095",
@@ -348,7 +827,7 @@
         "confidence": 84
       },
       "first_selected_at": "2026-08-10T05:56:16Z",
-      "last_selected_at": "2026-08-10T05:56:16Z"
+      "last_selected_at": "2026-08-10T06:20:28Z"
     },
     {
       "id": "2608.06944",
@@ -415,7 +894,366 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-10T05:56:16Z",
-      "last_selected_at": "2026-08-10T05:56:16Z"
+      "last_selected_at": "2026-08-10T06:20:28Z"
+    },
+    {
+      "id": "2608.06716",
+      "versioned_id": "2608.06716v1",
+      "title": "Radio Constraints on the Circumstellar Environment of the Type IIb Supernova SN 2024iss",
+      "authors": [
+        "Yuhei Iwata",
+        "Tomoki Matsuoka",
+        "Masanori Akimoto",
+        "Keiichi Maeda",
+        "Nozomu Tominaga",
+        "Yoshinori Yonekura",
+        "Takashi J. Moriya",
+        "Kotaro Niinuma",
+        "Kenta Fujisawa"
+      ],
+      "abstract": "Type~IIb supernovae exhibit diverse progenitor properties, and radio observations offer a unique probe of their mass-loss histories shortly before the explosion. We present Japanese VLBI Network single-baseline monitoring of the nearby Type IIb SN 2024iss at 6.9 and 8.4 GHz, spanning approximately one year after its discovery. Our radio observations have detected its emission at 10 and 23 days after the explosion, with subsequent epochs yielding non-detections. Based on the peak radio luminosity and peak time, SN 2024iss exhibits radio properties highly comparable to those of compact-envelope events. Using a synchrotron self-absorption (SSA) modeling, we estimate a progenitor mass-loss rate of $\\dot{M} \\approx 2.5 \\times 10^{-6}\\>M_{\\odot}\\>{\\rm yr^{-1}}$ for a compact progenitor wind velocity of $100 \\>{\\rm km\\>s^{-1}}$. Furthermore, our SSA analysis yields a mean expansion velocity of $V_{\\rm sh} \\approx 3.3 \\times 10^4\\>{\\rm km\\>s^{-1}}$, which exceeds the theoretical shock velocity derived from the self-similar solution by a factor of $\\sim 2.4$. Even for the conservative upper-bound peak time, the SSA-derived velocity remains larger than the theoretical expectation by a factor of $\\gtrsim 1.7$. To explain this velocity excess, we propose the presence of a confined, dense circumstellar matter (CSM) surrounding the progenitor. The shock emergence from this confined CSM may have accelerated the forward shock, pointing to a highly complex and non-steady mass-loss history shortly before the explosion.",
+      "published": "2026-08-07T02:22:20Z",
+      "updated": "2026-08-07T02:22:20Z",
+      "abs_url": "https://arxiv.org/abs/2608.06716v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.06716v1",
+      "categories": [
+        "astro-ph.HE"
+      ],
+      "primary_category": "astro-ph.HE",
+      "comment": "6 pages, 3 figures, accepted for publication in PASJ",
+      "journal_ref": "",
+      "doi": "10.1093/pasj/psag093",
+      "source_groups": [
+        "cosmic-discovery"
+      ],
+      "content_hash": "2d154772ea9d12de",
+      "tags": [
+        "新探测",
+        "张力与反常",
+        "高能天体物理"
+      ],
+      "scores": {
+        "cmb": 0,
+        "interest": 42,
+        "editorial": 16
+      },
+      "track": "discovery",
+      "topics": [
+        "cosmic-discovery"
+      ],
+      "analysis": {
+        "provider": "openai",
+        "model": "gpt-5.5",
+        "basis": "abstract",
+        "generated_at": "2026-08-10T06:22:15Z",
+        "title_zh": "IIb 型超新星 SN 2024iss 环星环境的射电约束",
+        "summary_zh": "本文利用日本 VLBI 网络对附近 IIb 型超新星 SN 2024iss 进行 6.9 和 8.4 GHz 射电监测，以约束其爆炸前质量损失和环星环境。摘要报告早期有射电探测、后续未探测，并通过 SSA 建模得到质量损失率和较高激波速度，作者据此提出可能存在受限致密环星物质。",
+        "why_it_matters_zh": "这篇论文主要属于高能瞬变和恒星演化研究，与 CMB 本身没有直接联系。对宇宙学读者的间接价值在于理解射电瞬变前景、宿主星系内源污染以及未来时域巡天中可能影响多信使或大尺度背景分析的天体物理源族。",
+        "key_points": [
+          "研究对象是 IIb 型超新星 SN 2024iss 的射电辐射。",
+          "使用日本 VLBI 网络单基线在 6.9 和 8.4 GHz 进行约一年监测。",
+          "摘要将速度超额解释为可能存在受限且致密的环星物质。"
+        ],
+        "methods": [
+          "日本 VLBI 网络单基线监测",
+          "6.9 和 8.4 GHz 射电观测",
+          "爆炸后约一年时间跨度的监测",
+          "同步辐射自吸收 SSA 建模",
+          "与自相似解给出的理论激波速度比较"
+        ],
+        "reading_note_zh": "精读时最应核对 SSA 模型假设、峰值时间和峰值光度的约束方式，以及速度超额是否可能由观测采样、微物理参数或几何假设造成。",
+        "audience": "快速浏览",
+        "novelty_score": 5,
+        "confidence": 86
+      },
+      "first_selected_at": "2026-08-10T06:20:28Z",
+      "last_selected_at": "2026-08-10T06:20:28Z"
+    },
+    {
+      "id": "2608.06709",
+      "versioned_id": "2608.06709v1",
+      "title": "Say Hello, Wave Goodbye: Gravitational Waves from Hyperbolic PBH-SMBH Interactions",
+      "authors": [
+        "Laura Burn",
+        "Nelson Christensen",
+        "Richard Easther"
+      ],
+      "abstract": "Primordial black holes (PBHs) formed in the early Universe remain a viable dark matter candidate. Since dark matter is expected to be concentrated toward galactic centres, a significant population of PBHs would reside near a supermassive black hole (SMBH), providing a promising environment for gravitational wave emission. We consider PBHs with masses from $10^{-15}$ to $10$ solar masses on hyperbolic trajectories past an SMBH, that produce bursts of gravitational radiation during periastron passage. Sagittarius A* is an obvious location for these events, but we show that both M31* and M87* would generate similar signals, albeit at lower frequencies. We assess the detectability of both individual bursts and \"popcorn\" backgrounds, relative to LISA and the proposed $μ$Ares mission. Comparing these results to plausible central halo densities, we find that unbound PBHs are unlikely to yield detectable signals.",
+      "published": "2026-08-07T02:06:31Z",
+      "updated": "2026-08-07T02:06:31Z",
+      "abs_url": "https://arxiv.org/abs/2608.06709v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.06709v1",
+      "categories": [
+        "astro-ph.CO",
+        "gr-qc"
+      ],
+      "primary_category": "astro-ph.CO",
+      "comment": "11 pages, 12 figures",
+      "journal_ref": "",
+      "doi": "",
+      "source_groups": [
+        "cmb-and-cosmology",
+        "cosmic-discovery",
+        "early-universe"
+      ],
+      "content_hash": "c89ce31866dfe3dd",
+      "tags": [
+        "暗物质",
+        "引力波",
+        "黑洞",
+        "宇宙学",
+        "引力与相对论"
+      ],
+      "scores": {
+        "cmb": 0,
+        "interest": 41,
+        "editorial": 16
+      },
+      "track": "discovery",
+      "topics": [
+        "early-universe",
+        "dark-sector",
+        "gravity"
+      ],
+      "analysis": {
+        "provider": "openai",
+        "model": "gpt-5.5",
+        "basis": "abstract",
+        "generated_at": "2026-08-10T06:22:15Z",
+        "title_zh": "相逢问候，挥手告别：双曲 PBH-SMBH 相互作用产生的引力波",
+        "summary_zh": "本文研究原初黑洞作为暗物质时，在超大质量黑洞附近沿双曲轨道掠过并产生引力波爆发的情形。摘要评估了 Sagittarius A*、M31* 和 M87* 相关信号及其相对于 LISA 和 μAres 的可探测性，并认为在合理中心晕密度下，非束缚 PBH 不太可能产生可探测信号。",
+        "why_it_matters_zh": "PBH 是暗物质候选体，暗物质丰度和分布与 CMB 各向异性、早期宇宙扰动和结构形成约束密切相关。尽管本文关注的是低频引力波探测，它为用 CMB 之外的信使检验 PBH 暗物质情景提供了互补路径。",
+        "key_points": [
+          "讨论 PBH 作为暗物质候选体在 SMBH 附近的双曲掠近相互作用。",
+          "估计单次引力波爆发和“popcorn”背景相对于 LISA 与 μAres 的可探测性。",
+          "摘要结论是，与合理中心晕密度比较后，非束缚 PBH 产生可探测信号的可能性不高。"
+        ],
+        "methods": [
+          "PBH-SMBH 双曲轨道相互作用建模",
+          "PBH 质量范围为 10^-15 至 10 个太阳质量",
+          "考虑 Sagittarius A*、M31* 和 M87*",
+          "单次引力波爆发与 popcorn 背景可探测性评估",
+          "与 LISA 和 proposed μAres 灵敏度比较",
+          "与合理的中心暗物质晕密度比较"
+        ],
+        "reading_note_zh": "精读时应核对 PBH 空间密度和速度分布假设、中心晕密度模型、双曲事件率计算，以及 LISA/μAres 可探测性判据如何定义。",
+        "audience": "领域相关",
+        "novelty_score": 6,
+        "confidence": 84
+      },
+      "first_selected_at": "2026-08-10T06:20:28Z",
+      "last_selected_at": "2026-08-10T06:20:28Z"
+    },
+    {
+      "id": "2608.06480",
+      "versioned_id": "2608.06480v1",
+      "title": "Cosmic birefringence from a joint analysis of ACT and Planck",
+      "authors": [
+        "Johannes R. Eskilt"
+      ],
+      "abstract": "Dark matter and dark energy could be ultra-light pseudoscalar fields that couple to electromagnetism through a Chern-Simons term. This would cause a parity-breaking rotation of the plane of linearly polarized light from the cosmic microwave background, known as cosmic birefringence, which is not predicted by $Λ$CDM. Recent hints of a non-zero cosmic birefringence angle have been found in both the Planck Data Release 4 and ACT Data Release 6 datasets independently. This work jointly analyzes the polarized maps of both, leveraging the cross-power spectra between the two telescopes. Taking the reported instrumental priors at face value, the joint analysis yields $β= 0.277^{\\circ} \\pm 0.057^{\\circ}$, which is non-zero with a statistical significance of $4.8σ$. A robustness test mitigating contamination from dust emission excludes $β= 0^{\\circ}$ at $3.5σ$, and retrieving $β=0^{\\circ}$ would require both the dust $EB$ modeling and instrumental priors to fail simultaneously. However, unresolved systematics in the data must be understood before we can draw strong cosmological conclusions.",
+      "published": "2026-08-06T18:18:46Z",
+      "updated": "2026-08-06T18:18:46Z",
+      "abs_url": "https://arxiv.org/abs/2608.06480v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.06480v1",
+      "categories": [
+        "astro-ph.CO",
+        "gr-qc",
+        "hep-ph",
+        "hep-th"
+      ],
+      "primary_category": "astro-ph.CO",
+      "comment": "8 pages, 5 figures. The code to reproduce the results of this paper is available at https://github.com/LilleJohs/cosmic-birefringence-planck-act",
+      "journal_ref": "",
+      "doi": "",
+      "source_groups": [
+        "cmb-and-cosmology",
+        "cosmic-discovery"
+      ],
+      "content_hash": "566e6c64e83b0030",
+      "tags": [
+        "CMB",
+        "观测项目",
+        "暗能量",
+        "暗物质",
+        "宇宙学",
+        "引力与相对论"
+      ],
+      "scores": {
+        "cmb": 25,
+        "interest": 33,
+        "editorial": 28
+      },
+      "track": "focus",
+      "topics": [
+        "cmb-core",
+        "instruments",
+        "dark-sector"
+      ],
+      "analysis": {
+        "provider": "openai",
+        "model": "gpt-5.5",
+        "basis": "abstract",
+        "generated_at": "2026-08-10T06:22:15Z",
+        "title_zh": "来自 ACT 与 Planck 联合分析的宇宙双折射",
+        "summary_zh": "该文检验超轻赝标量场等新物理可能导致的 CMB 线偏振平面旋转，即 ΛCDM 不预言的宇宙双折射。摘要称其联合分析 ACT DR6 和 Planck DR4 偏振图及交叉功率谱，在采用报告仪器先验时得到 β=0.277°±0.057° 的非零信号，稳健性测试下仍有 3.5σ 排除零值，但作者强调系统误差尚未完全排清。",
+        "why_it_matters_zh": "宇宙双折射是 CMB 偏振中的直接宇宙学新物理探针，会在 EB/TB 等奇宇称相关中留下信号，并挑战标准 ΛCDM 的宇称守恒预期。由于结果依赖偏振角校准、尘埃 EB 和仪器系统误差，它也是当前 CMB 偏振精密分析中非常关键的系统学问题。",
+        "key_points": [
+          "联合分析 ACT DR6 与 Planck DR4 偏振图，并使用两台望远镜之间的交叉功率谱。",
+          "在采用报告的仪器先验时，得到非零宇宙双折射角 β=0.277°±0.057°，统计显著性为 4.8σ。",
+          "考虑尘埃污染缓解的稳健性测试仍排除 β=0° 于 3.5σ，但摘要强调未解决系统误差仍需理解。"
+        ],
+        "methods": [
+          "ACT Data Release 6 偏振图",
+          "Planck Data Release 4 偏振图",
+          "ACT 与 Planck 的交叉功率谱",
+          "仪器先验",
+          "尘埃 EB 建模",
+          "尘埃污染缓解稳健性测试"
+        ],
+        "reading_note_zh": "精读时最应核对偏振角校准和仪器先验的处理、ACT×Planck 交叉谱如何降低或暴露系统误差、尘埃 EB 模型假设，以及显著性是否对先验选择和数据切分稳定。",
+        "audience": "建议精读",
+        "novelty_score": 8,
+        "confidence": 92
+      },
+      "first_selected_at": "2026-08-10T06:20:28Z",
+      "last_selected_at": "2026-08-10T06:20:28Z"
+    },
+    {
+      "id": "2608.06455",
+      "versioned_id": "2608.06455v1",
+      "title": "Beyond Feedback: Disentangling Baryonic Effects with tSZ$\\times$FRB Cross-Correlations",
+      "authors": [
+        "Isabel Medlock",
+        "Daisuke Nagai"
+      ],
+      "abstract": "Standard observational probes lack the sensitivity to characterize the interplay between feedback-driven gas ejection and non-thermal pressure support in groups and clusters, and current models lack the framework to disentangle it. Recent first detections of the tSZ$\\times$FRB cross-power spectrum (Takahashi et al, 2025; Sharma et al 2026) have been interpreted as constraining AGN feedback and $σ_8$, but the baryon models used do not independently parameterize non-thermal pressure support, leaving feedback efficiency and gas thermodynamics degenerate. We demonstrate that this cross-correlation provides sensitivity to the thermal and non-thermal structure of cluster gas that neither observable alone can achieve, because the tSZ effect traces electron pressure while FRBs trace solely electron density. Using the Baryon Pasting (BP) framework, which separately parameterizes feedback efficiency $ε_f$ and non-thermal pressure amplitude $A_{\\rm nt}$, we show that their joint constraint breaks this degeneracy. In the noise-free limit, adding the cross-power spectrum reduces $r_{\\rm cond}$ from $0.96$ to $0.08$ (a 12-fold reduction) and improves the joint figure of merit by a factor of 19, with the constraining power concentrated at cluster interior scales ($\\ell \\gtrsim 3000$). Recent detections are consistent with our fiducial model and disfavor weak feedback ($ε_f^{95\\%} \\gtrsim 2.40\\text{--}3.67 \\times 10^{-6}$ across datasets). With $5\\times10^4$ FRBs from DSA-2000 combined with SO, we forecast $3.8\\%$ fractional precision on $A_{\\rm nt}$, improving to $2.3\\%$ with CMB-HD. These constraints directly inform the hydrostatic mass bias, with immediate implications for cluster-based cosmological inference from eROSITA, SO, and CMB-HD.",
+      "published": "2026-08-06T18:00:01Z",
+      "updated": "2026-08-06T18:00:01Z",
+      "abs_url": "https://arxiv.org/abs/2608.06455v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.06455v1",
+      "categories": [
+        "astro-ph.GA"
+      ],
+      "primary_category": "astro-ph.GA",
+      "comment": "17 pages, 6 figures, submitted to ApJ",
+      "journal_ref": "",
+      "doi": "",
+      "source_groups": [
+        "cosmic-discovery"
+      ],
+      "content_hash": "da8ae03e6679dd35",
+      "tags": [
+        "CMB",
+        "新探测",
+        "星系天体物理"
+      ],
+      "scores": {
+        "cmb": 18,
+        "interest": 30,
+        "editorial": 23
+      },
+      "track": "focus",
+      "topics": [
+        "cmb-core"
+      ],
+      "analysis": {
+        "provider": "openai",
+        "model": "gpt-5.5",
+        "basis": "abstract",
+        "generated_at": "2026-08-10T06:22:15Z",
+        "title_zh": "超越反馈：用 tSZ×FRB 交叉相关分解重子效应",
+        "summary_zh": "该文讨论如何用 tSZ×FRB 交叉相关分离 AGN 反馈导致的气体外抛与星系团非热压力支撑，因为 tSZ 追踪电子压力而 FRB 追踪电子密度。摘要称在 Baryon Pasting 框架中分别参数化反馈效率和非热压力后，交叉功率谱能打破二者退化，并对 SO、CMB-HD 与 DSA-2000 的组合给出未来约束预报。",
+        "why_it_matters_zh": "tSZ 是 CMB 次级各向异性的重要组成部分，星系团气体热压力和非热压力建模直接影响 tSZ 宇宙学、星系团质量校准和 σ8 等参数推断。将 FRB 电子密度信息与 tSZ 压力信息结合，有助于减少重子物理不确定性对 CMB 星系团和小尺度 CMB 分析的限制。",
+        "key_points": [
+          "tSZ 追踪电子压力，FRB 色散相关观测追踪电子密度，二者互相关可区分热与非热气体结构。",
+          "使用 Baryon Pasting 框架分别参数化反馈效率 ε_f 和非热压力振幅 A_nt。",
+          "摘要预测 DSA-2000 FRB 样本与 SO/CMB-HD 结合可约束非热压力，并影响星系团宇宙学质量偏差。"
+        ],
+        "methods": [
+          "tSZ×FRB 交叉功率谱",
+          "Baryon Pasting 框架",
+          "反馈效率 ε_f 参数化",
+          "非热压力振幅 A_nt 参数化",
+          "噪声为零极限的约束评估",
+          "DSA-2000、Simons Observatory 和 CMB-HD 预报",
+          "与近期 tSZ×FRB 探测数据比较"
+        ],
+        "reading_note_zh": "精读时应核对 FRB 观测量与电子密度投影的建模、tSZ×FRB 交叉谱对 ε_f 和 A_nt 退相干的实际稳健性、尺度范围 ℓ≳3000 的系统误差，以及预报中 FRB 红移/宿主贡献假设。",
+        "audience": "领域相关",
+        "novelty_score": 8,
+        "confidence": 86
+      },
+      "first_selected_at": "2026-08-10T06:20:28Z",
+      "last_selected_at": "2026-08-10T06:20:28Z"
+    },
+    {
+      "id": "2608.06458",
+      "versioned_id": "2608.06458v1",
+      "title": "Dipole Anisotropy in Newly Sampled AGN Population: Still in Tension with CMB Dipole",
+      "authors": [
+        "Dahee Lee",
+        "Minji Oh",
+        "Gayathri Asok",
+        "Tsutomu T. Takeuchi",
+        "Kyungjin Ahn"
+      ],
+      "abstract": "We revisit the all-sky survey data, the Wide-field Infrared Survey Explorer (WISE) catalog, with an improved galaxy-selection criterion to investigate the inconsistency between the dipole anisotropy in the galaxy number count and the kinematic CMB dipole anisotropy. We apply a set of active galactic nuclei (AGN) selection criteria composed of a flux cut and multiple color cuts, and formulate an appropriate adaptation of the original Ellis & Baldwin (1984) formalism for our photometric survey samples whose spectral energy distributions deviate from a pure power-law form. We find that the newly sampled AGNs from the WISE catalog still bears an anomalous number-count dipole anisotropy, whose amplitude is ~ 2.5 times as large as that of the purely kinematic origin at a 5.3 sigma confidence level. We also find that the direction of our WISE-AGN dipole is ~ 3 sigma away from that of the CMB dipole. We discuss its possible cosmological implications: nonlinearity of the nearby universe and mismatch of matter-rest frame and the CMB-rest frame.",
+      "published": "2026-08-06T18:00:01Z",
+      "updated": "2026-08-06T18:00:01Z",
+      "abs_url": "https://arxiv.org/abs/2608.06458v1",
+      "pdf_url": "https://arxiv.org/pdf/2608.06458v1",
+      "categories": [
+        "astro-ph.CO"
+      ],
+      "primary_category": "astro-ph.CO",
+      "comment": "Submitted to ApJ; 12 pages, 7 figures; Comments welcome",
+      "journal_ref": "",
+      "doi": "",
+      "source_groups": [
+        "cmb-and-cosmology"
+      ],
+      "content_hash": "f4638f7150b5b875",
+      "tags": [
+        "CMB",
+        "张力与反常",
+        "宇宙学"
+      ],
+      "scores": {
+        "cmb": 18,
+        "interest": 28,
+        "editorial": 22
+      },
+      "track": "focus",
+      "topics": [
+        "cmb-core"
+      ],
+      "analysis": {
+        "provider": "openai",
+        "model": "gpt-5.5",
+        "basis": "abstract",
+        "generated_at": "2026-08-10T06:22:15Z",
+        "title_zh": "新采样 AGN 族群中的偶极各向异性：仍与 CMB 偶极存在张力",
+        "summary_zh": "本文用改进的 WISE AGN 选择标准重新检验星系数计数偶极与运动学 CMB 偶极之间的不一致。摘要称，新选出的 WISE AGN 仍表现出异常数计数偶极，振幅约为纯运动学起源预期的 2.5 倍，并且方向也与 CMB 偶极存在偏离。",
+        "why_it_matters_zh": "CMB 偶极通常被解释为太阳系相对于 CMB 静止系的运动；若大尺度源计数偶极与其振幅或方向不一致，可能影响对宇宙学原理、物质参考系和大尺度各向同性的检验。因此这篇论文与 CMB 偶极的物理解释和大尺度结构系统误差控制直接相关。",
+        "key_points": [
+          "使用改进的 WISE AGN 选择重新检验星系数计数偶极。",
+          "摘要报告 AGN 数计数偶极振幅仍显著高于纯运动学预期，方向也偏离 CMB 偶极。",
+          "讨论了近邻宇宙非线性以及物质静止系与 CMB 静止系不匹配等可能含义。"
+        ],
+        "methods": [
+          "WISE 全天巡天目录",
+          "AGN 选择标准：流量截断与多个颜色截断",
+          "Ellis & Baldwin (1984) 形式的改写，以适应非纯幂律 SED 的测光巡天样本",
+          "与运动学 CMB 偶极的振幅和方向比较"
+        ],
+        "reading_note_zh": "精读时应重点核对 WISE-AGN 样本选择函数、掩膜和系统误差处理，以及对 Ellis & Baldwin 形式改写后如何从测光样本预言运动学数计数偶极。",
+        "audience": "建议精读",
+        "novelty_score": 7,
+        "confidence": 88
+      },
+      "first_selected_at": "2026-08-10T06:20:28Z",
+      "last_selected_at": "2026-08-10T06:20:28Z"
     },
     {
       "id": "2608.06343",
@@ -586,7 +1424,7 @@
         "confidence": 95
       },
       "first_selected_at": "2026-08-07T08:30:18Z",
-      "last_selected_at": "2026-08-10T05:56:16Z"
+      "last_selected_at": "2026-08-10T06:20:28Z"
     },
     {
       "id": "2608.06278",
@@ -740,8 +1578,7 @@
       "journal_ref": "",
       "doi": "",
       "source_groups": [
-        "cmb-archive",
-        "lensing-survey-archive"
+        "cmb-and-cosmology"
       ],
       "content_hash": "19e0b669a4e23468",
       "tags": [
@@ -752,8 +1589,8 @@
       ],
       "scores": {
         "cmb": 18,
-        "interest": 40,
-        "editorial": 26
+        "interest": 36,
+        "editorial": 25
       },
       "track": "focus",
       "topics": [
@@ -788,7 +1625,7 @@
         "confidence": 92
       },
       "first_selected_at": "2026-08-07T08:30:18Z",
-      "last_selected_at": "2026-08-07T09:36:27Z"
+      "last_selected_at": "2026-08-10T06:20:28Z"
     },
     {
       "id": "2608.06224",
@@ -1472,7 +2309,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-07T08:34:06Z",
-      "last_selected_at": "2026-08-10T05:56:16Z"
+      "last_selected_at": "2026-08-10T06:20:28Z"
     },
     {
       "id": "2608.04763",
