@@ -314,6 +314,7 @@ function matchesQuery(paper) {
   if (!state.query) return true;
   const analysis = getAnalysis(paper);
   const haystack = [
+    paper.id,
     paper.title,
     analysis.title_zh,
     analysis.summary_zh,
@@ -485,6 +486,11 @@ async function loadData() {
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const data = await response.json();
     state.data = { meta: data.meta || {}, papers: Array.isArray(data.papers) ? data.papers : [] };
+    const initialQuery = new URLSearchParams(window.location.search).get("q")?.trim() || "";
+    if (initialQuery) {
+      state.query = initialQuery;
+      dom.search.value = initialQuery;
+    }
     updatePeriodPicker(true);
     renderArchiveRange();
     renderStatus();
