@@ -1100,6 +1100,12 @@ sup {
   border: 1px solid var(--line);
 }
 
+.load-more-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
 .paper-card {
   position: relative;
   display: flex;

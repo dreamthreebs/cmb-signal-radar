@@ -5,6 +5,7 @@ const state = {
   sort: "recommended",
   timeMode: "all",
   timeValue: "",
+  visibleCount: 60,
 };
 
 const dom = {
@@ -25,6 +26,7 @@ const dom = {
   periodPickerLabel: document.querySelector("#period-picker-label"),
   periodSelect: document.querySelector("#period-select"),
   archiveRange: document.querySelector("#archive-range"),
+  loadMore: document.querySelector("#load-more"),
   dialog: document.querySelector("#paper-dialog"),
   dialogContent: document.querySelector("#dialog-content"),
   toast: document.querySelector("#toast"),
@@ -379,11 +381,18 @@ function paperCard(paper, index) {
 
 function renderGrid() {
   const papers = sortedPapers();
+  const visiblePapers = papers.slice(0, state.visibleCount);
   dom.count.textContent = papers.length;
-  dom.grid.replaceChildren(...papers.map(paperCard));
+  dom.grid.replaceChildren(...visiblePapers.map(paperCard));
   dom.grid.setAttribute("aria-busy", "false");
   dom.grid.hidden = papers.length === 0;
   dom.empty.hidden = papers.length !== 0;
+  dom.loadMore.hidden = visiblePapers.length >= papers.length;
+  dom.loadMore.textContent = `加载更多（还剩 ${Math.max(0, papers.length - visiblePapers.length)} 篇）`;
+}
+
+function resetGridWindow() {
+  state.visibleCount = 60;
 }
 
 function dialogSection(title, content, className = "") {
@@ -451,6 +460,7 @@ function bindControls() {
   document.querySelectorAll(".scope-tab").forEach((button) => {
     button.addEventListener("click", () => {
       state.timeMode = button.dataset.timeMode;
+      resetGridWindow();
       document.querySelectorAll(".scope-tab").forEach((item) => item.classList.toggle("is-active", item === button));
       updatePeriodPicker(true);
       renderGrid();
@@ -459,20 +469,28 @@ function bindControls() {
   document.querySelectorAll(".filter-pill").forEach((button) => {
     button.addEventListener("click", () => {
       state.filter = button.dataset.filter;
+      resetGridWindow();
       document.querySelectorAll(".filter-pill").forEach((item) => item.classList.toggle("is-active", item === button));
       renderGrid();
     });
   });
   dom.search.addEventListener("input", () => {
     state.query = dom.search.value.trim();
+    resetGridWindow();
     renderGrid();
   });
   dom.sort.addEventListener("change", () => {
     state.sort = dom.sort.value;
+    resetGridWindow();
     renderGrid();
   });
   dom.periodSelect.addEventListener("change", () => {
     state.timeValue = dom.periodSelect.value;
+    resetGridWindow();
+    renderGrid();
+  });
+  dom.loadMore.addEventListener("click", () => {
+    state.visibleCount += 60;
     renderGrid();
   });
   document.querySelector(".dialog-close").addEventListener("click", () => dom.dialog.close());
