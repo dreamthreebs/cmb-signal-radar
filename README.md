@@ -4,7 +4,7 @@
 
 ## 它会自动做什么
 
-- 每天北京时间 12:35 运行 GitHub Actions。
+- 每天北京时间 09:05 运行 GitHub Actions。
 - 从 arXiv Atom API 抓取 `astro-ph.CO`、CMB 仪器方法及跨方向发现候选。
 - 对同一 arXiv ID 去重，按 CMB 相关性、趣味度与时效性选出本期内容。
 - 只有同时满足“API Key 已配置、接口调用成功、发现新论文”时，定时任务才更新数据并部署。
@@ -128,7 +128,7 @@ python scripts/update_papers.py --max-results 15 --require-ai --force-ai
 
 ## 自动运行规则
 
-- `schedule`：每天北京时间 12:35 检查一次。无新论文时不调用 GPT、不提交、不部署。
+- `schedule`：每天北京时间 09:05 检查一次。无新论文时不调用 GPT、不提交、不部署。
 - `workflow_dispatch`：在 Actions 页面手动启动；可选择强制刷新。
 - `push`：代码或页面发生修改时，只运行测试并部署已有数据，不调用 GPT。
 - GPT Key 缺失、鉴权失败、超时、返回结构不完整或 arXiv 暂时不可用时，任务不覆盖 `papers.json`、不部署新页面，并以失败状态结束。

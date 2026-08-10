@@ -10,8 +10,9 @@ on:
       - "requirements.txt"
       - ".github/workflows/update-and-deploy.yml"
   schedule:
-    # 12:35 in Beijing (UTC+8). arXiv only needs to be queried once per day.
-    - cron: "35 4 * * *"
+    # 09:05 in Beijing. Five minutes past the hour reduces scheduler congestion.
+    - cron: "5 9 * * *"
+      timezone: "Asia/Shanghai"
   workflow_dispatch:
     inputs:
       force_refresh:
