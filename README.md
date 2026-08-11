@@ -143,7 +143,7 @@ python scripts/update_papers.py --max-results 15 --require-ai --force-ai
 - `complete_category`：不经过推荐限额、始终完整写入档案的 arXiv 分类。
 - `lookback_days`：本期候选时间窗口。
 - `focus_limit` / `discovery_limit`：CMB 核心与跨域发现的 GPT 精选上限，不再决定 `astro-ph.CO` 是否进入档案。
-- `analysis_limit`：每天最多交给大模型分析的论文数，用于控制成本。
+- `analysis_limit`：每天最多交给大模型分析的论文数；当前为 100，并优先覆盖当天完整 `astro-ph.CO` 新增与修订。
 - `history_days` / `max_history`：网页保留的历史范围和数量。
 
 选题评分词表位于 [`scripts/update_papers.py`](scripts/update_papers.py)。前端位于 [`site`](site)。

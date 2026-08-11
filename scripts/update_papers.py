@@ -674,6 +674,46 @@ def find_new_or_updated(
     ]
 
 
+def select_daily_analysis_candidates(
+    papers: list[dict[str, Any]],
+    new_or_updated: list[dict[str, Any]],
+    selected_papers: list[dict[str, Any]],
+    complete_category: str,
+    force_ai: bool = False,
+) -> list[dict[str, Any]]:
+    """Prioritize every new target-category paper, not just the editorial shortlist."""
+    if force_ai:
+        pending = [
+            paper
+            for paper in papers
+            if paper.get("analysis", {}).get("provider") != "openai"
+        ]
+        pending.sort(
+            key=lambda paper: (
+                paper.get("first_selected_at", ""),
+                complete_category in paper.get("categories", []),
+                paper.get("updated", ""),
+                paper.get("published", ""),
+            ),
+            reverse=True,
+        )
+        return pending or selected_papers
+
+    new_ids = {paper["id"] for paper in new_or_updated}
+    selected_ids = {paper["id"] for paper in selected_papers}
+    candidates = [paper for paper in papers if paper["id"] in new_ids]
+    candidates.sort(
+        key=lambda paper: (
+            complete_category in paper.get("categories", []),
+            paper["id"] in selected_ids,
+            paper.get("updated", ""),
+            paper.get("published", ""),
+        ),
+        reverse=True,
+    )
+    return candidates
+
+
 def merge_history(
     selected: list[dict[str, Any]],
     existing: dict[str, Any],
@@ -782,14 +822,20 @@ def update_data(args: argparse.Namespace) -> UpdateOutcome:
             for paper in papers
             if paper.get("analysis", {}).get("provider") != "openai"
         ][:analysis_limit]
-    elif args.force_ai:
-        needs_analysis = selected_papers[:analysis_limit]
     else:
         needs_analysis = [
             paper
-            for paper in selected_papers
+            for paper in select_daily_analysis_candidates(
+                papers,
+                new_or_updated,
+                selected_papers,
+                configured_complete_category,
+                force_ai=args.force_ai,
+            )
             if paper.get("analysis", {}).get("provider") != "openai"
         ][:analysis_limit]
+        if args.force_ai and not needs_analysis:
+            needs_analysis = selected_papers[:analysis_limit]
 
     model = settings["model"]
     ai_error = ""

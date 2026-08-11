@@ -59,7 +59,7 @@
   "complete_category": "astro-ph.CO",
   "focus_limit": 12,
   "discovery_limit": 6,
-  "analysis_limit": 18,
+  "analysis_limit": 100,
   "archive_focus_per_month": 30,
   "archive_discovery_per_month": 12,
   "max_history": 6000,

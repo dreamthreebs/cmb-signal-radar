@@ -18,6 +18,7 @@ from scripts.update_papers import (
     score_paper,
     select_archive,
     select_current,
+    select_daily_analysis_candidates,
     select_daily_archive,
     update_data,
 )
@@ -173,6 +174,61 @@ class UpdatePapersTests(unittest.TestCase):
         )
         self.assertEqual(len(selected), 26)
         self.assertTrue({paper["id"] for paper in candidates}.issubset({paper["id"] for paper in selected}))
+
+    def test_daily_analysis_includes_all_new_complete_category_papers(self):
+        papers = [
+            {
+                "id": f"co-{index}",
+                "published": f"2026-08-11T{index:02d}:00:00Z",
+                "updated": f"2026-08-11T{index:02d}:00:00Z",
+                "categories": ["astro-ph.CO"],
+                "analysis": {"provider": "fallback"},
+            }
+            for index in range(25)
+        ]
+        candidates = select_daily_analysis_candidates(
+            papers,
+            papers,
+            papers[:1],
+            "astro-ph.CO",
+        )
+        self.assertEqual({paper["id"] for paper in candidates}, {paper["id"] for paper in papers})
+
+    def test_force_ai_fills_latest_pending_papers_before_reanalysis(self):
+        papers = [
+            {
+                "id": "older-pending",
+                "first_selected_at": "2026-08-10T00:00:00Z",
+                "updated": "2026-08-10T00:00:00Z",
+                "published": "2026-08-10T00:00:00Z",
+                "categories": ["astro-ph.CO"],
+                "analysis": {"provider": "fallback"},
+            },
+            {
+                "id": "latest-pending",
+                "first_selected_at": "2026-08-11T00:00:00Z",
+                "updated": "2026-08-11T00:00:00Z",
+                "published": "2026-08-11T00:00:00Z",
+                "categories": ["astro-ph.CO"],
+                "analysis": {"provider": "fallback"},
+            },
+            {
+                "id": "already-analyzed",
+                "first_selected_at": "2026-08-11T01:00:00Z",
+                "updated": "2026-08-11T01:00:00Z",
+                "published": "2026-08-11T01:00:00Z",
+                "categories": ["astro-ph.CO"],
+                "analysis": {"provider": "openai"},
+            },
+        ]
+        candidates = select_daily_analysis_candidates(
+            papers,
+            [],
+            [papers[2]],
+            "astro-ph.CO",
+            force_ai=True,
+        )
+        self.assertEqual([paper["id"] for paper in candidates], ["latest-pending", "older-pending"])
 
     def test_archive_keeps_complete_category_beyond_monthly_limits(self):
         now = datetime(2026, 8, 10, tzinfo=timezone.utc)

@@ -16,7 +16,7 @@ on:
   workflow_dispatch:
     inputs:
       force_refresh:
-        description: "即使没有新论文，也重新分析当前精选"
+        description: "即使没有新论文，也补齐最近未解读的论文"
         required: false
         type: boolean
         default: true
@@ -29,7 +29,7 @@ on:
         description: "本次最多分析多少篇历史论文"
         required: false
         type: string
-        default: "18"
+        default: "100"
 
 permissions:
   contents: write
@@ -97,7 +97,7 @@ jobs:
           EVENT_NAME: ${{ github.event_name }}
           FORCE_REFRESH: ${{ inputs.force_refresh || 'false' }}
           BACKFILL_DAYS: ${{ inputs.backfill_days || '0' }}
-          ANALYSIS_CAP: ${{ inputs.analysis_cap || '18' }}
+          ANALYSIS_CAP: ${{ inputs.analysis_cap || '100' }}
         run: |
           args=(--require-ai)
           if [[ "$BACKFILL_DAYS" =~ ^[1-9][0-9]*$ ]]; then
