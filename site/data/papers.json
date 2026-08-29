@@ -1,7 +1,7 @@
 {
   "meta": {
-    "generated_at": "2026-08-28T12:49:01Z",
-    "last_attempt_at": "2026-08-28T12:49:01Z",
+    "generated_at": "2026-08-29T07:49:54Z",
+    "last_attempt_at": "2026-08-29T07:49:54Z",
     "fetch_status": "ok",
     "fetch_errors": [],
     "source": "arXiv API",
@@ -397,7 +397,7 @@
       ],
       "scores": {
         "cmb": 39,
-        "interest": 34,
+        "interest": 33,
         "editorial": 37
       },
       "track": "focus",
@@ -433,7 +433,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-28T12:42:15Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.27388",
@@ -472,8 +472,8 @@
       ],
       "scores": {
         "cmb": 24,
-        "interest": 21,
-        "editorial": 23
+        "interest": 20,
+        "editorial": 22
       },
       "track": "focus",
       "topics": [
@@ -506,7 +506,7 @@
         "confidence": 70
       },
       "first_selected_at": "2026-08-28T12:42:15Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.27376",
@@ -540,7 +540,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 21,
+        "interest": 20,
         "editorial": 8
       },
       "track": "discovery",
@@ -574,7 +574,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-28T12:42:15Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.27258",
@@ -611,8 +611,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 39,
-        "editorial": 15
+        "interest": 38,
+        "editorial": 14
       },
       "track": "discovery",
       "topics": [
@@ -644,7 +644,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-28T12:42:15Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.27078",
@@ -676,7 +676,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 35,
+        "interest": 34,
         "editorial": 13
       },
       "track": "discovery",
@@ -709,7 +709,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-28T12:42:15Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.26920",
@@ -743,7 +743,7 @@
       ],
       "scores": {
         "cmb": 6,
-        "interest": 20,
+        "interest": 19,
         "editorial": 11
       },
       "track": "discovery",
@@ -775,7 +775,7 @@
         "confidence": 78
       },
       "first_selected_at": "2026-08-28T12:42:15Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.26774",
@@ -808,7 +808,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 34,
+        "interest": 33,
         "editorial": 13
       },
       "track": "discovery",
@@ -843,7 +843,7 @@
         "confidence": 85
       },
       "first_selected_at": "2026-08-28T12:42:15Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.26709",
@@ -879,8 +879,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 28,
-        "editorial": 11
+        "interest": 27,
+        "editorial": 10
       },
       "track": "discovery",
       "topics": [
@@ -913,7 +913,7 @@
         "confidence": 4
       },
       "first_selected_at": "2026-08-28T12:42:15Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.26682",
@@ -948,7 +948,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 46,
+        "interest": 45,
         "editorial": 17
       },
       "track": "discovery",
@@ -983,7 +983,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-28T12:42:15Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.26681",
@@ -1016,8 +1016,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 33,
-        "editorial": 13
+        "interest": 32,
+        "editorial": 12
       },
       "track": "discovery",
       "topics": [
@@ -1051,7 +1051,7 @@
         "confidence": 92
       },
       "first_selected_at": "2026-08-28T12:42:15Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.26668",
@@ -1113,7 +1113,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 34,
+        "interest": 33,
         "editorial": 13
       },
       "track": "discovery",
@@ -1149,7 +1149,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-28T12:42:15Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.26572",
@@ -1183,8 +1183,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 28,
-        "editorial": 11
+        "interest": 27,
+        "editorial": 10
       },
       "track": "discovery",
       "topics": [
@@ -1219,7 +1219,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-28T12:42:15Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.26567",
@@ -1255,8 +1255,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 20,
-        "editorial": 8
+        "interest": 19,
+        "editorial": 7
       },
       "track": "discovery",
       "topics": [
@@ -1286,7 +1286,7 @@
         "confidence": 82
       },
       "first_selected_at": "2026-08-28T12:42:15Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.26507",
@@ -1323,7 +1323,7 @@
       ],
       "scores": {
         "cmb": 18,
-        "interest": 39,
+        "interest": 38,
         "editorial": 26
       },
       "track": "focus",
@@ -1356,7 +1356,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-28T12:42:15Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.26467",
@@ -1396,7 +1396,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 35,
+        "interest": 34,
         "editorial": 13
       },
       "track": "discovery",
@@ -1431,7 +1431,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-28T12:42:15Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.26354",
@@ -1471,8 +1471,8 @@
       ],
       "scores": {
         "cmb": 8,
-        "interest": 26,
-        "editorial": 15
+        "interest": 24,
+        "editorial": 14
       },
       "track": "discovery",
       "topics": [
@@ -1508,7 +1508,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-28T12:42:15Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.26331",
@@ -1548,8 +1548,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 34,
-        "editorial": 13
+        "interest": 32,
+        "editorial": 12
       },
       "track": "discovery",
       "topics": [
@@ -1585,7 +1585,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-28T12:42:15Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.26326",
@@ -1618,8 +1618,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 20,
-        "editorial": 8
+        "interest": 18,
+        "editorial": 7
       },
       "track": "discovery",
       "topics": [
@@ -1652,7 +1652,7 @@
         "confidence": 85
       },
       "first_selected_at": "2026-08-28T12:42:15Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.26322",
@@ -1731,7 +1731,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 43,
+        "interest": 41,
         "editorial": 16
       },
       "track": "discovery",
@@ -1763,7 +1763,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-28T12:42:15Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.26307",
@@ -1798,7 +1798,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 43,
+        "interest": 41,
         "editorial": 16
       },
       "track": "discovery",
@@ -1832,7 +1832,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-28T12:42:15Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.26289",
@@ -1872,7 +1872,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 35,
+        "interest": 33,
         "editorial": 13
       },
       "track": "discovery",
@@ -1907,7 +1907,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-28T12:42:15Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.26281",
@@ -1959,8 +1959,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 20,
-        "editorial": 8
+        "interest": 18,
+        "editorial": 7
       },
       "track": "discovery",
       "topics": [
@@ -1992,7 +1992,7 @@
         "confidence": 4
       },
       "first_selected_at": "2026-08-28T12:42:15Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.26276",
@@ -2031,7 +2031,7 @@
       ],
       "scores": {
         "cmb": 7,
-        "interest": 32,
+        "interest": 30,
         "editorial": 16
       },
       "track": "discovery",
@@ -2065,7 +2065,7 @@
         "confidence": 4
       },
       "first_selected_at": "2026-08-28T12:42:15Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.26262",
@@ -2102,8 +2102,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 26,
-        "editorial": 10
+        "interest": 24,
+        "editorial": 9
       },
       "track": "discovery",
       "topics": [
@@ -2137,7 +2137,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-28T12:42:15Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.26256",
@@ -2175,8 +2175,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 20,
-        "editorial": 8
+        "interest": 18,
+        "editorial": 7
       },
       "track": "discovery",
       "topics": [
@@ -2209,7 +2209,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-28T12:42:15Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.26258",
@@ -2250,8 +2250,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 48,
-        "editorial": 18
+        "interest": 46,
+        "editorial": 17
       },
       "track": "discovery",
       "topics": [
@@ -2283,7 +2283,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-28T12:42:15Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.26249",
@@ -2320,8 +2320,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 28,
-        "editorial": 11
+        "interest": 26,
+        "editorial": 10
       },
       "track": "discovery",
       "topics": [
@@ -2353,7 +2353,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-28T12:42:15Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.26247",
@@ -2392,7 +2392,7 @@
       ],
       "scores": {
         "cmb": 8,
-        "interest": 43,
+        "interest": 41,
         "editorial": 21
       },
       "track": "discovery",
@@ -2428,7 +2428,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-28T12:42:15Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.26090",
@@ -2565,7 +2565,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 38,
+        "interest": 37,
         "editorial": 14
       },
       "track": "discovery",
@@ -2598,7 +2598,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-27T11:09:33Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.25954",
@@ -2698,7 +2698,7 @@
       ],
       "scores": {
         "cmb": 6,
-        "interest": 19,
+        "interest": 18,
         "editorial": 11
       },
       "track": "discovery",
@@ -2731,7 +2731,7 @@
         "confidence": 82
       },
       "first_selected_at": "2026-08-27T11:09:33Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.25840",
@@ -2765,7 +2765,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 27,
+        "interest": 26,
         "editorial": 10
       },
       "track": "discovery",
@@ -2797,7 +2797,7 @@
         "confidence": 80
       },
       "first_selected_at": "2026-08-27T11:09:33Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.25809",
@@ -2834,7 +2834,7 @@
       ],
       "scores": {
         "cmb": 19,
-        "interest": 25,
+        "interest": 24,
         "editorial": 21
       },
       "track": "focus",
@@ -2871,7 +2871,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-27T11:09:33Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.25715",
@@ -2912,8 +2912,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 47,
-        "editorial": 18
+        "interest": 46,
+        "editorial": 17
       },
       "track": "discovery",
       "topics": [
@@ -2946,7 +2946,7 @@
         "confidence": 84
       },
       "first_selected_at": "2026-08-27T11:09:33Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.25632",
@@ -2982,7 +2982,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 27,
+        "interest": 26,
         "editorial": 10
       },
       "track": "discovery",
@@ -3017,7 +3017,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-27T11:09:33Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.25507",
@@ -3131,8 +3131,8 @@
       ],
       "scores": {
         "cmb": 6,
-        "interest": 42,
-        "editorial": 20
+        "interest": 41,
+        "editorial": 19
       },
       "track": "discovery",
       "topics": [
@@ -3167,7 +3167,7 @@
         "confidence": 83
       },
       "first_selected_at": "2026-08-27T11:09:33Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.25278",
@@ -3205,8 +3205,8 @@
       ],
       "scores": {
         "cmb": 18,
-        "interest": 57,
-        "editorial": 33
+        "interest": 55,
+        "editorial": 32
       },
       "track": "focus",
       "topics": [
@@ -3241,7 +3241,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-27T11:09:33Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.25229",
@@ -3277,7 +3277,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 43,
+        "interest": 42,
         "editorial": 16
       },
       "track": "discovery",
@@ -3313,7 +3313,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-27T11:09:33Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.25060",
@@ -3353,7 +3353,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 26,
+        "interest": 25,
         "editorial": 10
       },
       "track": "discovery",
@@ -3386,7 +3386,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-27T11:09:33Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.25033",
@@ -3435,7 +3435,7 @@
       ],
       "scores": {
         "cmb": 18,
-        "interest": 24,
+        "interest": 23,
         "editorial": 20
       },
       "track": "focus",
@@ -3469,7 +3469,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-27T11:09:33Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.25016",
@@ -3592,7 +3592,7 @@
       ],
       "scores": {
         "cmb": 46,
-        "interest": 18,
+        "interest": 17,
         "editorial": 35
       },
       "track": "focus",
@@ -3629,7 +3629,7 @@
         "confidence": 95
       },
       "first_selected_at": "2026-08-27T11:09:33Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.25015",
@@ -3749,7 +3749,7 @@
       ],
       "scores": {
         "cmb": 41,
-        "interest": 18,
+        "interest": 17,
         "editorial": 32
       },
       "track": "focus",
@@ -3787,7 +3787,7 @@
         "confidence": 95
       },
       "first_selected_at": "2026-08-27T11:09:33Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.26202",
@@ -3911,7 +3911,7 @@
       ],
       "scores": {
         "cmb": 24,
-        "interest": 35,
+        "interest": 34,
         "editorial": 28
       },
       "track": "focus",
@@ -3946,7 +3946,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-28T12:42:15Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.25011",
@@ -4065,7 +4065,7 @@
       ],
       "scores": {
         "cmb": 18,
-        "interest": 29,
+        "interest": 28,
         "editorial": 22
       },
       "track": "focus",
@@ -4099,7 +4099,7 @@
         "confidence": 93
       },
       "first_selected_at": "2026-08-27T11:09:33Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.25012",
@@ -4218,7 +4218,7 @@
       ],
       "scores": {
         "cmb": 40,
-        "interest": 24,
+        "interest": 23,
         "editorial": 34
       },
       "track": "focus",
@@ -4257,7 +4257,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-27T11:09:33Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.25004",
@@ -4299,8 +4299,8 @@
       ],
       "scores": {
         "cmb": 6,
-        "interest": 24,
-        "editorial": 13
+        "interest": 23,
+        "editorial": 12
       },
       "track": "discovery",
       "topics": [
@@ -4333,7 +4333,7 @@
         "confidence": 80
       },
       "first_selected_at": "2026-08-27T11:09:33Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.24997",
@@ -4443,7 +4443,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 37,
+        "interest": 36,
         "editorial": 14
       },
       "track": "discovery",
@@ -4477,7 +4477,7 @@
         "confidence": 91
       },
       "first_selected_at": "2026-08-27T11:09:33Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.24992",
@@ -4515,7 +4515,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 34,
+        "interest": 33,
         "editorial": 13
       },
       "track": "discovery",
@@ -4550,7 +4550,7 @@
         "confidence": 89
       },
       "first_selected_at": "2026-08-27T11:09:33Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.24883",
@@ -4592,8 +4592,8 @@
       ],
       "scores": {
         "cmb": 18,
-        "interest": 41,
-        "editorial": 27
+        "interest": 40,
+        "editorial": 26
       },
       "track": "focus",
       "topics": [
@@ -4629,7 +4629,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-26T02:38:07Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.24862",
@@ -4731,7 +4731,7 @@
       ],
       "scores": {
         "cmb": 8,
-        "interest": 34,
+        "interest": 33,
         "editorial": 18
       },
       "track": "discovery",
@@ -4767,7 +4767,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-26T02:38:07Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.24739",
@@ -4868,7 +4868,7 @@
       ],
       "scores": {
         "cmb": 18,
-        "interest": 18,
+        "interest": 17,
         "editorial": 18
       },
       "track": "focus",
@@ -4902,7 +4902,7 @@
         "confidence": 95
       },
       "first_selected_at": "2026-08-26T02:38:07Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.24591",
@@ -4941,7 +4941,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 26,
+        "interest": 25,
         "editorial": 10
       },
       "track": "discovery",
@@ -4975,7 +4975,7 @@
         "confidence": 92
       },
       "first_selected_at": "2026-08-26T02:38:07Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.24456",
@@ -5017,7 +5017,7 @@
       ],
       "scores": {
         "cmb": 18,
-        "interest": 37,
+        "interest": 36,
         "editorial": 25
       },
       "track": "focus",
@@ -5054,7 +5054,7 @@
         "confidence": 94
       },
       "first_selected_at": "2026-08-26T02:38:07Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.24433",
@@ -5090,7 +5090,7 @@
       ],
       "scores": {
         "cmb": 18,
-        "interest": 32,
+        "interest": 31,
         "editorial": 23
       },
       "track": "focus",
@@ -5127,7 +5127,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-26T02:38:07Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.24432",
@@ -5169,8 +5169,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 33,
-        "editorial": 13
+        "interest": 32,
+        "editorial": 12
       },
       "track": "discovery",
       "topics": [
@@ -5204,7 +5204,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-26T02:38:07Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.24413",
@@ -5245,7 +5245,7 @@
       ],
       "scores": {
         "cmb": 31,
-        "interest": 31,
+        "interest": 30,
         "editorial": 31
       },
       "track": "focus",
@@ -5282,7 +5282,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-26T02:38:07Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.24309",
@@ -5325,8 +5325,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 31,
-        "editorial": 12
+        "interest": 30,
+        "editorial": 11
       },
       "track": "discovery",
       "topics": [
@@ -5358,7 +5358,7 @@
         "confidence": 84
       },
       "first_selected_at": "2026-08-26T02:38:07Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.24276",
@@ -5392,8 +5392,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 26,
-        "editorial": 10
+        "interest": 24,
+        "editorial": 9
       },
       "track": "discovery",
       "topics": [
@@ -5427,7 +5427,7 @@
         "confidence": 87
       },
       "first_selected_at": "2026-08-26T02:38:07Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.24225",
@@ -5765,7 +5765,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 40,
+        "interest": 39,
         "editorial": 15
       },
       "track": "discovery",
@@ -5803,7 +5803,7 @@
         "confidence": 84
       },
       "first_selected_at": "2026-08-26T02:38:07Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.23795",
@@ -5841,8 +5841,8 @@
       ],
       "scores": {
         "cmb": 7,
-        "interest": 25,
-        "editorial": 14
+        "interest": 24,
+        "editorial": 13
       },
       "track": "discovery",
       "topics": [
@@ -5876,7 +5876,7 @@
         "confidence": 83
       },
       "first_selected_at": "2026-08-26T02:38:07Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.23789",
@@ -5913,7 +5913,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 40,
+        "interest": 39,
         "editorial": 15
       },
       "track": "discovery",
@@ -5950,7 +5950,7 @@
         "confidence": 78
       },
       "first_selected_at": "2026-08-26T02:38:07Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.23739",
@@ -5989,7 +5989,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 51,
+        "interest": 50,
         "editorial": 19
       },
       "track": "discovery",
@@ -6022,7 +6022,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-27T11:09:33Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.23712",
@@ -6060,8 +6060,8 @@
       ],
       "scores": {
         "cmb": 18,
-        "interest": 33,
-        "editorial": 24
+        "interest": 32,
+        "editorial": 23
       },
       "track": "focus",
       "topics": [
@@ -6094,7 +6094,7 @@
         "confidence": 87
       },
       "first_selected_at": "2026-08-26T02:38:07Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.23699",
@@ -6130,7 +6130,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 17,
+        "interest": 16,
         "editorial": 6
       },
       "track": "discovery",
@@ -6164,7 +6164,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-28T12:42:15Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.23686",
@@ -6199,7 +6199,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 17,
+        "interest": 16,
         "editorial": 6
       },
       "track": "discovery",
@@ -6232,7 +6232,7 @@
         "confidence": 83
       },
       "first_selected_at": "2026-08-26T02:38:07Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.23684",
@@ -6266,8 +6266,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 31,
-        "editorial": 12
+        "interest": 30,
+        "editorial": 11
       },
       "track": "discovery",
       "topics": [
@@ -6298,7 +6298,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-26T02:38:07Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.23679",
@@ -6336,8 +6336,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 49,
-        "editorial": 19
+        "interest": 48,
+        "editorial": 18
       },
       "track": "discovery",
       "topics": [
@@ -6370,7 +6370,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-26T02:38:07Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.23676",
@@ -6412,7 +6412,7 @@
       ],
       "scores": {
         "cmb": 6,
-        "interest": 25,
+        "interest": 24,
         "editorial": 13
       },
       "track": "discovery",
@@ -6447,7 +6447,7 @@
         "confidence": 83
       },
       "first_selected_at": "2026-08-26T02:38:07Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.23680",
@@ -6563,8 +6563,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 54,
-        "editorial": 21
+        "interest": 53,
+        "editorial": 20
       },
       "track": "discovery",
       "topics": [
@@ -6598,7 +6598,7 @@
         "confidence": 89
       },
       "first_selected_at": "2026-08-26T02:38:07Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.23558",
@@ -6710,8 +6710,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 25,
-        "editorial": 10
+        "interest": 24,
+        "editorial": 9
       },
       "track": "discovery",
       "topics": [
@@ -6746,7 +6746,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-25T02:22:16Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.23521",
@@ -6855,7 +6855,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 32,
+        "interest": 31,
         "editorial": 12
       },
       "track": "discovery",
@@ -6890,7 +6890,7 @@
         "confidence": 84
       },
       "first_selected_at": "2026-08-25T02:22:16Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.23477",
@@ -8734,7 +8734,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 38,
+        "interest": 37,
         "editorial": 14
       },
       "track": "discovery",
@@ -8771,7 +8771,7 @@
         "confidence": 93
       },
       "first_selected_at": "2026-08-25T02:22:16Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.23451",
@@ -8810,7 +8810,7 @@
       ],
       "scores": {
         "cmb": 6,
-        "interest": 36,
+        "interest": 34,
         "editorial": 17
       },
       "track": "discovery",
@@ -8847,7 +8847,7 @@
         "confidence": 84
       },
       "first_selected_at": "2026-08-25T02:22:16Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.23447",
@@ -8882,7 +8882,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 17,
+        "interest": 15,
         "editorial": 6
       },
       "track": "discovery",
@@ -8920,7 +8920,7 @@
         "confidence": 85
       },
       "first_selected_at": "2026-08-25T02:22:16Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.23367",
@@ -8959,8 +8959,8 @@
       ],
       "scores": {
         "cmb": 6,
-        "interest": 32,
-        "editorial": 16
+        "interest": 30,
+        "editorial": 15
       },
       "track": "discovery",
       "topics": [
@@ -8992,7 +8992,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-25T02:22:16Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.23243",
@@ -9031,8 +9031,8 @@
       ],
       "scores": {
         "cmb": 6,
-        "interest": 16,
-        "editorial": 10
+        "interest": 15,
+        "editorial": 9
       },
       "track": "discovery",
       "topics": [
@@ -9063,7 +9063,7 @@
         "confidence": 82
       },
       "first_selected_at": "2026-08-25T02:22:16Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.23162",
@@ -9102,7 +9102,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 35,
+        "interest": 34,
         "editorial": 13
       },
       "track": "discovery",
@@ -9135,7 +9135,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-25T02:22:16Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.22846",
@@ -9174,8 +9174,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 39,
-        "editorial": 15
+        "interest": 38,
+        "editorial": 14
       },
       "track": "discovery",
       "topics": [
@@ -9210,7 +9210,7 @@
         "confidence": 87
       },
       "first_selected_at": "2026-08-25T02:22:16Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.22726",
@@ -9391,7 +9391,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 34,
+        "interest": 33,
         "editorial": 13
       },
       "track": "discovery",
@@ -9424,7 +9424,7 @@
         "confidence": 76
       },
       "first_selected_at": "2026-08-25T02:22:16Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.22240",
@@ -9465,7 +9465,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 58,
+        "interest": 57,
         "editorial": 22
       },
       "track": "discovery",
@@ -9501,7 +9501,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-25T02:22:16Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.22164",
@@ -9536,7 +9536,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 42,
+        "interest": 41,
         "editorial": 16
       },
       "track": "discovery",
@@ -9570,7 +9570,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-25T02:22:16Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.22087",
@@ -9607,7 +9607,7 @@
       ],
       "scores": {
         "cmb": 6,
-        "interest": 30,
+        "interest": 29,
         "editorial": 15
       },
       "track": "discovery",
@@ -9638,7 +9638,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-25T02:22:16Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.21963",
@@ -9676,8 +9676,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 33,
-        "editorial": 13
+        "interest": 32,
+        "editorial": 12
       },
       "track": "discovery",
       "topics": [
@@ -9713,7 +9713,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-25T02:22:16Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.21938",
@@ -9753,7 +9753,7 @@
       ],
       "scores": {
         "cmb": 25,
-        "interest": 60,
+        "interest": 58,
         "editorial": 38
       },
       "track": "focus",
@@ -9790,7 +9790,7 @@
         "confidence": 92
       },
       "first_selected_at": "2026-08-25T02:22:16Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.21844",
@@ -9822,7 +9822,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 21,
+        "interest": 20,
         "editorial": 8
       },
       "track": "discovery",
@@ -9855,7 +9855,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-25T02:22:16Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.21797",
@@ -9895,8 +9895,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 20,
-        "editorial": 8
+        "interest": 19,
+        "editorial": 7
       },
       "track": "discovery",
       "topics": [
@@ -9928,7 +9928,7 @@
         "confidence": 84
       },
       "first_selected_at": "2026-08-25T02:22:16Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.21688",
@@ -9967,7 +9967,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 19,
+        "interest": 18,
         "editorial": 7
       },
       "track": "discovery",
@@ -10002,7 +10002,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-25T02:22:16Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.21353",
@@ -10040,7 +10040,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 35,
+        "interest": 33,
         "editorial": 13
       },
       "track": "discovery",
@@ -10074,7 +10074,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-24T02:35:57Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.21323",
@@ -10111,8 +10111,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 20,
-        "editorial": 8
+        "interest": 19,
+        "editorial": 7
       },
       "track": "discovery",
       "topics": [
@@ -10144,7 +10144,7 @@
         "confidence": 84
       },
       "first_selected_at": "2026-08-24T02:35:57Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.21293",
@@ -10324,7 +10324,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 26,
+        "interest": 25,
         "editorial": 10
       },
       "track": "discovery",
@@ -10359,7 +10359,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-24T02:35:57Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.21226",
@@ -10395,8 +10395,8 @@
       ],
       "scores": {
         "cmb": 8,
-        "interest": 20,
-        "editorial": 13
+        "interest": 19,
+        "editorial": 12
       },
       "track": "discovery",
       "topics": [
@@ -10433,7 +10433,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-24T02:35:57Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.21193",
@@ -10541,8 +10541,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 25,
-        "editorial": 10
+        "interest": 24,
+        "editorial": 9
       },
       "track": "discovery",
       "topics": [
@@ -10574,7 +10574,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-24T02:35:57Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.20897",
@@ -10608,8 +10608,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 33,
-        "editorial": 13
+        "interest": 32,
+        "editorial": 12
       },
       "track": "discovery",
       "topics": [
@@ -10640,7 +10640,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-24T02:35:57Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.20773",
@@ -10821,8 +10821,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 20,
-        "editorial": 8
+        "interest": 19,
+        "editorial": 7
       },
       "track": "discovery",
       "topics": [
@@ -10853,7 +10853,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-24T02:35:57Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.20595",
@@ -10888,7 +10888,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 19,
+        "interest": 18,
         "editorial": 7
       },
       "track": "discovery",
@@ -10920,7 +10920,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-24T02:35:57Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.20457",
@@ -10957,7 +10957,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 11,
+        "interest": 10,
         "editorial": 4
       },
       "track": "discovery",
@@ -10994,7 +10994,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-24T02:35:57Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.20454",
@@ -11028,7 +11028,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 11,
+        "interest": 10,
         "editorial": 4
       },
       "track": "discovery",
@@ -11061,7 +11061,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-24T02:35:57Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.20451",
@@ -11098,7 +11098,7 @@
       ],
       "scores": {
         "cmb": 6,
-        "interest": 11,
+        "interest": 10,
         "editorial": 8
       },
       "track": "discovery",
@@ -11131,7 +11131,7 @@
         "confidence": 80
       },
       "first_selected_at": "2026-08-24T02:35:57Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.20311",
@@ -11174,7 +11174,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 11,
+        "interest": 10,
         "editorial": 4
       },
       "track": "discovery",
@@ -11207,7 +11207,7 @@
         "confidence": 87
       },
       "first_selected_at": "2026-08-21T02:35:35Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.20296",
@@ -11238,7 +11238,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 11,
+        "interest": 10,
         "editorial": 4
       },
       "track": "discovery",
@@ -11271,7 +11271,7 @@
         "confidence": 94
       },
       "first_selected_at": "2026-08-21T02:35:35Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.20293",
@@ -11313,7 +11313,7 @@
       ],
       "scores": {
         "cmb": 34,
-        "interest": 11,
+        "interest": 10,
         "editorial": 25
       },
       "track": "focus",
@@ -11349,7 +11349,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-21T02:35:35Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.20288",
@@ -11389,8 +11389,8 @@
       ],
       "scores": {
         "cmb": 18,
-        "interest": 46,
-        "editorial": 29
+        "interest": 45,
+        "editorial": 28
       },
       "track": "focus",
       "topics": [
@@ -11426,7 +11426,7 @@
         "confidence": 84
       },
       "first_selected_at": "2026-08-21T02:35:35Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.20236",
@@ -11536,7 +11536,7 @@
       ],
       "scores": {
         "cmb": 71,
-        "interest": 27,
+        "interest": 26,
         "editorial": 54
       },
       "track": "focus",
@@ -11576,7 +11576,7 @@
         "confidence": 95
       },
       "first_selected_at": "2026-08-21T02:35:35Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.20235",
@@ -11684,8 +11684,8 @@
       ],
       "scores": {
         "cmb": 7,
-        "interest": 17,
-        "editorial": 11
+        "interest": 16,
+        "editorial": 10
       },
       "track": "discovery",
       "topics": [
@@ -11723,7 +11723,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-21T02:35:35Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.20219",
@@ -11765,7 +11765,7 @@
       ],
       "scores": {
         "cmb": 18,
-        "interest": 19,
+        "interest": 18,
         "editorial": 18
       },
       "track": "focus",
@@ -11799,7 +11799,7 @@
         "confidence": 92
       },
       "first_selected_at": "2026-08-21T02:35:35Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.20135",
@@ -11839,7 +11839,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 35,
+        "interest": 34,
         "editorial": 13
       },
       "track": "discovery",
@@ -11873,7 +11873,7 @@
         "confidence": 95
       },
       "first_selected_at": "2026-08-21T02:35:35Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.20095",
@@ -11914,7 +11914,7 @@
       ],
       "scores": {
         "cmb": 31,
-        "interest": 32,
+        "interest": 31,
         "editorial": 31
       },
       "track": "focus",
@@ -11949,7 +11949,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-21T02:35:35Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.20085",
@@ -11984,7 +11984,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 27,
+        "interest": 26,
         "editorial": 10
       },
       "track": "discovery",
@@ -12019,7 +12019,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-24T02:35:57Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.20081",
@@ -12125,8 +12125,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 25,
-        "editorial": 10
+        "interest": 24,
+        "editorial": 9
       },
       "track": "discovery",
       "topics": [
@@ -12162,7 +12162,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-21T02:35:35Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.19796",
@@ -12277,7 +12277,7 @@
       ],
       "scores": {
         "cmb": 6,
-        "interest": 41,
+        "interest": 39,
         "editorial": 19
       },
       "track": "discovery",
@@ -12312,7 +12312,7 @@
         "confidence": 84
       },
       "first_selected_at": "2026-08-21T02:35:35Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.19774",
@@ -12428,8 +12428,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 11,
-        "editorial": 4
+        "interest": 9,
+        "editorial": 3
       },
       "track": "discovery",
       "topics": [
@@ -12462,7 +12462,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-21T02:35:35Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.19765",
@@ -12496,8 +12496,8 @@
       ],
       "scores": {
         "cmb": 6,
-        "interest": 11,
-        "editorial": 8
+        "interest": 9,
+        "editorial": 7
       },
       "track": "discovery",
       "topics": [
@@ -12528,7 +12528,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-21T02:35:35Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.19675",
@@ -12565,7 +12565,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 17,
+        "interest": 16,
         "editorial": 6
       },
       "track": "discovery",
@@ -12601,7 +12601,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-21T02:35:35Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.19667",
@@ -12650,8 +12650,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 23,
-        "editorial": 9
+        "interest": 22,
+        "editorial": 8
       },
       "track": "discovery",
       "topics": [
@@ -12685,7 +12685,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-21T02:35:35Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.19581",
@@ -12789,8 +12789,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 18,
-        "editorial": 7
+        "interest": 17,
+        "editorial": 6
       },
       "track": "discovery",
       "topics": [
@@ -12823,7 +12823,7 @@
         "confidence": 92
       },
       "first_selected_at": "2026-08-21T02:35:35Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.19432",
@@ -12861,7 +12861,7 @@
       ],
       "scores": {
         "cmb": 18,
-        "interest": 35,
+        "interest": 34,
         "editorial": 24
       },
       "track": "focus",
@@ -12897,7 +12897,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-21T02:35:35Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.19406",
@@ -12937,7 +12937,7 @@
       ],
       "scores": {
         "cmb": 7,
-        "interest": 29,
+        "interest": 28,
         "editorial": 15
       },
       "track": "discovery",
@@ -12973,7 +12973,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-21T02:35:35Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.19378",
@@ -13012,8 +13012,8 @@
       ],
       "scores": {
         "cmb": 6,
-        "interest": 10,
-        "editorial": 8
+        "interest": 9,
+        "editorial": 7
       },
       "track": "discovery",
       "topics": [
@@ -13047,7 +13047,7 @@
         "confidence": 82
       },
       "first_selected_at": "2026-08-21T02:35:35Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.19367",
@@ -13083,8 +13083,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 28,
-        "editorial": 11
+        "interest": 27,
+        "editorial": 10
       },
       "track": "discovery",
       "topics": [
@@ -13115,7 +13115,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-24T02:35:57Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.19337",
@@ -13225,8 +13225,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 18,
-        "editorial": 7
+        "interest": 17,
+        "editorial": 6
       },
       "track": "discovery",
       "topics": [
@@ -13259,7 +13259,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-21T02:35:35Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.19311",
@@ -13315,7 +13315,7 @@
       ],
       "scores": {
         "cmb": 8,
-        "interest": 16,
+        "interest": 15,
         "editorial": 11
       },
       "track": "discovery",
@@ -13350,7 +13350,7 @@
         "confidence": 87
       },
       "first_selected_at": "2026-08-21T02:35:35Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.19307",
@@ -13385,7 +13385,7 @@
       ],
       "scores": {
         "cmb": 26,
-        "interest": 10,
+        "interest": 9,
         "editorial": 20
       },
       "track": "focus",
@@ -13419,7 +13419,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-21T02:35:35Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.19186",
@@ -13524,8 +13524,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 10,
-        "editorial": 4
+        "interest": 9,
+        "editorial": 3
       },
       "track": "discovery",
       "topics": [
@@ -13558,7 +13558,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-20T02:21:38Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.19039",
@@ -13596,8 +13596,8 @@
       ],
       "scores": {
         "cmb": 24,
-        "interest": 10,
-        "editorial": 19
+        "interest": 8,
+        "editorial": 18
       },
       "track": "focus",
       "topics": [
@@ -13629,7 +13629,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-20T02:21:38Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.19007",
@@ -13741,8 +13741,8 @@
       ],
       "scores": {
         "cmb": 7,
-        "interest": 10,
-        "editorial": 8
+        "interest": 8,
+        "editorial": 7
       },
       "track": "discovery",
       "topics": [
@@ -13777,7 +13777,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-20T02:21:38Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.18954",
@@ -13887,7 +13887,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 17,
+        "interest": 16,
         "editorial": 6
       },
       "track": "discovery",
@@ -13920,7 +13920,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-20T02:21:38Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.18823",
@@ -13964,7 +13964,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 21,
+        "interest": 20,
         "editorial": 8
       },
       "track": "discovery",
@@ -13998,7 +13998,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-20T02:21:38Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.18743",
@@ -14195,8 +14195,8 @@
       ],
       "scores": {
         "cmb": 53,
-        "interest": 28,
-        "editorial": 44
+        "interest": 27,
+        "editorial": 43
       },
       "track": "focus",
       "topics": [
@@ -14232,7 +14232,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-20T02:21:38Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.18609",
@@ -14268,7 +14268,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 24,
+        "interest": 23,
         "editorial": 9
       },
       "track": "discovery",
@@ -14303,7 +14303,7 @@
         "confidence": 82
       },
       "first_selected_at": "2026-08-20T02:21:38Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.18506",
@@ -14432,7 +14432,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 9,
+        "interest": 8,
         "editorial": 3
       },
       "track": "discovery",
@@ -14468,7 +14468,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-20T02:21:38Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.18334",
@@ -14503,8 +14503,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 15,
-        "editorial": 6
+        "interest": 13,
+        "editorial": 5
       },
       "track": "discovery",
       "topics": [
@@ -14538,7 +14538,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-20T02:21:38Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.18281",
@@ -14576,7 +14576,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 24,
+        "interest": 23,
         "editorial": 9
       },
       "track": "discovery",
@@ -14612,7 +14612,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-20T02:21:38Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.18229",
@@ -14649,7 +14649,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 27,
+        "interest": 26,
         "editorial": 10
       },
       "track": "discovery",
@@ -14684,7 +14684,7 @@
         "confidence": 87
       },
       "first_selected_at": "2026-08-20T02:21:38Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.18224",
@@ -14718,7 +14718,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 16,
+        "interest": 15,
         "editorial": 6
       },
       "track": "discovery",
@@ -14752,7 +14752,7 @@
         "confidence": 84
       },
       "first_selected_at": "2026-08-20T02:21:38Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.19272",
@@ -14815,7 +14815,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 27,
+        "interest": 26,
         "editorial": 10
       },
       "track": "discovery",
@@ -14849,7 +14849,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-21T02:35:35Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.18204",
@@ -14894,7 +14894,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 16,
+        "interest": 15,
         "editorial": 6
       },
       "track": "discovery",
@@ -14928,7 +14928,7 @@
         "confidence": 82
       },
       "first_selected_at": "2026-08-20T02:21:38Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.18031",
@@ -14968,7 +14968,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 16,
+        "interest": 15,
         "editorial": 6
       },
       "track": "discovery",
@@ -15003,7 +15003,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-19T02:22:11Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.17877",
@@ -15038,7 +15038,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 8,
+        "interest": 7,
         "editorial": 3
       },
       "track": "discovery",
@@ -15071,7 +15071,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-19T02:22:11Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.17735",
@@ -15112,7 +15112,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 27,
+        "interest": 26,
         "editorial": 10
       },
       "track": "discovery",
@@ -15148,7 +15148,7 @@
         "confidence": 92
       },
       "first_selected_at": "2026-08-19T02:22:11Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.17732",
@@ -15187,7 +15187,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 21,
+        "interest": 20,
         "editorial": 8
       },
       "track": "discovery",
@@ -15222,7 +15222,7 @@
         "confidence": 89
       },
       "first_selected_at": "2026-08-19T02:22:11Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.17724",
@@ -15263,7 +15263,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 14,
+        "interest": 13,
         "editorial": 5
       },
       "track": "discovery",
@@ -15295,7 +15295,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-19T02:22:11Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.17681",
@@ -15336,8 +15336,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 36,
-        "editorial": 14
+        "interest": 35,
+        "editorial": 13
       },
       "track": "discovery",
       "topics": [
@@ -15369,7 +15369,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-19T02:22:11Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.17679",
@@ -15406,7 +15406,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 40,
+        "interest": 39,
         "editorial": 15
       },
       "track": "discovery",
@@ -15443,7 +15443,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-19T02:22:11Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.17658",
@@ -15482,7 +15482,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 19,
+        "interest": 18,
         "editorial": 7
       },
       "track": "discovery",
@@ -15518,7 +15518,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-19T02:22:11Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.17651",
@@ -15634,7 +15634,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 8,
+        "interest": 7,
         "editorial": 3
       },
       "track": "discovery",
@@ -15667,7 +15667,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-19T02:22:11Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.17526",
@@ -15771,8 +15771,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 16,
-        "editorial": 6
+        "interest": 14,
+        "editorial": 5
       },
       "track": "discovery",
       "topics": [
@@ -15802,7 +15802,7 @@
         "confidence": 82
       },
       "first_selected_at": "2026-08-19T02:22:11Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.17272",
@@ -15922,8 +15922,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 20,
-        "editorial": 8
+        "interest": 19,
+        "editorial": 7
       },
       "track": "discovery",
       "topics": [
@@ -15957,7 +15957,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-19T02:22:11Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.17212",
@@ -15992,7 +15992,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 26,
+        "interest": 25,
         "editorial": 10
       },
       "track": "discovery",
@@ -16032,7 +16032,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-19T02:22:11Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.17208",
@@ -16068,7 +16068,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 26,
+        "interest": 25,
         "editorial": 10
       },
       "track": "discovery",
@@ -16101,7 +16101,7 @@
         "confidence": 80
       },
       "first_selected_at": "2026-08-19T02:22:11Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.17116",
@@ -16132,8 +16132,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 7,
-        "editorial": 3
+        "interest": 6,
+        "editorial": 2
       },
       "track": "discovery",
       "topics": [
@@ -16164,7 +16164,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-19T02:22:11Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.17078",
@@ -16197,8 +16197,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 20,
-        "editorial": 8
+        "interest": 19,
+        "editorial": 7
       },
       "track": "discovery",
       "topics": [
@@ -16233,7 +16233,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-19T02:22:11Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.17010",
@@ -16276,7 +16276,7 @@
       ],
       "scores": {
         "cmb": 8,
-        "interest": 13,
+        "interest": 12,
         "editorial": 10
       },
       "track": "discovery",
@@ -16312,7 +16312,7 @@
         "confidence": 92
       },
       "first_selected_at": "2026-08-19T02:22:11Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.17002",
@@ -16345,8 +16345,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 15,
-        "editorial": 6
+        "interest": 14,
+        "editorial": 5
       },
       "track": "discovery",
       "topics": [
@@ -16376,7 +16376,7 @@
         "confidence": 87
       },
       "first_selected_at": "2026-08-19T02:22:11Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.16987",
@@ -16407,8 +16407,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 15,
-        "editorial": 6
+        "interest": 14,
+        "editorial": 5
       },
       "track": "discovery",
       "topics": [
@@ -16441,7 +16441,7 @@
         "confidence": 89
       },
       "first_selected_at": "2026-08-19T02:22:11Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.16772",
@@ -16480,7 +16480,7 @@
       ],
       "scores": {
         "cmb": 13,
-        "interest": 22,
+        "interest": 21,
         "editorial": 16
       },
       "track": "discovery",
@@ -16515,7 +16515,7 @@
         "confidence": 77
       },
       "first_selected_at": "2026-08-18T02:20:19Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.16667",
@@ -16550,8 +16550,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 15,
-        "editorial": 6
+        "interest": 14,
+        "editorial": 5
       },
       "track": "discovery",
       "topics": [
@@ -16585,7 +16585,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-18T02:20:19Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.16648",
@@ -16693,7 +16693,7 @@
       ],
       "scores": {
         "cmb": 18,
-        "interest": 32,
+        "interest": 31,
         "editorial": 23
       },
       "track": "focus",
@@ -16731,7 +16731,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-24T02:35:57Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.16534",
@@ -16837,8 +16837,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 23,
-        "editorial": 9
+        "interest": 21,
+        "editorial": 8
       },
       "track": "discovery",
       "topics": [
@@ -16869,7 +16869,7 @@
         "confidence": 92
       },
       "first_selected_at": "2026-08-18T02:20:19Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.16481",
@@ -16903,8 +16903,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 7,
-        "editorial": 3
+        "interest": 5,
+        "editorial": 2
       },
       "track": "discovery",
       "topics": [
@@ -16939,7 +16939,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-18T02:20:19Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.16343",
@@ -16999,7 +16999,7 @@
       ],
       "scores": {
         "cmb": 8,
-        "interest": 25,
+        "interest": 24,
         "editorial": 14
       },
       "track": "discovery",
@@ -17035,7 +17035,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-18T02:20:19Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.16304",
@@ -17209,7 +17209,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 17,
+        "interest": 16,
         "editorial": 6
       },
       "track": "discovery",
@@ -17245,7 +17245,7 @@
         "confidence": 84
       },
       "first_selected_at": "2026-08-18T02:20:19Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.15950",
@@ -17280,7 +17280,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 30,
+        "interest": 29,
         "editorial": 11
       },
       "track": "discovery",
@@ -17314,7 +17314,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-18T02:20:19Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.15858",
@@ -17351,7 +17351,7 @@
       ],
       "scores": {
         "cmb": 18,
-        "interest": 13,
+        "interest": 12,
         "editorial": 16
       },
       "track": "focus",
@@ -17388,7 +17388,7 @@
         "confidence": 91
       },
       "first_selected_at": "2026-08-18T02:20:19Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.15635",
@@ -17421,7 +17421,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 26,
+        "interest": 25,
         "editorial": 10
       },
       "track": "discovery",
@@ -17457,7 +17457,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-18T02:20:19Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.15554",
@@ -17493,7 +17493,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 13,
+        "interest": 12,
         "editorial": 5
       },
       "track": "discovery",
@@ -17529,7 +17529,7 @@
         "confidence": 85
       },
       "first_selected_at": "2026-08-18T02:20:19Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.15481",
@@ -17564,8 +17564,8 @@
       ],
       "scores": {
         "cmb": 18,
-        "interest": 20,
-        "editorial": 19
+        "interest": 18,
+        "editorial": 18
       },
       "track": "focus",
       "topics": [
@@ -17600,7 +17600,7 @@
         "confidence": 82
       },
       "first_selected_at": "2026-08-18T02:20:19Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.15240",
@@ -17641,8 +17641,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 31,
-        "editorial": 12
+        "interest": 30,
+        "editorial": 11
       },
       "track": "discovery",
       "topics": [
@@ -17677,7 +17677,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-18T02:20:19Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.15167",
@@ -17716,7 +17716,7 @@
       ],
       "scores": {
         "cmb": 25,
-        "interest": 18,
+        "interest": 17,
         "editorial": 22
       },
       "track": "focus",
@@ -17751,7 +17751,7 @@
         "confidence": 91
       },
       "first_selected_at": "2026-08-18T02:20:19Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.15083",
@@ -17785,7 +17785,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 3,
+        "interest": 2,
         "editorial": 1
       },
       "track": "discovery",
@@ -17822,7 +17822,7 @@
         "confidence": 92
       },
       "first_selected_at": "2026-08-18T02:20:19Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.14780",
@@ -17859,7 +17859,7 @@
       ],
       "scores": {
         "cmb": 6,
-        "interest": 11,
+        "interest": 10,
         "editorial": 8
       },
       "track": "discovery",
@@ -17892,7 +17892,7 @@
         "confidence": 92
       },
       "first_selected_at": "2026-08-18T02:20:19Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.14549",
@@ -18283,8 +18283,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 3,
-        "editorial": 1
+        "interest": 1,
+        "editorial": 0
       },
       "track": "discovery",
       "topics": [
@@ -18319,7 +18319,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-17T02:24:20Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.14269",
@@ -18419,7 +18419,7 @@
       ],
       "scores": {
         "cmb": 7,
-        "interest": 13,
+        "interest": 12,
         "editorial": 9
       },
       "track": "discovery",
@@ -18453,7 +18453,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-17T02:24:20Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.14183",
@@ -18488,7 +18488,7 @@
       ],
       "scores": {
         "cmb": 7,
-        "interest": 8,
+        "interest": 7,
         "editorial": 7
       },
       "track": "discovery",
@@ -18524,7 +18524,7 @@
         "confidence": 84
       },
       "first_selected_at": "2026-08-17T02:24:20Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.14170",
@@ -18561,7 +18561,7 @@
       ],
       "scores": {
         "cmb": 31,
-        "interest": 8,
+        "interest": 7,
         "editorial": 22
       },
       "track": "focus",
@@ -18599,7 +18599,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-17T02:24:20Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.13943",
@@ -18703,8 +18703,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 28,
-        "editorial": 11
+        "interest": 27,
+        "editorial": 10
       },
       "track": "discovery",
       "topics": [
@@ -18739,7 +18739,7 @@
         "confidence": 82
       },
       "first_selected_at": "2026-08-17T02:24:20Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.13656",
@@ -18775,7 +18775,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 8,
+        "interest": 7,
         "editorial": 3
       },
       "track": "discovery",
@@ -18810,7 +18810,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-17T02:24:20Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.13650",
@@ -18848,7 +18848,7 @@
       ],
       "scores": {
         "cmb": 6,
-        "interest": 9,
+        "interest": 8,
         "editorial": 7
       },
       "track": "discovery",
@@ -18881,7 +18881,7 @@
         "confidence": 84
       },
       "first_selected_at": "2026-08-17T02:24:20Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.13648",
@@ -18921,7 +18921,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 19,
+        "interest": 18,
         "editorial": 7
       },
       "track": "discovery",
@@ -18952,7 +18952,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-17T02:24:20Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.13529",
@@ -18987,7 +18987,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 1,
+        "interest": 0,
         "editorial": 0
       },
       "track": "discovery",
@@ -19020,7 +19020,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-14T03:28:49Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.13488",
@@ -19059,8 +19059,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 15,
-        "editorial": 6
+        "interest": 14,
+        "editorial": 5
       },
       "track": "discovery",
       "topics": [
@@ -19093,7 +19093,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-14T03:28:49Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.13347",
@@ -19125,7 +19125,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 9,
+        "interest": 8,
         "editorial": 3
       },
       "track": "discovery",
@@ -19159,7 +19159,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-14T03:28:49Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.13346",
@@ -19191,7 +19191,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 9,
+        "interest": 8,
         "editorial": 3
       },
       "track": "discovery",
@@ -19225,7 +19225,7 @@
         "confidence": 84
       },
       "first_selected_at": "2026-08-14T03:28:49Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.13633",
@@ -19267,7 +19267,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 13,
+        "interest": 12,
         "editorial": 5
       },
       "track": "discovery",
@@ -19300,7 +19300,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-17T02:24:20Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.13321",
@@ -19573,8 +19573,8 @@
       ],
       "scores": {
         "cmb": 18,
-        "interest": 1,
-        "editorial": 12
+        "interest": 0,
+        "editorial": 11
       },
       "track": "focus",
       "topics": [
@@ -19608,7 +19608,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-14T03:28:49Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.13225",
@@ -19648,8 +19648,8 @@
       ],
       "scores": {
         "cmb": 18,
-        "interest": 1,
-        "editorial": 12
+        "interest": 0,
+        "editorial": 11
       },
       "track": "focus",
       "topics": [
@@ -19687,7 +19687,7 @@
         "confidence": 87
       },
       "first_selected_at": "2026-08-14T03:28:49Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.13206",
@@ -19726,7 +19726,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 16,
+        "interest": 15,
         "editorial": 6
       },
       "track": "discovery",
@@ -19764,7 +19764,7 @@
         "confidence": 93
       },
       "first_selected_at": "2026-08-14T03:28:49Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.13185",
@@ -19808,7 +19808,7 @@
       ],
       "scores": {
         "cmb": 25,
-        "interest": 7,
+        "interest": 6,
         "editorial": 18
       },
       "track": "focus",
@@ -19846,7 +19846,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-14T03:28:49Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.13178",
@@ -19888,8 +19888,8 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 15,
-        "editorial": 6
+        "interest": 14,
+        "editorial": 5
       },
       "track": "discovery",
       "topics": [
@@ -19929,7 +19929,7 @@
         "confidence": 91
       },
       "first_selected_at": "2026-08-14T03:28:49Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.13153",
@@ -19971,7 +19971,7 @@
       ],
       "scores": {
         "cmb": 8,
-        "interest": 1,
+        "interest": 0,
         "editorial": 5
       },
       "track": "discovery",
@@ -20006,7 +20006,7 @@
         "confidence": 93
       },
       "first_selected_at": "2026-08-14T03:28:49Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.13070",
@@ -20038,8 +20038,8 @@
       ],
       "scores": {
         "cmb": 18,
-        "interest": 9,
-        "editorial": 15
+        "interest": 8,
+        "editorial": 14
       },
       "track": "focus",
       "topics": [
@@ -20073,7 +20073,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-14T03:28:49Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.13068",
@@ -20275,7 +20275,7 @@
       ],
       "scores": {
         "cmb": 0,
-        "interest": 24,
+        "interest": 23,
         "editorial": 9
       },
       "track": "discovery",
@@ -20309,7 +20309,7 @@
         "confidence": 82
       },
       "first_selected_at": "2026-08-14T03:28:49Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.12819",
@@ -20347,7 +20347,7 @@
       ],
       "scores": {
         "cmb": 6,
-        "interest": 9,
+        "interest": 8,
         "editorial": 7
       },
       "track": "discovery",
@@ -20380,7 +20380,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-14T03:28:49Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.12706",
@@ -20453,7 +20453,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-14T03:28:49Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.12619",
@@ -20521,7 +20521,7 @@
         "confidence": 84
       },
       "first_selected_at": "2026-08-14T03:28:49Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.12577",
@@ -20668,7 +20668,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-26T02:38:07Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.12497",
@@ -20738,7 +20738,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-14T03:28:49Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.12483",
@@ -20817,7 +20817,7 @@
         "confidence": 85
       },
       "first_selected_at": "2026-08-14T03:28:49Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.12469",
@@ -20890,7 +20890,7 @@
         "confidence": 84
       },
       "first_selected_at": "2026-08-14T03:28:49Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.12254",
@@ -20963,7 +20963,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-13T03:31:36Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.12193",
@@ -21347,7 +21347,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-13T03:31:36Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.12116",
@@ -21426,7 +21426,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-13T03:31:36Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.12042",
@@ -21489,7 +21489,7 @@
         "confidence": 87
       },
       "first_selected_at": "2026-08-13T03:31:36Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.11673",
@@ -24801,7 +24801,7 @@
         "confidence": 82
       },
       "first_selected_at": "2026-08-13T03:31:36Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.11400",
@@ -24870,7 +24870,7 @@
         "confidence": 78
       },
       "first_selected_at": "2026-08-13T03:31:36Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.11296",
@@ -24952,7 +24952,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-13T03:31:36Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.11119",
@@ -25099,7 +25099,7 @@
         "confidence": 92
       },
       "first_selected_at": "2026-08-12T03:28:22Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.10961",
@@ -25234,7 +25234,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-12T03:28:22Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.10832",
@@ -25376,7 +25376,7 @@
         "confidence": 91
       },
       "first_selected_at": "2026-08-12T03:28:22Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.10719",
@@ -25524,7 +25524,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-12T03:28:22Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.10511",
@@ -25660,7 +25660,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-12T03:28:22Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.10358",
@@ -25754,7 +25754,7 @@
         "confidence": 84
       },
       "first_selected_at": "2026-08-12T03:28:22Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.10347",
@@ -25901,7 +25901,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-12T03:28:22Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.10163",
@@ -25978,7 +25978,7 @@
         "confidence": 94
       },
       "first_selected_at": "2026-08-12T03:28:22Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.10141",
@@ -26043,7 +26043,7 @@
         "confidence": 82
       },
       "first_selected_at": "2026-08-12T03:28:22Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.10127",
@@ -26120,7 +26120,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-12T03:28:22Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.10123",
@@ -26193,7 +26193,7 @@
         "confidence": 84
       },
       "first_selected_at": "2026-08-12T03:28:22Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.10105",
@@ -26266,7 +26266,7 @@
         "confidence": 87
       },
       "first_selected_at": "2026-08-12T03:28:22Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.10080",
@@ -26391,7 +26391,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-12T03:28:22Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.10073",
@@ -26459,7 +26459,7 @@
         "confidence": 82
       },
       "first_selected_at": "2026-08-12T03:28:22Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.10066",
@@ -26526,7 +26526,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-12T03:28:22Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.10061",
@@ -26595,7 +26595,7 @@
         "confidence": 76
       },
       "first_selected_at": "2026-08-12T03:28:22Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.09929",
@@ -26668,7 +26668,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-11T03:09:13Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.09920",
@@ -26835,7 +26835,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-11T03:09:13Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.09849",
@@ -27055,7 +27055,7 @@
         "confidence": 84
       },
       "first_selected_at": "2026-08-11T03:09:13Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.09783",
@@ -27126,7 +27126,7 @@
         "confidence": 82
       },
       "first_selected_at": "2026-08-11T03:09:13Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.09709",
@@ -27192,7 +27192,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-11T03:09:13Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.09697",
@@ -27267,7 +27267,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-11T03:09:13Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.09587",
@@ -27488,7 +27488,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-11T03:09:13Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.09390",
@@ -27558,7 +27558,7 @@
         "confidence": 9
       },
       "first_selected_at": "2026-08-11T03:09:13Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.09379",
@@ -27632,7 +27632,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-11T03:09:13Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.09299",
@@ -27707,7 +27707,7 @@
         "confidence": 82
       },
       "first_selected_at": "2026-08-11T03:09:13Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.09129",
@@ -27777,7 +27777,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-11T03:09:13Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.09086",
@@ -27847,7 +27847,7 @@
         "confidence": 84
       },
       "first_selected_at": "2026-08-11T03:09:13Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.09064",
@@ -27990,7 +27990,7 @@
         "confidence": 92
       },
       "first_selected_at": "2026-08-11T03:09:13Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.08870",
@@ -28061,7 +28061,7 @@
         "confidence": 78
       },
       "first_selected_at": "2026-08-14T03:28:49Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.08708",
@@ -28222,7 +28222,7 @@
         "confidence": 92
       },
       "first_selected_at": "2026-08-11T03:09:13Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.08007",
@@ -28299,7 +28299,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-11T03:09:13Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.07817",
@@ -28535,7 +28535,7 @@
         "confidence": 92
       },
       "first_selected_at": "2026-08-11T03:09:13Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.07791",
@@ -28605,7 +28605,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-11T03:09:13Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.07718",
@@ -28677,7 +28677,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-11T03:09:13Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.07679",
@@ -28746,7 +28746,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-11T03:09:13Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.07667",
@@ -28819,7 +28819,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-11T03:09:13Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.07654",
@@ -28886,7 +28886,7 @@
         "confidence": 84
       },
       "first_selected_at": "2026-08-11T03:09:13Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.07470",
@@ -28956,7 +28956,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-08-10T06:20:28Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.07453",
@@ -29065,7 +29065,7 @@
         "confidence": 92
       },
       "first_selected_at": "2026-08-10T06:20:28Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.07404",
@@ -29132,7 +29132,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-10T06:20:28Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.07386",
@@ -29213,7 +29213,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-10T05:56:16Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.07377",
@@ -29280,7 +29280,7 @@
         "confidence": 92
       },
       "first_selected_at": "2026-08-10T06:43:30Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.07339",
@@ -29346,7 +29346,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-10T06:43:30Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.07313",
@@ -29425,7 +29425,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-10T05:56:16Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.07312",
@@ -29574,7 +29574,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-10T06:43:30Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.07270",
@@ -29646,7 +29646,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-10T06:43:30Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.07264",
@@ -29722,7 +29722,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-10T06:43:30Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.07209",
@@ -29797,7 +29797,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-10T06:20:28Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.07142",
@@ -30015,7 +30015,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-10T06:43:30Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.07008",
@@ -30080,7 +30080,7 @@
         "confidence": 85
       },
       "first_selected_at": "2026-08-10T06:43:30Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.06978",
@@ -30155,7 +30155,7 @@
         "confidence": 80
       },
       "first_selected_at": "2026-08-10T06:43:30Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.06944",
@@ -34240,7 +34240,7 @@
         "confidence": 84
       },
       "first_selected_at": "2026-08-07T08:34:06Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.03441",
@@ -34359,7 +34359,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-08-10T06:43:30Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2608.03400",
@@ -38105,7 +38105,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-07T08:34:06Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2607.28800",
@@ -44720,7 +44720,7 @@
         "confidence": 92
       },
       "first_selected_at": "2026-08-07T08:30:18Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2607.25261",
@@ -48229,7 +48229,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-08-10T06:43:30Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2607.21701",
@@ -48441,7 +48441,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-07T08:30:18Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2607.21385",
@@ -48703,7 +48703,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-10T06:47:32Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2607.21247",
@@ -49870,7 +49870,7 @@
         "confidence": 84
       },
       "first_selected_at": "2026-08-10T06:47:32Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2607.20613",
@@ -56971,7 +56971,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-08-10T06:47:32Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2607.14982",
@@ -59665,7 +59665,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-08-10T06:43:30Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2607.12607",
@@ -60759,7 +60759,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-08-10T06:43:30Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2607.11842",
@@ -61846,7 +61846,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-08-10T06:43:30Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2607.10730",
@@ -62093,7 +62093,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-08-10T06:47:32Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2607.10521",
@@ -62497,7 +62497,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-07T09:36:27Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2607.09918",
@@ -63454,7 +63454,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-08-10T06:47:32Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2607.09199",
@@ -66253,7 +66253,7 @@
         "confidence": 82
       },
       "first_selected_at": "2026-08-10T06:47:32Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2607.13063",
@@ -67696,7 +67696,7 @@
         "confidence": 93
       },
       "first_selected_at": "2026-08-10T06:47:32Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2607.06147",
@@ -69297,7 +69297,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-08-10T06:43:30Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2607.04959",
@@ -74602,7 +74602,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-08-10T06:47:32Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2607.00610",
@@ -75662,7 +75662,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-08-10T06:43:30Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2606.31629",
@@ -76196,7 +76196,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-07T09:36:27Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2606.31324",
@@ -79199,7 +79199,7 @@
         "confidence": 89
       },
       "first_selected_at": "2026-08-10T06:47:32Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2606.28853",
@@ -83034,7 +83034,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-08-10T06:43:30Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2606.26562",
@@ -89649,7 +89649,7 @@
         "confidence": 91
       },
       "first_selected_at": "2026-08-07T09:36:27Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2606.22985",
@@ -90287,7 +90287,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-10T06:47:32Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2606.22147",
@@ -91344,7 +91344,7 @@
         "confidence": 91
       },
       "first_selected_at": "2026-08-10T06:47:32Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2606.21380",
@@ -92848,7 +92848,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-08-10T06:43:30Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2606.20036",
@@ -93696,7 +93696,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-08-10T06:47:32Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2606.19449",
@@ -94593,7 +94593,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-07T09:36:27Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2606.18987",
@@ -98645,7 +98645,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-10T06:47:32Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2606.15844",
@@ -99308,7 +99308,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-08-10T06:47:32Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2606.14849",
@@ -100185,7 +100185,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-10T06:47:32Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2606.13788",
@@ -101608,7 +101608,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-08-10T06:47:32Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2606.12521",
@@ -103089,7 +103089,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-08-10T06:43:30Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2606.11295",
@@ -103400,7 +103400,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-08-10T06:47:32Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2606.10679",
@@ -105046,7 +105046,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-10T06:47:32Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2606.09810",
@@ -106764,7 +106764,7 @@
         "confidence": 92
       },
       "first_selected_at": "2026-08-07T09:36:27Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2606.07505",
@@ -115432,7 +115432,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-08-10T06:47:32Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2605.29806",
@@ -121225,7 +121225,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-08-10T06:43:30Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2605.25466",
@@ -122319,7 +122319,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-08-10T06:43:30Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2605.23827",
@@ -125491,7 +125491,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-08-10T06:43:30Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2605.21554",
@@ -125680,7 +125680,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-10T06:47:32Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2605.20779",
@@ -126872,7 +126872,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-10T06:47:32Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2605.19615",
@@ -135611,7 +135611,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-21T02:35:35Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2605.03156",
@@ -136026,7 +136026,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-26T02:38:07Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2605.01057",
@@ -136118,7 +136118,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-08-10T06:43:30Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2604.27867",
@@ -136183,7 +136183,7 @@
         "confidence": 74
       },
       "first_selected_at": "2026-08-27T11:09:33Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2604.27771",
@@ -136255,7 +136255,7 @@
         "confidence": 82
       },
       "first_selected_at": "2026-08-20T02:21:38Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2604.26581",
@@ -136333,7 +136333,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-21T02:35:35Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2604.26331",
@@ -136691,7 +136691,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-24T02:35:57Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2604.21666",
@@ -136902,7 +136902,7 @@
         "confidence": 4
       },
       "first_selected_at": "2026-08-28T12:42:15Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2604.19198",
@@ -137036,7 +137036,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-20T02:21:38Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2604.17682",
@@ -137110,7 +137110,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-20T02:21:38Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2604.17478",
@@ -137325,7 +137325,7 @@
         "confidence": 95
       },
       "first_selected_at": "2026-08-24T02:35:57Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2604.15241",
@@ -137396,7 +137396,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-25T02:22:16Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2604.15240",
@@ -137536,7 +137536,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-19T02:22:11Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2604.12032",
@@ -137700,7 +137700,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-24T02:35:57Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2604.10811",
@@ -137766,7 +137766,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-25T02:22:16Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2604.09859",
@@ -137841,7 +137841,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-21T02:35:35Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2604.07445",
@@ -137912,7 +137912,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-13T03:31:36Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2604.07438",
@@ -137984,7 +137984,7 @@
         "confidence": 91
       },
       "first_selected_at": "2026-08-21T02:35:35Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2604.07256",
@@ -138471,7 +138471,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-19T02:22:11Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2604.02814",
@@ -138966,7 +138966,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-26T02:38:07Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2604.01035",
@@ -139038,7 +139038,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-24T02:35:57Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2603.29772",
@@ -139110,7 +139110,7 @@
         "confidence": 87
       },
       "first_selected_at": "2026-08-27T11:09:33Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2603.29331",
@@ -139211,7 +139211,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-08-10T06:43:30Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2603.28881",
@@ -139276,7 +139276,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-25T02:22:16Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2603.27673",
@@ -139399,7 +139399,7 @@
         "confidence": 89
       },
       "first_selected_at": "2026-08-27T11:09:33Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2603.25595",
@@ -139474,7 +139474,7 @@
         "confidence": 94
       },
       "first_selected_at": "2026-08-21T02:35:35Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2603.24688",
@@ -139750,7 +139750,7 @@
         "confidence": 95
       },
       "first_selected_at": "2026-08-21T02:35:35Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2603.22414",
@@ -139879,7 +139879,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-24T02:35:57Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2603.22398",
@@ -139950,7 +139950,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-25T02:22:16Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2603.20963",
@@ -140582,7 +140582,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-21T02:35:35Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2603.08808",
@@ -140657,7 +140657,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-27T11:09:33Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2603.05597",
@@ -140728,7 +140728,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-26T02:38:07Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2603.05472",
@@ -140998,7 +140998,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-20T02:21:38Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2603.02177",
@@ -141280,7 +141280,7 @@
         "confidence": 84
       },
       "first_selected_at": "2026-08-28T12:42:15Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2602.21863",
@@ -141356,7 +141356,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-28T12:42:15Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2602.20355",
@@ -141694,7 +141694,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-27T11:09:33Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2602.14963",
@@ -141889,7 +141889,7 @@
         "confidence": 82
       },
       "first_selected_at": "2026-08-19T02:22:11Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2602.11936",
@@ -142471,7 +142471,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-20T02:21:38Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2602.01320",
@@ -142670,7 +142670,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-20T02:21:38Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2601.22677",
@@ -142940,7 +142940,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-25T02:22:16Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2601.19438",
@@ -143063,7 +143063,7 @@
         "confidence": 78
       },
       "first_selected_at": "2026-08-27T11:09:33Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2601.16251",
@@ -143248,7 +143248,7 @@
         "confidence": 92
       },
       "first_selected_at": "2026-08-27T11:09:33Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2601.15844",
@@ -143376,7 +143376,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-24T02:35:57Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2601.13624",
@@ -143902,7 +143902,7 @@
         "confidence": 5
       },
       "first_selected_at": "2026-08-28T12:42:15Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2601.09644",
@@ -144109,7 +144109,7 @@
         "confidence": 82
       },
       "first_selected_at": "2026-08-25T02:22:16Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2601.05967",
@@ -144606,7 +144606,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-25T02:22:16Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2601.00438",
@@ -144682,7 +144682,7 @@
         "confidence": 5
       },
       "first_selected_at": "2026-08-28T12:42:15Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2512.25044",
@@ -145474,7 +145474,7 @@
         "confidence": 84
       },
       "first_selected_at": "2026-08-21T02:35:35Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2512.05565",
@@ -145612,7 +145612,7 @@
         "confidence": 92
       },
       "first_selected_at": "2026-08-19T02:22:11Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2512.03662",
@@ -145682,7 +145682,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-27T11:09:33Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2512.03226",
@@ -145811,7 +145811,7 @@
         "confidence": 92
       },
       "first_selected_at": "2026-08-24T02:35:57Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2512.03168",
@@ -148098,7 +148098,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-26T02:38:07Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2511.17311",
@@ -148177,7 +148177,7 @@
         "confidence": 91
       },
       "first_selected_at": "2026-08-24T02:35:57Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2511.17307",
@@ -148470,7 +148470,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-28T12:42:15Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2511.10975",
@@ -148681,7 +148681,7 @@
         "confidence": 82
       },
       "first_selected_at": "2026-08-21T02:35:35Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2511.04459",
@@ -148764,7 +148764,7 @@
         "confidence": 82
       },
       "first_selected_at": "2026-08-21T02:35:35Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2511.02118",
@@ -148836,7 +148836,7 @@
         "confidence": 76
       },
       "first_selected_at": "2026-08-27T11:09:33Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2511.05545",
@@ -149117,7 +149117,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-18T02:20:19Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2510.18944",
@@ -149249,7 +149249,7 @@
         "confidence": 84
       },
       "first_selected_at": "2026-08-25T02:22:16Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2510.15650",
@@ -149382,7 +149382,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-26T02:38:07Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2510.13805",
@@ -149592,7 +149592,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-28T12:42:15Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2510.06352",
@@ -152016,7 +152016,7 @@
         "confidence": 93
       },
       "first_selected_at": "2026-08-24T02:35:57Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2509.04230",
@@ -152153,7 +152153,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-28T12:42:15Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2508.19126",
@@ -152223,7 +152223,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-21T02:35:35Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2508.15918",
@@ -152539,7 +152539,7 @@
         "confidence": 82
       },
       "first_selected_at": "2026-08-25T02:22:16Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2508.01378",
@@ -152608,7 +152608,7 @@
         "confidence": 75
       },
       "first_selected_at": "2026-08-21T02:35:35Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2508.00348",
@@ -152697,7 +152697,7 @@
         "confidence": 83
       },
       "first_selected_at": "2026-08-20T02:21:38Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2507.18955",
@@ -152888,7 +152888,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-08-26T02:38:07Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2507.03074",
@@ -152960,7 +152960,7 @@
         "confidence": 80
       },
       "first_selected_at": "2026-08-25T02:22:16Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2506.24050",
@@ -153174,7 +153174,7 @@
         "confidence": 78
       },
       "first_selected_at": "2026-08-27T11:09:33Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2506.11755",
@@ -153244,7 +153244,7 @@
         "confidence": 82
       },
       "first_selected_at": "2026-08-26T02:38:07Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2506.06901",
@@ -153373,7 +153373,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-08-10T06:43:30Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2505.19941",
@@ -153446,7 +153446,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-20T02:21:38Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2504.20135",
@@ -153660,7 +153660,7 @@
         "confidence": 82
       },
       "first_selected_at": "2026-08-25T02:22:16Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2504.10482",
@@ -153738,7 +153738,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-20T02:21:38Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2504.08221",
@@ -154378,7 +154378,7 @@
         "confidence": 92
       },
       "first_selected_at": "2026-08-24T02:35:57Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2410.16588",
@@ -154758,7 +154758,7 @@
         "confidence": 78
       },
       "first_selected_at": "2026-08-28T12:42:15Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2304.10559",
@@ -154963,7 +154963,7 @@
         "confidence": 92
       },
       "first_selected_at": "2026-08-25T02:22:16Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2105.11449",
@@ -155046,7 +155046,7 @@
         "confidence": 90
       },
       "first_selected_at": "2026-08-27T11:09:33Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "2006.01811",
@@ -155116,7 +155116,7 @@
         "confidence": 86
       },
       "first_selected_at": "2026-08-21T02:35:35Z",
-      "last_selected_at": "2026-08-28T12:42:15Z"
+      "last_selected_at": "2026-08-29T07:49:54Z"
     },
     {
       "id": "1508.04763",
