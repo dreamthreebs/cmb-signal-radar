@@ -112,9 +112,9 @@ jobs:
           BACKFILL_DAYS: ${{ inputs.backfill_days || '0' }}
           ANALYSIS_CAP: ${{ inputs.analysis_cap || '100' }}
         run: |
-          args=(--require-ai)
+          args=(--require-ai --analysis-cap "$ANALYSIS_CAP")
           if [[ "$BACKFILL_DAYS" =~ ^[1-9][0-9]*$ ]]; then
-            args+=(--backfill-days "$BACKFILL_DAYS" --analysis-cap "$ANALYSIS_CAP")
+            args+=(--backfill-days "$BACKFILL_DAYS")
           elif [[ "$EVENT_NAME" == "schedule" || "$FORCE_REFRESH" != "true" ]]; then
             args+=(--skip-if-no-new)
           else

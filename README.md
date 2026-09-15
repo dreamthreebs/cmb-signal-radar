@@ -101,7 +101,7 @@ gh variable set GPT_REASONING_EFFORT --body "low" --repo dreamthreebs/cmb-signal
 
 ### 4. 触发第一次更新
 
-进入 `Actions → Update papers and deploy Pages → Run workflow`。`force_refresh` 默认为开启，因此即使当天没有新论文，也会重新分析当前精选；关闭后则使用与定时任务相同的“无新论文即跳过”规则。
+进入 `Actions → Update papers and deploy Pages → Run workflow`。`force_refresh` 默认为开启，因此即使当天没有新论文，也会重新分析当前精选；`analysis_cap` 会限制本次日常更新或历史回填实际分析的篇数。关闭 `force_refresh` 后则使用与定时任务相同的“无新论文即跳过”规则。
 
 仓库需要允许 Actions 写入内容，才能每天把历史数据提交回 `main`。如组织策略限制了写权限，请在 `Settings → Actions → General → Workflow permissions` 中允许 Read and write permissions。
 
