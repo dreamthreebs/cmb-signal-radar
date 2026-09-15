@@ -533,9 +533,19 @@ def fallback_analysis(paper: dict[str, Any]) -> dict[str, Any]:
 
 
 def gpt_settings(args: argparse.Namespace) -> dict[str, str]:
+    configured_api_key = os.getenv("GPT_API_KEY", "").strip()
+    official_api_key = os.getenv("OPENAI_API_KEY", "").strip()
+    using_configured_provider = bool(configured_api_key)
     return {
-        "api_key": (os.getenv("GPT_API_KEY") or os.getenv("OPENAI_API_KEY") or "").strip(),
-        "base_url": (os.getenv("GPT_BASE_URL") or os.getenv("OPENAI_BASE_URL") or "").strip(),
+        "api_key": configured_api_key or official_api_key,
+        "official_api_key": official_api_key,
+        # A custom base URL belongs only to GPT_API_KEY. Never send an official
+        # OpenAI key to a third-party URL when GPT_API_KEY is absent.
+        "base_url": (
+            (os.getenv("GPT_BASE_URL") or os.getenv("OPENAI_BASE_URL") or "").strip()
+            if using_configured_provider
+            else ""
+        ),
         "model": (
             args.model
             or os.getenv("GPT_MODEL")
@@ -549,6 +559,12 @@ def gpt_settings(args: argparse.Namespace) -> dict[str, str]:
         "max_retries": (os.getenv("GPT_MAX_RETRIES") or "3").strip(),
         "fallback_models": (os.getenv("GPT_FALLBACK_MODELS") or "").strip(),
         "reasoning_effort": (os.getenv("GPT_REASONING_EFFORT") or "").strip().lower(),
+        "official_model": (os.getenv("OPENAI_MODEL") or DEFAULT_MODEL).strip(),
+        "official_fallback_models": (os.getenv("OPENAI_FALLBACK_MODELS") or "").strip(),
+        "official_api_mode": (os.getenv("OPENAI_API_MODE") or "responses").strip().lower(),
+        "official_fallback_api_modes": (
+            os.getenv("OPENAI_FALLBACK_API_MODES") or ""
+        ).strip(),
     }
 
 
@@ -568,6 +584,74 @@ def api_mode_candidates(primary_mode: str, fallback_modes: str) -> list[str]:
         if normalized and normalized not in candidates:
             candidates.append(normalized)
     return candidates
+
+
+def gpt_route_candidates(settings: dict[str, str]) -> list[dict[str, str]]:
+    routes: list[dict[str, str]] = []
+    endpoint = "custom" if settings["base_url"] else "openai"
+    for api_mode in api_mode_candidates(settings["api_mode"], settings["fallback_api_modes"]):
+        for model in model_candidates(settings["model"], settings["fallback_models"]):
+            routes.append(
+                {
+                    "endpoint": endpoint,
+                    "model": model,
+                    "api_mode": api_mode,
+                    "api_key": settings["api_key"],
+                    "base_url": settings["base_url"],
+                    "user_agent": settings["user_agent"] if endpoint == "custom" else "",
+                    "reasoning_effort": settings["reasoning_effort"],
+                }
+            )
+
+    official_key = settings["official_api_key"]
+    official_is_distinct_fallback = bool(
+        official_key
+        and endpoint == "custom"
+        and official_key != settings["api_key"]
+    )
+    if official_is_distinct_fallback:
+        for api_mode in api_mode_candidates(
+            settings["official_api_mode"], settings["official_fallback_api_modes"]
+        ):
+            for model in model_candidates(
+                settings["official_model"], settings["official_fallback_models"]
+            ):
+                routes.append(
+                    {
+                        "endpoint": "openai",
+                        "model": model,
+                        "api_mode": api_mode,
+                        "api_key": official_key,
+                        "base_url": "",
+                        "user_agent": "",
+                        "reasoning_effort": settings["reasoning_effort"],
+                    }
+                )
+    return routes
+
+
+def is_provider_wide_outage(error: Exception) -> bool:
+    message = str(error).lower()
+    return any(
+        marker in message
+        for marker in (
+            "no available channel for the current group",
+            "no available channel for current group",
+            "当前分组没有可用渠道",
+            "当前分组上没有可用渠道",
+        )
+    )
+
+
+def classify_ai_error(error: Exception) -> str:
+    message = str(error).lower()
+    if is_provider_wide_outage(error):
+        return "ai_provider_unavailable"
+    if any(marker in message for marker in ("401", "unauthorized", "invalid api key", "invalid_api_key")):
+        return "ai_auth_error"
+    if any(marker in message for marker in ("429", "rate limit", "rate_limit")):
+        return "ai_rate_limited"
+    return "ai_error"
 
 
 def analyze_with_openai(
@@ -974,50 +1058,75 @@ def update_data(args: argparse.Namespace) -> UpdateOutcome:
 
     model = settings["model"]
     analysis_api_mode = settings["api_mode"]
+    analysis_endpoint = "custom" if settings["base_url"] else "openai"
     ai_error = ""
     if ai_key_present and needs_analysis:
         try:
-            models = model_candidates(model, settings["fallback_models"])
-            api_modes = api_mode_candidates(settings["api_mode"], settings["fallback_api_modes"])
-            candidates = [(candidate_model, api_mode) for api_mode in api_modes for candidate_model in models]
+            candidates = gpt_route_candidates(settings)
             analyses: dict[str, dict[str, Any]] = {}
-            for index, (candidate_model, candidate_api_mode) in enumerate(candidates):
+            unavailable_endpoints: set[str] = set()
+            last_error: Exception | None = None
+            for index, route in enumerate(candidates):
+                if route["endpoint"] in unavailable_endpoints:
+                    continue
                 LOGGER.info(
-                    "Requesting GPT analysis for %s papers with %s via %s",
+                    "Requesting GPT analysis for %s papers with %s via %s (%s)",
                     len(needs_analysis),
-                    candidate_model,
-                    candidate_api_mode,
+                    route["model"],
+                    route["api_mode"],
+                    route["endpoint"],
                 )
                 try:
                     candidate_analyses = analyze_with_openai(
                         needs_analysis,
-                        candidate_model,
-                        api_key=settings["api_key"],
-                        base_url=settings["base_url"],
-                        api_mode=candidate_api_mode,
-                        user_agent=settings["user_agent"],
+                        route["model"],
+                        api_key=route["api_key"],
+                        base_url=route["base_url"],
+                        api_mode=route["api_mode"],
+                        user_agent=route["user_agent"],
                         batch_size=int(settings["batch_size"]),
                         max_retries=int(settings["max_retries"]),
-                        reasoning_effort=settings["reasoning_effort"],
+                        reasoning_effort=route["reasoning_effort"],
                     )
                     missing_ids = {paper["id"] for paper in needs_analysis} - set(candidate_analyses)
                     if missing_ids:
                         raise RuntimeError(f"GPT response omitted {len(missing_ids)} requested papers")
                     analyses = candidate_analyses
-                    model = candidate_model
-                    analysis_api_mode = candidate_api_mode
+                    model = route["model"]
+                    analysis_api_mode = route["api_mode"]
+                    analysis_endpoint = route["endpoint"]
                     break
                 except Exception as model_exc:
-                    if index == len(candidates) - 1:
-                        raise
-                    LOGGER.warning(
-                        "GPT route %s/%s failed (%s); trying %s/%s",
-                        candidate_model,
-                        candidate_api_mode,
-                        model_exc,
-                        candidates[index + 1][0],
-                        candidates[index + 1][1],
+                    last_error = model_exc
+                    if is_provider_wide_outage(model_exc):
+                        unavailable_endpoints.add(route["endpoint"])
+                        LOGGER.warning(
+                            "GPT endpoint %s has no available provider channel; "
+                            "skipping its remaining routes",
+                            route["endpoint"],
+                        )
+                    next_route = next(
+                        (
+                            candidate
+                            for candidate in candidates[index + 1 :]
+                            if candidate["endpoint"] not in unavailable_endpoints
+                        ),
+                        None,
                     )
+                    if next_route is None:
+                        continue
+                    LOGGER.warning(
+                        "GPT route %s/%s/%s failed (%s); trying %s/%s/%s",
+                        route["endpoint"],
+                        route["model"],
+                        route["api_mode"],
+                        model_exc,
+                        next_route["endpoint"],
+                        next_route["model"],
+                        next_route["api_mode"],
+                    )
+            if not analyses:
+                raise last_error or RuntimeError("No GPT route is configured")
             for paper in papers:
                 if paper["id"] in analyses:
                     paper["analysis"] = analyses[paper["id"]]
@@ -1025,7 +1134,7 @@ def update_data(args: argparse.Namespace) -> UpdateOutcome:
             ai_error = str(exc)
             if args.require_ai:
                 LOGGER.exception("GPT analysis failed; keeping the published dataset unchanged")
-                return UpdateOutcome(existing, False, "ai_error", len(new_or_updated))
+                return UpdateOutcome(existing, False, classify_ai_error(exc), len(new_or_updated))
             LOGGER.exception("GPT analysis failed; using metadata-only fallback")
     elif args.require_ai:
         LOGGER.info("Strict AI mode found no selected paper requiring analysis; preserving metadata updates")
@@ -1072,7 +1181,7 @@ def update_data(args: argparse.Namespace) -> UpdateOutcome:
             "analysis_status": analysis_status,
             "analysis_model": model if ai_key_present else None,
             "analysis_api_mode": analysis_api_mode if ai_key_present else None,
-            "analysis_endpoint": "custom" if settings["base_url"] else "openai",
+            "analysis_endpoint": analysis_endpoint,
             "analysis_error": ai_error,
             "analysis_basis": "title + abstract + categories",
             "lookback_days": int(config.get("lookback_days", 21)),

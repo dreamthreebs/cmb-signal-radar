@@ -4,7 +4,7 @@
 
 ## 它会自动做什么
 
-- 每天北京时间 09:05 运行 GitHub Actions。
+- 每天北京时间 09:05 运行 GitHub Actions；失败时 09:35、10:35 自动补跑。
 - 从 arXiv Atom API 抓取 `astro-ph.CO`、CMB 仪器方法及跨方向发现候选。
 - 对同一 arXiv ID 去重，按 CMB 相关性、趣味度与时效性选出本期内容。
 - 只有同时满足“API Key 已配置、接口调用成功、发现新论文”时，定时任务才更新数据并部署。
@@ -54,6 +54,8 @@ GitHub Free 的项目 Pages 通常需要公开仓库；如果你的套餐支持�
 | `GPT_BATCH_SIZE` | Variable | 可选；每次分析的论文数，慢速第三方接口建议设为 `3` |
 | `GPT_MAX_RETRIES` | Variable | 可选；连接、超时、限流和服务端错误的最大自动重试次数，默认 `3` |
 | `GPT_REASONING_EFFORT` | Variable | 可选；Responses API 的推理强度，如 `low` |
+| `OPENAI_API_KEY` | **Secret** | 可选。官方 OpenAI 备用 Key；第三方全部失败后自动切换 |
+| `OPENAI_MODEL` | Variable | 可选。官方备用通道的模型，默认 `gpt-5.6` |
 | `ARXIV_CONTACT_EMAIL` | Variable | 可选，让 arXiv User-Agent 带维护者联系方式 |
 
 官方 OpenAI 推荐使用：
@@ -72,6 +74,7 @@ GitHub Free 的项目 Pages 通常需要公开仓库；如果你的套餐支持�
 - 如果服务支持 `/responses` 和结构化输出，使用 `responses`。
 - 如果只支持 `/chat/completions`，使用 `chat_completions`；该服务还需要支持 JSON Object 输出。
 - 如果服务商要求特定 `User-Agent`，将其存为 `GPT_USER_AGENT` Variable。
+- 如需跨供应商兜底，再把官方 OpenAI Key 单独存为 `OPENAI_API_KEY`；它只会发送到 OpenAI 官方端点，不会发送给第三方。
 
 也可以使用命令行添加 Secret（输入内容不会写进仓库）：
 
@@ -90,6 +93,7 @@ gh variable set GPT_REASONING_EFFORT --body "low" --repo dreamthreebs/cmb-signal
 当前仓库的实际放置位置：
 
 - Key：`Settings → Secrets and variables → Actions → Secrets → GPT_API_KEY`
+- 官方备用 Key（可选）：同一页的 Secrets 中添加 `OPENAI_API_KEY`
 - 第三方 URL：`Settings → Secrets and variables → Actions → Variables → GPT_BASE_URL`
 - 模型与协议：同一页面的 Variables 中修改 `GPT_MODEL` 与 `GPT_API_MODE`
 
@@ -132,13 +136,13 @@ python scripts/update_papers.py --max-results 15 --require-ai --force-ai
 
 ## 自动运行规则
 
-- `schedule`：每天北京时间 09:05 检查一次。无新论文时不调用 GPT、不提交、不部署。
+- `schedule`：每天北京时间 09:05 主检查；若服务短暂失败，09:35、10:35 自动补跑。前序成功后，补跑会因无新内容安全跳过。
 - `workflow_dispatch`：在 Actions 页面手动启动；可选择强制刷新。
 - `push`：代码或页面发生修改时，只运行测试并部署已有数据，不调用 GPT。
 - arXiv 搜索 API 返回 429 或不可用时，会自动切到官方 `astro-ph.CO` RSS；只有搜索 API 与 RSS 都不可用时才停止部署。
-- GPT 遇到短暂连接错误、超时、限流或服务端错误时会先自动重试；主模型仍失败时依次尝试 `GPT_FALLBACK_MODELS`，全部失败才进入告警流程。
+- GPT 遇到短暂连接错误、超时、限流或服务端错误时会先自动重试；主模型仍失败时依次尝试 `GPT_FALLBACK_MODELS`。如果另外配置了官方 `OPENAI_API_KEY`，第三方全部失败后会自动切换到官方端点。
 - GPT Key 缺失、鉴权失败、返回结构不完整且所有备用模型也失败，或 arXiv 两路来源都不可用时，任务不覆盖 `papers.json`、不部署新页面。
-- 故障时工作流会自动创建并指派 `⚠️ CMB Signal 自动更新异常` Issue；连续故障只更新同一条，API 恢复且成功更新后自动关闭。
+- 定时任务三次均失败时才创建并指派 `⚠️ CMB Signal 自动更新异常` Issue；手动任务失败则立即通知。故障会区分第三方无通道、鉴权、限流与 arXiv 异常；API 恢复且成功更新后自动关闭。
 
 ## 调整选题范围
 

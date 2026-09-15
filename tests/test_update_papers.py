@@ -15,8 +15,11 @@ from scripts.update_papers import (
     add_submitted_date_window,
     analyze_with_openai,
     api_mode_candidates,
+    classify_ai_error,
     find_new_or_updated,
     fetch_all,
+    gpt_route_candidates,
+    gpt_settings,
     model_candidates,
     parse_atom_feed,
     parse_rss_feed,
@@ -174,6 +177,57 @@ class UpdatePapersTests(unittest.TestCase):
             api_mode_candidates("responses", "chat_completions,responses"),
             ["responses", "chat_completions"],
         )
+
+    def test_official_key_is_a_distinct_fallback_and_never_uses_custom_url(self):
+        args = argparse.Namespace(model="")
+        with patch.dict(
+            os.environ,
+            {
+                "GPT_API_KEY": "third-party-key",
+                "GPT_BASE_URL": "https://provider.example/v1",
+                "GPT_MODEL": "provider-model",
+                "GPT_FALLBACK_MODELS": "",
+                "GPT_API_MODE": "chat_completions",
+                "GPT_FALLBACK_API_MODES": "",
+                "OPENAI_API_KEY": "official-key",
+                "OPENAI_MODEL": "gpt-official",
+                "OPENAI_FALLBACK_MODELS": "",
+                "OPENAI_API_MODE": "responses",
+                "OPENAI_FALLBACK_API_MODES": "",
+            },
+            clear=True,
+        ):
+            routes = gpt_route_candidates(gpt_settings(args))
+
+        self.assertEqual([route["endpoint"] for route in routes], ["custom", "openai"])
+        self.assertEqual(routes[0]["base_url"], "https://provider.example/v1")
+        self.assertEqual(routes[0]["api_key"], "third-party-key")
+        self.assertEqual(routes[1]["base_url"], "")
+        self.assertEqual(routes[1]["api_key"], "official-key")
+
+    def test_official_key_is_not_sent_to_stale_custom_url(self):
+        args = argparse.Namespace(model="")
+        with patch.dict(
+            os.environ,
+            {
+                "GPT_API_KEY": "",
+                "GPT_BASE_URL": "https://provider.example/v1",
+                "OPENAI_API_KEY": "official-key",
+            },
+            clear=True,
+        ):
+            settings = gpt_settings(args)
+
+        self.assertEqual(settings["api_key"], "official-key")
+        self.assertEqual(settings["base_url"], "")
+
+    def test_ai_error_classification_distinguishes_provider_outage(self):
+        self.assertEqual(
+            classify_ai_error(RuntimeError("503: No available channel for the current group")),
+            "ai_provider_unavailable",
+        )
+        self.assertEqual(classify_ai_error(RuntimeError("401 invalid API key")), "ai_auth_error")
+        self.assertEqual(classify_ai_error(RuntimeError("429 rate limit")), "ai_rate_limited")
 
     def test_cmb_paper_scores_as_focus(self):
         paper = parse_atom_feed(ATOM_SAMPLE, "test")[0]
@@ -405,8 +459,81 @@ class UpdatePapersTests(unittest.TestCase):
             ):
                 outcome = update_data(args)
             self.assertFalse(outcome.changed)
-            self.assertEqual(outcome.reason, "ai_error")
+            self.assertEqual(outcome.reason, "ai_auth_error")
             self.assertEqual(outcome.data, existing)
+
+    def test_provider_outage_switches_to_official_openai_fallback(self):
+        paper = parse_atom_feed(ATOM_SAMPLE, "test")[0]
+        with tempfile.TemporaryDirectory() as temp_dir:
+            config_path = Path(temp_dir) / "config.json"
+            output_path = Path(temp_dir) / "papers.json"
+            config_path.write_text(
+                json.dumps(
+                    {
+                        "queries": [{"name": "test", "query": "all:CMB"}],
+                        "complete_category": "astro-ph.CO",
+                        "focus_limit": 12,
+                        "discovery_limit": 6,
+                        "analysis_limit": 18,
+                    }
+                )
+            )
+            output_path.write_text(json.dumps({"meta": {}, "papers": []}))
+            args = argparse.Namespace(
+                config=str(config_path),
+                output=str(output_path),
+                model="",
+                max_results=None,
+                no_ai=False,
+                require_ai=True,
+                skip_if_no_new=False,
+                force_ai=False,
+            )
+            calls = []
+
+            def analyze(papers, model, **kwargs):
+                calls.append((model, kwargs["base_url"], kwargs["api_key"]))
+                if kwargs["base_url"]:
+                    raise RuntimeError("503: No available channel for the current group")
+                return {
+                    papers[0]["id"]: {
+                        "provider": "openai",
+                        "model": model,
+                        "basis": "abstract",
+                        "generated_at": "2026-09-15T00:00:00Z",
+                    }
+                }
+
+            with (
+                patch.dict(
+                    os.environ,
+                    {
+                        "GPT_API_KEY": "third-party-key",
+                        "GPT_BASE_URL": "https://provider.example/v1",
+                        "GPT_MODEL": "provider-model",
+                        "GPT_FALLBACK_MODELS": "another-provider-model",
+                        "GPT_API_MODE": "responses",
+                        "GPT_FALLBACK_API_MODES": "chat_completions",
+                        "OPENAI_API_KEY": "official-key",
+                        "OPENAI_MODEL": "gpt-official",
+                    },
+                    clear=True,
+                ),
+                patch("scripts.update_papers.fetch_all", return_value=([paper], [])),
+                patch("scripts.update_papers.analyze_with_openai", side_effect=analyze),
+            ):
+                outcome = update_data(args)
+
+        self.assertTrue(outcome.changed)
+        self.assertEqual(
+            calls,
+            [
+                ("provider-model", "https://provider.example/v1", "third-party-key"),
+                ("gpt-official", "", "official-key"),
+            ],
+        )
+        self.assertEqual(outcome.data["meta"]["analysis_endpoint"], "openai")
+        self.assertEqual(outcome.data["meta"]["analysis_model"], "gpt-official")
 
 
 if __name__ == "__main__":

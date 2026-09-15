@@ -10,8 +10,13 @@ on:
       - "requirements.txt"
       - ".github/workflows/update-and-deploy.yml"
   schedule:
-    # 09:05 in Beijing. Five minutes past the hour reduces scheduler congestion.
+    # 09:05 primary run; later runs are automatic retries. A successful first
+    # run makes retries exit harmlessly because there is no new work.
     - cron: "5 9 * * *"
+      timezone: "Asia/Shanghai"
+    - cron: "35 9 * * *"
+      timezone: "Asia/Shanghai"
+    - cron: "35 10 * * *"
       timezone: "Asia/Shanghai"
   workflow_dispatch:
     inputs:
@@ -54,13 +59,14 @@ jobs:
         id: gate
         env:
           EVENT_NAME: ${{ github.event_name }}
-          GPT_API_KEY: ${{ secrets.GPT_API_KEY || secrets.OPENAI_API_KEY }}
+          GPT_API_KEY: ${{ secrets.GPT_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
           if [[ "$EVENT_NAME" == "push" ]]; then
             echo "data_run=false" >> "$GITHUB_OUTPUT"
             echo "should_test=true" >> "$GITHUB_OUTPUT"
             echo "gate_reason=code_push" >> "$GITHUB_OUTPUT"
-          elif [[ -z "$GPT_API_KEY" ]]; then
+          elif [[ -z "$GPT_API_KEY" && -z "$OPENAI_API_KEY" ]]; then
             echo "data_run=false" >> "$GITHUB_OUTPUT"
             echo "should_test=false" >> "$GITHUB_OUTPUT"
             echo "gate_reason=missing_api_key" >> "$GITHUB_OUTPUT"
@@ -85,7 +91,8 @@ jobs:
         id: update_papers
         if: steps.gate.outputs.data_run == 'true'
         env:
-          GPT_API_KEY: ${{ secrets.GPT_API_KEY || secrets.OPENAI_API_KEY }}
+          GPT_API_KEY: ${{ secrets.GPT_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GPT_BASE_URL: ${{ secrets.GPT_BASE_URL || vars.GPT_BASE_URL || secrets.OPENAI_BASE_URL }}
           GPT_MODEL: ${{ vars.GPT_MODEL || vars.OPENAI_MODEL || 'gpt-5.6' }}
           GPT_FALLBACK_MODELS: ${{ vars.GPT_FALLBACK_MODELS || 'gpt-5.6,gpt-4.1-mini,gpt-4o-mini' }}
@@ -95,6 +102,10 @@ jobs:
           GPT_BATCH_SIZE: ${{ vars.GPT_BATCH_SIZE || '3' }}
           GPT_MAX_RETRIES: ${{ vars.GPT_MAX_RETRIES || '3' }}
           GPT_REASONING_EFFORT: ${{ vars.GPT_REASONING_EFFORT }}
+          OPENAI_MODEL: ${{ vars.OPENAI_MODEL || 'gpt-5.6' }}
+          OPENAI_FALLBACK_MODELS: ${{ vars.OPENAI_FALLBACK_MODELS }}
+          OPENAI_API_MODE: ${{ vars.OPENAI_API_MODE || 'responses' }}
+          OPENAI_FALLBACK_API_MODES: ${{ vars.OPENAI_FALLBACK_API_MODES }}
           ARXIV_CONTACT_EMAIL: ${{ vars.ARXIV_CONTACT_EMAIL }}
           EVENT_NAME: ${{ github.event_name }}
           FORCE_REFRESH: ${{ inputs.force_refresh || 'false' }}
@@ -144,7 +155,7 @@ jobs:
           elif [[ "$TEST_OUTCOME" == "failure" ]]; then
             incident="true"
             incident_reason="tests_failed"
-          elif [[ "$UPDATE_REASON" =~ ^(missing_api_key|ai_error|arxiv_unavailable)$ ]]; then
+          elif [[ "$UPDATE_REASON" =~ ^(missing_api_key|ai_error|ai_auth_error|ai_rate_limited|ai_provider_unavailable|arxiv_unavailable)$ ]]; then
             incident="true"
             incident_reason="$UPDATE_REASON"
           fi
@@ -181,7 +192,10 @@ jobs:
           path: site
 
       - name: Notify repository owner about automation failure
-        if: always() && steps.finalize.outputs.incident == 'true'
+        if: >-
+          always() &&
+          steps.finalize.outputs.incident == 'true' &&
+          (github.event_name != 'schedule' || github.event.schedule == '35 10 * * *')
         uses: actions/github-script@v8
         env:
           INCIDENT_REASON: ${{ steps.finalize.outputs.incident_reason }}
@@ -190,15 +204,26 @@ jobs:
           script: |
             const title = "⚠️ CMB Signal 自动更新异常";
             const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const reasonLabels = {
+              missing_api_key: "没有配置 GPT API Key",
+              ai_auth_error: "GPT API Key 鉴权失败",
+              ai_rate_limited: "GPT 服务持续限流",
+              ai_provider_unavailable: "第三方 GPT 账户组没有可用通道",
+              ai_error: "GPT 调用或返回格式异常",
+              arxiv_unavailable: "arXiv 搜索 API 与 RSS 均不可用",
+              tests_failed: "数据管线测试失败",
+              update_step_failed: "更新程序异常退出",
+            };
+            const reason = process.env.INCIDENT_REASON;
             const body = [
               "CMB Signal 已进入失败关闭状态：本次没有覆盖历史数据，也没有部署新页面。",
               "",
-              `- 原因：\`${process.env.INCIDENT_REASON}\``,
+              `- 原因：${reasonLabels[reason] || reason}（\`${reason}\`）`,
               `- 触发方式：\`${context.eventName}\``,
               `- 时间：${new Date().toISOString()}`,
               `- [查看 Actions 日志](${runUrl})`,
               "",
-              "修复 API Key、接口地址或服务状态后，请手动重新运行工作流；成功恢复时此 Issue 会自动关闭。",
+              "定时任务已经在 09:05、09:35、10:35 自动尝试；修复 API Key、接口地址或服务状态后，也可以手动重新运行。成功恢复时此 Issue 会自动关闭。",
             ].join("\n");
             const { data: issues } = await github.rest.issues.listForRepo({
               owner: context.repo.owner,
