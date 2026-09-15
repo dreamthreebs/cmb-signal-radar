@@ -49,6 +49,7 @@ GitHub Free 的项目 Pages 通常需要公开仓库；如果你的套餐支持�
 | `GPT_MODEL` | Variable | 模型名，默认 `gpt-5.6`；第三方需填写其模型标识 |
 | `GPT_FALLBACK_MODELS` | Variable | 逗号分隔的备用模型；主模型通道失败时依次尝试 |
 | `GPT_API_MODE` | Variable | `responses`（默认）或 `chat_completions` |
+| `GPT_FALLBACK_API_MODES` | Variable | 备用协议；默认在 Responses 失败后尝试 `chat_completions` |
 | `GPT_USER_AGENT` | Variable | 可选；第三方服务要求特定客户端标识时设置 |
 | `GPT_BATCH_SIZE` | Variable | 可选；每次分析的论文数，慢速第三方接口建议设为 `3` |
 | `GPT_MAX_RETRIES` | Variable | 可选；连接、超时、限流和服务端错误的最大自动重试次数，默认 `3` |
@@ -62,6 +63,7 @@ GitHub Free 的项目 Pages 通常需要公开仓库；如果你的套餐支持�
 - `GPT_MODEL`：`gpt-5.6`
 - `GPT_FALLBACK_MODELS`：`gpt-5.6,gpt-4.1-mini,gpt-4o-mini`
 - `GPT_API_MODE`：`responses`
+- `GPT_FALLBACK_API_MODES`：`chat_completions`
 
 第三方 OpenAI 兼容接口：
 

@@ -90,6 +90,7 @@ jobs:
           GPT_MODEL: ${{ vars.GPT_MODEL || vars.OPENAI_MODEL || 'gpt-5.6' }}
           GPT_FALLBACK_MODELS: ${{ vars.GPT_FALLBACK_MODELS || 'gpt-5.6,gpt-4.1-mini,gpt-4o-mini' }}
           GPT_API_MODE: ${{ vars.GPT_API_MODE || 'responses' }}
+          GPT_FALLBACK_API_MODES: ${{ vars.GPT_FALLBACK_API_MODES || 'chat_completions' }}
           GPT_USER_AGENT: ${{ vars.GPT_USER_AGENT }}
           GPT_BATCH_SIZE: ${{ vars.GPT_BATCH_SIZE || '3' }}
           GPT_MAX_RETRIES: ${{ vars.GPT_MAX_RETRIES || '3' }}

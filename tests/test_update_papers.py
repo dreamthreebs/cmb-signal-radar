@@ -14,6 +14,7 @@ from scripts.update_papers import (
     PaperAnalysis,
     add_submitted_date_window,
     analyze_with_openai,
+    api_mode_candidates,
     find_new_or_updated,
     fetch_all,
     model_candidates,
@@ -166,6 +167,12 @@ class UpdatePapersTests(unittest.TestCase):
         self.assertEqual(
             model_candidates("gpt-main", "gpt-backup, gpt-main, gpt-small"),
             ["gpt-main", "gpt-backup", "gpt-small"],
+        )
+
+    def test_api_mode_candidates_are_ordered_and_deduplicated(self):
+        self.assertEqual(
+            api_mode_candidates("responses", "chat_completions,responses"),
+            ["responses", "chat_completions"],
         )
 
     def test_cmb_paper_scores_as_focus(self):

@@ -543,6 +543,7 @@ def gpt_settings(args: argparse.Namespace) -> dict[str, str]:
             or DEFAULT_MODEL
         ).strip(),
         "api_mode": (os.getenv("GPT_API_MODE") or "responses").strip().lower(),
+        "fallback_api_modes": (os.getenv("GPT_FALLBACK_API_MODES") or "").strip(),
         "user_agent": (os.getenv("GPT_USER_AGENT") or "").strip(),
         "batch_size": (os.getenv("GPT_BATCH_SIZE") or "3").strip(),
         "max_retries": (os.getenv("GPT_MAX_RETRIES") or "3").strip(),
@@ -555,6 +556,15 @@ def model_candidates(primary_model: str, fallback_models: str) -> list[str]:
     candidates: list[str] = []
     for model in [primary_model, *fallback_models.split(",")]:
         normalized = model.strip()
+        if normalized and normalized not in candidates:
+            candidates.append(normalized)
+    return candidates
+
+
+def api_mode_candidates(primary_mode: str, fallback_modes: str) -> list[str]:
+    candidates: list[str] = []
+    for mode in [primary_mode, *fallback_modes.split(",")]:
+        normalized = mode.strip().lower()
         if normalized and normalized not in candidates:
             candidates.append(normalized)
     return candidates
@@ -963,17 +973,20 @@ def update_data(args: argparse.Namespace) -> UpdateOutcome:
             needs_analysis = selected_papers[:analysis_limit]
 
     model = settings["model"]
+    analysis_api_mode = settings["api_mode"]
     ai_error = ""
     if ai_key_present and needs_analysis:
         try:
-            candidates = model_candidates(model, settings["fallback_models"])
+            models = model_candidates(model, settings["fallback_models"])
+            api_modes = api_mode_candidates(settings["api_mode"], settings["fallback_api_modes"])
+            candidates = [(candidate_model, api_mode) for api_mode in api_modes for candidate_model in models]
             analyses: dict[str, dict[str, Any]] = {}
-            for index, candidate_model in enumerate(candidates):
+            for index, (candidate_model, candidate_api_mode) in enumerate(candidates):
                 LOGGER.info(
                     "Requesting GPT analysis for %s papers with %s via %s",
                     len(needs_analysis),
                     candidate_model,
-                    settings["api_mode"],
+                    candidate_api_mode,
                 )
                 try:
                     candidate_analyses = analyze_with_openai(
@@ -981,7 +994,7 @@ def update_data(args: argparse.Namespace) -> UpdateOutcome:
                         candidate_model,
                         api_key=settings["api_key"],
                         base_url=settings["base_url"],
-                        api_mode=settings["api_mode"],
+                        api_mode=candidate_api_mode,
                         user_agent=settings["user_agent"],
                         batch_size=int(settings["batch_size"]),
                         max_retries=int(settings["max_retries"]),
@@ -992,15 +1005,18 @@ def update_data(args: argparse.Namespace) -> UpdateOutcome:
                         raise RuntimeError(f"GPT response omitted {len(missing_ids)} requested papers")
                     analyses = candidate_analyses
                     model = candidate_model
+                    analysis_api_mode = candidate_api_mode
                     break
                 except Exception as model_exc:
                     if index == len(candidates) - 1:
                         raise
                     LOGGER.warning(
-                        "GPT model %s failed (%s); trying fallback model %s",
+                        "GPT route %s/%s failed (%s); trying %s/%s",
                         candidate_model,
+                        candidate_api_mode,
                         model_exc,
-                        candidates[index + 1],
+                        candidates[index + 1][0],
+                        candidates[index + 1][1],
                     )
             for paper in papers:
                 if paper["id"] in analyses:
@@ -1055,7 +1071,7 @@ def update_data(args: argparse.Namespace) -> UpdateOutcome:
             "source_url": "https://info.arxiv.org/help/api/",
             "analysis_status": analysis_status,
             "analysis_model": model if ai_key_present else None,
-            "analysis_api_mode": settings["api_mode"] if ai_key_present else None,
+            "analysis_api_mode": analysis_api_mode if ai_key_present else None,
             "analysis_endpoint": "custom" if settings["base_url"] else "openai",
             "analysis_error": ai_error,
             "analysis_basis": "title + abstract + categories",
