@@ -47,6 +47,7 @@ GitHub Free 的项目 Pages 通常需要公开仓库；如果你的套餐支持�
 | `GPT_API_KEY` | **Secret** | 必需。官方 OpenAI 或第三方接口的密钥 |
 | `GPT_BASE_URL` | **Secret** 或 Variable | 第三方接口地址，例如 `https://provider.example/v1`；官方 OpenAI 留空 |
 | `GPT_MODEL` | Variable | 模型名，默认 `gpt-5.6`；第三方需填写其模型标识 |
+| `GPT_FALLBACK_MODELS` | Variable | 逗号分隔的备用模型；主模型通道失败时依次尝试 |
 | `GPT_API_MODE` | Variable | `responses`（默认）或 `chat_completions` |
 | `GPT_USER_AGENT` | Variable | 可选；第三方服务要求特定客户端标识时设置 |
 | `GPT_BATCH_SIZE` | Variable | 可选；每次分析的论文数，慢速第三方接口建议设为 `3` |
@@ -59,6 +60,7 @@ GitHub Free 的项目 Pages 通常需要公开仓库；如果你的套餐支持�
 - `GPT_API_KEY`：你的 OpenAI API Key
 - `GPT_BASE_URL`：不设置
 - `GPT_MODEL`：`gpt-5.6`
+- `GPT_FALLBACK_MODELS`：`gpt-5.6,gpt-4.1-mini,gpt-4o-mini`
 - `GPT_API_MODE`：`responses`
 
 第三方 OpenAI 兼容接口：
@@ -131,8 +133,9 @@ python scripts/update_papers.py --max-results 15 --require-ai --force-ai
 - `schedule`：每天北京时间 09:05 检查一次。无新论文时不调用 GPT、不提交、不部署。
 - `workflow_dispatch`：在 Actions 页面手动启动；可选择强制刷新。
 - `push`：代码或页面发生修改时，只运行测试并部署已有数据，不调用 GPT。
-- GPT Key 缺失、鉴权失败、超时、返回结构不完整或 arXiv 暂时不可用时，任务不覆盖 `papers.json`、不部署新页面，并以失败状态结束。
-- GPT 遇到短暂的连接错误、超时、限流或服务端错误时会先自动退避重试 3 次；只有最终仍失败才进入告警流程。
+- arXiv 搜索 API 返回 429 或不可用时，会自动切到官方 `astro-ph.CO` RSS；只有搜索 API 与 RSS 都不可用时才停止部署。
+- GPT 遇到短暂连接错误、超时、限流或服务端错误时会先自动重试；主模型仍失败时依次尝试 `GPT_FALLBACK_MODELS`，全部失败才进入告警流程。
+- GPT Key 缺失、鉴权失败、返回结构不完整且所有备用模型也失败，或 arXiv 两路来源都不可用时，任务不覆盖 `papers.json`、不部署新页面。
 - 故障时工作流会自动创建并指派 `⚠️ CMB Signal 自动更新异常` Issue；连续故障只更新同一条，API 恢复且成功更新后自动关闭。
 
 ## 调整选题范围

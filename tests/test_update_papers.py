@@ -10,11 +10,15 @@ from unittest.mock import patch
 
 from scripts.update_papers import (
     AnalysisBatch,
+    ArxivRateLimitError,
     PaperAnalysis,
     add_submitted_date_window,
     analyze_with_openai,
     find_new_or_updated,
+    fetch_all,
+    model_candidates,
     parse_atom_feed,
+    parse_rss_feed,
     score_paper,
     select_archive,
     select_current,
@@ -39,6 +43,24 @@ ATOM_SAMPLE = """<?xml version="1.0" encoding="UTF-8"?>
     <category term="astro-ph.CO" />
   </entry>
 </feed>
+"""
+
+RSS_SAMPLE = """<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <item>
+      <title>A complete RSS fallback paper</title>
+      <link>https://arxiv.org/abs/2609.00001</link>
+      <description>arXiv:2609.00001v2 Announce Type: replace Abstract: We update a CMB analysis.</description>
+      <guid>oai:arXiv.org:2609.00001v2</guid>
+      <category>astro-ph.CO</category>
+      <category>gr-qc</category>
+      <pubDate>Tue, 15 Sep 2026 00:00:00 -0400</pubDate>
+      <arxiv:announce_type>replace</arxiv:announce_type>
+      <dc:creator>A. Researcher, B. Scientist</dc:creator>
+    </item>
+  </channel>
+</rss>
 """
 
 
@@ -110,6 +132,41 @@ class UpdatePapersTests(unittest.TestCase):
         self.assertEqual(paper["id"], "2608.00001")
         self.assertEqual(paper["primary_category"], "astro-ph.CO")
         self.assertTrue(paper["pdf_url"].startswith("https://"))
+
+    def test_rss_parsing_provides_complete_analysis_metadata(self):
+        papers = parse_rss_feed(RSS_SAMPLE, "astro-ph.CO-rss")
+        self.assertEqual(len(papers), 1)
+        paper = papers[0]
+        self.assertEqual(paper["id"], "2609.00001")
+        self.assertEqual(paper["versioned_id"], "2609.00001v2")
+        self.assertEqual(paper["abstract"], "We update a CMB analysis.")
+        self.assertEqual(paper["authors"], ["A. Researcher", "B. Scientist"])
+        self.assertEqual(paper["announce_type"], "replace")
+        self.assertEqual(paper["published"], "2026-09-15T04:00:00Z")
+
+    def test_arxiv_429_uses_rss_and_stops_search_queries(self):
+        config = {
+            "complete_category": "astro-ph.CO",
+            "queries": [
+                {"name": "co", "query": "cat:astro-ph.CO", "max_results": 5},
+                {"name": "other", "query": "cat:gr-qc", "max_results": 5},
+            ],
+        }
+        with (
+            patch("scripts.update_papers.request_feed", side_effect=ArxivRateLimitError("429")) as api,
+            patch("scripts.update_papers.request_rss", return_value=RSS_SAMPLE) as rss,
+        ):
+            papers, errors = fetch_all(config)
+        self.assertEqual([paper["id"] for paper in papers], ["2609.00001"])
+        self.assertEqual(api.call_count, 1)
+        rss.assert_called_once()
+        self.assertIn("429", errors[0])
+
+    def test_model_candidates_are_ordered_and_deduplicated(self):
+        self.assertEqual(
+            model_candidates("gpt-main", "gpt-backup, gpt-main, gpt-small"),
+            ["gpt-main", "gpt-backup", "gpt-small"],
+        )
 
     def test_cmb_paper_scores_as_focus(self):
         paper = parse_atom_feed(ATOM_SAMPLE, "test")[0]

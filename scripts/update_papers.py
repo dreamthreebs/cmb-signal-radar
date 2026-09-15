@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+from email.utils import parsedate_to_datetime
 import hashlib
 import json
 import logging
@@ -22,10 +23,16 @@ from pydantic import BaseModel, Field
 
 
 ARXIV_API_URL = "https://export.arxiv.org/api/query"
+ARXIV_RSS_URL = "https://rss.arxiv.org/rss/{category}"
 ATOM = "{http://www.w3.org/2005/Atom}"
 ARXIV = "{http://arxiv.org/schemas/atom}"
+DC = "{http://purl.org/dc/elements/1.1/}"
 DEFAULT_MODEL = "gpt-5.6"
 LOGGER = logging.getLogger("cmb-radar")
+
+
+class ArxivRateLimitError(requests.HTTPError):
+    """Raised when the arXiv search API asks this run to stop sending requests."""
 
 
 @dataclass(frozen=True)
@@ -243,6 +250,59 @@ def parse_atom_feed(xml_text: str, source_name: str) -> list[dict[str, Any]]:
     return papers
 
 
+def parse_rss_feed(xml_text: str, source_name: str) -> list[dict[str, Any]]:
+    root = ET.fromstring(xml_text)
+    channel = root.find("channel")
+    if channel is None:
+        return []
+
+    papers: list[dict[str, Any]] = []
+    for item in channel.findall("item"):
+        entry_url = compact_whitespace(item.findtext("link"))
+        identifier = arxiv_id_from_url(entry_url)
+        title = compact_whitespace(item.findtext("title"))
+        description = compact_whitespace(item.findtext("description"))
+        abstract_match = re.search(r"\bAbstract:\s*(.*)$", description, re.IGNORECASE)
+        abstract = compact_whitespace(abstract_match.group(1) if abstract_match else description)
+        guid = compact_whitespace(item.findtext("guid"))
+        versioned_match = re.search(r"(\d{4}\.\d{4,5}v\d+)", guid or description)
+        versioned_id = versioned_match.group(1) if versioned_match else identifier
+        categories = [
+            compact_whitespace(node.text)
+            for node in item.findall("category")
+            if compact_whitespace(node.text)
+        ]
+        creator = compact_whitespace(item.findtext(f"{DC}creator"))
+        authors = [compact_whitespace(name) for name in creator.split(",") if compact_whitespace(name)]
+        announced = parsedate_to_datetime(compact_whitespace(item.findtext("pubDate")))
+        if announced.tzinfo is None:
+            announced = announced.replace(tzinfo=timezone.utc)
+        announced_iso = announced.astimezone(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+        announce_type = compact_whitespace(item.findtext(f"{ARXIV}announce_type")) or "unknown"
+        papers.append(
+            {
+                "id": identifier,
+                "versioned_id": versioned_id,
+                "title": title,
+                "authors": authors,
+                "abstract": abstract,
+                "published": announced_iso,
+                "updated": announced_iso,
+                "abs_url": entry_url.replace("http://", "https://"),
+                "pdf_url": f"https://arxiv.org/pdf/{identifier}",
+                "categories": categories,
+                "primary_category": categories[0] if categories else "",
+                "comment": "",
+                "journal_ref": "",
+                "doi": "",
+                "source_groups": [source_name],
+                "announce_type": announce_type,
+                "content_hash": content_hash(title, abstract),
+            }
+        )
+    return papers
+
+
 def request_feed(
     session: requests.Session,
     query: str,
@@ -261,15 +321,37 @@ def request_feed(
     for attempt in range(retries):
         try:
             response = session.get(ARXIV_API_URL, params=params, timeout=75)
-            if response.status_code == 429 or response.status_code >= 500:
+            if response.status_code == 429:
+                raise ArxivRateLimitError("arXiv returned 429", response=response)
+            if response.status_code >= 500:
                 raise requests.HTTPError(f"arXiv returned {response.status_code}", response=response)
             response.raise_for_status()
             return response.text
+        except ArxivRateLimitError:
+            raise
         except requests.RequestException:
             if attempt == retries - 1:
                 raise
             delay = 4 * (attempt + 1)
             LOGGER.warning("arXiv request failed; retrying in %ss", delay)
+            time.sleep(delay)
+    raise RuntimeError("unreachable")
+
+
+def request_rss(session: requests.Session, category: str, retries: int = 3) -> str:
+    url = ARXIV_RSS_URL.format(category=category)
+    for attempt in range(retries):
+        try:
+            response = session.get(url, timeout=45)
+            if response.status_code == 429 or response.status_code >= 500:
+                raise requests.HTTPError(f"arXiv RSS returned {response.status_code}", response=response)
+            response.raise_for_status()
+            return response.text
+        except requests.RequestException:
+            if attempt == retries - 1:
+                raise
+            delay = 5 * (attempt + 1)
+            LOGGER.warning("arXiv RSS request failed; retrying in %ss", delay)
             time.sleep(delay)
     raise RuntimeError("unreachable")
 
@@ -295,6 +377,39 @@ def fetch_all(
 
     merged: dict[str, dict[str, Any]] = {}
     errors: list[str] = []
+    complete_category = str(config.get("complete_category", "astro-ph.CO")).strip()
+
+    def merge_papers(papers: list[dict[str, Any]]) -> None:
+        for paper in papers:
+            existing = merged.get(paper["id"])
+            if existing is None:
+                merged[paper["id"]] = paper
+                continue
+            existing["source_groups"] = sorted(set(existing["source_groups"] + paper["source_groups"]))
+            existing["categories"] = sorted(set(existing["categories"] + paper["categories"]))
+            if paper.get("updated", "") > existing.get("updated", ""):
+                retained_groups = existing["source_groups"]
+                retained_categories = existing["categories"]
+                existing.update(paper)
+                existing["source_groups"] = retained_groups
+                existing["categories"] = retained_categories
+
+    def merge_rss_fallback() -> bool:
+        if backfill_days or not complete_category:
+            return False
+        LOGGER.warning("Using the official %s RSS feed as the arXiv API fallback", complete_category)
+        try:
+            rss_xml = request_rss(session, complete_category)
+            rss_papers = parse_rss_feed(rss_xml, f"{complete_category}-rss")
+        except (requests.RequestException, ET.ParseError, ValueError) as exc:
+            message = f"{complete_category}-rss: {exc}"
+            LOGGER.error("RSS fallback failed: %s", message)
+            errors.append(message)
+            return False
+        merge_papers(rss_papers)
+        LOGGER.info("RSS fallback returned %s %s announcements", len(rss_papers), complete_category)
+        return bool(rss_papers)
+
     queries = config.get("backfill_queries", []) if backfill_days else config.get("queries", [])
     if not queries:
         queries = config.get("queries", [])
@@ -331,20 +446,16 @@ def fetch_all(
             message = f"{name}: {exc}"
             LOGGER.error("Fetch failed: %s", message)
             errors.append(message)
+            if isinstance(exc, ArxivRateLimitError) and merge_rss_fallback():
+                LOGGER.warning("Stopping search API requests after 429; RSS data will drive this update")
+                break
             continue
-        for paper in parsed:
-            existing = merged.get(paper["id"])
-            if existing is None:
-                merged[paper["id"]] = paper
-                continue
-            existing["source_groups"] = sorted(set(existing["source_groups"] + paper["source_groups"]))
-            existing["categories"] = sorted(set(existing["categories"] + paper["categories"]))
-            if paper.get("updated", "") > existing.get("updated", ""):
-                retained_groups = existing["source_groups"]
-                retained_categories = existing["categories"]
-                existing.update(paper)
-                existing["source_groups"] = retained_groups
-                existing["categories"] = retained_categories
+        merge_papers(parsed)
+
+    if not backfill_days and complete_category and not any(
+        complete_category in paper.get("categories", []) for paper in merged.values()
+    ):
+        merge_rss_fallback()
     return list(merged.values()), errors
 
 
@@ -435,8 +546,18 @@ def gpt_settings(args: argparse.Namespace) -> dict[str, str]:
         "user_agent": (os.getenv("GPT_USER_AGENT") or "").strip(),
         "batch_size": (os.getenv("GPT_BATCH_SIZE") or "3").strip(),
         "max_retries": (os.getenv("GPT_MAX_RETRIES") or "3").strip(),
+        "fallback_models": (os.getenv("GPT_FALLBACK_MODELS") or "").strip(),
         "reasoning_effort": (os.getenv("GPT_REASONING_EFFORT") or "").strip().lower(),
     }
+
+
+def model_candidates(primary_model: str, fallback_models: str) -> list[str]:
+    candidates: list[str] = []
+    for model in [primary_model, *fallback_models.split(",")]:
+        normalized = model.strip()
+        if normalized and normalized not in candidates:
+            candidates.append(normalized)
+    return candidates
 
 
 def analyze_with_openai(
@@ -723,6 +844,10 @@ def merge_history(
     previous = {paper["id"]: paper for paper in existing.get("papers", []) if paper.get("id")}
     for paper in selected:
         old = previous.get(paper["id"])
+        from_rss = any(str(group).endswith("-rss") for group in paper.get("source_groups", []))
+        if old and from_rss and paper.get("announce_type") != "new":
+            paper["published"] = old.get("published", paper["published"])
+            paper["primary_category"] = old.get("primary_category", paper.get("primary_category", ""))
         if old and old.get("content_hash") == paper.get("content_hash") and old.get("analysis"):
             paper["analysis"] = old["analysis"]
             paper["first_selected_at"] = old.get("first_selected_at", iso_now())
@@ -840,27 +965,43 @@ def update_data(args: argparse.Namespace) -> UpdateOutcome:
     model = settings["model"]
     ai_error = ""
     if ai_key_present and needs_analysis:
-        LOGGER.info(
-            "Requesting GPT analysis for %s papers with %s via %s",
-            len(needs_analysis),
-            model,
-            settings["api_mode"],
-        )
         try:
-            analyses = analyze_with_openai(
-                needs_analysis,
-                model,
-                api_key=settings["api_key"],
-                base_url=settings["base_url"],
-                api_mode=settings["api_mode"],
-                user_agent=settings["user_agent"],
-                batch_size=int(settings["batch_size"]),
-                max_retries=int(settings["max_retries"]),
-                reasoning_effort=settings["reasoning_effort"],
-            )
-            missing_ids = {paper["id"] for paper in needs_analysis} - set(analyses)
-            if missing_ids:
-                raise RuntimeError(f"GPT response omitted {len(missing_ids)} requested papers")
+            candidates = model_candidates(model, settings["fallback_models"])
+            analyses: dict[str, dict[str, Any]] = {}
+            for index, candidate_model in enumerate(candidates):
+                LOGGER.info(
+                    "Requesting GPT analysis for %s papers with %s via %s",
+                    len(needs_analysis),
+                    candidate_model,
+                    settings["api_mode"],
+                )
+                try:
+                    candidate_analyses = analyze_with_openai(
+                        needs_analysis,
+                        candidate_model,
+                        api_key=settings["api_key"],
+                        base_url=settings["base_url"],
+                        api_mode=settings["api_mode"],
+                        user_agent=settings["user_agent"],
+                        batch_size=int(settings["batch_size"]),
+                        max_retries=int(settings["max_retries"]),
+                        reasoning_effort=settings["reasoning_effort"],
+                    )
+                    missing_ids = {paper["id"] for paper in needs_analysis} - set(candidate_analyses)
+                    if missing_ids:
+                        raise RuntimeError(f"GPT response omitted {len(missing_ids)} requested papers")
+                    analyses = candidate_analyses
+                    model = candidate_model
+                    break
+                except Exception as model_exc:
+                    if index == len(candidates) - 1:
+                        raise
+                    LOGGER.warning(
+                        "GPT model %s failed (%s); trying fallback model %s",
+                        candidate_model,
+                        model_exc,
+                        candidates[index + 1],
+                    )
             for paper in papers:
                 if paper["id"] in analyses:
                     paper["analysis"] = analyses[paper["id"]]
