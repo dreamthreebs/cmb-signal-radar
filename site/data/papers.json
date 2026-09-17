@@ -1,7 +1,7 @@
 {
   "meta": {
-    "generated_at": "2026-09-17T03:29:52Z",
-    "last_attempt_at": "2026-09-17T03:29:52Z",
+    "generated_at": "2026-09-17T03:32:04Z",
+    "last_attempt_at": "2026-09-17T03:32:04Z",
     "fetch_status": "partial",
     "fetch_errors": [
       "cmb-and-cosmology: arXiv returned 429"
@@ -9,9 +9,9 @@
     "source": "arXiv API",
     "source_url": "https://info.arxiv.org/help/api/",
     "analysis_status": "mixed",
-    "analysis_model": "gpt-5.6-sol",
-    "analysis_api_mode": "responses",
-    "analysis_endpoint": "custom",
+    "analysis_model": "deepseek-flash",
+    "analysis_api_mode": "chat_completions",
+    "analysis_endpoint": "deepseek",
     "analysis_error": "",
     "analysis_basis": "title + abstract + categories",
     "lookback_days": 21,
@@ -386,8 +386,8 @@
       "2020-06",
       "2015-08"
     ],
-    "archive_ai_count": 1137,
-    "archive_pending_count": 1201,
+    "archive_ai_count": 1138,
+    "archive_pending_count": 1200,
     "complete_category": "astro-ph.CO",
     "complete_category_count": 2196,
     "current_focus_ids": [
@@ -480,7 +480,7 @@
         "confidence": 94
       },
       "first_selected_at": "2026-09-17T03:28:28Z",
-      "last_selected_at": "2026-09-17T03:28:28Z"
+      "last_selected_at": "2026-09-17T03:31:59Z"
     },
     {
       "id": "2609.16122",
@@ -557,7 +557,7 @@
         "confidence": 92
       },
       "first_selected_at": "2026-09-17T03:28:28Z",
-      "last_selected_at": "2026-09-17T03:28:28Z"
+      "last_selected_at": "2026-09-17T03:31:59Z"
     },
     {
       "id": "2609.16128",
@@ -635,7 +635,7 @@
         "confidence": 96
       },
       "first_selected_at": "2026-09-17T03:28:28Z",
-      "last_selected_at": "2026-09-17T03:28:28Z"
+      "last_selected_at": "2026-09-17T03:31:59Z"
     },
     {
       "id": "2609.16194",
@@ -742,7 +742,7 @@
         "confidence": 95
       },
       "first_selected_at": "2026-09-17T03:28:28Z",
-      "last_selected_at": "2026-09-17T03:28:28Z"
+      "last_selected_at": "2026-09-17T03:31:59Z"
     },
     {
       "id": "2609.16547",
@@ -818,7 +818,7 @@
         "confidence": 94
       },
       "first_selected_at": "2026-09-17T03:28:28Z",
-      "last_selected_at": "2026-09-17T03:28:28Z"
+      "last_selected_at": "2026-09-17T03:31:59Z"
     },
     {
       "id": "2609.16719",
@@ -859,22 +859,30 @@
         "surveys"
       ],
       "analysis": {
-        "provider": "fallback",
-        "model": null,
+        "provider": "openai",
+        "model": "deepseek-flash",
         "basis": "abstract",
-        "generated_at": "2026-09-17T03:28:28Z",
-        "title_zh": "",
-        "summary_zh": "AI 解读尚未启用。摘要首句：The field-level analysis of galaxy clustering with a forward model based on the Effective Field Theory of Large Scale structure provides cosmological measurements at optimal statistical precision which are simultaneously robust with respect to theoretical uncertainties regarding galaxy formation.",
-        "why_it_matters_zh": "这项工作涉及大型巡天、宇宙学；建议结合原文确认结论、假设与统计显著性。",
-        "key_points": [],
-        "methods": [],
-        "reading_note_zh": "当前仅展示 arXiv 元数据与规则评分。配置 GPT_API_KEY 后会自动补全中文解读。",
-        "audience": "按需浏览",
-        "novelty_score": 3,
-        "confidence": 30
+        "generated_at": "2026-09-17T03:32:04Z",
+        "title_zh": "红移空间中场级分析给出的宇宙学信息",
+        "summary_zh": "本文用基于大尺度结构有效场论（EFTofLSS）的正向模型，在类 DESI LRG 的红移空间快照上，量化场级分析相对于功率谱与双谱联合分析的精度提升。摘要报告：在 ΛCDM 下原初扰动振幅的测量精度可提升约两倍，在扩展宇宙学模型中提升更明显，原初振幅最高可达三倍、偏离 ΛCDM 的参数约两倍。",
+        "why_it_matters_zh": "CMB 给出的原初振幅与结构增长信息需要通过大尺度结构观测独立检验；本文说明场级分析能否在同等巡天数据上显著提高这类宇宙学参数的约束精度，从而影响未来巡天（如 DESI 类样本）的宇宙学产出预期与分析方法选择。",
+        "key_points": [
+          "场级分析在扰动区间内相对功率谱+双谱有显著精度增益。",
+          "ΛCDM 下原初振幅精度约提升两倍；扩展宇宙学下增益更大。",
+          "实现这些增益需要观测建模、系统误差建模和数值推断技术的实质发展。"
+        ],
+        "methods": [
+          "基于大尺度结构有效场论（EFTofLSS）的正向模型场级分析",
+          "使用 LEFTfield 正向模型生成红移空间 mock 数据，并用于场级分析",
+          "对功率谱与双谱做 Fisher 预报以比较精度"
+        ],
+        "reading_note_zh": "精读时最该核对：mock 与 DESI LRG 样本的相似程度、场级分析与 Fisher 预报的假设是否一致，以及“精度提升两倍/三倍”具体对应哪些参数及是否计入观测系统误差。",
+        "audience": "领域相关",
+        "novelty_score": 7,
+        "confidence": 60
       },
       "first_selected_at": "2026-09-17T03:28:28Z",
-      "last_selected_at": "2026-09-17T03:28:28Z"
+      "last_selected_at": "2026-09-17T03:31:59Z"
     },
     {
       "id": "2609.17205",
@@ -929,7 +937,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-09-17T03:28:28Z",
-      "last_selected_at": "2026-09-17T03:28:28Z"
+      "last_selected_at": "2026-09-17T03:31:59Z"
     },
     {
       "id": "2609.17393",
@@ -986,7 +994,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-09-17T03:28:28Z",
-      "last_selected_at": "2026-09-17T03:28:28Z"
+      "last_selected_at": "2026-09-17T03:31:59Z"
     },
     {
       "id": "2609.17423",
@@ -1052,7 +1060,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-09-17T03:28:28Z",
-      "last_selected_at": "2026-09-17T03:28:28Z"
+      "last_selected_at": "2026-09-17T03:31:59Z"
     },
     {
       "id": "2609.17531",
@@ -1125,7 +1133,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-09-17T03:28:28Z",
-      "last_selected_at": "2026-09-17T03:28:28Z"
+      "last_selected_at": "2026-09-17T03:31:59Z"
     },
     {
       "id": "2609.16120",
@@ -1188,7 +1196,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-09-17T03:28:28Z",
-      "last_selected_at": "2026-09-17T03:28:28Z"
+      "last_selected_at": "2026-09-17T03:31:59Z"
     },
     {
       "id": "2609.16134",
@@ -1264,7 +1272,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-09-17T03:28:28Z",
-      "last_selected_at": "2026-09-17T03:28:28Z"
+      "last_selected_at": "2026-09-17T03:31:59Z"
     },
     {
       "id": "2609.16209",
@@ -1329,7 +1337,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-09-17T03:28:28Z",
-      "last_selected_at": "2026-09-17T03:28:28Z"
+      "last_selected_at": "2026-09-17T03:31:59Z"
     },
     {
       "id": "2609.16425",
@@ -1391,7 +1399,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-09-17T03:28:28Z",
-      "last_selected_at": "2026-09-17T03:28:28Z"
+      "last_selected_at": "2026-09-17T03:31:59Z"
     },
     {
       "id": "2609.16534",
@@ -1453,7 +1461,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-09-17T03:28:28Z",
-      "last_selected_at": "2026-09-17T03:28:28Z"
+      "last_selected_at": "2026-09-17T03:31:59Z"
     },
     {
       "id": "2609.16961",
@@ -1514,7 +1522,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-09-17T03:28:28Z",
-      "last_selected_at": "2026-09-17T03:28:28Z"
+      "last_selected_at": "2026-09-17T03:31:59Z"
     },
     {
       "id": "2609.16972",
@@ -1570,7 +1578,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-09-17T03:28:28Z",
-      "last_selected_at": "2026-09-17T03:28:28Z"
+      "last_selected_at": "2026-09-17T03:31:59Z"
     },
     {
       "id": "2609.17275",
@@ -1643,7 +1651,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-09-17T03:28:28Z",
-      "last_selected_at": "2026-09-17T03:28:28Z"
+      "last_selected_at": "2026-09-17T03:31:59Z"
     },
     {
       "id": "2609.17315",
@@ -1705,7 +1713,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-09-17T03:28:28Z",
-      "last_selected_at": "2026-09-17T03:28:28Z"
+      "last_selected_at": "2026-09-17T03:31:59Z"
     },
     {
       "id": "2609.17412",
@@ -1767,7 +1775,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-09-17T03:28:28Z",
-      "last_selected_at": "2026-09-17T03:28:28Z"
+      "last_selected_at": "2026-09-17T03:31:59Z"
     },
     {
       "id": "2609.17530",
@@ -1830,7 +1838,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-09-17T03:28:28Z",
-      "last_selected_at": "2026-09-17T03:28:28Z"
+      "last_selected_at": "2026-09-17T03:31:59Z"
     },
     {
       "id": "2508.05467",
@@ -1955,7 +1963,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-09-17T03:28:28Z",
-      "last_selected_at": "2026-09-17T03:28:28Z"
+      "last_selected_at": "2026-09-17T03:31:59Z"
     },
     {
       "id": "2511.18134",
@@ -2016,7 +2024,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-09-17T03:28:28Z",
-      "last_selected_at": "2026-09-17T03:28:28Z"
+      "last_selected_at": "2026-09-17T03:31:59Z"
     },
     {
       "id": "2602.02484",
@@ -2081,7 +2089,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-09-17T03:28:28Z",
-      "last_selected_at": "2026-09-17T03:28:28Z"
+      "last_selected_at": "2026-09-17T03:31:59Z"
     },
     {
       "id": "2602.17821",
@@ -2149,7 +2157,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-09-17T03:28:28Z",
-      "last_selected_at": "2026-09-17T03:28:28Z"
+      "last_selected_at": "2026-09-17T03:31:59Z"
     },
     {
       "id": "2602.19075",
@@ -2208,7 +2216,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-09-17T03:28:28Z",
-      "last_selected_at": "2026-09-17T03:28:28Z"
+      "last_selected_at": "2026-09-17T03:31:59Z"
     },
     {
       "id": "2603.23247",
@@ -2269,7 +2277,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-09-17T03:28:28Z",
-      "last_selected_at": "2026-09-17T03:28:28Z"
+      "last_selected_at": "2026-09-17T03:31:59Z"
     },
     {
       "id": "2601.04307",
@@ -2333,7 +2341,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-09-17T03:28:28Z",
-      "last_selected_at": "2026-09-17T03:28:28Z"
+      "last_selected_at": "2026-09-17T03:31:59Z"
     },
     {
       "id": "2604.08968",
@@ -2398,7 +2406,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-09-17T03:28:28Z",
-      "last_selected_at": "2026-09-17T03:28:28Z"
+      "last_selected_at": "2026-09-17T03:31:59Z"
     },
     {
       "id": "2609.13363",
@@ -3169,7 +3177,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-09-15T08:39:24Z",
-      "last_selected_at": "2026-09-17T03:28:28Z"
+      "last_selected_at": "2026-09-17T03:31:59Z"
     },
     {
       "id": "2609.15375",
@@ -7489,7 +7497,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-09-09T05:56:35Z",
-      "last_selected_at": "2026-09-17T03:28:28Z"
+      "last_selected_at": "2026-09-17T03:31:59Z"
     },
     {
       "id": "2609.08778",
@@ -9538,7 +9546,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-09-09T05:56:35Z",
-      "last_selected_at": "2026-09-17T03:28:28Z"
+      "last_selected_at": "2026-09-17T03:31:59Z"
     },
     {
       "id": "2609.07043",
@@ -12491,7 +12499,7 @@
         "confidence": 88
       },
       "first_selected_at": "2026-09-07T06:00:27Z",
-      "last_selected_at": "2026-09-17T03:28:28Z"
+      "last_selected_at": "2026-09-17T03:31:59Z"
     },
     {
       "id": "2609.04488",
@@ -100757,7 +100765,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-08-10T06:47:32Z",
-      "last_selected_at": "2026-09-17T03:28:28Z"
+      "last_selected_at": "2026-09-17T03:31:59Z"
     },
     {
       "id": "2606.30711",
@@ -125739,7 +125747,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-08-10T06:47:32Z",
-      "last_selected_at": "2026-09-17T03:28:28Z"
+      "last_selected_at": "2026-09-17T03:31:59Z"
     },
     {
       "id": "2606.11929",
@@ -146189,7 +146197,7 @@
         "confidence": 30
       },
       "first_selected_at": "2026-08-10T06:47:32Z",
-      "last_selected_at": "2026-09-17T03:28:28Z"
+      "last_selected_at": "2026-09-17T03:31:59Z"
     },
     {
       "id": "2605.23512",
