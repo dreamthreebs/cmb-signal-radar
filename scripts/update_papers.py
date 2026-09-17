@@ -535,6 +535,7 @@ def fallback_analysis(paper: dict[str, Any]) -> dict[str, Any]:
 def gpt_settings(args: argparse.Namespace) -> dict[str, str]:
     configured_api_key = os.getenv("GPT_API_KEY", "").strip()
     official_api_key = os.getenv("OPENAI_API_KEY", "").strip()
+    deepseek_api_key = os.getenv("DEEPSEEK_API_KEY", "").strip()
     using_configured_provider = bool(configured_api_key)
     return {
         "api_key": configured_api_key or official_api_key,
@@ -565,6 +566,18 @@ def gpt_settings(args: argparse.Namespace) -> dict[str, str]:
         "official_fallback_api_modes": (
             os.getenv("OPENAI_FALLBACK_API_MODES") or ""
         ).strip(),
+        "deepseek_api_key": deepseek_api_key,
+        "deepseek_base_url": os.getenv("DEEPSEEK_BASE_URL", "").strip(),
+        "deepseek_model": (os.getenv("DEEPSEEK_MODEL") or "deepseek-flash").strip(),
+        "deepseek_fallback_models": (
+            os.getenv("DEEPSEEK_FALLBACK_MODELS") or ""
+        ).strip(),
+        "deepseek_api_mode": (
+            os.getenv("DEEPSEEK_API_MODE") or "chat_completions"
+        ).strip().lower(),
+        "deepseek_fallback_api_modes": (
+            os.getenv("DEEPSEEK_FALLBACK_API_MODES") or ""
+        ).strip(),
     }
 
 
@@ -589,19 +602,20 @@ def api_mode_candidates(primary_mode: str, fallback_modes: str) -> list[str]:
 def gpt_route_candidates(settings: dict[str, str]) -> list[dict[str, str]]:
     routes: list[dict[str, str]] = []
     endpoint = "custom" if settings["base_url"] else "openai"
-    for api_mode in api_mode_candidates(settings["api_mode"], settings["fallback_api_modes"]):
-        for model in model_candidates(settings["model"], settings["fallback_models"]):
-            routes.append(
-                {
-                    "endpoint": endpoint,
-                    "model": model,
-                    "api_mode": api_mode,
-                    "api_key": settings["api_key"],
-                    "base_url": settings["base_url"],
-                    "user_agent": settings["user_agent"] if endpoint == "custom" else "",
-                    "reasoning_effort": settings["reasoning_effort"],
-                }
-            )
+    if settings["api_key"]:
+        for api_mode in api_mode_candidates(settings["api_mode"], settings["fallback_api_modes"]):
+            for model in model_candidates(settings["model"], settings["fallback_models"]):
+                routes.append(
+                    {
+                        "endpoint": endpoint,
+                        "model": model,
+                        "api_mode": api_mode,
+                        "api_key": settings["api_key"],
+                        "base_url": settings["base_url"],
+                        "user_agent": settings["user_agent"] if endpoint == "custom" else "",
+                        "reasoning_effort": settings["reasoning_effort"],
+                    }
+                )
 
     official_key = settings["official_api_key"]
     official_is_distinct_fallback = bool(
@@ -625,6 +639,26 @@ def gpt_route_candidates(settings: dict[str, str]) -> list[dict[str, str]]:
                         "base_url": "",
                         "user_agent": "",
                         "reasoning_effort": settings["reasoning_effort"],
+                    }
+                )
+    deepseek_key = settings["deepseek_api_key"]
+    deepseek_base_url = settings["deepseek_base_url"]
+    if deepseek_key and deepseek_base_url:
+        for api_mode in api_mode_candidates(
+            settings["deepseek_api_mode"], settings["deepseek_fallback_api_modes"]
+        ):
+            for model in model_candidates(
+                settings["deepseek_model"], settings["deepseek_fallback_models"]
+            ):
+                routes.append(
+                    {
+                        "endpoint": "deepseek",
+                        "model": model,
+                        "api_mode": api_mode,
+                        "api_key": deepseek_key,
+                        "base_url": deepseek_base_url,
+                        "user_agent": "",
+                        "reasoning_effort": "",
                     }
                 )
     return routes
@@ -1031,7 +1065,8 @@ def update_data(args: argparse.Namespace) -> UpdateOutcome:
         (paper for paper in papers if paper["id"] in selected_order),
         key=lambda paper: selected_order[paper["id"]],
     )
-    ai_key_present = bool(settings["api_key"]) and not args.no_ai
+    configured_routes = gpt_route_candidates(settings)
+    ai_key_present = bool(configured_routes) and not args.no_ai
     configured_limit = int(config.get("analysis_limit", 12))
     analysis_cap = getattr(args, "analysis_cap", None)
     analysis_limit = configured_limit if analysis_cap is None else max(1, int(analysis_cap))
@@ -1056,76 +1091,101 @@ def update_data(args: argparse.Namespace) -> UpdateOutcome:
         if args.force_ai and not needs_analysis:
             needs_analysis = selected_papers[:analysis_limit]
 
-    model = settings["model"]
-    analysis_api_mode = settings["api_mode"]
-    analysis_endpoint = "custom" if settings["base_url"] else "openai"
+    first_route = configured_routes[0] if configured_routes else {}
+    model = first_route.get("model", settings["model"])
+    analysis_api_mode = first_route.get("api_mode", settings["api_mode"])
+    analysis_endpoint = first_route.get(
+        "endpoint", "custom" if settings["base_url"] else "openai"
+    )
     ai_error = ""
     if ai_key_present and needs_analysis:
         try:
-            candidates = gpt_route_candidates(settings)
+            candidates = configured_routes
             analyses: dict[str, dict[str, Any]] = {}
+            remaining_papers = list(needs_analysis)
             unavailable_endpoints: set[str] = set()
             last_error: Exception | None = None
             for index, route in enumerate(candidates):
+                if not remaining_papers:
+                    break
                 if route["endpoint"] in unavailable_endpoints:
                     continue
                 LOGGER.info(
                     "Requesting GPT analysis for %s papers with %s via %s (%s)",
-                    len(needs_analysis),
+                    len(remaining_papers),
                     route["model"],
                     route["api_mode"],
                     route["endpoint"],
                 )
-                try:
-                    candidate_analyses = analyze_with_openai(
-                        needs_analysis,
-                        route["model"],
-                        api_key=route["api_key"],
-                        base_url=route["base_url"],
-                        api_mode=route["api_mode"],
-                        user_agent=route["user_agent"],
-                        batch_size=int(settings["batch_size"]),
-                        max_retries=int(settings["max_retries"]),
-                        reasoning_effort=route["reasoning_effort"],
-                    )
-                    missing_ids = {paper["id"] for paper in needs_analysis} - set(candidate_analyses)
-                    if missing_ids:
-                        raise RuntimeError(f"GPT response omitted {len(missing_ids)} requested papers")
-                    analyses = candidate_analyses
+                route_input = list(remaining_papers)
+                batch_size = max(1, int(settings["batch_size"]))
+                failed_from = len(route_input)
+                for start in range(0, len(route_input), batch_size):
+                    batch = route_input[start : start + batch_size]
+                    try:
+                        candidate_analyses = analyze_with_openai(
+                            batch,
+                            route["model"],
+                            api_key=route["api_key"],
+                            base_url=route["base_url"],
+                            api_mode=route["api_mode"],
+                            user_agent=route["user_agent"],
+                            batch_size=batch_size,
+                            max_retries=int(settings["max_retries"]),
+                            reasoning_effort=route["reasoning_effort"],
+                        )
+                        missing_ids = {paper["id"] for paper in batch} - set(
+                            candidate_analyses
+                        )
+                        if missing_ids:
+                            raise RuntimeError(
+                                f"GPT response omitted {len(missing_ids)} requested papers"
+                            )
+                        analyses.update(candidate_analyses)
+                        model = route["model"]
+                        analysis_api_mode = route["api_mode"]
+                        analysis_endpoint = route["endpoint"]
+                    except Exception as model_exc:
+                        last_error = model_exc
+                        failed_from = start
+                        if is_provider_wide_outage(model_exc):
+                            unavailable_endpoints.add(route["endpoint"])
+                            LOGGER.warning(
+                                "GPT endpoint %s has no available provider channel; "
+                                "skipping its remaining routes",
+                                route["endpoint"],
+                            )
+                        break
+                remaining_papers = route_input[failed_from:]
+                if not remaining_papers:
                     model = route["model"]
                     analysis_api_mode = route["api_mode"]
                     analysis_endpoint = route["endpoint"]
                     break
-                except Exception as model_exc:
-                    last_error = model_exc
-                    if is_provider_wide_outage(model_exc):
-                        unavailable_endpoints.add(route["endpoint"])
-                        LOGGER.warning(
-                            "GPT endpoint %s has no available provider channel; "
-                            "skipping its remaining routes",
-                            route["endpoint"],
-                        )
-                    next_route = next(
-                        (
-                            candidate
-                            for candidate in candidates[index + 1 :]
-                            if candidate["endpoint"] not in unavailable_endpoints
-                        ),
-                        None,
-                    )
-                    if next_route is None:
-                        continue
-                    LOGGER.warning(
-                        "GPT route %s/%s/%s failed (%s); trying %s/%s/%s",
-                        route["endpoint"],
-                        route["model"],
-                        route["api_mode"],
-                        model_exc,
-                        next_route["endpoint"],
-                        next_route["model"],
-                        next_route["api_mode"],
-                    )
-            if not analyses:
+                next_route = next(
+                    (
+                        candidate
+                        for candidate in candidates[index + 1 :]
+                        if candidate["endpoint"] not in unavailable_endpoints
+                    ),
+                    None,
+                )
+                if next_route is None:
+                    continue
+                LOGGER.warning(
+                    "GPT route %s/%s/%s failed after %s papers (%s); "
+                    "trying %s/%s/%s for the remaining %s papers",
+                    route["endpoint"],
+                    route["model"],
+                    route["api_mode"],
+                    len(route_input) - len(remaining_papers),
+                    last_error,
+                    next_route["endpoint"],
+                    next_route["model"],
+                    next_route["api_mode"],
+                    len(remaining_papers),
+                )
+            if remaining_papers:
                 raise last_error or RuntimeError("No GPT route is configured")
             for paper in papers:
                 if paper["id"] in analyses:

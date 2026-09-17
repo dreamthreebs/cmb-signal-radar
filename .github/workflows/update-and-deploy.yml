@@ -61,12 +61,13 @@ jobs:
           EVENT_NAME: ${{ github.event_name }}
           GPT_API_KEY: ${{ secrets.GPT_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
         run: |
           if [[ "$EVENT_NAME" == "push" ]]; then
             echo "data_run=false" >> "$GITHUB_OUTPUT"
             echo "should_test=true" >> "$GITHUB_OUTPUT"
             echo "gate_reason=code_push" >> "$GITHUB_OUTPUT"
-          elif [[ -z "$GPT_API_KEY" && -z "$OPENAI_API_KEY" ]]; then
+          elif [[ -z "$GPT_API_KEY" && -z "$OPENAI_API_KEY" && -z "$DEEPSEEK_API_KEY" ]]; then
             echo "data_run=false" >> "$GITHUB_OUTPUT"
             echo "should_test=false" >> "$GITHUB_OUTPUT"
             echo "gate_reason=missing_api_key" >> "$GITHUB_OUTPUT"
@@ -93,6 +94,7 @@ jobs:
         env:
           GPT_API_KEY: ${{ secrets.GPT_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           GPT_BASE_URL: ${{ secrets.GPT_BASE_URL || vars.GPT_BASE_URL || secrets.OPENAI_BASE_URL }}
           GPT_MODEL: ${{ vars.GPT_MODEL || vars.OPENAI_MODEL || 'gpt-5.6' }}
           GPT_FALLBACK_MODELS: ${{ vars.GPT_FALLBACK_MODELS || 'gpt-5.6,gpt-4.1-mini,gpt-4o-mini' }}
@@ -106,6 +108,11 @@ jobs:
           OPENAI_FALLBACK_MODELS: ${{ vars.OPENAI_FALLBACK_MODELS }}
           OPENAI_API_MODE: ${{ vars.OPENAI_API_MODE || 'responses' }}
           OPENAI_FALLBACK_API_MODES: ${{ vars.OPENAI_FALLBACK_API_MODES }}
+          DEEPSEEK_BASE_URL: ${{ secrets.DEEPSEEK_BASE_URL || vars.DEEPSEEK_BASE_URL }}
+          DEEPSEEK_MODEL: ${{ vars.DEEPSEEK_MODEL || 'deepseek-flash' }}
+          DEEPSEEK_FALLBACK_MODELS: ${{ vars.DEEPSEEK_FALLBACK_MODELS }}
+          DEEPSEEK_API_MODE: ${{ vars.DEEPSEEK_API_MODE || 'chat_completions' }}
+          DEEPSEEK_FALLBACK_API_MODES: ${{ vars.DEEPSEEK_FALLBACK_API_MODES }}
           ARXIV_CONTACT_EMAIL: ${{ vars.ARXIV_CONTACT_EMAIL }}
           EVENT_NAME: ${{ github.event_name }}
           FORCE_REFRESH: ${{ inputs.force_refresh || 'false' }}

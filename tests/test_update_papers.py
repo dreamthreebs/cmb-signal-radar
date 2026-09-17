@@ -221,6 +221,27 @@ class UpdatePapersTests(unittest.TestCase):
         self.assertEqual(settings["api_key"], "official-key")
         self.assertEqual(settings["base_url"], "")
 
+    def test_deepseek_route_uses_its_own_key_url_model_and_protocol(self):
+        args = argparse.Namespace(model="")
+        with patch.dict(
+            os.environ,
+            {
+                "DEEPSEEK_API_KEY": "deepseek-key",
+                "DEEPSEEK_BASE_URL": "https://deepseek-provider.example/v1",
+                "DEEPSEEK_MODEL": "deepseek-flash",
+                "DEEPSEEK_API_MODE": "chat_completions",
+            },
+            clear=True,
+        ):
+            routes = gpt_route_candidates(gpt_settings(args))
+
+        self.assertEqual(len(routes), 1)
+        self.assertEqual(routes[0]["endpoint"], "deepseek")
+        self.assertEqual(routes[0]["api_key"], "deepseek-key")
+        self.assertEqual(routes[0]["base_url"], "https://deepseek-provider.example/v1")
+        self.assertEqual(routes[0]["model"], "deepseek-flash")
+        self.assertEqual(routes[0]["api_mode"], "chat_completions")
+
     def test_ai_error_classification_distinguishes_provider_outage(self):
         self.assertEqual(
             classify_ai_error(RuntimeError("503: No available channel for the current group")),
@@ -534,6 +555,98 @@ class UpdatePapersTests(unittest.TestCase):
         )
         self.assertEqual(outcome.data["meta"]["analysis_endpoint"], "openai")
         self.assertEqual(outcome.data["meta"]["analysis_model"], "gpt-official")
+
+    def test_deepseek_fallback_only_processes_papers_remaining_after_timeout(self):
+        base_paper = parse_atom_feed(ATOM_SAMPLE, "test")[0]
+        fetched = []
+        for index in range(3):
+            paper = dict(base_paper)
+            paper["id"] = f"paper-{index}"
+            paper["versioned_id"] = f"paper-{index}v1"
+            paper["title"] = f"CMB paper {index}"
+            paper["content_hash"] = f"hash-{index}"
+            fetched.append(paper)
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            config_path = Path(temp_dir) / "config.json"
+            output_path = Path(temp_dir) / "papers.json"
+            config_path.write_text(
+                json.dumps(
+                    {
+                        "queries": [{"name": "test", "query": "all:CMB"}],
+                        "complete_category": "astro-ph.CO",
+                        "focus_limit": 12,
+                        "discovery_limit": 6,
+                        "analysis_limit": 3,
+                    }
+                )
+            )
+            output_path.write_text(json.dumps({"meta": {}, "papers": []}))
+            args = argparse.Namespace(
+                config=str(config_path),
+                output=str(output_path),
+                model="",
+                max_results=None,
+                no_ai=False,
+                require_ai=True,
+                skip_if_no_new=False,
+                force_ai=False,
+                analysis_cap=3,
+            )
+            calls = []
+
+            def analyze(papers, model, **kwargs):
+                paper_id = papers[0]["id"]
+                endpoint = "deepseek" if "deepseek" in model else "primary"
+                calls.append((endpoint, paper_id))
+                if endpoint == "primary" and paper_id == "paper-1":
+                    raise TimeoutError("primary timed out")
+                return {
+                    paper_id: {
+                        "provider": "openai",
+                        "model": model,
+                        "basis": "abstract",
+                        "generated_at": "2026-09-17T00:00:00Z",
+                    }
+                }
+
+            with (
+                patch.dict(
+                    os.environ,
+                    {
+                        "GPT_API_KEY": "primary-key",
+                        "GPT_BASE_URL": "https://primary.example/v1",
+                        "GPT_MODEL": "primary-model",
+                        "GPT_FALLBACK_MODELS": "",
+                        "GPT_API_MODE": "responses",
+                        "GPT_FALLBACK_API_MODES": "",
+                        "GPT_BATCH_SIZE": "1",
+                        "DEEPSEEK_API_KEY": "deepseek-key",
+                        "DEEPSEEK_BASE_URL": "https://deepseek.example/v1",
+                        "DEEPSEEK_MODEL": "deepseek-flash",
+                        "DEEPSEEK_API_MODE": "chat_completions",
+                    },
+                    clear=True,
+                ),
+                patch("scripts.update_papers.fetch_all", return_value=(fetched, [])),
+                patch("scripts.update_papers.analyze_with_openai", side_effect=analyze),
+            ):
+                outcome = update_data(args)
+
+        self.assertTrue(outcome.changed)
+        self.assertEqual(
+            calls,
+            [
+                ("primary", "paper-0"),
+                ("primary", "paper-1"),
+                ("deepseek", "paper-1"),
+                ("deepseek", "paper-2"),
+            ],
+        )
+        models = {paper["id"]: paper["analysis"]["model"] for paper in outcome.data["papers"]}
+        self.assertEqual(models["paper-0"], "primary-model")
+        self.assertEqual(models["paper-1"], "deepseek-flash")
+        self.assertEqual(models["paper-2"], "deepseek-flash")
 
 
 if __name__ == "__main__":

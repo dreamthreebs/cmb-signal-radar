@@ -56,6 +56,10 @@ GitHub Free 的项目 Pages 通常需要公开仓库；如果你的套餐支持�
 | `GPT_REASONING_EFFORT` | Variable | 可选；Responses API 的推理强度，如 `low` |
 | `OPENAI_API_KEY` | **Secret** | 可选。官方 OpenAI 备用 Key；第三方全部失败后自动切换 |
 | `OPENAI_MODEL` | Variable | 可选。官方备用通道的模型，默认 `gpt-5.6` |
+| `DEEPSEEK_API_KEY` | **Secret** | 可选。独立 DeepSeek 备用通道的 Key |
+| `DEEPSEEK_BASE_URL` | **Secret** 或 Variable | DeepSeek 兼容接口的 `/v1` 地址 |
+| `DEEPSEEK_MODEL` | Variable | DeepSeek 备用模型，默认 `deepseek-flash` |
+| `DEEPSEEK_API_MODE` | Variable | DeepSeek 接口协议，默认 `chat_completions` |
 | `ARXIV_CONTACT_EMAIL` | Variable | 可选，让 arXiv User-Agent 带维护者联系方式 |
 
 官方 OpenAI 推荐使用：
@@ -75,6 +79,7 @@ GitHub Free 的项目 Pages 通常需要公开仓库；如果你的套餐支持�
 - 如果只支持 `/chat/completions`，使用 `chat_completions`；该服务还需要支持 JSON Object 输出。
 - 如果服务商要求特定 `User-Agent`，将其存为 `GPT_USER_AGENT` Variable。
 - 如需跨供应商兜底，再把官方 OpenAI Key 单独存为 `OPENAI_API_KEY`；它只会发送到 OpenAI 官方端点，不会发送给第三方。
+- 也可配置 `DEEPSEEK_API_KEY`、`DEEPSEEK_BASE_URL`、`DEEPSEEK_MODEL` 与 `DEEPSEEK_API_MODE`，作为另一个独立备用供应商。主路线中途失败时，已经完成的论文不会重跑，备用路线只接手剩余论文。
 
 也可以使用命令行添加 Secret（输入内容不会写进仓库）：
 
@@ -94,6 +99,7 @@ gh variable set GPT_REASONING_EFFORT --body "low" --repo dreamthreebs/cmb-signal
 
 - Key：`Settings → Secrets and variables → Actions → Secrets → GPT_API_KEY`
 - 官方备用 Key（可选）：同一页的 Secrets 中添加 `OPENAI_API_KEY`
+- DeepSeek 备用 Key（可选）：同一页的 Secrets 中添加 `DEEPSEEK_API_KEY`
 - 第三方 URL：`Settings → Secrets and variables → Actions → Variables → GPT_BASE_URL`
 - 模型与协议：同一页面的 Variables 中修改 `GPT_MODEL` 与 `GPT_API_MODE`
 
